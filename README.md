@@ -84,15 +84,13 @@ The target audience includes:
 
 Visitors should be able to:
 
-- Understand the purpose of the website quickly.
-- Find service categories without confusion.
-- Navigate using a clear main menu.
-- View images of previous work.
-- Filter work by event type.
-- Receive feedback when interacting with buttons, filters, forms, and calculator inputs.
-- Use the website comfortably on different screen sizes.
-- Submit a form only after providing valid required information.
-- Return to the main page if they open a non-existent page.
+- Understand the purpose of the website within the first few seconds.
+- Find the main decoration services easily.
+- Browse examples of previous work by event type.
+- View decoration images clearly.
+- Understand the likely price range before making contact.
+- Send an enquiry using a clear and simple form.
+- Navigate comfortably on mobile, tablet, and desktop.
 
 ---
 
