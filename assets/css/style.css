@@ -1,0 +1,33 @@
+:root {
+    --bs-font-sans-serif: "Roboto", sans-serif;
+}
+
+body {
+    font-family: var(--bs-font-sans-serif);
+}
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+
+/* Global reset: box-sizing for all elements */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Force remove default margins/paddings */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+}
