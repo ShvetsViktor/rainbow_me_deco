@@ -50,23 +50,19 @@ The website allows visitors to explore services, filter portfolio examples, view
 
 ### User Goals
 
-- Understand what decoration services are offered.
-- Browse examples of previous balloon and event decoration work.
-- Filter portfolio examples by event type.
-- View project images clearly in a larger format.
-- Estimate the approximate cost of a decoration package.
-- Submit an enquiry with clear feedback and validation.
-- Navigate the site easily on mobile, tablet, and desktop.
-- Receive clear responses from the site after user actions.
+- Find decoration inspiration for a wedding, birthday, corporate event, or special celebration.
+- Understand what types of balloon and event decoration services are available.
+- See examples of previous decoration work before making an enquiry.
+- Decide whether the service matches their event style, budget, and needs.
+- Contact the decorator with minimal friction when they are ready to enquire.
 
 ### Site Owner Goals
 
-- Present balloon decoration services professionally.
-- Showcase different event decoration categories.
-- Encourage potential clients to make an enquiry.
-- Build trust through a clear layout, images, testimonials, and service information.
-- Demonstrate JavaScript, UX, accessibility, testing, and front-end development skills.
-- Create a project that is suitable for an academic assessment and a developer portfolio.
+- Present balloon decoration and event styling services in a professional and attractive way.
+- Showcase previous work clearly through a visual portfolio.
+- Build trust with potential customers through clear service information, images, and testimonials.
+- Encourage suitable visitors to make an enquiry.
+- Reduce repeated questions by showing service categories, example work, and guide price information.
 
 ---
 
