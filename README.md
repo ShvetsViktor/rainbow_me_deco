@@ -252,7 +252,7 @@ The visual design is intended to feel:
 
 ## Development Process
 
-The project was developed incrementally so that each stage produced a usable improvement before the next stage was started. This helped keep the scope realistic and supported a clear Git commit history.
+The project was developed incrementally so that each stage produced a usable improvement before the next stage was started.
 
 ### Stage 1 — Project Setup and File Structure
 
@@ -290,7 +290,7 @@ The project was developed incrementally so that each stage produced a usable imp
 
 ### Primary Visitor
 
-### US1 — Understand the Business
+#### US1 — Understand the Business
 
 As a visitor, I want to understand what the business offers quickly so that I know whether it is relevant to my event.
 
@@ -300,7 +300,7 @@ As a visitor, I want to understand what the business offers quickly so that I kn
 - The main call to action is visible above the fold.
 - The services section is easy to find.
 
-### US2 — Browse Services
+#### US2 — Browse Services
 
 As a visitor, I want to see the types of decoration available so that I can decide whether the business offers what I need.
 
@@ -310,7 +310,7 @@ As a visitor, I want to see the types of decoration available so that I can deci
 - Each service has a short description.
 - The layout remains readable on mobile and desktop.
 
-### US3 — Filter Portfolio Examples
+#### US3 — Filter Portfolio Examples
 
 As a visitor, I want to filter the portfolio by event type so that I can quickly find examples relevant to my event.
 
@@ -321,7 +321,7 @@ As a visitor, I want to filter the portfolio by event type so that I can quickly
 - The active filter is visually highlighted.
 - The user receives visual feedback after selecting a filter.
 
-### US4 — View Images Clearly
+#### US4 — View Images Clearly
 
 As a visitor, I want to open portfolio images in a larger view so that I can see decoration details more clearly.
 
@@ -333,7 +333,7 @@ As a visitor, I want to open portfolio images in a larger view so that I can see
 - The modal can be closed using the Escape key.
 - No console errors occur.
 
-### US5 — Estimate Price
+#### US5 — Estimate Price
 
 As a visitor, I want to estimate the approximate cost of decoration so that I can understand whether the service may fit my budget.
 
@@ -344,7 +344,7 @@ As a visitor, I want to estimate the approximate cost of decoration so that I ca
 - Empty or invalid selections are handled.
 - The result is clearly displayed.
 
-### US6 — Send an Enquiry
+#### US6 — Send an Enquiry
 
 As a visitor, I want to submit an enquiry so that I can contact the decoration provider.
 
@@ -356,7 +356,7 @@ As a visitor, I want to submit an enquiry so that I can contact the decoration p
 - The user sees clear error messages.
 - A success message appears after valid submission.
 
-### US7 — Recover from a Wrong Page
+#### US7 — Recover from a Wrong Page
 
 As a visitor, I want to return to the main page if I open a non-existent page so that I do not feel stuck.
 
@@ -368,7 +368,7 @@ As a visitor, I want to return to the main page if I open a non-existent page so
 
 ### Site Owner
 
-### US8 — Present Work Professionally
+#### US8 — Present Work Professionally
 
 As the site owner, I want to present previous work clearly so that potential clients trust the quality of the service.
 
@@ -379,7 +379,7 @@ As the site owner, I want to present previous work clearly so that potential cli
 - Text is specific and relevant.
 - The visual design matches the business purpose.
 
-### US9 — Maintain the Website
+#### US9 — Maintain the Website
 
 As the site owner, I want the code and assets to be organised clearly so that the website can be maintained and updated.
 
@@ -399,13 +399,13 @@ The following features are planned for the final website.
 
 ### Hero
 
-The hero section introduces the business and explains the main service offer immediately.
+The hero section gives visitors an immediate understanding of what the business does, what type of events it supports, and what action they can take next.
 
 ### Call-to-Action Buttons
 
-Call-to-action buttons guide users towards important sections of the website, including the portfolio, price estimator, and contact form.
+Call-to-action buttons help visitors move quickly to the most important parts of the website, such as the portfolio, price estimator, and contact form.
 
-This supports the user journey by helping visitors move from initial interest to enquiry without unnecessary friction.
+They support the user journey by giving visitors clear next steps after they understand what the business offers.
 
 ### Main Navigation
 
@@ -413,20 +413,21 @@ The navigation menu allows users to move between sections of the page.
 
 ### Services
 
-The services section explains the main types of decoration support offered by the business. It helps visitors understand what the decorator can provide before they view detailed examples in the portfolio.
+The services section explains the main decoration services offered by the business. It helps visitors understand what can be provided before they view detailed examples in the portfolio.
 
 The section includes short service descriptions for:
 
 - Balloon garlands and arches
 - Wedding and ceremony decoration
 - Birthday party decoration
-- Photo zones and backdrops
-- Stage and table styling
+- Baby shower decoration
+- Corporate event decoration
+- Photo zones, backdrops, and stage styling
 - Custom event decoration
 
 ### Portfolio Filter
 
-The portfolio filter allows users to browse previous work by event type. This helps visitors quickly find examples that match the type of event they are planning.
+The portfolio filter allows users to browse previous work by event type. This helps visitors quickly find examples that match the kind of event they are planning.
 
 Users can filter portfolio examples by:
 
@@ -448,13 +449,9 @@ This feature improves the user experience because visitors can inspect decoratio
 JavaScript is used to:
 
 - Detect which portfolio image was clicked.
-
 - Update the modal image source and alt text dynamically.
-
 - Open and close the modal.
-
 - Handle keyboard interaction with the Escape key.
-
 - Prevent errors if an image element or modal element is missing.
 
 ### Scroll Balloon Animation
@@ -467,7 +464,7 @@ Users can select event options and receive an approximate decoration price.
 
 ### Contact Form Validation
 
-The contact form checks user input before submission and provides clear feedback.
+The contact form checks required fields and email format before submission. It provides clear error messages for invalid input and a success message after valid submission.
 
 ### Testimonials
 
@@ -475,7 +472,7 @@ The testimonials section shows short customer-style comments to support trust.
 
 ### Custom 404 Page
 
-A custom 404 page redirects users back to the main site without relying on browser navigation buttons.
+A custom 404 page gives users a clear route back to the main site without relying on browser navigation buttons.
 
 ---
 
@@ -510,7 +507,7 @@ The image modal lets users open and close larger portfolio images.
 
 ### Price Estimator
 
-The price estimator calculates a guide price based on user selections.
+Users can select event options, package size, and optional extras to receive an approximate decoration price. The estimate is intended as a guide price rather than a final quote.
 
 **JavaScript concepts demonstrated:**
 
