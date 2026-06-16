@@ -356,19 +356,7 @@ As a visitor, I want to submit an enquiry so that I can contact the decoration p
 - The user sees clear error messages.
 - A success message appears after valid submission.
 
-### US7 — Use the Website on Any Device
-
-As a visitor, I want the website to work well on mobile, tablet, and desktop so that I can browse comfortably.
-
-**Acceptance Criteria:**
-
-- The layout adapts to different screen sizes.
-- Text remains readable.
-- Buttons are easy to tap.
-- Images are not stretched or pixelated.
-- Navigation remains usable.
-
-### US8 — Recover from a Wrong Page
+### US7 — Recover from a Wrong Page
 
 As a visitor, I want to return to the main page if I open a non-existent page so that I do not feel stuck.
 
@@ -380,7 +368,7 @@ As a visitor, I want to return to the main page if I open a non-existent page so
 
 ### Site Owner
 
-### US9 — Present Work Professionally
+### US8 — Present Work Professionally
 
 As the site owner, I want to present previous work clearly so that potential clients trust the quality of the service.
 
@@ -391,7 +379,7 @@ As the site owner, I want to present previous work clearly so that potential cli
 - Text is specific and relevant.
 - The visual design matches the business purpose.
 
-### US10 — Maintain the Website
+### US9 — Maintain the Website
 
 As the site owner, I want the code and assets to be organised clearly so that the website can be maintained and updated.
 
