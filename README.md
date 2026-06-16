@@ -8,11 +8,11 @@
 
 Balloon Decor Studio is an interactive front-end website for a small event decoration business specialising in balloon compositions, wedding stage decoration, birthday decorations, photo zones, and custom event styling.
 
-The project was built with **HTML5, CSS3, and JavaScript** as part of the **L5 Diploma in Web Application Development – Unit 2: Interactive Front End Development**.
+The project has two connected purposes. For the business, it presents decoration services, previous work, guide price information, and a simple enquiry route for potential customers. For the assessment, it demonstrates a dynamic and user-centred front-end web application with meaningful JavaScript interactivity, clear UX design, accessibility considerations, responsive layout, testing evidence, and professional documentation.
 
-The main purpose of the project is to demonstrate a dynamic and user-centred front-end web application with meaningful JavaScript interactivity, clear UX design, accessibility considerations, responsive layout, testing evidence, and professional documentation.
+The website is designed to allow visitors to explore services, filter portfolio examples, view images in a modal gallery, estimate decoration costs, interact with scroll-triggered animations, and submit a validated enquiry form.
 
-The website allows visitors to explore services, filter portfolio examples, view images in a modal gallery, estimate decoration costs, interact with scroll-triggered animations, and submit a validated enquiry form.
+The main project focus is front-end development. The contact form includes JavaScript validation and simulated submission, with the option to extend it in the future using server-side or serverless form processing.
 
 ---
 
@@ -20,31 +20,26 @@ The website allows visitors to explore services, filter portfolio examples, view
 
 1. [Project Goals](#project-goals)
 2. [Target Audience](#target-audience)
-3. [User Needs](#user-needs)
-4. [Success Criteria](#success-criteria)
-5. [Content Principles](#content-principles)
-6. [Five Planes of UX](#five-planes-of-ux)
+3. [Success Criteria](#success-criteria)
+4. [Five Planes of UX](#five-planes-of-ux)
    - [Strategy](#strategy)
    - [Scope](#scope)
    - [Structure](#structure)
    - [Skeleton / Wireframes](#skeleton--wireframes)
    - [Surface](#surface)
-7. [Development Plan](#development-plan)
-8. [User Stories](#user-stories)
-9. [Features](#features)
-10. [JavaScript Functionality](#javascript-functionality)
-11. [Technologies Used](#technologies-used)
-12. [Testing](#testing)
-13. [Bugs](#bugs)
-14. [Deployment](#deployment)
-15. [Attribution, Credits and Acknowledgements](#attribution-credits-and-acknowledgements)
-16. [Assessment Checklist](#assessment-checklist-pass--merit--distinction)
-17. [Manual vs Automated Testing Explanation](#manual-vs-automated-testing-explanation)
-18. [Repo Structure](#repo-structure)
-19. [Commit Message Examples](#commit-message-examples)
-20. [Future Improvements](#future-improvements)
-
----
+5. [Development Plan](#development-plan)
+6. [User Stories](#user-stories)
+7. [Features](#features)
+8. [JavaScript Functionality](#javascript-functionality)
+9. [Technologies Used](#technologies-used)
+10. [Testing](#testing)
+11. [Bugs](#bugs)
+12. [Deployment](#deployment)
+13. [Attribution, Credits and Acknowledgements](#attribution-credits-and-acknowledgements)
+14. [Assessment Checklist](#assessment-checklist-pass--merit--distinction)
+16. [Repo Structure](#repo-structure)
+17. [Commit Message Examples](#commit-message-examples)
+18. [Future Improvements](#future-improvements)
 
 ## Project Goals
 
@@ -70,27 +65,11 @@ The website allows visitors to explore services, filter portfolio examples, view
 
 The target audience includes:
 
-- People planning weddings.
-- Parents organising children’s birthday parties.
-- Couples looking for stage or photo-zone decoration.
-- Small businesses organising corporate events.
-- Event planners looking for a decoration supplier.
-- Assessors reviewing the project for interactive front-end development criteria.
-- Employers reviewing the project as evidence of practical JavaScript skills.
-
----
-
-## User Needs
-
-Visitors should be able to:
-
-- Understand the purpose of the website within the first few seconds.
-- Find the main decoration services easily.
-- Browse examples of previous work by event type.
-- View decoration images clearly.
-- Understand the likely price range before making contact.
-- Send an enquiry using a clear and simple form.
-- Navigate comfortably on mobile, tablet, and desktop.
+- Couples planning weddings or engagement celebrations.
+- Parents organising children’s birthday parties or themed events.
+- People planning baby showers, private parties, or family celebrations.
+- Small businesses organising corporate events, launches, or seasonal displays.
+- Event planners looking for a reliable balloon and event decoration supplier.
 
 ---
 
@@ -100,70 +79,80 @@ This project is successful when:
 
 - The website purpose is immediately clear to a first-time visitor.
 - Navigation is simple, consistent, and intuitive.
+- The site uses site-specific content and images instead of placeholder content.
 - JavaScript provides meaningful responses to user actions.
 - Portfolio filtering works correctly.
-- Image modal functionality works without console errors.
+- Users can open portfolio images in a larger modal view and close the modal without page errors or console errors.
 - The price estimator calculates and displays a relevant estimate.
-- Form validation handles empty or invalid input.
+- Form validation handles empty or invalid input and gives clear feedback.
 - Scroll-triggered balloon animations enhance the experience without distracting the user.
-- The website is fully responsive.
+- The website is fully responsive on mobile, tablet, and desktop screens.
 - HTML and CSS pass validation.
 - JavaScript passes through a linter with no major issues.
+- The final deployed version has no broken internal links and no commented-out code.
 - The deployed version matches the development version.
+- Code and assets are organised clearly, with HTML, CSS, and JavaScript separated into appropriate files and folders.
+- External code, libraries, images, fonts, and icons are clearly attributed.
 - Testing, bugs, deployment, UX design, and development process are documented.
-
----
-
-## Content Principles
-
-- Site-specific content is used instead of Lorem Ipsum.
-- Content is short, clear, and relevant to real users.
-- Headings create a clear information hierarchy.
-- Calls to action are visible and easy to understand.
-- Images support the service offering and do not distract from text.
-- The design feels soft, celebratory, and professional.
-- User feedback is provided after important interactions.
-- Accessibility is considered throughout the design and implementation.
 
 ---
 
 ## Five Planes of UX
 
+The UX design decisions below are based on the project goals, target audience, and success criteria defined above.
+
+The Five Planes of UX are used in this project to organise the design thinking from the broad purpose of the website through to the final visual presentation.
+
+- **Strategy** explains why the website is needed and what user/business problems it supports.
+- **Scope** defines which features and content are included in the project.
+- **Structure** explains how the content, sections, navigation, and user flow are organised.
+- **Skeleton** shows how the page layout is planned through wireframes and placement of key elements.
+- **Surface** describes the visual design, styling, colours, imagery, and overall look and feel.
+
+This structure helps separate project purpose, functionality, layout, and visual design so that each design decision is documented clearly.
+
 ## Strategy
 
-### Business Goals
+The strategy for this project is to connect the needs of potential customers with the goals of a small balloon decoration business.
 
-- Promote balloon and event decoration services.
-- Increase customer enquiries.
-- Build trust through visual examples and clear service descriptions.
-- Provide an enjoyable and professional browsing experience.
-- Demonstrate strong interactive front-end development skills.
+Potential customers need to understand whether the service is suitable for their event, style, and budget before they make contact. The business needs to present its services clearly, build confidence through visual examples, and encourage suitable visitors to send an enquiry.
 
-### Primary User Goals
+The website is built around three priorities:
 
-- Find decoration ideas for an event.
-- Understand what services are available.
-- View examples of previous work.
-- Estimate the likely price range.
-- Send an enquiry easily.
+- **Clarity:** visitors can quickly understand what decoration services are available and which event types are supported.
+- **Confidence:** visitors can review visual examples, service information, testimonials, and guide price information before making contact.
+- **Action:** visitors have clear routes to browse previous work, estimate a guide price, and send an enquiry without unnecessary friction.
 
-### Feature Names Used Consistently
+---
 
-- **Hero**
-- **Main Navigation**
-- **Services**
-- **Portfolio Filter**
-- **Image Modal Gallery**
-- **Scroll Balloon Animation**
-- **Price Estimator**
-- **Testimonials**
-- **Contact Form Validation**
-- **Success Message**
-- **Custom 404 Page**
-- **Responsive Layout**
-- **Accessibility Features**
+## Scope
 
-### Prioritisation Method
+### Key Features
+
+The project includes the following user-facing features:
+
+- **Hero:** introduces the business and explains the main service offer.
+- **Call-to-Action Buttons:** guide users towards viewing the portfolio, estimating a guide price, or sending an enquiry.
+- **Main Navigation:** allows users to move between the main sections of the page.
+- **Services:** explains the main decoration services available.
+- **Portfolio Filter:** allows users to browse previous work by event type.
+- **Image Modal Gallery:** allows users to view portfolio images in a larger overlay.
+- **Scroll Balloon Animation:** adds decorative movement when selected sections enter the viewport.
+- **Price Estimator:** gives users an approximate guide price based on selected options.
+- **Testimonials:** supports trust through short customer-style comments.
+- **Contact Form Validation:** checks required user input before submission.
+- **Success Message:** confirms when a valid enquiry has been submitted.
+- **Custom 404 Page:** helps users return to the main page if they open a non-existent route.
+
+The selected features support the three strategy priorities:
+
+- **Clarity:** Hero, Main Navigation, Services, and Call-to-Action Buttons help users understand the website quickly.
+- **Confidence:** Portfolio Filter, Image Modal Gallery, Price Estimator, and Testimonials help users evaluate the service before making contact.
+- **Action:** Call-to-Action Buttons, Price Estimator, Contact Form Validation, Success Message, and the Custom 404 Page help users move towards enquiry and complete tasks without unnecessary friction.
+
+### Feature Prioritisation Method
+
+Features were prioritised by balancing user value, business value, assessment requirements, and realistic implementation scope.
 
 **Score = Importance (1–5) × Feasibility (1–5)**
 
@@ -174,72 +163,12 @@ This project is successful when:
 | Services Section | 5 | 5 | 25 |
 | Portfolio Filter | 5 | 4 | 20 |
 | Contact Form Validation | 5 | 4 | 20 |
-| Responsive Layout | 5 | 4 | 20 |
 | Image Modal Gallery | 4 | 4 | 16 |
 | Price Estimator | 4 | 4 | 16 |
-| Scroll Balloon Animation | 4 | 3 | 12 |
+| Custom 404 Page | 4 | 4 | 16 |
 | Testimonials | 3 | 5 | 15 |
-| Custom 404 Page | 3 | 4 | 12 |
-| Accessibility Features | 5 | 4 | 20 |
-| Testing Evidence | 5 | 4 | 20 |
-| Deployment Documentation | 4 | 5 | 20 |
-
----
-
-## Scope
-
-### In Scope
-
-- Responsive single-page front-end website.
-- Main navigation menu.
-- Hero section with clear calls to action.
-- Services section.
-- Interactive portfolio filter.
-- Image modal gallery.
-- Scroll-triggered balloon animation.
-- Interactive price estimator.
-- Contact form with JavaScript validation.
-- Success feedback after user actions.
-- Custom 404 page.
-- README documentation.
-- Manual testing documentation.
-- Validation evidence.
-- GitHub version control.
-- Deployment to GitHub Pages.
-
-### Out of Scope
-
-- Backend database.
-- Online payments.
-- User accounts.
-- Admin panel.
-- Real email sending from the contact form.
-- Real booking calendar.
-- Server-side form processing.
-- E-commerce basket or checkout.
-
-### Constraints / Assumptions
-
-- The website is a front-end-only project.
-- JavaScript is used for interactivity and user feedback.
-- Form submission is simulated because there is no backend.
-- Images are stored locally inside the project assets folder.
-- The project must meet the requirements of Unit 2: Interactive Front End Development.
-- The site must be deployable through GitHub Pages.
-
-### Definition of Done
-
-- Website is deployed to GitHub Pages.
-- All navigation links work.
-- No broken internal links.
-- No commented-out code remains in the final deployed version.
-- HTML passes W3C validation.
-- CSS passes Jigsaw validation.
-- JavaScript passes through a linter with no major issues.
-- User actions do not cause console errors.
-- All JavaScript features are tested and documented.
-- README explains the project purpose, user value, UX design, testing, bugs, deployment, and attribution.
-- Git commits show clear evidence of the development process.
+| Call-to-Action Buttons | 3 | 5 | 15 |
+| Scroll Balloon Animation | 4 | 3 | 12 |
 
 ---
 
@@ -247,53 +176,53 @@ This project is successful when:
 
 ### Information Architecture
 
-The website uses a single-page structure with multiple sections:
+The website uses a single-page structure with sections arranged to support a typical customer journey from initial interest to enquiry:
 
-1. Hero
-2. Services
-3. Portfolio
-4. How It Works
-5. Price Estimator
-6. Testimonials
-7. Contact
-8. Footer
+1. **Hero** — introduces the business and gives users clear first actions.
+2. **Services** — explains what types of decoration are available.
+3. **Portfolio** — shows previous work and allows users to filter examples by event type.
+4. **How It Works** — explains the basic enquiry and decoration process.
+5. **Price Estimator** — gives users a guide price before making contact.
+6. **Testimonials** — provides trust signals through customer-style feedback.
+7. **Contact Form** — allows users to send an enquiry.
+8. **Footer** — repeats key links and contact information.
 
-### Navigation Model
+### Navigation and Interaction Model
 
-- The main navigation uses anchor links.
-- Hero buttons link to Portfolio and Contact sections.
-- Footer repeats important navigation links.
-- External links open in a new tab.
-- A custom 404 page provides a route back to the home page.
+The navigation and interaction model supports the user journey by helping visitors move between key sections, control interactive elements, and recover from invalid routes.
+
+- The main navigation uses anchor links to key page sections.
+- Hero buttons link directly to Portfolio, Price Estimator, and Contact Form.
+- Portfolio filter buttons allow users to control which examples are displayed.
+- The image modal can be opened and closed by the user.
+- The price estimator responds to user selections.
+- The contact form provides feedback after validation.
+- Footer links repeat important routes for convenience.
+- External links open in a new tab where appropriate.
+- A custom 404 page provides a route back to the main page.
 
 ### Semantic Markup
 
-The project uses semantic HTML structure:
+The project uses semantic HTML to give the page a clear and meaningful structure:
 
-- `header` for the hero and main navigation.
-- `main` for the core page content.
-- `section` elements for each content area.
-- `article` elements for service cards, portfolio cards, and testimonials.
-- `form` for the enquiry form.
-- `footer` for repeated navigation and contact links.
+- `header` contains the main navigation and hero area.
+- `main` contains the primary page content.
+- `section` elements divide the page into clear content areas such as services, portfolio, price estimator, testimonials, and contact.
+- `article` elements are used for self-contained content blocks such as service cards, portfolio items, and testimonials.
+- `form` is used for the enquiry form.
+- `footer` contains repeated navigation links and contact information.
 
 ---
 
 ## Skeleton / Wireframes
 
-Wireframes were created during the planning stage to define the layout, information hierarchy, and responsive structure before development.
-
-The wireframes cover:
-
-- Mobile layout
-- Tablet layout
-- Desktop layout
+Wireframes were created to plan the page layout, content hierarchy, and responsive structure before development.
 
 | Mobile | Desktop |
 |---|---|
-| ![Mobile wireframe](assets/wireframes/mobile-wireframe.webp) | ![Desktop wireframe](assets/wireframes/desktop-wireframe.webp) |
+| Mobile wireframe | Desktop wireframe |
 
-The final implementation follows the planned structure while allowing minor changes during development to improve usability and responsiveness.
+The wireframes show the planned placement of key sections, including the hero area, services, portfolio filter, price estimator, testimonials, and contact form.
 
 ---
 
@@ -314,82 +243,46 @@ The visual design is intended to feel:
 
 - Light background for readability.
 - Soft pastel accent colours.
-- Rounded cards to match the balloon decoration theme.
 - Clear buttons for calls to action.
 - Consistent spacing between sections.
 - High contrast between text and background.
 - Images with consistent sizing and aspect ratio.
 
-### Design Principles Applied
-
-- Strong information hierarchy.
-- Clear section headings.
-- Consistent button styles.
-- Predictable interaction patterns.
-- No aggressive pop-ups.
-- No autoplay audio or video.
-- User-controlled interactions.
-- Feedback after user actions.
-
 ---
 
-## Development Plan
+## Development Process
 
-The project is developed in stages to keep the scope realistic and to support clear Git commit history.
+The project was developed incrementally so that each stage produced a usable improvement before the next stage was started. This helped keep the scope realistic and supported a clear Git commit history.
 
-### Stage 1 — Core Structure
+### Stage 1 — Project Setup and File Structure
 
-Goal: Build the main layout and make the website purpose clear.
+**Goal:** Create the project foundation and organise the files before building the website.
 
-| Feature | Complexity |
-|---|---:|
-| Project setup and file structure | 1 |
-| Hero section | 1 |
-| Main navigation | 1 |
-| Services section | 1 |
-| Footer | 1 |
+**Outcome:** The project folder structure was created, with separate areas for HTML, CSS, JavaScript, images, wireframes, mockups, and testing assets.
 
-**Stage 1 total: 5**
+### Stage 2 — Responsive Page Structure and Core Content
 
-### Stage 2 — Main Interactive Features
+**Goal:** Build the main page sections and create a responsive structure from the start.
 
-Goal: Add meaningful JavaScript functionality.
+**Outcome:** The hero, call-to-action buttons, main navigation, services, How It Works, portfolio content, testimonials, contact form layout, and footer were added. Responsive layout decisions were considered while building these sections.
 
-| Feature | Complexity |
-|---|---:|
-| Portfolio filter | 2 |
-| Image modal gallery | 2 |
-| Price estimator | 2 |
-| Contact form validation | 2 |
+### Stage 3 — JavaScript Interactivity and User Feedback
 
-**Stage 2 total: 8**
+**Goal:** Add meaningful user-controlled JavaScript functionality.
 
-### Stage 3 — UX Enhancements
+**Outcome:** Portfolio filtering, image modal gallery, price estimator logic, contact form validation, success feedback, and scroll-triggered animation were implemented.
 
-Goal: Improve user experience and feedback.
+### Stage 4 — Error Recovery, Refinement and Accessibility Checks
 
-| Feature | Complexity |
-|---|---:|
-| Scroll-triggered balloon animation | 2 |
-| Success messages | 1 |
-| Custom 404 page | 1 |
-| Responsive refinements | 2 |
+**Goal:** Improve the user experience and check that the interface remained clear, usable, and accessible.
 
-**Stage 3 total: 6**
+**Outcome:** The custom 404 page was added, and the layout, spacing, image presentation, buttons, form feedback, keyboard controls, and visual consistency were reviewed and refined.
 
-### Stage 4 — Testing, Deployment and Documentation
+### Stage 5 — Testing, Deployment and Documentation
 
-Goal: Prepare the project for assessment and deployment.
+**Goal:** Prepare the project for final submission and deployment.
 
-| Feature | Complexity |
-|---|---:|
-| Manual testing | 1 |
-| Validation evidence | 1 |
-| Bug documentation | 1 |
-| README completion | 2 |
-| GitHub Pages deployment | 1 |
-
-**Stage 4 total: 6**
+**Outcome:** Manual testing, responsiveness testing, accessibility checks, validation, bug documentation, deployment to GitHub Pages, attribution, and README documentation were completed.
 
 ---
 
@@ -514,11 +407,17 @@ As the site owner, I want the code and assets to be organised clearly so that th
 
 ## Features
 
-### Implemented Features
+The following features are planned for the final website.
 
 ### Hero
 
 The hero section introduces the business and explains the main service offer immediately.
+
+### Call-to-Action Buttons
+
+Call-to-action buttons guide users towards important sections of the website, including the portfolio, price estimator, and contact form.
+
+This supports the user journey by helping visitors move from initial interest to enquiry without unnecessary friction.
 
 ### Main Navigation
 
@@ -526,18 +425,22 @@ The navigation menu allows users to move between sections of the page.
 
 ### Services
 
-The services section presents the main decoration categories:
+The services section explains the main types of decoration support offered by the business. It helps visitors understand what the decorator can provide before they view detailed examples in the portfolio.
 
-- Wedding decoration
-- Birthday balloon decoration
-- Stage decoration
-- Photo zones
-- Balloon garlands
+The section includes short service descriptions for:
+
+- Balloon garlands and arches
+- Wedding and ceremony decoration
+- Birthday party decoration
+- Photo zones and backdrops
+- Stage and table styling
 - Custom event decoration
 
 ### Portfolio Filter
 
-Users can filter portfolio examples by category:
+The portfolio filter allows users to browse previous work by event type. This helps visitors quickly find examples that match the type of event they are planning.
+
+Users can filter portfolio examples by:
 
 - All
 - Weddings
@@ -546,9 +449,25 @@ Users can filter portfolio examples by category:
 - Corporate Events
 - Stage Decor
 
+JavaScript is used to show and hide portfolio cards based on the selected category. The active filter button gives visual feedback so the user can see which category is currently selected.
+
 ### Image Modal Gallery
 
-Users can click portfolio images to open a larger version in a modal window.
+The image modal gallery allows users to click a portfolio image and view it in a larger overlay without leaving the page. The modal can be closed using the close button, by clicking outside the image, or by pressing the Escape key.
+
+This feature improves the user experience because visitors can inspect decoration details more clearly before making an enquiry.
+
+JavaScript is used to:
+
+- Detect which portfolio image was clicked.
+
+- Update the modal image source and alt text dynamically.
+
+- Open and close the modal.
+
+- Handle keyboard interaction with the Escape key.
+
+- Prevent errors if an image element or modal element is missing.
 
 ### Scroll Balloon Animation
 
@@ -569,10 +488,6 @@ The testimonials section shows short customer-style comments to support trust.
 ### Custom 404 Page
 
 A custom 404 page redirects users back to the main site without relying on browser navigation buttons.
-
-### Responsive Layout
-
-The layout is designed to work on mobile, tablet, laptop, and desktop screens.
 
 ---
 
@@ -688,6 +603,36 @@ The purpose of testing was to confirm that:
 - No console errors are caused by user actions.
 - Internal links are not broken.
 
+### Manual vs Automated Testing Explanation
+
+#### Manual Testing
+
+Manual testing was used to check the website from a real user’s perspective.
+
+This included:
+
+- Clicking navigation links.
+- Testing form validation.
+- Opening and closing the modal gallery.
+- Using the price estimator.
+- Testing the portfolio filter.
+- Checking responsive layout in DevTools.
+- Checking the deployed version against the local version.
+
+Manual testing is useful when checking usability, layout, visual design, and real interaction flow.
+
+#### Automated Testing
+
+Automated testing was used where tools could quickly check code quality and technical standards.
+
+This included:
+
+- W3C HTML validation.
+- Jigsaw CSS validation.
+- JavaScript linting.
+- Lighthouse testing.
+- Browser console checks.
+
 ### Manual Testing Checklist
 
 | Feature | Test | Expected Result | Actual Result | Status |
@@ -740,7 +685,7 @@ The purpose of testing was to confirm that:
 
 ### Validation
 
-### HTML Validation
+#### HTML Validation
 
 HTML was tested using the official W3C validator.
 
@@ -748,7 +693,7 @@ HTML was tested using the official W3C validator.
 
 **Result:** No major issues found.
 
-### CSS Validation
+#### CSS Validation
 
 CSS was tested using the official Jigsaw CSS validator.
 
@@ -756,7 +701,7 @@ CSS was tested using the official Jigsaw CSS validator.
 
 **Result:** No major issues found.
 
-### JavaScript Linting
+#### JavaScript Linting
 
 JavaScript was tested using a linter.
 
@@ -764,7 +709,7 @@ JavaScript was tested using a linter.
 
 **Result:** No major issues found.
 
-### Lighthouse Testing
+#### Lighthouse Testing
 
 The deployed website was tested using Lighthouse in Chrome DevTools.
 
@@ -781,27 +726,27 @@ The deployed website was tested using Lighthouse in Chrome DevTools.
 
 ### Screenshots Aligned to User Stories
 
-### US1 — Understand the Business
+#### US1 — Understand the Business
 
 ![Hero section screenshot](assets/testing/us1-hero.webp)
 
-### US3 — Filter Portfolio Examples
+#### US3 — Filter Portfolio Examples
 
 ![Portfolio filter screenshot](assets/testing/us3-portfolio-filter.webp)
 
-### US4 — View Images Clearly
+#### US4 — View Images Clearly
 
 ![Image modal screenshot](assets/testing/us4-image-modal.webp)
 
-### US5 — Estimate Price
+#### US5 — Estimate Price
 
 ![Price estimator screenshot](assets/testing/us5-price-estimator.webp)
 
-### US6 — Send an Enquiry
+#### US6 — Send an Enquiry
 
 ![Contact form screenshot](assets/testing/us6-contact-form.webp)
 
-### US7 — Responsive Experience
+#### US7 — Responsive Experience
 
 ![Responsive screenshot](assets/testing/us7-responsive.webp)
 
@@ -939,40 +884,6 @@ This checklist confirms how the project addresses the Unit 2 requirements.
 - [x] **M(vii)** Documented UX design work, wireframes, mockups, and reasoning.
 - [x] **M(viii)** Documented testing fully, including bugs found and fixes.
 - [x] **M(ix)** Fully documented the deployment procedure.
-
----
-
-## Manual vs Automated Testing Explanation
-
-### Manual Testing
-
-Manual testing was used to check the website from a real user’s perspective.
-
-This included:
-
-- Clicking navigation links.
-- Testing form validation.
-- Opening and closing the modal gallery.
-- Using the price estimator.
-- Testing the portfolio filter.
-- Checking responsive layout in DevTools.
-- Checking the deployed version against the local version.
-
-Manual testing is useful when checking usability, layout, visual design, and real interaction flow.
-
-### Automated Testing
-
-Automated testing was used where tools could quickly check code quality and technical standards.
-
-This included:
-
-- W3C HTML validation.
-- Jigsaw CSS validation.
-- JavaScript linting.
-- Lighthouse testing.
-- Browser console checks.
-
-Automated testing is useful for finding syntax issues, validation errors, accessibility warnings, and performance problems.
 
 ---
 
