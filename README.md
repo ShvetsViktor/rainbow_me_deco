@@ -6,11 +6,11 @@
 
 ## Overview
 
-Balloon Decor Studio is an interactive front-end website for a small event decoration business specialising in balloon compositions, wedding stage decoration, birthday decorations, photo zones, and custom event styling.
+Balloon Decor Studio is an interactive front-end website for a small event decoration business specialising in balloon arches, balloon garlands, balloon number stacks, sequin backdrops, table centrepieces, seasonal business decorations, party supplies, and custom event styling.
 
 The project has two connected purposes. For the business, it presents decoration services, previous work, guide price information, and a simple enquiry route for potential customers. For the assessment, it demonstrates a dynamic and user-centred front-end web application with meaningful JavaScript interactivity, clear UX design, accessibility considerations, responsive layout, testing evidence, and professional documentation.
 
-The website is designed to allow visitors to explore services, filter portfolio examples, view images in a modal gallery, estimate decoration costs, interact with scroll-triggered animations, and submit a validated enquiry form.
+The website is designed to allow visitors to explore services, browse selected portfolio examples, filter work by decoration type, move through portfolio items using a View More control and visible item counter, view images in a modal gallery, estimate decoration costs, understand the booking process, interact with scroll-triggered animations, and submit a validated enquiry form.
 
 The main project focus is front-end development. The contact form includes JavaScript validation and simulated submission, with the option to extend it in the future using server-side or serverless form processing.
 
@@ -38,8 +38,7 @@ The main project focus is front-end development. The contact form includes JavaS
 13. [Attribution, Credits and Acknowledgements](#attribution-credits-and-acknowledgements)
 14. [Assessment Checklist](#assessment-checklist-pass--merit--distinction)
 15. [Repo Structure](#repo-structure)
-16. [Commit Message Examples](#commit-message-examples)
-17. [Future Improvements](#future-improvements)
+16. [Future Improvements](#future-improvements)
 
 ## Project Goals
 
@@ -89,7 +88,7 @@ As a visitor, I want to understand what the business offers quickly so that I kn
 
 #### US2 — Browse Services
 
-As a visitor, I want to see the types of decoration available so that I can decide whether the business offers what I need.
+As a visitor, I want to browse the available decoration services so that I can decide whether the business offers what I need.
 
 **Acceptance Criteria:**
 
@@ -97,18 +96,36 @@ As a visitor, I want to see the types of decoration available so that I can deci
 - Each service has a short description.
 - The layout remains readable on mobile and desktop.
 
-#### US3 — Filter Portfolio Examples
+#### US3 — Browse Portfolio Examples
 
-As a visitor, I want to filter the portfolio by event type so that I can quickly find examples relevant to my event.
+As a visitor, I want to view selected examples of previous work so that I can judge the style and quality of the decoration before making an enquiry.
 
 **Acceptance Criteria:**
 
-- Portfolio filter buttons are visible.
-- Clicking a category shows only relevant items.
-- The active filter is visually highlighted.
-- The user receives visual feedback after selecting a filter.
+- The portfolio section shows a selected set of previous work.
+- Portfolio items are displayed in a clear responsive grid.
+- Each item includes an image and relevant category information.
+- The initial number of visible items is limited to avoid overloading the page.
+- Portfolio images remain readable and visually consistent across screen sizes.
 
-#### US4 — View Images Clearly
+#### US4 — Filter and View More Portfolio Examples
+
+As a visitor, I want to filter portfolio examples by decoration type and move through more examples in small groups so that I can browse relevant work without being overwhelmed by too many images at once.
+
+**Acceptance Criteria:**
+
+- Portfolio filter buttons are visible above the portfolio grid.
+- Clicking a decoration category shows only relevant portfolio items.
+- The active filter is visually highlighted.
+- Only a limited number of matching items are shown at one time.
+- A View More button replaces the current visible group with the next group of matching items.
+- A visible counter shows which items are currently displayed, for example “Showing 1–6 of 18”.
+- The counter updates when the user changes filter category or clicks View More.
+- The portfolio resets to the first group when a new filter category is selected.
+- When the final matching group is reached, the button changes to “View First”.
+- Clicking “View First” returns the portfolio to the first matching group and resets the counter.
+
+#### US5 — View Images Clearly
 
 As a visitor, I want to open portfolio images in a larger view so that I can see decoration details more clearly.
 
@@ -120,20 +137,32 @@ As a visitor, I want to open portfolio images in a larger view so that I can see
 - The modal can be closed using the Escape key.
 - No console errors occur.
 
-#### US5 — Estimate Price
+#### US6 — Estimate Price
 
-As a visitor, I want to estimate the approximate cost of decoration so that I can understand whether the service may fit my budget.
+As a visitor, I want to estimate a guide price for my decoration setup so that I can understand whether the service may fit my budget.
 
 **Acceptance Criteria:**
 
-- The user can select event type, package size, and optional extras.
+- The user can select decoration type, package size, and optional extras.
 - The estimated price updates after user choices.
 - Empty or invalid selections are handled.
 - The result is clearly displayed.
 
-#### US6 — Send an Enquiry
+#### US7 — Understand the Booking Process
 
-As a visitor, I want to submit an enquiry so that I can contact the decoration provider.
+As a visitor, I want to understand how the booking and setup process works so that I know what to expect before sending an enquiry.
+
+**Acceptance Criteria:**
+
+- The How It Works section is easy to find.
+- The booking process is shown in clear steps.
+- Each step has a short explanation.
+- Visual numbers or icons help users follow the process.
+- The section explains the journey from enquiry to event setup.
+
+#### US8 — Send an Enquiry
+
+As a visitor, I want to submit an enquiry form so that I can contact the decoration provider.
 
 **Acceptance Criteria:**
 
@@ -143,7 +172,7 @@ As a visitor, I want to submit an enquiry so that I can contact the decoration p
 - The user sees clear error messages.
 - A success message appears after valid submission.
 
-#### US7 — Recover from a Wrong Page
+#### US9 — Recover from a Wrong Page
 
 As a visitor, I want to return to the main page if I open a non-existent page so that I do not feel stuck.
 
@@ -155,7 +184,7 @@ As a visitor, I want to return to the main page if I open a non-existent page so
 
 ### Site Owner
 
-#### US8 — Present Work Professionally
+#### US10 — Present Work Professionally
 
 As the site owner, I want to present previous work clearly so that potential clients trust the quality of the service.
 
@@ -166,7 +195,7 @@ As the site owner, I want to present previous work clearly so that potential cli
 - Text is specific and relevant.
 - The visual design matches the business purpose.
 
-#### US9 — Maintain the Website
+#### US11 — Maintain the Website
 
 As the site owner, I want the code and assets to be organised clearly so that the website can be maintained and updated.
 
@@ -188,7 +217,9 @@ This project is successful when:
 - Navigation is simple, consistent, and intuitive.
 - The site uses site-specific content and images instead of placeholder content.
 - JavaScript provides meaningful responses to user actions.
-- Portfolio filtering works correctly.
+- The portfolio section displays selected examples of previous work without overloading the single-page layout.
+- Portfolio filtering, View More / View First behaviour, and the visible item counter work correctly.
+- Portfolio images are optimised and lazy-loaded where appropriate.
 - Users can open portfolio images in a larger modal view and close the modal without page errors or console errors.
 - The price estimator calculates and displays a relevant estimate.
 - Form validation handles empty or invalid input and gives clear feedback.
@@ -226,7 +257,7 @@ Potential customers need to understand whether the service is suitable for their
 
 The website is built around three priorities:
 
-- **Clarity:** visitors can quickly understand what decoration services are available and which event types are supported.
+- **Clarity:** Hero, Main Navigation, Services, How It Works, and Call-to-Action Buttons help users understand the website quickly.
 - **Confidence:** visitors can review visual examples, service information, testimonials, and guide price information before making contact.
 - **Action:** visitors have clear routes to browse previous work, estimate a guide price, and send an enquiry without unnecessary friction.
 
@@ -242,19 +273,21 @@ The project includes the following user-facing features:
 - **Call-to-Action Buttons:** guide users towards viewing the portfolio, estimating a guide price, or sending an enquiry.
 - **Main Navigation:** allows users to move between the main sections of the page.
 - **Services:** explains the main decoration services available.
-- **Portfolio Filter:** allows users to browse previous work by event type.
+- **Portfolio Section:** presents a selected set of previous work in a responsive image grid.
+- **Portfolio Filtering and View More:** allows users to filter work by decoration type and move through matching portfolio items in small groups without expanding the page length.
 - **Image Modal Gallery:** allows users to view portfolio images in a larger overlay.
-- **Scroll Balloon Animation:** adds decorative movement when selected sections enter the viewport.
 - **Price Estimator:** gives users an approximate guide price based on selected options.
+- **How It Works:** explains the booking and setup process from enquiry through completion.
 - **Testimonials:** supports trust through short customer-style comments.
+- **Scroll Balloon Animation:** adds decorative movement when selected sections enter the viewport.
 - **Contact Form Validation:** checks required user input before submission and shows clear error or success feedback.
 - **Custom 404 Page:** helps users return to the main page if they open a non-existent route.
 
 The selected features support the three strategy priorities:
 
-- **Clarity:** Hero, Main Navigation, Services, and Call-to-Action Buttons help users understand the website quickly.
-- **Confidence:** Portfolio Filter, Image Modal Gallery, Price Estimator, and Testimonials help users evaluate the service before making contact.
-- **Action:** Call-to-Action Buttons, Price Estimator, Contact Form Validation, Success Message, and the Custom 404 Page help users move towards enquiry and complete tasks without unnecessary friction.
+- **Clarity:** Hero, Main Navigation, Services, How It Works, and Call-to-Action Buttons help users understand the website quickly.
+- **Confidence:** Portfolio Section, Portfolio Filtering and View More, Image Modal Gallery, Price Estimator, and Testimonials help users evaluate the service before making contact.
+- **Action:** Call-to-Action Buttons, Price Estimator, Contact Form Validation, and the Custom 404 Page help users move towards enquiry and complete tasks without unnecessary friction.
 
 ### Feature Prioritisation Method
 
@@ -267,7 +300,9 @@ Features were prioritised by balancing user value, business value, assessment re
 | Hero | 5 | 5 | 25 |
 | Main Navigation | 5 | 5 | 25 |
 | Services Section | 5 | 5 | 25 |
-| Portfolio Filter | 5 | 4 | 20 |
+| Portfolio Section | 4 | 5 | 20 |
+| Portfolio Filtering and View More | 5 | 4 | 20 |
+| How It Works | 4 | 5 | 20 |
 | Contact Form Validation | 5 | 4 | 20 |
 | Image Modal Gallery | 4 | 4 | 16 |
 | Price Estimator | 4 | 4 | 16 |
@@ -286,11 +321,12 @@ The website uses a single-page structure with sections arranged to support a typ
 
 1. **Hero** — introduces the business and gives users clear first actions.
 2. **Services** — explains what types of decoration are available.
-3. **Portfolio** — shows previous work and allows users to filter examples by event type.
+3. **Portfolio** — presents selected examples of previous work in a responsive image grid.
 4. **Price Estimator** — gives users a guide price before making contact.
-5. **Testimonials** — provides trust signals through customer-style feedback.
-6. **Contact Form** — allows users to send an enquiry.
-7. **Footer** — repeats key links and contact information.
+5. **How It Works** — explains the booking and setup process from enquiry through completion.
+6. **Testimonials** — provides trust signals through customer-style feedback.
+7. **Contact Form** — allows users to send an enquiry.
+8. **Footer** — repeats key links and contact information.
 
 ### Navigation and Interaction Model
 
@@ -298,7 +334,7 @@ The navigation and interaction model supports the user journey by helping visito
 
 - The main navigation uses anchor links to key page sections.
 - Hero buttons link directly to Portfolio, Price Estimator, and Contact Form.
-- Portfolio filter buttons allow users to control which examples are displayed.
+- The portfolio section displays selected work, while filter buttons, a View More control, and a visible item counter let users browse relevant examples in small groups without expanding the page length.
 - The image modal can be opened and closed by the user.
 - The price estimator responds to user selections.
 - The contact form provides feedback after validation.
@@ -312,8 +348,8 @@ The project uses semantic HTML to give the page a clear and meaningful structure
 
 - `header` contains the main navigation and hero area.
 - `main` contains the primary page content.
-- `section` elements divide the page into clear content areas such as services, portfolio, price estimator, testimonials, and contact.
-- `article` elements are used for self-contained content blocks such as service cards, portfolio items, and testimonials.
+- `section` elements divide the page into clear content areas such as services, portfolio, price estimator, How It Works, testimonials, and contact.
+- `article` elements are used for self-contained content blocks such as service cards, portfolio cards, process steps, and testimonials.
 - `form` is used for the enquiry form.
 - `footer` contains repeated navigation links and contact information.
 
@@ -327,7 +363,7 @@ Wireframes were created to plan the page layout, content hierarchy, and responsi
 |---|---|
 | Mobile wireframe | Desktop wireframe |
 
-The wireframes show the planned placement of key sections, including the hero area, services, portfolio filter, price estimator, testimonials, and contact form.
+The wireframes show the planned placement of key sections, including the hero area, services, portfolio grid, portfolio filter controls, View More button, visible item counter, price estimator, How It Works, testimonials, and contact form.
 
 ---
 
@@ -369,13 +405,13 @@ The project was developed incrementally so that each stage produced a usable imp
 
 **Goal:** Build the main page sections and create a responsive structure from the start.
 
-**Outcome:** The hero, call-to-action buttons, main navigation, services, portfolio content, testimonials, contact form layout, and footer were added. Responsive layout decisions were considered while building these sections.
+**Outcome:** The hero, call-to-action buttons, main navigation, services, portfolio content, price estimator layout, How It Works, testimonials, contact form layout, and footer were added. Responsive layout decisions were considered while building these sections.
 
 ### Stage 3 — JavaScript Interactivity and User Feedback
 
 **Goal:** Add meaningful user-controlled JavaScript functionality.
 
-**Outcome:** Portfolio filtering, image modal gallery, price estimator logic, contact form validation, success feedback, and scroll-triggered animation were implemented.
+**Outcome:** Portfolio filtering, View More behaviour, visible item counter, image modal gallery, price estimator logic, contact form validation, success feedback, and scroll-triggered animation were implemented.
 
 ### Stage 4 — Error Recovery, Refinement and Accessibility Checks
 
@@ -415,28 +451,44 @@ The services section explains the main decoration services offered by the busine
 
 The section includes short service descriptions for:
 
-- Balloon garlands and arches
-- Wedding and ceremony decoration
-- Birthday party decoration
+- Balloon arches and garlands
+- Balloon number stacks
+- Birthday and party balloon decoration
+- Wedding and celebration decoration
 - Baby shower decoration
-- Corporate event decoration
-- Photo zones, backdrops, and stage styling
+- Sequin backdrops and photo zones
+- Table centrepieces and party table styling
+- Seasonal decorations for businesses
+- Party supplies and event accessories
 - Custom event decoration
 
-### Portfolio Filter
+### Portfolio
 
-The portfolio filter allows users to browse previous work by event type. This helps visitors quickly find examples that match the kind of event they are planning.
+The portfolio section presents a selected set of previous work in a responsive image grid. It helps visitors review the style, quality, and range of decoration work before making an enquiry.
+
+To avoid overloading the single-page layout, the portfolio does not need to show every completed project at once. Instead, it displays a limited number of representative items first, with fewer items shown on smaller screens and more items shown on larger screens.
+
+### Portfolio Filtering and View More
+
+The portfolio filtering controls are placed above the portfolio grid. They allow users to browse previous work by decoration type before viewing the images.
 
 Users can filter portfolio examples by:
 
 - All
-- Weddings
-- Birthdays
-- Baby Showers
-- Corporate Events
-- Stage Decor
+- Balloon Arches
+- Number Stacks
+- Backdrops
+- Table Decor
+- Business Decor
+- Custom Setups
 
-JavaScript is used to show and hide portfolio cards based on the selected category. The active filter button gives visual feedback so the user can see which category is currently selected.
+When a filter is selected, JavaScript first finds the matching portfolio items and displays only the first limited group. A View More button replaces the current visible group with the next group of matching items instead of continuously adding more cards to the page.
+
+A visible item counter shows the current range of displayed items, for example “Showing 1–6 of 18”. The counter updates when the user selects a new filter or clicks the View More button.
+
+When the final matching group is reached, the button text changes from “View More” to “View First”. This allows the user to return to the first group of matching portfolio items without changing the selected filter.
+
+This approach keeps the single-page layout compact, prevents large layout shifts, avoids overwhelming visitors with too many images at once, and still allows users to explore more examples when they choose to.
 
 ### Image Modal Gallery
 
@@ -458,7 +510,13 @@ When the user scrolls to selected sections, balloon graphics animate into view. 
 
 ### Price Estimator
 
-Users can select event options and receive an approximate decoration price.
+Users can select decoration type, package size, and optional extras to receive an approximate decoration price. The estimate is intended as a guide price rather than a final quote.
+
+### How It Works
+
+The How It Works section explains the booking and setup process from enquiry through completion. It uses simple steps, visual icons, or numbers to show how the customer moves from first contact to final event setup.
+
+This section helps reduce uncertainty by showing visitors what to expect before they send an enquiry.
 
 ### Contact Form Validation
 
@@ -478,9 +536,9 @@ A custom 404 page gives users a clear route back to the main site without relyin
 
 The project includes custom JavaScript to demonstrate significant interactive functionality.
 
-### Portfolio Filtering
+### Portfolio Filtering and View More
 
-The portfolio filter allows users to control which category of work is displayed.
+The portfolio section combines category filtering, grouped item display, a View More control, and a visible item counter. Users can filter portfolio items by decoration type, and only a limited number of matching items are displayed at one time. The View More button replaces the current visible group with the next group of matching items. When the final matching group is reached, the button changes to “View First”, allowing the user to return to the first group. The counter communicates the current range, such as “Showing 1–6 of 18”.
 
 **JavaScript concepts demonstrated:**
 
@@ -489,6 +547,13 @@ The portfolio filter allows users to control which category of work is displayed
 - Conditional logic
 - Class manipulation
 - Dataset attributes
+- Counting matching items
+- Calculating visible item ranges
+- Updating text content dynamically
+- Button state control
+- Dynamic button text update
+- User-controlled content reveal
+- Responsive behaviour consideration
 - User feedback
 
 ### Image Modal Gallery
@@ -505,7 +570,7 @@ The image modal lets users open and close larger portfolio images.
 
 ### Price Estimator
 
-Users can select event options, package size, and optional extras to receive an approximate decoration price. The estimate is intended as a guide price rather than a final quote.
+Users can select decoration type, package size, and optional extras to receive an approximate decoration price. The estimate is intended as a guide price rather than a final quote.
 
 **JavaScript concepts demonstrated:**
 
@@ -600,7 +665,7 @@ This includes:
 - Testing form validation.
 - Opening and closing the modal gallery.
 - Using the price estimator.
-- Testing the portfolio filter.
+- Testing the portfolio filter, View More control, and visible item counter.
 - Checking responsive layout in DevTools.
 - Checking the deployed version against the local version.
 
@@ -625,14 +690,23 @@ This includes:
 | Navigation | Click each navigation link | Correct section is shown | Not tested yet | Pending |
 | Hero CTA | Click “View Portfolio” | Portfolio section is shown | Not tested yet | Pending |
 | Hero CTA | Click “Request a Quote” | Contact section is shown | Not tested yet | Pending |
-| Portfolio Filter | Click “Weddings” | Only wedding items are shown | Not tested yet | Pending |
-| Portfolio Filter | Click “Birthdays” | Only birthday items are shown | Not tested yet | Pending |
-| Portfolio Filter | Click “All” | All portfolio items are shown | Not tested yet | Pending |
+| Portfolio Section | View initial portfolio grid | A limited number of portfolio items is displayed | Not tested yet | Pending |
+| Portfolio Filter | Click “Balloon Arches” | Only balloon arch items are shown | Not tested yet | Pending |
+| Portfolio Filter | Click “Number Stacks” | Only number stack items are shown | Not tested yet | Pending |
+| Portfolio Filter | Click “Backdrops” | Only backdrop items are shown | Not tested yet | Pending |
+| Portfolio Filter | Click “All” | First limited group of all portfolio items is shown | Not tested yet | Pending |
+| Portfolio Filter | Select a new category | Initial limited number of matching items is shown and counter resets | Not tested yet | Pending |
+| Portfolio View More | Click “View More” | Current portfolio group is replaced with the next matching group | Not tested yet | Pending |
+| Portfolio View More | Reach the last matching group | Button text changes from “View More” to “View First” | Not tested yet | Pending |
+| Portfolio View More | Click “View First” | First matching portfolio group is shown and counter resets | Not tested yet | Pending |
+| Portfolio Counter | View initial portfolio grid | Counter shows the current item range, for example “Showing 1–6 of 18” | Not tested yet | Pending |
+| Portfolio Counter | Click “View More” | Counter updates to the next visible range | Not tested yet | Pending |
 | Image Modal | Click portfolio image | Larger image opens | Not tested yet | Pending |
 | Image Modal | Click close button | Modal closes | Not tested yet | Pending |
 | Image Modal | Press Escape key | Modal closes | Not tested yet | Pending |
 | Price Estimator | Select valid options | Estimated price is displayed | Not tested yet | Pending |
 | Price Estimator | Leave fields empty | Error or guidance is shown | Not tested yet | Pending |
+| How It Works | Review process steps | Booking and setup process is clear and easy to follow | Not tested yet | Pending |
 | Contact Form | Submit empty form | Error messages are shown | Not tested yet | Pending |
 | Contact Form | Submit invalid email | Email error is shown | Not tested yet | Pending |
 | Contact Form | Submit valid data | Success message is shown | Not tested yet | Pending |
@@ -715,25 +789,33 @@ The deployed website will be tested using Lighthouse in Chrome DevTools.
 
 ![Hero section screenshot](assets/testing/us1-hero.webp)
 
-#### US3 — Filter Portfolio Examples
+#### US3 — Browse Portfolio Examples
 
-![Portfolio filter screenshot](assets/testing/us3-portfolio-filter.webp)
+![Portfolio section screenshot](assets/testing/us3-portfolio.webp)
 
-#### US4 — View Images Clearly
+#### US4 — Filter and View More Portfolio Examples
 
-![Image modal screenshot](assets/testing/us4-image-modal.webp)
+![Portfolio filter, View More and counter screenshot](assets/testing/us4-portfolio-filter-view-more.webp)
 
-#### US5 — Estimate Price
+#### US5 — View Images Clearly
 
-![Price estimator screenshot](assets/testing/us5-price-estimator.webp)
+![Image modal screenshot](assets/testing/us5-image-modal.webp)
 
-#### US6 — Send an Enquiry
+#### US6 — Estimate Price
 
-![Contact form screenshot](assets/testing/us6-contact-form.webp)
+![Price estimator screenshot](assets/testing/us6-price-estimator.webp)
 
-#### US7 — Recover from a Wrong Page
+#### US7 — Understand the Booking Process
 
-![Custom 404 page screenshot](assets/testing/us7-404-page.webp)
+![How It Works screenshot](assets/testing/us7-how-it-works.webp)
+
+#### US8 — Send an Enquiry
+
+![Contact form screenshot](assets/testing/us8-contact-form.webp)
+
+#### US9 — Recover from a Wrong Page
+
+![Custom 404 page screenshot](assets/testing/us9-404-page.webp)
 
 ---
 
@@ -900,6 +982,7 @@ README.md
 Possible future improvements include:
 
 - Real backend form submission.
+- Dedicated portfolio page for a larger archive of completed projects.
 - Admin panel for uploading new portfolio images.
 - Booking calendar integration.
 - Customer review submission.
