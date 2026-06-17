@@ -10,7 +10,7 @@ Balloon Decor Studio is an interactive front-end website for a small event decor
 
 The project has two connected purposes. For the business, it presents decoration services, previous work, guide price information, and a simple enquiry route for potential customers. For the assessment, it demonstrates a dynamic and user-centred front-end web application with meaningful JavaScript interactivity, clear UX design, accessibility considerations, responsive layout, testing evidence, and professional documentation.
 
-The website is designed to allow visitors to explore services, browse selected portfolio examples, filter work by decoration type, move through portfolio items using a View More control and visible item counter, view images in a modal gallery, estimate decoration costs, understand the booking process, interact with scroll-triggered animations, and submit a validated enquiry form.
+The website is designed to allow visitors to explore services, use service cards as shortcuts to matching portfolio examples, filter work by decoration type, move through portfolio items using a View More control and visible item counter, view images in a modal gallery, estimate decoration costs, understand the booking process, interact with scroll-triggered animations, and submit a validated enquiry form.
 
 The main project focus is front-end development. The contact form includes JavaScript validation and simulated submission, with the option to extend it in the future using server-side or serverless form processing.
 
@@ -95,6 +95,7 @@ As a visitor, I want to browse the available decoration services so that I can d
 - Services are displayed in clear cards.
 - Each service has a short description.
 - The layout remains readable on mobile and desktop.
+- Selecting a service card takes the user to matching portfolio examples.
 
 #### US3 — Browse Portfolio Examples
 
@@ -272,7 +273,7 @@ The project includes the following user-facing features:
 - **Hero:** helps visitors quickly understand what the business does and what action they can take next.
 - **Call-to-Action Buttons:** guide users towards viewing the portfolio, estimating a guide price, or sending an enquiry.
 - **Main Navigation:** allows users to move between the main sections of the page.
-- **Services:** explains the main decoration services available.
+- **Services:** explains the six main decoration categories and allows users to jump to matching portfolio examples.
 - **Portfolio Section:** presents a selected set of previous work in a responsive image grid.
 - **Portfolio Filtering and View More:** allows users to filter work by decoration type and move through matching portfolio items in small groups without expanding the page length.
 - **Image Modal Gallery:** allows users to view portfolio images in a larger overlay.
@@ -334,6 +335,7 @@ The navigation and interaction model supports the user journey by helping visito
 
 - The main navigation uses anchor links to key page sections.
 - Hero buttons link directly to Portfolio, Price Estimator, and Contact Form.
+- Service cards act as shortcuts to matching portfolio categories.
 - The portfolio section displays selected work, while filter buttons, a View More control, and a visible item counter let users browse relevant examples in small groups without expanding the page length.
 - The image modal can be opened and closed by the user.
 - The price estimator responds to user selections.
@@ -447,20 +449,18 @@ The navigation menu allows users to move between sections of the page.
 
 ### Services
 
-The services section explains the main decoration services offered by the business. It helps visitors understand what can be provided before they view detailed examples in the portfolio.
+The services section explains the main decoration categories offered by the business. It helps visitors understand what can be provided before they view detailed examples in the portfolio.
 
-The section includes short service descriptions for:
+The section includes six service cards:
 
-- Balloon arches and garlands
-- Balloon number stacks
-- Birthday and party balloon decoration
-- Wedding and celebration decoration
-- Baby shower decoration
-- Sequin backdrops and photo zones
-- Table centrepieces and party table styling
-- Seasonal decorations for businesses
-- Party supplies and event accessories
-- Custom event decoration
+- Balloon Arches
+- Number Stacks
+- Backdrops
+- Table Decor
+- Business Decor
+- Custom Setups
+
+Each service card includes a short description and acts as a shortcut to matching portfolio examples. When a user selects a service card, the page scrolls to the portfolio section and applies the matching portfolio filter.
 
 ### Portfolio
 
@@ -547,6 +547,7 @@ The portfolio section combines category filtering, grouped item display, a View 
 - Conditional logic
 - Class manipulation
 - Dataset attributes
+- Service-card-to-portfolio linking
 - Counting matching items
 - Calculating visible item ranges
 - Updating text content dynamically
@@ -690,6 +691,8 @@ This includes:
 | Navigation | Click each navigation link | Correct section is shown | Not tested yet | Pending |
 | Hero CTA | Click “View Portfolio” | Portfolio section is shown | Not tested yet | Pending |
 | Hero CTA | Click “Request a Quote” | Contact section is shown | Not tested yet | Pending |
+| Services | Click a service card | Page scrolls to the portfolio section and applies the matching filter | Not tested yet | Pending |
+| Services | Click each service card | Each card shows the correct matching portfolio category | Not tested yet | Pending |
 | Portfolio Section | View initial portfolio grid | A limited number of portfolio items is displayed | Not tested yet | Pending |
 | Portfolio Filter | Click “Balloon Arches” | Only balloon arch items are shown | Not tested yet | Pending |
 | Portfolio Filter | Click “Number Stacks” | Only number stack items are shown | Not tested yet | Pending |
