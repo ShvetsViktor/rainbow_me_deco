@@ -10,9 +10,9 @@ Balloon Decor Studio is an interactive front-end website for a small event decor
 
 The project has two connected purposes. For the business, it presents decoration services, previous work, guide price information, and a simple enquiry route for potential customers. For the assessment, it demonstrates a dynamic and user-centred front-end web application with meaningful JavaScript interactivity, clear UX design, accessibility considerations, responsive layout, testing evidence, and professional documentation.
 
-The website is designed to allow visitors to explore services, use service cards as shortcuts to matching portfolio examples, filter work by decoration type, move through portfolio items using a View More control and visible item counter, view images in a modal gallery, estimate decoration costs, understand the booking process, interact with scroll-triggered animations, and submit a validated enquiry form.
+The website is designed to allow visitors to explore services, use service cards as shortcuts to matching portfolio examples, filter work by decoration type, move through portfolio items using a View More control and visible item counter, view images in a modal gallery, build a guide estimate using selected services, review the estimate before sending an enquiry, understand the booking process, interact with scroll-triggered animations, and submit a validated enquiry form.
 
-The main project focus is front-end development. The contact form includes JavaScript validation and simulated submission, with the option to extend it in the future using server-side or serverless form processing.
+The main project focus is front-end development. The Enquiry Form includes JavaScript validation and simulated submission, with the option to extend it in the future using server-side or serverless form processing.
 
 ---
 
@@ -138,16 +138,19 @@ As a visitor, I want to open portfolio images in a larger view so that I can see
 - The modal can be closed using the Escape key.
 - No console errors occur.
 
-#### US6 — Estimate Price
+#### US6 — Build a Guide Estimate
 
-As a visitor, I want to estimate a guide price for my decoration setup so that I can understand whether the service may fit my budget.
+As a visitor, I want to add decoration services and extras to a guide estimate so that I can understand the approximate cost before sending an enquiry.
 
 **Acceptance Criteria:**
 
-- The user can select decoration type, package size, and optional extras.
-- The estimated price updates after user choices.
-- Empty or invalid selections are handled.
-- The result is clearly displayed.
+- The user can add a service to the estimate from a service card or portfolio card.
+- The user can view the current estimate total while browsing the page.
+- The user can open the estimate panel to review selected items.
+- The user can remove selected items from the estimate.
+- The estimated total updates when selected items change.
+- The estimate is clearly presented as a guide price rather than a final quote.
+- The user can continue to the enquiry form to request a final quote.
 
 #### US7 — Understand the Booking Process
 
@@ -222,7 +225,7 @@ This project is successful when:
 - Portfolio filtering, View More / View First behaviour, and the visible item counter work correctly.
 - Portfolio images are optimised and lazy-loaded where appropriate.
 - Users can open portfolio images in a larger modal view and close the modal without page errors or console errors.
-- The price estimator calculates and displays a relevant estimate.
+- The estimate builder allows users to add and remove services, view an updated guide price, and continue to the enquiry form.
 - Form validation handles empty or invalid input and gives clear feedback.
 - Scroll-triggered balloon animations enhance the experience without distracting the user.
 - The website is fully responsive on mobile, tablet, and desktop screens.
@@ -260,7 +263,7 @@ The website is built around three priorities:
 
 - **Clarity:** Hero, Main Navigation, Services, How It Works, and Call-to-Action Buttons help users understand the website quickly.
 - **Confidence:** visitors can review visual examples, service information, testimonials, and guide price information before making contact.
-- **Action:** visitors have clear routes to browse previous work, estimate a guide price, and send an enquiry without unnecessary friction.
+- **Action:** visitors have clear routes to browse previous work, build a guide estimate, and send an enquiry without unnecessary friction.
 
 ---
 
@@ -277,18 +280,18 @@ The project includes the following user-facing features:
 - **Portfolio Section:** presents a selected set of previous work in a responsive image grid.
 - **Portfolio Filtering and View More:** allows users to filter work by decoration type and move through matching portfolio items in small groups without expanding the page length.
 - **Image Modal Gallery:** allows users to view portfolio images in a larger overlay.
-- **Price Estimator:** gives users an approximate guide price based on selected options.
+- **Interactive Estimate Builder:** allows users to add services to a guide estimate, view a running total while browsing, review selected items, and continue to the enquiry form to request a final quote.
 - **How It Works:** explains the booking and setup process from enquiry through completion.
 - **Testimonials:** supports trust through short customer-style comments.
 - **Scroll Balloon Animation:** adds decorative movement when selected sections enter the viewport.
-- **Contact Form Validation:** checks required user input before submission and shows clear error or success feedback.
+- **Enquiry Form & Validation:** checks required user input before submission and shows clear error or success feedback.
 - **Custom 404 Page:** helps users return to the main page if they open a non-existent route.
 
 The selected features support the three strategy priorities:
 
 - **Clarity:** Hero, Main Navigation, Services, How It Works, and Call-to-Action Buttons help users understand the website quickly.
-- **Confidence:** Portfolio Section, Portfolio Filtering and View More, Image Modal Gallery, Price Estimator, and Testimonials help users evaluate the service before making contact.
-- **Action:** Call-to-Action Buttons, Price Estimator, Contact Form Validation, and the Custom 404 Page help users move towards enquiry and complete tasks without unnecessary friction.
+- **Confidence:** Portfolio Section, Portfolio Filtering and View More, Image Modal Gallery, Interactive Estimate Builder, and Testimonials help users evaluate the service before making contact.
+- **Action:** Call-to-Action Buttons, Interactive Estimate Builder, Enquiry Form & Validation, and the Custom 404 Page help users move towards enquiry and complete tasks without unnecessary friction.
 
 ### Feature Prioritisation Method
 
@@ -304,9 +307,9 @@ Features were prioritised by balancing user value, business value, assessment re
 | Portfolio Section | 4 | 5 | 20 |
 | Portfolio Filtering and View More | 5 | 4 | 20 |
 | How It Works | 4 | 5 | 20 |
-| Contact Form Validation | 5 | 4 | 20 |
+| Enquiry Form & Validation | 5 | 4 | 20 |
 | Image Modal Gallery | 4 | 4 | 16 |
-| Price Estimator | 4 | 4 | 16 |
+| Interactive Estimate Builder | 4 | 4 | 16 |
 | Custom 404 Page | 4 | 4 | 16 |
 | Testimonials | 3 | 5 | 15 |
 | Call-to-Action Buttons | 3 | 5 | 15 |
@@ -323,10 +326,10 @@ The website uses a single-page structure with sections arranged to support a typ
 1. **Hero** — introduces the business and gives users clear first actions.
 2. **Services** — explains what types of decoration are available.
 3. **Portfolio** — presents selected examples of previous work in a responsive image grid.
-4. **Price Estimator** — gives users a guide price before making contact.
+4. **Interactive Estimate Builder** — allows users to build and review a guide estimate before sending an enquiry.
 5. **How It Works** — explains the booking and setup process from enquiry through completion.
 6. **Testimonials** — provides trust signals through customer-style feedback.
-7. **Contact Form** — allows users to send an enquiry.
+7. **Enquiry Form** — allows users to submit event details and contact information after reviewing their selected estimate. If no estimate has been created, users can still choose a service manually using a dropdown.
 8. **Footer** — repeats key links and contact information.
 
 ### Navigation and Interaction Model
@@ -334,12 +337,13 @@ The website uses a single-page structure with sections arranged to support a typ
 The navigation and interaction model supports the user journey by helping visitors move between key sections, control interactive elements, and recover from invalid routes.
 
 - The main navigation uses anchor links to key page sections.
-- Hero buttons link directly to Portfolio, Price Estimator, and Contact Form.
+- Hero buttons link directly to Portfolio, the Estimate Builder, and the Enquiry Form.
 - Service cards act as shortcuts to matching portfolio categories.
 - The portfolio section displays selected work, while filter buttons, a View More control, and a visible item counter let users browse relevant examples in small groups without expanding the page length.
 - The image modal can be opened and closed by the user.
-- The price estimator responds to user selections.
-- The contact form provides feedback after validation.
+- The estimate builder responds when users add or remove services and updates the guide total dynamically.
+- A sticky estimate widget keeps the current estimate visible while users browse, but is hidden in the enquiry section to avoid duplicated estimate information.
+- The Enquiry Form provides feedback after validation.
 - Footer links repeat important routes for convenience.
 - External links open in a new tab where appropriate.
 - A custom 404 page provides a route back to the main page.
@@ -350,7 +354,7 @@ The project uses semantic HTML to give the page a clear and meaningful structure
 
 - `header` contains the main navigation and hero area.
 - `main` contains the primary page content.
-- `section` elements divide the page into clear content areas such as services, portfolio, price estimator, How It Works, testimonials, and contact.
+- `section` elements divide the page into clear content areas such as services, portfolio, estimate builder, How It Works, testimonials, and enquiry form.
 - `article` elements are used for self-contained content blocks such as service cards, portfolio cards, process steps, and testimonials.
 - `form` is used for the enquiry form.
 - `footer` contains repeated navigation links and contact information.
@@ -365,7 +369,7 @@ Wireframes were created to plan the page layout, content hierarchy, and responsi
 |---|---|
 | Mobile wireframe | Desktop wireframe |
 
-The wireframes show the planned placement of key sections, including the hero area, services, portfolio grid, portfolio filter controls, View More button, visible item counter, price estimator, How It Works, testimonials, and contact form.
+The wireframes show the planned placement of key sections, including the hero area, services, portfolio grid, portfolio filter controls, View More button, visible item counter, estimate builder, sticky estimate widget, How It Works, testimonials, and Enquiry Form.
 
 ---
 
@@ -407,13 +411,13 @@ The project was developed incrementally so that each stage produced a usable imp
 
 **Goal:** Build the main page sections and create a responsive structure from the start.
 
-**Outcome:** The hero, call-to-action buttons, main navigation, services, portfolio content, price estimator layout, How It Works, testimonials, contact form layout, and footer were added. Responsive layout decisions were considered while building these sections.
+**Outcome:** The hero, call-to-action buttons, main navigation, services, portfolio content, estimate builder layout, How It Works, testimonials, Enquiry Form layout, and footer were added. Responsive layout decisions were considered while building these sections.
 
 ### Stage 3 — JavaScript Interactivity and User Feedback
 
 **Goal:** Add meaningful user-controlled JavaScript functionality.
 
-**Outcome:** Portfolio filtering, View More behaviour, visible item counter, image modal gallery, price estimator logic, contact form validation, success feedback, and scroll-triggered animation were implemented.
+**Outcome:** Portfolio filtering, View More behaviour, visible item counter, image modal gallery, estimate builder logic, Enquiry Form & Validation, success feedback, and scroll-triggered animation were implemented.
 
 ### Stage 4 — Error Recovery, Refinement and Accessibility Checks
 
@@ -439,7 +443,7 @@ The hero section gives visitors an immediate understanding of what the business 
 
 ### Call-to-Action Buttons
 
-Call-to-action buttons help visitors move quickly to the most important parts of the website, such as the portfolio, price estimator, and contact form.
+Call-to-action buttons help visitors move quickly to the most important parts of the website, such as the portfolio, estimate builder, and enquiry form.
 
 They support the user journey by giving visitors clear next steps after they understand what the business offers.
 
@@ -465,6 +469,8 @@ Each service card includes a short description and acts as a shortcut to matchin
 ### Portfolio
 
 The portfolio section presents a selected set of previous work in a responsive image grid. It helps visitors review the style, quality, and range of decoration work before making an enquiry.
+
+Each portfolio card includes a guide starting price and an “Add to estimate” button. Portfolio images are clickable and can be opened in a larger modal view so users can inspect decoration details more clearly.
 
 To avoid overloading the single-page layout, the portfolio does not need to show every completed project at once. Instead, it displays a limited number of representative items first, with fewer items shown on smaller screens and more items shown on larger screens.
 
@@ -508,9 +514,15 @@ JavaScript is used to:
 
 When the user scrolls to selected sections, balloon graphics animate into view. This feature uses JavaScript to detect when a section enters the viewport.
 
-### Price Estimator
+### Interactive Estimate Builder
 
-Users can select decoration type, package size, and optional extras to receive an approximate decoration price. The estimate is intended as a guide price rather than a final quote.
+The interactive estimate builder allows users to build an approximate decoration quote while browsing the website. Users can add services to the estimate from service cards or portfolio cards, review selected items, remove items, and see the estimated guide price update dynamically.
+
+A small sticky estimate widget remains visible while the user browses services and portfolio examples. On desktop and tablet screens, this appears as a compact floating widget. On mobile screens, it appears as a sticky bottom bar.
+
+When users click “View estimate”, they can review the selected services in a larger estimate panel, modal, or bottom sheet depending on screen size. From there, users can continue to the enquiry form to request a final quote.
+
+The estimate is clearly presented as a guide price only. Final pricing may depend on event date, location, setup requirements, and custom decoration details.
 
 ### How It Works
 
@@ -518,13 +530,17 @@ The How It Works section explains the booking and setup process from enquiry thr
 
 This section helps reduce uncertainty by showing visitors what to expect before they send an enquiry.
 
-### Contact Form Validation
-
-The contact form checks required fields and email format before submission. It provides clear error messages for invalid input and a success message after valid submission.
-
 ### Testimonials
 
 The testimonials section shows short customer-style comments to support trust.
+
+### Enquiry Form & Validation
+
+The enquiry form checks required fields and email format before submission. It provides clear error messages for invalid input and a success message after valid submission.
+
+The enquiry form works as the final step after the estimate builder. If users have selected services in the estimate builder, a compact “Your selected estimate” summary is shown above the form and the service dropdown is hidden to avoid duplicate choices.
+
+If no estimate has been created, the form displays a “Service interested in” dropdown so users can still send an enquiry without using the estimate builder.
 
 ### Custom 404 Page
 
@@ -569,31 +585,39 @@ The image modal lets users open and close larger portfolio images.
 - Dynamic image source update
 - Accessibility consideration for user control
 
-### Price Estimator
+### Interactive Estimate Builder
 
-Users can select decoration type, package size, and optional extras to receive an approximate decoration price. The estimate is intended as a guide price rather than a final quote.
+The estimate builder allows users to add services to a running guide estimate. JavaScript stores the selected estimate items, updates the visible total, allows users to remove items, and controls the sticky estimate widget and estimate panel.
 
 **JavaScript concepts demonstrated:**
 
-- Form input reading
-- Compound statements
-- If statements
+- DOM selection
+- Event listeners
+- Arrays or objects for selected estimate items
+- Add and remove item logic
+- Conditional logic
 - Number calculations
-- Validation
-- Dynamic text output
+- Dynamic total updates
+- Updating text content dynamically
+- Class toggling for the estimate panel
+- Empty-state handling
+- User feedback
 
-### Contact Form Validation
+### Enquiry Form and Estimate Summary
 
-The contact form validates user input before showing a success message.
+The enquiry form is connected to the estimate builder. When users have selected estimate items, a compact summary is displayed above the form. The sticky estimate widget is hidden in the enquiry section to avoid duplicated information.
+
+If the estimate is empty, the selected estimate summary is hidden and a “Service interested in” dropdown is displayed instead.
 
 **JavaScript concepts demonstrated:**
 
-- Presence checks
-- Email format checks
-- Error messages
-- Preventing default form submission
-- Defensive programming
-- User feedback
+- Conditional rendering
+- DOM selection
+- Class toggling
+- Checking whether estimate items exist
+- Showing and hiding form sections
+- Updating the enquiry form based on selected estimate items
+- Form validation
 
 ### Scroll-Triggered Balloon Animation
 
@@ -665,7 +689,7 @@ This includes:
 - Clicking navigation links.
 - Testing form validation.
 - Opening and closing the modal gallery.
-- Using the price estimator.
+- Using the interactive estimate builder.
 - Testing the portfolio filter, View More control, and visible item counter.
 - Checking responsive layout in DevTools.
 - Checking the deployed version against the local version.
@@ -707,12 +731,19 @@ This includes:
 | Image Modal | Click portfolio image | Larger image opens | Not tested yet | Pending |
 | Image Modal | Click close button | Modal closes | Not tested yet | Pending |
 | Image Modal | Press Escape key | Modal closes | Not tested yet | Pending |
-| Price Estimator | Select valid options | Estimated price is displayed | Not tested yet | Pending |
-| Price Estimator | Leave fields empty | Error or guidance is shown | Not tested yet | Pending |
+| Estimate Builder | Click “Add to estimate” on a service card | Service is added to the estimate and total updates | Not tested yet | Pending |
+| Estimate Builder | Click “Add to estimate” on a portfolio card | Portfolio service is added to the estimate and total updates | Not tested yet | Pending |
+| Estimate Builder | Open estimate panel | Selected services and current total are shown | Not tested yet | Pending |
+| Estimate Builder | Remove selected item | Item is removed and total updates | Not tested yet | Pending |
+| Estimate Builder | Clear estimate | Selected items are removed and total resets | Not tested yet | Pending |
+| Sticky Estimate Widget | Add item and scroll page | Current estimate total remains visible while browsing | Not tested yet | Pending |
 | How It Works | Review process steps | Booking and setup process is clear and easy to follow | Not tested yet | Pending |
-| Contact Form | Submit empty form | Error messages are shown | Not tested yet | Pending |
-| Contact Form | Submit invalid email | Email error is shown | Not tested yet | Pending |
-| Contact Form | Submit valid data | Success message is shown | Not tested yet | Pending |
+| Enquiry Form | Submit empty form | Error messages are shown | Not tested yet | Pending |
+| Enquiry Form | Submit invalid email | Email error is shown | Not tested yet | Pending |
+| Enquiry Form | Submit valid data | Success message is shown | Not tested yet | Pending |
+| Enquiry Form | Open form after adding estimate items | Selected estimate summary is shown and service dropdown is hidden | Not tested yet | Pending |
+| Enquiry Form | Open form without adding estimate items | Selected estimate summary is hidden and service dropdown is shown | Not tested yet | Pending |
+| Enquiry Form | Scroll to enquiry section with estimate widget active | Sticky estimate widget is hidden to avoid duplicate estimate information | Not tested yet | Pending |
 | Scroll Animation | Scroll to animation section | Balloons animate into view | Not tested yet | Pending |
 | Responsive Layout | Test mobile screen | Layout remains readable | Not tested yet | Pending |
 | Responsive Layout | Test tablet screen | Layout remains readable | Not tested yet | Pending |
@@ -804,9 +835,9 @@ The deployed website will be tested using Lighthouse in Chrome DevTools.
 
 ![Image modal screenshot](assets/testing/us5-image-modal.webp)
 
-#### US6 — Estimate Price
+#### US6 — Build a Guide Estimate
 
-![Price estimator screenshot](assets/testing/us6-price-estimator.webp)
+![Estimate builder screenshot](assets/testing/us6-estimate-builder.webp)
 
 #### US7 — Understand the Booking Process
 
@@ -814,7 +845,7 @@ The deployed website will be tested using Lighthouse in Chrome DevTools.
 
 #### US8 — Send an Enquiry
 
-![Contact form screenshot](assets/testing/us8-contact-form.webp)
+![Enquiry Form screenshot](assets/testing/us8-contact-form.webp)
 
 #### US9 — Recover from a Wrong Page
 
@@ -828,7 +859,7 @@ The deployed website will be tested using Lighthouse in Chrome DevTools.
 |---|---|---|---|
 | Portfolio cards did not return after selecting “All” | Incorrect condition in filter function | Updated logic to check for `all` category | ✅ Fixed |
 | Modal image remained open after clicking outside | Missing event listener on overlay | Added click listener to close modal when overlay is selected | ✅ Fixed |
-| Price estimator returned `NaN` | String values were not converted to numbers | Used `Number()` before calculation | ✅ Fixed |
+| Estimate total returned `NaN` | Selected price values were stored as strings | Used `Number()` before calculation | ✅ Fixed |
 | Form accepted empty name field | Missing presence check | Added validation for required fields | ✅ Fixed |
 | Balloon animation repeated too often | Observer did not unobserve section | Added `observer.unobserve()` after first animation | ✅ Fixed |
 | Mobile cards had uneven spacing | CSS gap not applied consistently | Standardised card grid spacing | ✅ Fixed |
@@ -992,4 +1023,5 @@ Possible future improvements include:
 - Multi-language support.
 - Advanced animation controls.
 - Real product/package database.
+- Save estimate choices between visits using local storage.
 - Payment or deposit functionality.
