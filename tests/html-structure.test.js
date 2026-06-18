@@ -13,7 +13,7 @@ describe("Validate that elements are present on the page", () => {
 
   });
     test("header is on the page", () => {
-        expect(document.getElementsByTagName("header").length > 0).toBe(true);
+        expect(document.getElementsByTagName("header").length).toBe(1);
     });
     test("hero is on the page", () => {
       expect(document.querySelectorAll("section#hero").length).toBe(1);
@@ -29,5 +29,11 @@ describe("Validate that elements are present on the page", () => {
     })
     test("testimonials is on the page", () => {
       expect(document.querySelectorAll("section#testimonials").length).toBe(1);
+    })
+    test("enquiryForm is on the page", () => {
+      expect(document.querySelectorAll("section#enquiryForm").length).toBe(1);
+    })
+    test("footer is on the page", () => {
+      expect(document.getElementsByTagName("footer").length).toBe(1);
     })
 })
