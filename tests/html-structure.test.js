@@ -18,4 +18,10 @@ describe("Validate that elements are present on the page", () => {
     test("hero is on the page", () => {
       expect(document.querySelectorAll("section#hero").length).toBe(1);
     })
+    test("services is on the page", () => {
+      expect(document.querySelectorAll("section#services").length).toBe(1);
+    })
+    test("services is on the page", () => {
+      expect(document.querySelectorAll("section#portfolio").length).toBe(1);
+    })
 })
