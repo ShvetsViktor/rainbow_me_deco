@@ -24,4 +24,10 @@ describe("Validate that elements are present on the page", () => {
     test("services is on the page", () => {
       expect(document.querySelectorAll("section#portfolio").length).toBe(1);
     })
+    test("howItWorks is on the page", () => {
+      expect(document.querySelectorAll("section#howItWorks").length).toBe(1);
+    })
+    test("testimonials is on the page", () => {
+      expect(document.querySelectorAll("section#testimonials").length).toBe(1);
+    })
 })
