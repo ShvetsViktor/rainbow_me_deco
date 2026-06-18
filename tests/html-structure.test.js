@@ -16,6 +16,6 @@ describe("Validate that elements are present on the page", () => {
         expect(document.getElementsByTagName("header").length > 0).toBe(true);
     });
     test("hero is on the page", () => {
-      expect(document.getElementById("hero")).toBe(true);
+      expect(document.querySelectorAll("section#hero").length).toBe(1);
     })
 })
