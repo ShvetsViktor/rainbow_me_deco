@@ -120,7 +120,8 @@ section {
 }
 
 .container {
-  width: min(100% - 40px, var(--container-max-width));
+  width: calc(100% - (var(--page-padding) * 2));
+  max-width: var(--container-max-width);
   margin-inline: auto;
 }
 
@@ -152,6 +153,11 @@ section {
   color: var(--color-text);
 }
 
+.button-fixed {
+  width: 156px;
+  max-width: 100%;
+}
+
 /* ============================================
    HERO
    ============================================ */
@@ -175,10 +181,8 @@ section {
 .hero-actions {
   display: flex;
   gap: 12px;
-}
-
-.hero-actions .button {
-  flex: 1;
+  flex-wrap: wrap;
+  max-width: 100%;
 }
 
 /* ============================================
@@ -188,9 +192,5 @@ section {
 @media (min-width: 768px) {
   .hero-layout {
     grid-template-columns: 1fr 1fr;
-  }
-
-  .hero-actions .button {
-    flex: 0 0 auto;
   }
 }
