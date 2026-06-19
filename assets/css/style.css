@@ -294,11 +294,19 @@ section {
   .hero-layout {
     grid-template-columns: 1fr 1fr;
   }
+
+  .services-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 1200px) {
   :root {
     --page-padding: 80px;
     --section-padding: 112px;
+  }
+
+  .services-list {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
