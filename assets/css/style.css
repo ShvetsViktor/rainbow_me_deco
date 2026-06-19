@@ -1,4 +1,6 @@
 :root {
+  /* Design tokens based on the Figma/Relume design */
+
   /* Fonts */
   --font-body: 'Inter', sans-serif;
   --font-heading: 'Playfair Display', serif;
@@ -153,6 +155,7 @@ section {
   color: var(--color-text);
 }
 
+/* Keeps selected CTA buttons close to the Figma design width */
 .button-fixed {
   width: 156px;
   max-width: 100%;
