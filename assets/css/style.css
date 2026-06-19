@@ -9,6 +9,7 @@
   --color-primary: #e94f72;
   --color-primary-dark: #ba3f5b;
   --color-background: #f2f2f2;
+  --color-scheme-3-background: #fcedf0;
   --color-surface: #ffffff;
   --color-text: #0a040b;
   --color-muted: #534f54;
@@ -168,6 +169,7 @@ section {
 #hero {
   display: grid;
   align-items: center;
+  background-color: var(--color-scheme-3-background);
 }
 
 .hero-layout {
