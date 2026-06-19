@@ -225,6 +225,7 @@ section {
   display: flex;
   gap: 16px;
   overflow-x: auto;
+  scroll-snap-type: x mandatory;
   padding-bottom: 16px;
 }
 
@@ -237,6 +238,7 @@ section {
   padding: 24px;
   overflow: hidden;
   color: var(--color-surface);
+  scroll-snap-align: start;
 }
 
 .service-card img {
@@ -307,6 +309,7 @@ section {
 
   .service-card {
     flex: initial;
+    scroll-snap-align: initial;
   }
 }
 
