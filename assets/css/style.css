@@ -259,6 +259,28 @@ section {
   z-index: 2;
 }
 
+.service-card h3 {
+  margin-bottom: 12px;
+  font-size: 24px;
+  color: var(--color-surface);
+}
+
+.service-card p {
+  margin-bottom: 24px;
+  color: var(--color-surface);
+}
+
+.add-to-estimate {
+  justify-self: start;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--color-surface);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 /* ============================================
    RESPONSIVE LAYOUT
    ============================================ */
