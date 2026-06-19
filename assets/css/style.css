@@ -222,14 +222,17 @@ section {
 }
 
 .services-list {
-  display: grid;
+  display: flex;
   gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 16px;
 }
 
 .service-card {
   position: relative;
   display: grid;
   align-content: end;
+  flex: 0 0 78%;
   min-height: 344px;
   padding: 24px;
   overflow: hidden;
@@ -296,7 +299,14 @@ section {
   }
 
   .services-list {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
+    overflow-x: visible;
+    padding-bottom: 0;
+  }
+
+  .service-card {
+    flex: initial;
   }
 }
 
