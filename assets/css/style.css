@@ -234,6 +234,12 @@ section {
   color: var(--color-surface);
 }
 
+.service-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* ============================================
    RESPONSIVE LAYOUT
    ============================================ */
