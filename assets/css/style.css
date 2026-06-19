@@ -196,6 +196,45 @@ section {
 }
 
 /* ============================================
+   SERVICES
+   ============================================ */
+
+#services {
+  background-color: var(--color-surface);
+}
+
+#services .container {
+  display: grid;
+  gap: 48px;
+}
+
+.section-header {
+  max-width: 48rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-label {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.services-list {
+  display: grid;
+  gap: 16px;
+}
+
+.service-card {
+  position: relative;
+  min-height: 344px;
+  padding: 24px;
+  overflow: hidden;
+  color: var(--color-surface);
+}
+
+/* ============================================
    RESPONSIVE LAYOUT
    ============================================ */
 
