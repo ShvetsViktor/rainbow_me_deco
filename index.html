@@ -1,28 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rainbow Me</title>
-</head>
-<body>
+
+    <!-- Google Fonts: Inter and Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS file import -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
     <header>
-        <nav id="navbar"></nav>
-        <section id="hero">
+      <nav id="navbar"></nav>
+      <section id="hero">
+        <div class="container hero-layout">
+          <div class="hero-content">
             <h1>We create moments that last</h1>
-            <p>We design and install balloon installations that transform spaces into moments worth remembering. From intimate gatherings to grand celebrations, we bring precision, artistry, and genuine care to every event.</p>
-            <img src="assets/images/hero/hero.png" alt="Placeholder for balloon decoration hero image">
-            <a href="#portfolio">View Portfolio</a>
-            <a href="#enquiry">Get a Quote</a>
-        </section>
+            <p>
+              We design and install balloon installations that transform spaces into moments worth remembering. From
+              intimate gatherings to grand celebrations, we bring precision, artistry, and genuine care to every event.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button button-primary" href="#portfolio">View Portfolio</a>
+              <a class="button button-secondary" href="#enquiry">Get a Quote</a>
+            </div>
+          </div>
+
+          <div class="hero-image">
+            <img src="assets/images/hero/hero.png" alt="Placeholder for balloon decoration hero image" />
+          </div>
+        </div>
+      </section>
     </header>
     <main>
-        <section id="services"></section>
-        <section id="portfolio"></section>
-        <section id="how-it-works"></section>
-        <section id="testimonials"></section>
-        <section id="enquiry"></section>
+      <section id="services"></section>
+      <section id="portfolio"></section>
+      <section id="how-it-works"></section>
+      <section id="testimonials"></section>
+      <section id="enquiry"></section>
     </main>
     <footer></footer>
-</body>
+  </body>
 </html>

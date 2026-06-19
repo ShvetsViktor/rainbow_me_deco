@@ -1,23 +1,40 @@
 :root {
-    --bs-font-sans-serif: "Roboto", sans-serif;
-}
+  /* Fonts */
+  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Playfair Display', serif;
 
-body {
-    font-family: var(--bs-font-sans-serif);
+  /* Colours */
+  --color-primary: #e94f72;
+  --color-primary-dark: #ba3f5b;
+  --color-background: #f2f2f2;
+  --color-surface: #ffffff;
+  --color-text: #0a040b;
+  --color-muted: #534f54;
+  --color-border: #0a040b26;
+
+  /* Layout */
+  --container-max-width: 80rem;
+  --page-padding: 20px;
+  --section-padding: 64px;
+
+  /* Typography */
+  --text-base: 16px;
+  --heading-1: 56px;
+  --heading-2: 36px;
+  --heading-3: 32px;
+  --heading-4: 24px;
 }
 
 /* ============================================
    RESET & BASE
    ============================================ */
 
-/* Global reset: box-sizing for all elements */
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-/* Force remove default margins/paddings */
 body,
 h1,
 h2,
@@ -28,6 +45,152 @@ h6,
 p,
 ul,
 ol {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: var(--heading-1);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: var(--heading-2);
+}
+
+h3 {
+  font-size: var(--heading-3);
+}
+
+h4 {
+  font-size: var(--heading-4);
+}
+
+p {
+  color: var(--color-muted);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+
+section {
+  padding-block: var(--section-padding);
+}
+
+.container {
+  width: min(100% - 40px, var(--container-max-width));
+  margin-inline: auto;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding-inline: 16px;
+  border: 1px solid var(--color-primary);
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.button-primary {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+.button-secondary {
+  background-color: transparent;
+  color: var(--color-text);
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+
+#hero {
+  display: grid;
+  align-items: center;
+}
+
+.hero-layout {
+  display: grid;
+  gap: 48px;
+  align-items: center;
+}
+
+.hero-content {
+  display: grid;
+  gap: 24px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.hero-actions .button {
+  flex: 1;
+}
+
+/* ============================================
+   TABLET AND DESKTOP
+   ============================================ */
+
+@media (min-width: 768px) {
+  .hero-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero-actions .button {
+    flex: 0 0 auto;
+  }
 }
