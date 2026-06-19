@@ -228,12 +228,12 @@ section {
 
 .service-card {
   position: relative;
+  display: grid;
+  align-content: end;
   min-height: 344px;
   padding: 24px;
   overflow: hidden;
   color: var(--color-surface);
-  display: grid;
-  align-content: end;
 }
 
 .service-card img {
