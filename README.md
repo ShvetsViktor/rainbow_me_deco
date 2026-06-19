@@ -1,12 +1,12 @@
-# Balloon Decor Studio – Interactive Front End Website
+# Rainbow Me Decor Studio – Interactive Front End Website
 
-![Mockup image](assets/mockups/mockup.webp)
+![Mockup image](assets/mockups/example.png)
 
-**Live Website:** https://your-github-username.github.io/balloon-decor-studio/
+**Live Website:** https://shvetsviktor.github.io/rainbow_me_deco/
 
 ## Overview
 
-Balloon Decor Studio is an interactive front-end website for a small event decoration business specialising in balloon arches, balloon garlands, balloon number stacks, sequin backdrops, table centrepieces, seasonal business decorations, party supplies, and custom event styling.
+Rainbow Me Decor Studio is an interactive front-end website for a small event decoration business specialising in balloon arches, balloon garlands, balloon number stacks, sequin backdrops, table centrepieces, seasonal business decorations, party supplies, and custom event styling.
 
 The project has two connected purposes. For the business, it presents decoration services, previous work, guide price information, and a simple enquiry route for potential customers. For the assessment, it demonstrates a dynamic and user-centred front-end web application with meaningful JavaScript interactivity, clear UX design, accessibility considerations, responsive layout, testing evidence, and professional documentation.
 
