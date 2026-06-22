@@ -130,4 +130,8 @@ describe('Portfolio section structure', () => {
   test('portfolio section contains a heading', () => {
     expect(document.querySelectorAll('#portfolio h2').length).toBe(1);
   });
+
+  test('portfolio section contains filter controls', () => {
+    expect(document.querySelectorAll('#portfolio .portfolio-filters').length).toBe(1);
+  });
 });
