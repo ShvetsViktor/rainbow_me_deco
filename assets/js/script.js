@@ -6,4 +6,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Boot the page-specific features after the DOM is ready.
   initServicesCarousel();
+  renderPortfolioSlides(portfolioItems);
 });
