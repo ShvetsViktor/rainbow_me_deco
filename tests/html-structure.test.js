@@ -81,8 +81,29 @@ describe('Services section structure', () => {
     expect(document.querySelectorAll('#services h2').length).toBe(1);
   });
 
-  test('services section contains a services list', () => {
-    expect(document.querySelectorAll('#services .services-list').length).toBe(1);
+  test('services section contains a Swiper container', () => {
+    expect(document.querySelectorAll('#services .services-swiper').length).toBe(1);
+  });
+
+  test('services section contains a Swiper wrapper', () => {
+    expect(document.querySelectorAll('#services .swiper-wrapper').length).toBe(1);
+  });
+
+  test('services section contains Swiper slides', () => {
+    expect(document.querySelectorAll('#services .swiper-slide').length).toBe(6);
+  });
+
+  test('services section contains pagination', () => {
+    expect(document.querySelectorAll('#services .swiper-pagination').length).toBe(1);
+  });
+
+  test('services section contains navigation buttons', () => {
+    expect(document.querySelectorAll('#services .swiper-button-prev').length).toBe(1);
+    expect(document.querySelectorAll('#services .swiper-button-next').length).toBe(1);
+  });
+
+  test('services section contains a scrollbar', () => {
+    expect(document.querySelectorAll('#services .swiper-scrollbar').length).toBe(1);
   });
 
   test('services section contains service cards', () => {
