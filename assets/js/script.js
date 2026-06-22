@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Error handling: ensure the services carousel function is available before calling it.
-  if (typeof initServicesCarousel !== 'function') {
-    return;
+  // Initialize services carousel if the function is available.
+  if (typeof initServicesCarousel === 'function') {
+    initServicesCarousel();
   }
 
-  // Boot the page-specific features after the DOM is ready.
-  initServicesCarousel();
-  renderPortfolioSlides(portfolioItems);
+  // Render portfolio slides if the function and data are available.
+  if (typeof renderPortfolioSlides === 'function' && Array.isArray(portfolioItems)) {
+    renderPortfolioSlides(portfolioItems);
+  }
 });
