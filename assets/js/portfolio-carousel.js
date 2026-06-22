@@ -13,6 +13,9 @@ function renderPortfolioSlides(items) {
     const img = document.createElement('img');
     img.src = item.image;
     slide.appendChild(img);
+
+    img.alt = item.alt;
+    slide.appendChild(img);
   }
 }
 
