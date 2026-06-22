@@ -299,21 +299,21 @@ Features were prioritised by balancing user value, business value, assessment re
 
 **Score = Importance (1–5) × Feasibility (1–5)**
 
-| Feature | Importance | Feasibility | Score |
-|---|---:|---:|---:|
-| Hero | 5 | 5 | 25 |
-| Main Navigation | 5 | 5 | 25 |
-| Services Section | 5 | 5 | 25 |
-| Portfolio Section | 4 | 5 | 20 |
-| Portfolio Filtering and View More | 5 | 4 | 20 |
-| How It Works | 4 | 5 | 20 |
-| Enquiry Form & Validation | 5 | 4 | 20 |
-| Image Modal Gallery | 4 | 4 | 16 |
-| Interactive Estimate Builder | 4 | 4 | 16 |
-| Custom 404 Page | 4 | 4 | 16 |
-| Testimonials | 3 | 5 | 15 |
-| Call-to-Action Buttons | 3 | 5 | 15 |
-| Scroll Balloon Animation | 4 | 3 | 12 |
+| Feature                           | Importance | Feasibility | Score |
+| --------------------------------- | ---------: | ----------: | ----: |
+| Hero                              |          5 |           5 |    25 |
+| Main Navigation                   |          5 |           5 |    25 |
+| Services Section                  |          5 |           5 |    25 |
+| Portfolio Section                 |          4 |           5 |    20 |
+| Portfolio Filtering and View More |          5 |           4 |    20 |
+| How It Works                      |          4 |           5 |    20 |
+| Enquiry Form & Validation         |          5 |           4 |    20 |
+| Image Modal Gallery               |          4 |           4 |    16 |
+| Interactive Estimate Builder      |          4 |           4 |    16 |
+| Custom 404 Page                   |          4 |           4 |    16 |
+| Testimonials                      |          3 |           5 |    15 |
+| Call-to-Action Buttons            |          3 |           5 |    15 |
+| Scroll Balloon Animation          |          4 |           3 |    12 |
 
 ---
 
@@ -365,8 +365,8 @@ The project uses semantic HTML to give the page a clear and meaningful structure
 
 Wireframes were created to plan the page layout, content hierarchy, and responsive structure before development.
 
-| Mobile | Desktop |
-|---|---|
+| Mobile           | Desktop           |
+| ---------------- | ----------------- |
 | Mobile wireframe | Desktop wireframe |
 
 The wireframes show the planned placement of key sections, including the hero area, services, portfolio grid, portfolio filter controls, View More button, visible item counter, estimate builder, sticky estimate widget, How It Works, testimonials, and Enquiry Form.
@@ -453,7 +453,9 @@ The navigation menu allows users to move between sections of the page.
 
 ### Services
 
-The services section explains the main decoration categories offered by the business. It helps visitors understand what can be provided before they view detailed examples in the portfolio.
+The services section explains the main decoration categories offered by the business. On smaller screens, the service cards are displayed in a Swiper carousel so visitors can browse services without the page becoming too long. On larger screens, multiple service cards are visible at once.
+
+Each service card includes an image, a short description, and an “Add to estimate” button.
 
 The section includes six service cards:
 
@@ -552,6 +554,22 @@ A custom 404 page gives users a clear route back to the main site without relyin
 
 The project includes custom JavaScript to demonstrate significant interactive functionality.
 
+### Services Carousel
+
+The services section uses Swiper.js to provide a responsive carousel for service cards. A CSS-only horizontal scroll layout was considered first, but it did not provide reliable one-card movement on mobile swipe. Swiper was used to improve touch behaviour and keep the services section compact on smaller screens.
+
+The custom project JavaScript checks that the services carousel element and Swiper library are available before initialising the carousel. This prevents console errors if the element or external library is unavailable.
+
+**JavaScript concepts demonstrated:**
+
+- DOM selection
+- Defensive checks before running code
+- External library initialisation
+- Object configuration
+- Responsive breakpoints
+- Touch-friendly user interaction
+- Error prevention
+
 ### Portfolio Filtering and View More
 
 The portfolio section combines category filtering, grouped item display, a View More control, and a visible item counter. Users can filter portfolio items by decoration type, and only a limited number of matching items are displayed at one time. The View More button replaces the current visible group with the next group of matching items. When the final matching group is reached, the button changes to “View First”, allowing the user to return to the first group. The counter communicates the current range, such as “Showing 1–6 of 18”.
@@ -642,9 +660,8 @@ The scroll animation starts when a relevant section enters the viewport.
 
 ### Optional / Supporting Technologies
 
-- Bootstrap 5.3
+- Swiper.js — used to create the responsive services carousel with reliable touch/swipe behaviour on mobile devices.
 - Google Fonts
-- Font Awesome or Bootstrap Icons
 - Git
 - GitHub
 - GitHub Pages
@@ -710,71 +727,75 @@ This includes:
 
 ### Manual Testing Checklist
 
-| Feature | Test | Expected Result | Actual Result | Status |
-|---|---|---|---|---|
-| Navigation | Click each navigation link | Correct section is shown | Not tested yet | Pending |
-| Hero CTA | Click “View Portfolio” | Portfolio section is shown | Not tested yet | Pending |
-| Hero CTA | Click “Request a Quote” | Contact section is shown | Not tested yet | Pending |
-| Services | Click a service card | Page scrolls to the portfolio section and applies the matching filter | Not tested yet | Pending |
-| Services | Click each service card | Each card shows the correct matching portfolio category | Not tested yet | Pending |
-| Portfolio Section | View initial portfolio grid | A limited number of portfolio items is displayed | Not tested yet | Pending |
-| Portfolio Filter | Click “Balloon Arches” | Only balloon arch items are shown | Not tested yet | Pending |
-| Portfolio Filter | Click “Number Stacks” | Only number stack items are shown | Not tested yet | Pending |
-| Portfolio Filter | Click “Backdrops” | Only backdrop items are shown | Not tested yet | Pending |
-| Portfolio Filter | Click “All” | First limited group of all portfolio items is shown | Not tested yet | Pending |
-| Portfolio Filter | Select a new category | Initial limited number of matching items is shown and counter resets | Not tested yet | Pending |
-| Portfolio View More | Click “View More” | Current portfolio group is replaced with the next matching group | Not tested yet | Pending |
-| Portfolio View More | Reach the last matching group | Button text changes from “View More” to “View First” | Not tested yet | Pending |
-| Portfolio View More | Click “View First” | First matching portfolio group is shown and counter resets | Not tested yet | Pending |
-| Portfolio Counter | View initial portfolio grid | Counter shows the current item range, for example “Showing 1–6 of 18” | Not tested yet | Pending |
-| Portfolio Counter | Click “View More” | Counter updates to the next visible range | Not tested yet | Pending |
-| Image Modal | Click portfolio image | Larger image opens | Not tested yet | Pending |
-| Image Modal | Click close button | Modal closes | Not tested yet | Pending |
-| Image Modal | Press Escape key | Modal closes | Not tested yet | Pending |
-| Estimate Builder | Click “Add to estimate” on a service card | Service is added to the estimate and total updates | Not tested yet | Pending |
-| Estimate Builder | Click “Add to estimate” on a portfolio card | Portfolio service is added to the estimate and total updates | Not tested yet | Pending |
-| Estimate Builder | Open estimate panel | Selected services and current total are shown | Not tested yet | Pending |
-| Estimate Builder | Remove selected item | Item is removed and total updates | Not tested yet | Pending |
-| Estimate Builder | Clear estimate | Selected items are removed and total resets | Not tested yet | Pending |
-| Sticky Estimate Widget | Add item and scroll page | Current estimate total remains visible while browsing | Not tested yet | Pending |
-| How It Works | Review process steps | Booking and setup process is clear and easy to follow | Not tested yet | Pending |
-| Enquiry Form | Submit empty form | Error messages are shown | Not tested yet | Pending |
-| Enquiry Form | Submit invalid email | Email error is shown | Not tested yet | Pending |
-| Enquiry Form | Submit valid data | Success message is shown | Not tested yet | Pending |
-| Enquiry Form | Open form after adding estimate items | Selected estimate summary is shown and service dropdown is hidden | Not tested yet | Pending |
-| Enquiry Form | Open form without adding estimate items | Selected estimate summary is hidden and service dropdown is shown | Not tested yet | Pending |
-| Enquiry Form | Scroll to enquiry section with estimate widget active | Sticky estimate widget is hidden to avoid duplicate estimate information | Not tested yet | Pending |
-| Scroll Animation | Scroll to animation section | Balloons animate into view | Not tested yet | Pending |
-| Responsive Layout | Test mobile screen | Layout remains readable | Not tested yet | Pending |
-| Responsive Layout | Test tablet screen | Layout remains readable | Not tested yet | Pending |
-| Responsive Layout | Test desktop screen | Layout remains readable | Not tested yet | Pending |
-| 404 Page | Open non-existent URL | Custom 404 page appears | Not tested yet | Pending |
-| 404 Page | Click return button | User returns to main page | Not tested yet | Pending |
-| Console | Perform all user actions | No console errors | Not tested yet | Pending |
-| Internal Links | Check all internal links | No broken links | Not tested yet | Pending |
-| External Links | Click external links | Opens in new tab | Not tested yet | Pending |
+| Feature                | Test                                                  | Expected Result                                                                              | Actual Result  | Status  |
+| ---------------------- | ----------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------- | ------- |
+| Navigation             | Click each navigation link                            | Correct section is shown                                                                     | Not tested yet | Pending |
+| Hero CTA               | Click “View Portfolio”                                | Portfolio section is shown                                                                   | Not tested yet | Pending |
+| Hero CTA               | Click “Request a Quote”                               | Contact section is shown                                                                     | Not tested yet | Pending |
+| Services               | View services section                                 | Six service cards are displayed with image, heading, description, and Add to estimate button | Not tested yet | Pending |
+| Services Carousel      | Swipe services carousel on mobile                     | Carousel moves through service cards one at a time                                           | Not tested yet | Pending |
+| Services Carousel      | Click carousel navigation buttons                     | Previous or next service card is shown                                                       | Not tested yet | Pending |
+| Services Carousel      | Click pagination bullet                               | Matching service slide is shown                                                              | Not tested yet | Pending |
+| Services Carousel      | View services carousel on tablet and desktop          | Correct number of service cards is visible                                                   | Not tested yet | Pending |
+| Services               | Click Add to estimate on a service card               | Service is added to the guide estimate                                                       | Not tested yet | Pending |
+| Portfolio Section      | View initial portfolio grid                           | A limited number of portfolio items is displayed                                             | Not tested yet | Pending |
+| Portfolio Filter       | Click “Balloon Arches”                                | Only balloon arch items are shown                                                            | Not tested yet | Pending |
+| Portfolio Filter       | Click “Number Stacks”                                 | Only number stack items are shown                                                            | Not tested yet | Pending |
+| Portfolio Filter       | Click “Backdrops”                                     | Only backdrop items are shown                                                                | Not tested yet | Pending |
+| Portfolio Filter       | Click “All”                                           | First limited group of all portfolio items is shown                                          | Not tested yet | Pending |
+| Portfolio Filter       | Select a new category                                 | Initial limited number of matching items is shown and counter resets                         | Not tested yet | Pending |
+| Portfolio View More    | Click “View More”                                     | Current portfolio group is replaced with the next matching group                             | Not tested yet | Pending |
+| Portfolio View More    | Reach the last matching group                         | Button text changes from “View More” to “View First”                                         | Not tested yet | Pending |
+| Portfolio View More    | Click “View First”                                    | First matching portfolio group is shown and counter resets                                   | Not tested yet | Pending |
+| Portfolio Counter      | View initial portfolio grid                           | Counter shows the current item range, for example “Showing 1–6 of 18”                        | Not tested yet | Pending |
+| Portfolio Counter      | Click “View More”                                     | Counter updates to the next visible range                                                    | Not tested yet | Pending |
+| Image Modal            | Click portfolio image                                 | Larger image opens                                                                           | Not tested yet | Pending |
+| Image Modal            | Click close button                                    | Modal closes                                                                                 | Not tested yet | Pending |
+| Image Modal            | Press Escape key                                      | Modal closes                                                                                 | Not tested yet | Pending |
+| Estimate Builder       | Click “Add to estimate” on a service card             | Service is added to the estimate and total updates                                           | Not tested yet | Pending |
+| Estimate Builder       | Click “Add to estimate” on a portfolio card           | Portfolio service is added to the estimate and total updates                                 | Not tested yet | Pending |
+| Estimate Builder       | Open estimate panel                                   | Selected services and current total are shown                                                | Not tested yet | Pending |
+| Estimate Builder       | Remove selected item                                  | Item is removed and total updates                                                            | Not tested yet | Pending |
+| Estimate Builder       | Clear estimate                                        | Selected items are removed and total resets                                                  | Not tested yet | Pending |
+| Sticky Estimate Widget | Add item and scroll page                              | Current estimate total remains visible while browsing                                        | Not tested yet | Pending |
+| How It Works           | Review process steps                                  | Booking and setup process is clear and easy to follow                                        | Not tested yet | Pending |
+| Enquiry Form           | Submit empty form                                     | Error messages are shown                                                                     | Not tested yet | Pending |
+| Enquiry Form           | Submit invalid email                                  | Email error is shown                                                                         | Not tested yet | Pending |
+| Enquiry Form           | Submit valid data                                     | Success message is shown                                                                     | Not tested yet | Pending |
+| Enquiry Form           | Open form after adding estimate items                 | Selected estimate summary is shown and service dropdown is hidden                            | Not tested yet | Pending |
+| Enquiry Form           | Open form without adding estimate items               | Selected estimate summary is hidden and service dropdown is shown                            | Not tested yet | Pending |
+| Enquiry Form           | Scroll to enquiry section with estimate widget active | Sticky estimate widget is hidden to avoid duplicate estimate information                     | Not tested yet | Pending |
+| Scroll Animation       | Scroll to animation section                           | Balloons animate into view                                                                   | Not tested yet | Pending |
+| Responsive Layout      | Test mobile screen                                    | Layout remains readable                                                                      | Not tested yet | Pending |
+| Responsive Layout      | Test tablet screen                                    | Layout remains readable                                                                      | Not tested yet | Pending |
+| Responsive Layout      | Test desktop screen                                   | Layout remains readable                                                                      | Not tested yet | Pending |
+| 404 Page               | Open non-existent URL                                 | Custom 404 page appears                                                                      | Not tested yet | Pending |
+| 404 Page               | Click return button                                   | User returns to main page                                                                    | Not tested yet | Pending |
+| Console                | Perform all user actions                              | No console errors                                                                            | Not tested yet | Pending |
+| Internal Links         | Check all internal links                              | No broken links                                                                              | Not tested yet | Pending |
+| External Links         | Click external links                                  | Opens in new tab                                                                             | Not tested yet | Pending |
 
 ### Responsiveness Testing
 
-| Device / Width | Expected Result | Status |
-|---|---|---|
-| 320px mobile | Content fits without horizontal scroll | Pending |
-| 375px mobile | Navigation and sections remain usable | Pending |
-| 768px tablet | Layout adapts correctly | Pending |
-| 1024px laptop | Content spacing is balanced | Pending |
-| 1440px desktop | Full layout displays professionally | Pending |
+| Device / Width | Expected Result                        | Status  |
+| -------------- | -------------------------------------- | ------- |
+| 320px mobile   | Content fits without horizontal scroll | Pending |
+| 375px mobile   | Navigation and sections remain usable  | Pending |
+| 768px tablet   | Layout adapts correctly                | Pending |
+| 1024px laptop  | Content spacing is balanced            | Pending |
+| 1440px desktop | Full layout displays professionally    | Pending |
 
 ### Accessibility Testing
 
-| Area | Test | Expected Result | Status |
-|---|---|---|---|
-| Headings | Check heading order | Logical structure | Pending |
-| Images | Check alt text | Meaningful alt text provided | Pending |
-| Keyboard | Tab through page | Focus is visible | Pending |
-| Forms | Check labels | Inputs have associated labels | Pending |
-| Colour | Check contrast | Text remains readable | Pending |
-| Modal | Close control available | User can close modal easily | Pending |
-| Motion | Animation does not block content | Animation is decorative only | Pending |
+| Area     | Test                             | Expected Result               | Status  |
+| -------- | -------------------------------- | ----------------------------- | ------- |
+| Headings | Check heading order              | Logical structure             | Pending |
+| Images   | Check alt text                   | Meaningful alt text provided  | Pending |
+| Keyboard | Tab through page                 | Focus is visible              | Pending |
+| Forms    | Check labels                     | Inputs have associated labels | Pending |
+| Colour   | Check contrast                   | Text remains readable         | Pending |
+| Modal    | Close control available          | User can close modal easily   | Pending |
+| Motion   | Animation does not block content | Animation is decorative only  | Pending |
 
 ### Validation
 
@@ -810,12 +831,12 @@ The deployed website will be tested using Lighthouse in Chrome DevTools.
 
 ### Planned Lighthouse Targets
 
-| Category | Target |
-|---|---:|
-| Performance | 80+ |
-| Accessibility | 90+ |
-| Best Practices | 90+ |
-| SEO | 90+ |
+| Category       | Target |
+| -------------- | -----: |
+| Performance    |    80+ |
+| Accessibility  |    90+ |
+| Best Practices |    90+ |
+| SEO            |    90+ |
 
 ### Screenshots Aligned to User Stories
 
@@ -855,14 +876,14 @@ The deployed website will be tested using Lighthouse in Chrome DevTools.
 
 ## Bugs
 
-| Bug | Cause | Fix | Status |
-|---|---|---|---|
-| Portfolio cards did not return after selecting “All” | Incorrect condition in filter function | Updated logic to check for `all` category | ✅ Fixed |
-| Modal image remained open after clicking outside | Missing event listener on overlay | Added click listener to close modal when overlay is selected | ✅ Fixed |
-| Estimate total returned `NaN` | Selected price values were stored as strings | Used `Number()` before calculation | ✅ Fixed |
-| Form accepted empty name field | Missing presence check | Added validation for required fields | ✅ Fixed |
-| Balloon animation repeated too often | Observer did not unobserve section | Added `observer.unobserve()` after first animation | ✅ Fixed |
-| Mobile cards had uneven spacing | CSS gap not applied consistently | Standardised card grid spacing | ✅ Fixed |
+| Bug                                                  | Cause                                        | Fix                                                          | Status   |
+| ---------------------------------------------------- | -------------------------------------------- | ------------------------------------------------------------ | -------- |
+| Portfolio cards did not return after selecting “All” | Incorrect condition in filter function       | Updated logic to check for `all` category                    | ✅ Fixed |
+| Modal image remained open after clicking outside     | Missing event listener on overlay            | Added click listener to close modal when overlay is selected | ✅ Fixed |
+| Estimate total returned `NaN`                        | Selected price values were stored as strings | Used `Number()` before calculation                           | ✅ Fixed |
+| Form accepted empty name field                       | Missing presence check                       | Added validation for required fields                         | ✅ Fixed |
+| Balloon animation repeated too often                 | Observer did not unobserve section           | Added `observer.unobserve()` after first animation           | ✅ Fixed |
+| Mobile cards had uneven spacing                      | CSS gap not applied consistently             | Standardised card grid spacing                               | ✅ Fixed |
 
 ### Known Bugs
 
@@ -916,7 +937,7 @@ The 404 page includes a clear message and a button that returns the user to the 
 
 ### Attribution
 
-- **Bootstrap 5.3:** Used for responsive grid and layout utilities.
+- **Swiper.js:** Used for the responsive services carousel to provide reliable mobile swipe behaviour, pagination, navigation controls, and responsive slide layout. Swiper was loaded from CDN and configured with custom JavaScript for this project.
 - **Google Fonts:** Used for typography.
 - **Font Awesome / Bootstrap Icons:** Used for decorative and interface icons.
 - **Unsplash / Pexels / Own Images:** Used for event decoration images.
