@@ -27,7 +27,7 @@ describe('Portfolio rendering', () => {
     expect(document.querySelector('.portfolio-card h3').textContent).toBe('Pastel Balloon Arch');
   });
 
-  test('renders portfolio slide image', () => {
+  test('renders portfolio slide image with alt text', () => {
     const items = [
       {
         image: 'assets/images/portfolio/balloon-arches-1.avif',
@@ -42,6 +42,20 @@ describe('Portfolio rendering', () => {
     );
     expect(document.querySelector('.portfolio-card img').getAttribute('alt')).toBe(
       'Pastel balloon arch decoration for a celebration'
+    );
+  });
+
+  test('renders portfolio slide description', () => {
+    const items = [
+      {
+        description: 'A soft pastel balloon arch created for a private celebration.',
+      },
+    ];
+
+    renderPortfolioSlides(items);
+
+    expect(document.querySelector('.portfolio-card p').textContent).toBe(
+      'A soft pastel balloon arch created for a private celebration.'
     );
   });
 });

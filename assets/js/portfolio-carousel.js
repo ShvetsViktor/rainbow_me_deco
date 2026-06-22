@@ -16,6 +16,10 @@ function renderPortfolioSlides(items) {
 
     img.alt = item.alt;
     slide.appendChild(img);
+
+    const descr = document.createElement('p');
+    descr.textContent = item.description;
+    slide.appendChild(descr);
   }
 }
 
