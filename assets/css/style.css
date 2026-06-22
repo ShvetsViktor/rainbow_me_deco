@@ -208,6 +208,12 @@ section {
   gap: 48px;
 }
 
+/* Swiper layout for the services carousel */
+.services-swiper {
+  width: 100%;
+  padding-bottom: 42px;
+}
+
 .section-header {
   max-width: 48rem;
   margin-inline: auto;
@@ -221,19 +227,20 @@ section {
   color: var(--color-text);
 }
 
-.services-list {
-  display: grid;
-  gap: 16px;
+.services-swiper .swiper-wrapper {
+  align-items: stretch;
 }
 
 .service-card {
   position: relative;
   display: grid;
   align-content: end;
+  height: 100%;
   min-height: 344px;
   padding: 24px;
   overflow: hidden;
   color: var(--color-surface);
+  border-radius: 24px;
 }
 
 .service-card img {
@@ -295,8 +302,8 @@ section {
     grid-template-columns: 1fr 1fr;
   }
 
-  .services-list {
-    grid-template-columns: repeat(2, 1fr);
+  .services-swiper {
+    padding-inline: 4px;
   }
 }
 
@@ -306,7 +313,7 @@ section {
     --section-padding: 112px;
   }
 
-  .services-list {
-    grid-template-columns: repeat(3, 1fr);
+  .services-swiper {
+    padding-inline: 0;
   }
 }
