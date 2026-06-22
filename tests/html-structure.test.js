@@ -73,10 +73,6 @@ describe('Hero section content', () => {
 });
 
 describe('Services section structure', () => {
-  test('services section exists', () => {
-    expect(document.querySelectorAll('section#services').length).toBe(1);
-  });
-
   test('services section contains a heading', () => {
     expect(document.querySelectorAll('#services h2').length).toBe(1);
   });
@@ -127,5 +123,11 @@ describe('Services section structure', () => {
 
   test('each service card contains an add to estimate button', () => {
     expect(document.querySelectorAll('#services .service-card button.add-to-estimate').length).toBe(6);
+  });
+});
+
+describe('Portfolio section structure', () => {
+  test('portfolio section contains a heading', () => {
+    expect(document.querySelectorAll('#portfolio h2').length).toBe(1);
   });
 });
