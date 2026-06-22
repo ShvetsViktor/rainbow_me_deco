@@ -9,6 +9,10 @@ function renderPortfolioSlides(items) {
     const title = document.createElement('h3');
     title.textContent = item.title;
     slide.appendChild(title);
+
+    const img = document.createElement('img');
+    img.src = item.image;
+    slide.appendChild(img);
   }
 }
 

@@ -26,4 +26,19 @@ describe('Portfolio rendering', () => {
 
     expect(document.querySelector('.portfolio-card h3').textContent).toBe('Pastel Balloon Arch');
   });
+
+  test('renders portfolio slide image', () => {
+    const items = [
+      {
+        image: 'assets/images/portfolio/balloon-arches-1.avif',
+        alt: 'Pastel balloon arch decoration for a celebration',
+      },
+    ];
+
+    renderPortfolioSlides(items);
+
+    expect(document.querySelector('.portfolio-card img').getAttribute('src')).toBe(
+      'assets/images/portfolio/balloon-arches-1.avif'
+    );
+  });
 });
