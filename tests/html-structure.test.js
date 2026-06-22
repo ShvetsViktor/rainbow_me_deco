@@ -134,4 +134,21 @@ describe('Portfolio section structure', () => {
   test('portfolio section contains filter controls', () => {
     expect(document.querySelectorAll('#portfolio .portfolio-filters').length).toBe(1);
   });
+
+  test('portfolio section contains a Swiper container', () => {
+    expect(document.querySelectorAll('#portfolio .portfolio-swiper').length).toBe(1);
+  });
+
+  test('portfolio section contains a Swiper wrapper for rendered slides', () => {
+    expect(document.querySelectorAll('#portfolio .portfolio-swiper .swiper-wrapper').length).toBe(1);
+  });
+
+  test('portfolio section contains Swiper pagination', () => {
+    expect(document.querySelectorAll('#portfolio .portfolio-swiper .swiper-pagination').length).toBe(1);
+  });
+
+  test('portfolio section contains Swiper navigation buttons', () => {
+    expect(document.querySelectorAll('#portfolio .portfolio-swiper .swiper-button-prev').length).toBe(1);
+    expect(document.querySelectorAll('#portfolio .portfolio-swiper .swiper-button-next').length).toBe(1);
+  });
 });
