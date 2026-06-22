@@ -233,7 +233,7 @@ section {
   position: relative;
   display: grid;
   align-content: end;
-  flex: 0 0 78%;
+  flex: 0 0 84%;
   min-height: 344px;
   padding: 24px;
   overflow: hidden;
