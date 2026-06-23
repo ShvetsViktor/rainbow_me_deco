@@ -148,3 +148,12 @@ describe('Portfolio section structure', () => {
     expect(document.querySelectorAll('#portfolio .portfolio-swiper .swiper-button-next').length).toBe(1);
   });
 });
+
+describe('Page layout structure', () => {
+  test('navbar has link to services section', () => {
+    const servicesLink = document.querySelector('header nav a[href="#services"]');
+
+    expect(servicesLink).not.toBeNull();
+    expect(servicesLink.textContent).toBe('Services');
+  });
+});
