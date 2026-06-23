@@ -12,8 +12,6 @@ function renderPortfolioSlides(items) {
 
     const img = document.createElement('img');
     img.src = item.image;
-    slide.appendChild(img);
-
     img.alt = item.alt;
     slide.appendChild(img);
 
@@ -23,6 +21,16 @@ function renderPortfolioSlides(items) {
   }
 }
 
+function initPortfolioCarousel() {
+  const portfolioSwiperElement = document.querySelector('.portfolio-swiper');
+
+  if (!portfolioSwiperElement || typeof Swiper === 'undefined') {
+    return;
+  }
+
+  new Swiper(portfolioSwiperElement, {});
+}
+
 if (typeof module !== 'undefined') {
-  module.exports = { renderPortfolioSlides };
+  module.exports = { renderPortfolioSlides, initPortfolioCarousel };
 }

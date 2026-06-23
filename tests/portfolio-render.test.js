@@ -1,4 +1,4 @@
-const { renderPortfolioSlides } = require('../assets/js/portfolio-carousel');
+const { renderPortfolioSlides, initPortfolioCarousel } = require('../assets/js/portfolio-carousel');
 
 describe('Portfolio rendering', () => {
   beforeEach(() => {
@@ -57,5 +57,35 @@ describe('Portfolio rendering', () => {
     expect(document.querySelector('.portfolio-card p').textContent).toBe(
       'A soft pastel balloon arch created for a private celebration.'
     );
+  });
+});
+
+describe('Portfolio carousel initialization', () => {
+  beforeEach(() => {
+    document.body.innerHTML = `
+    <div class="swiper portfolio-swiper">
+      <div class="swiper-wrapper"></div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  `;
+
+    // Mock the Swiper constructor because the real CDN library is not available in the Jest environment.
+    global.Swiper = jest.fn();
+  });
+
+  afterEach(() => {
+    // Remove the mocked Swiper after each test so it does not affect other tests.
+    delete global.Swiper;
+  });
+
+  test('initializes portfolio Swiper when the carousel element exists', () => {
+    initPortfolioCarousel();
+
+    const portfolioSwiperElement = document.querySelector('.portfolio-swiper');
+
+    // Check that Swiper is initialized with the portfolio carousel element and a configuration object.
+    expect(global.Swiper).toHaveBeenCalledWith(portfolioSwiperElement, expect.any(Object));
   });
 });
