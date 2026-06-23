@@ -71,7 +71,7 @@ function initPortfolioCarousel() {
   }
 
   new Swiper(portfolioSwiperElement, {
-    slidesPerView: 1.08,
+    slidesPerView: 1.2,
     spaceBetween: 16,
     grabCursor: true,
     watchOverflow: true,
