@@ -1,6 +1,16 @@
 const { renderPortfolioSlides, initPortfolioCarousel } = require('../assets/js/portfolio-carousel');
 
 describe('Portfolio rendering', () => {
+  const portfolioItems = [
+    {
+      title: 'Pastel Balloon Arch',
+      image: 'assets/images/portfolio/balloon-arches-1.avif',
+      alt: 'Pastel balloon arch decoration for a celebration',
+      description: 'A soft pastel balloon arch created for a private celebration.',
+      price: 145,
+    },
+  ];
+
   beforeEach(() => {
     document.body.innerHTML = `
       <div class="swiper portfolio-swiper">
@@ -10,51 +20,31 @@ describe('Portfolio rendering', () => {
   });
 
   test('renders one portfolio slide', () => {
-    const items = [{}];
-
-    renderPortfolioSlides(items);
+    renderPortfolioSlides(portfolioItems);
 
     expect(document.querySelectorAll('.portfolio-card.swiper-slide').length).toBe(1);
   });
 
   test('renders portfolio slide title', () => {
-    const items = [
-      {
-        title: 'Pastel Balloon Arch',
-      },
-    ];
-
-    renderPortfolioSlides(items);
+    renderPortfolioSlides(portfolioItems);
 
     expect(document.querySelector('.portfolio-card h3').textContent).toBe('Pastel Balloon Arch');
   });
 
   test('renders portfolio slide image with alt text', () => {
-    const items = [
-      {
-        image: 'assets/images/portfolio/balloon-arches-1.avif',
-        alt: 'Pastel balloon arch decoration for a celebration',
-      },
-    ];
-
-    renderPortfolioSlides(items);
+    renderPortfolioSlides(portfolioItems);
 
     expect(document.querySelector('.portfolio-card img').getAttribute('src')).toBe(
       'assets/images/portfolio/balloon-arches-1.avif'
     );
+
     expect(document.querySelector('.portfolio-card img').getAttribute('alt')).toBe(
       'Pastel balloon arch decoration for a celebration'
     );
   });
 
   test('renders portfolio slide description', () => {
-    const items = [
-      {
-        description: 'A soft pastel balloon arch created for a private celebration.',
-      },
-    ];
-
-    renderPortfolioSlides(items);
+    renderPortfolioSlides(portfolioItems);
 
     expect(document.querySelector('.portfolio-card p').textContent).toBe(
       'A soft pastel balloon arch created for a private celebration.'
@@ -62,26 +52,23 @@ describe('Portfolio rendering', () => {
   });
 
   test('renders portfolio card action area', () => {
-    const items = [
-      {
-        price: 145,
-      },
-    ];
-
-    renderPortfolioSlides(items);
+    renderPortfolioSlides(portfolioItems);
 
     expect(document.querySelector('.portfolio-card .portfolio-card-actions')).not.toBeNull();
   });
-  test('renders portfolio slide price in pounds inside action area', () => {
-    const items = [
-      {
-        price: 145,
-      },
-    ];
 
-    renderPortfolioSlides(items);
+  test('renders portfolio slide price in pounds inside action area', () => {
+    renderPortfolioSlides(portfolioItems);
 
     expect(document.querySelector('.portfolio-card .portfolio-card-actions .portfolio-price').textContent).toBe('£145');
+  });
+
+  test('renders portfolio price label inside action area', () => {
+    renderPortfolioSlides(portfolioItems);
+
+    const priceLabel = document.querySelector('.portfolio-card .portfolio-card-actions .portfolio-price-label');
+
+    expect(priceLabel.textContent).toBe('Starting from');
   });
 });
 
