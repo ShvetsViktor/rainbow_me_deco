@@ -190,4 +190,11 @@ describe('Page layout structure', () => {
 
     expect(navbar.getAttribute('aria-label')).toBe('Main navigation');
   });
+
+  test('navbar has mobile menu toggle button', () => {
+    const menuButton = document.querySelector('header .menu-toggle');
+
+    expect(menuButton).not.toBeNull();
+    expect(menuButton.getAttribute('type')).toBe('button');
+  });
 });
