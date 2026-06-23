@@ -48,7 +48,7 @@ function renderPortfolioSlides(items) {
     const button = document.createElement('button');
     button.classList.add('button', 'button-primary', 'add-to-estimate');
     button.type = 'button';
-    button.textContent = 'Add to estimate';
+    button.innerHTML = '<span class="button-icon" aria-hidden="true">+</span><span>Add to estimate</span>';
 
     actions.appendChild(priceWrapper);
     actions.appendChild(button);

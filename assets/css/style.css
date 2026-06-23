@@ -411,6 +411,16 @@ section {
   flex-shrink: 0;
 }
 
+.add-to-estimate {
+  gap: 8px;
+}
+
+.button-icon {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+}
+
 /* ============================================
    RESPONSIVE LAYOUT
    ============================================ */
