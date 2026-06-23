@@ -407,7 +407,7 @@ section {
 
 .portfolio-price {
   color: var(--color-primary);
-  font-size: clamp(18px, 5vw, 24px);
+  font-size: clamp(18px, 2vw, 24px);
   font-weight: 700;
   line-height: 1.2;
 }
