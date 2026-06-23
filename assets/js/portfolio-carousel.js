@@ -28,7 +28,30 @@ function initPortfolioCarousel() {
     return;
   }
 
-  new Swiper(portfolioSwiperElement, {});
+  new Swiper(portfolioSwiperElement, {
+    slidesPerView: 1.08,
+    spaceBetween: 16,
+    grabCursor: true,
+    watchOverflow: true,
+    pagination: {
+      el: '.portfolio-swiper .swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.portfolio-swiper .swiper-button-next',
+      prevEl: '.portfolio-swiper .swiper-button-prev',
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      1200: {
+        slidesPerView: 3,
+        spaceBetween: 24,
+      },
+    },
+  });
 }
 
 if (typeof module !== 'undefined') {
