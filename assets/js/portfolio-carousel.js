@@ -11,6 +11,7 @@ function renderPortfolioSlides(items) {
 
     const imageButton = document.createElement('button');
     imageButton.classList.add('portfolio-image-button');
+    imageButton.type = 'button';
     imageButton.setAttribute('aria-label', `View larger image: ${item.title}`);
 
     const img = document.createElement('img');
@@ -40,7 +41,7 @@ function renderPortfolioSlides(items) {
     price.textContent = `£${item.price}`;
 
     const button = document.createElement('button');
-    button.classList.add('add-to-estimate');
+    button.classList.add('button', 'button-primary', 'add-to-estimate');
     button.type = 'button';
     button.textContent = 'Add to estimate';
 
