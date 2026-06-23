@@ -177,4 +177,11 @@ describe('Page layout structure', () => {
     expect(servicesLink).not.toBeNull();
     expect(servicesLink.textContent).toBe('Testimonials');
   });
+
+  test('navbar has link to enquiry section', () => {
+    const servicesLink = document.querySelector('header nav a[href="#enquiry"]');
+
+    expect(servicesLink).not.toBeNull();
+    expect(servicesLink.textContent).toBe('Enquiry');
+  });
 });
