@@ -8,7 +8,6 @@ function renderPortfolioSlides(items) {
   for (const item of items) {
     const slide = document.createElement('article');
     slide.classList.add('portfolio-card', 'swiper-slide');
-    target.appendChild(slide);
 
     const img = document.createElement('img');
     img.src = item.image;
@@ -32,6 +31,8 @@ function renderPortfolioSlides(items) {
 
     actions.appendChild(price);
     slide.appendChild(actions);
+
+    target.appendChild(slide);
   }
 }
 
