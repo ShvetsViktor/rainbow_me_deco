@@ -426,6 +426,13 @@ section {
   line-height: 1;
 }
 
+.services-swiper .swiper-button-prev,
+.services-swiper .swiper-button-next,
+.portfolio-swiper .swiper-button-prev,
+.portfolio-swiper .swiper-button-next {
+  display: none;
+}
+
 /* ============================================
    RESPONSIVE LAYOUT
    ============================================ */
@@ -460,6 +467,18 @@ section {
     width: 100%;
     margin-inline: 0;
     padding-inline: 4px;
+  }
+
+  .services-swiper .swiper-button-prev,
+  .services-swiper .swiper-button-next,
+  .portfolio-swiper .swiper-button-prev,
+  .portfolio-swiper .swiper-button-next {
+    display: flex;
+  }
+
+  .portfolio-swiper .swiper-button-prev,
+  .portfolio-swiper .swiper-button-next {
+    top: 30%;
   }
 }
 

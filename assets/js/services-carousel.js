@@ -11,7 +11,7 @@ function initServicesCarousel() {
   }
 
   new Swiper(servicesSwiperElement, {
-    slidesPerView: 1.08,
+    slidesPerView: 1.2,
     spaceBetween: 16,
     centeredSlides: false,
     grabCursor: true,
@@ -23,10 +23,6 @@ function initServicesCarousel() {
     navigation: {
       nextEl: '.services-swiper .swiper-button-next',
       prevEl: '.services-swiper .swiper-button-prev',
-    },
-    scrollbar: {
-      el: '.services-swiper .swiper-scrollbar',
-      draggable: true,
     },
     breakpoints: {
       768: {
