@@ -79,6 +79,14 @@ describe('Portfolio rendering', () => {
     expect(button).not.toBeNull();
     expect(button.textContent).toBe('Add to estimate');
   });
+
+  test('renders add to estimate button with button type', () => {
+    renderPortfolioSlides(portfolioItems);
+
+    const button = document.querySelector('.portfolio-card .portfolio-card-actions .add-to-estimate');
+
+    expect(button.getAttribute('type')).toBe('button');
+  });
 });
 
 describe('Portfolio carousel initialization', () => {

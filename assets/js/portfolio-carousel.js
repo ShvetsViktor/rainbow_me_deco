@@ -38,9 +38,9 @@ function renderPortfolioSlides(items) {
     button.type = 'button';
     button.textContent = 'Add to estimate';
 
-    actions.appendChild(button);
     actions.appendChild(priceLabel);
     actions.appendChild(price);
+    actions.appendChild(button);
     slide.appendChild(actions);
 
     target.appendChild(slide);
