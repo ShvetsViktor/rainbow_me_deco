@@ -40,13 +40,17 @@ function renderPortfolioSlides(items) {
     price.classList.add('portfolio-price');
     price.textContent = `£${item.price}`;
 
+    const priceWrapper = document.createElement('div');
+    priceWrapper.classList.add('portfolio-price-wrapper');
+    priceWrapper.appendChild(priceLabel);
+    priceWrapper.appendChild(price);
+
     const button = document.createElement('button');
     button.classList.add('button', 'button-primary', 'add-to-estimate');
     button.type = 'button';
     button.textContent = 'Add to estimate';
 
-    actions.appendChild(priceLabel);
-    actions.appendChild(price);
+    actions.appendChild(priceWrapper);
     actions.appendChild(button);
     slide.appendChild(actions);
 

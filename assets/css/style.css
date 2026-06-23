@@ -373,9 +373,42 @@ section {
   margin-top: 4px;
 }
 
-.portfolio-card p {
+.portfolio-card > p {
+  padding-inline: 18px;
   padding-bottom: 20px;
   color: var(--color-muted);
+}
+
+.portfolio-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 18px 18px;
+  margin-top: auto;
+}
+
+.portfolio-price-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.portfolio-price-label {
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.portfolio-price {
+  color: var(--color-primary);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.portfolio-card .add-to-estimate {
+  flex-shrink: 0;
 }
 
 /* ============================================

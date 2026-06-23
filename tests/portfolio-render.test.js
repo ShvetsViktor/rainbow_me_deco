@@ -103,6 +103,12 @@ describe('Portfolio rendering', () => {
 
     expect(imageButton.getAttribute('type')).toBe('button');
   });
+
+  test('renders portfolio price wrapper inside action area', () => {
+    renderPortfolioSlides(portfolioItems);
+
+    expect(document.querySelector('.portfolio-card .portfolio-card-actions .portfolio-price-wrapper')).not.toBeNull();
+  });
 });
 
 describe('Portfolio carousel initialization', () => {
