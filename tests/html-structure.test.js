@@ -170,4 +170,11 @@ describe('Page layout structure', () => {
     expect(servicesLink).not.toBeNull();
     expect(servicesLink.textContent).toBe('How It Works');
   });
+
+  test('navbar has link to testimonials section', () => {
+    const servicesLink = document.querySelector('header nav a[href="#testimonials"]');
+
+    expect(servicesLink).not.toBeNull();
+    expect(servicesLink.textContent).toBe('Testimonials');
+  });
 });
