@@ -163,4 +163,11 @@ describe('Page layout structure', () => {
     expect(servicesLink).not.toBeNull();
     expect(servicesLink.textContent).toBe('Portfolio');
   });
+
+  test('navbar has link to how-it-works section', () => {
+    const servicesLink = document.querySelector('header nav a[href="#how-it-works"]');
+
+    expect(servicesLink).not.toBeNull();
+    expect(servicesLink.textContent).toBe('How It Works');
+  });
 });
