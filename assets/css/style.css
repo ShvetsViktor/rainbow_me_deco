@@ -304,7 +304,7 @@ section {
 
 #portfolio .container {
   display: grid;
-  gap: 48px;
+  gap: 24px;
 }
 
 .portfolio-swiper {
