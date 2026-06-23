@@ -280,7 +280,7 @@ section {
   color: var(--color-surface);
 }
 
-.add-to-estimate {
+.service-card .add-to-estimate {
   justify-self: start;
   padding: 0;
   border: none;
@@ -289,6 +289,58 @@ section {
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
+}
+
+/* ============================================
+   PORTFOLIO
+   ============================================ */
+
+#portfolio {
+  background-color: var(--color-background);
+}
+
+#portfolio .container {
+  display: grid;
+  gap: 48px;
+}
+
+.portfolio-swiper {
+  width: 100%;
+  padding-bottom: 42px;
+}
+
+.portfolio-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
+.portfolio-card {
+  display: grid;
+  gap: 16px;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--color-surface);
+  border-radius: 24px;
+}
+
+.portfolio-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.portfolio-card h3,
+.portfolio-card p {
+  padding-inline: 20px;
+}
+
+.portfolio-card h3 {
+  margin-top: 4px;
+  font-size: 24px;
+}
+
+.portfolio-card p {
+  padding-bottom: 20px;
+  color: var(--color-muted);
 }
 
 /* ============================================
@@ -305,7 +357,8 @@ section {
     grid-template-columns: 1fr 1fr;
   }
 
-  .services-swiper {
+  .services-swiper,
+  .portfolio-swiper {
     padding-inline: 4px;
   }
 }
@@ -316,7 +369,8 @@ section {
     --section-padding: 112px;
   }
 
-  .services-swiper {
+  .services-swiper,
+  .portfolio-swiper {
     padding-inline: 0;
   }
 }
