@@ -70,6 +70,15 @@ describe('Portfolio rendering', () => {
 
     expect(priceLabel.textContent).toBe('Starting from');
   });
+
+  test('renders portfolio add to estimate button inside action area', () => {
+    renderPortfolioSlides(portfolioItems);
+
+    const button = document.querySelector('.portfolio-card .portfolio-card-actions .add-to-estimate');
+
+    expect(button).not.toBeNull();
+    expect(button.textContent).toBe('Add to estimate');
+  });
 });
 
 describe('Portfolio carousel initialization', () => {
