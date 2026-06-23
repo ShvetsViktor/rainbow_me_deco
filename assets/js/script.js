@@ -8,4 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof renderPortfolioSlides === 'function' && Array.isArray(portfolioItems)) {
     renderPortfolioSlides(portfolioItems);
   }
+
+  // Initialize portfolio carousel after portfolio slides are rendered.
+  if (typeof initPortfolioCarousel === 'function') {
+    initPortfolioCarousel();
+  }
 });
