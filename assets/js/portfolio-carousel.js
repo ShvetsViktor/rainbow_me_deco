@@ -25,10 +25,15 @@ function renderPortfolioSlides(items) {
     const actions = document.createElement('div');
     actions.classList.add('portfolio-card-actions');
 
+    const priceLabel = document.createElement('span');
+    priceLabel.classList.add('portfolio-price-label');
+    priceLabel.textContent = 'Starting from';
+
     const price = document.createElement('span');
     price.classList.add('portfolio-price');
     price.textContent = `£${item.price}`;
 
+    actions.appendChild(priceLabel);
     actions.appendChild(price);
     slide.appendChild(actions);
 
