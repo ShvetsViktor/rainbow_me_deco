@@ -1,3 +1,7 @@
+/**
+ * Creates portfolio card slides from an array of portfolio item objects.
+ * Each card is added to the portfolio Swiper wrapper and given the required Swiper slide class.
+ */
 function renderPortfolioSlides(items) {
   const target = document.querySelector('.portfolio-swiper .swiper-wrapper');
 
@@ -21,9 +25,14 @@ function renderPortfolioSlides(items) {
   }
 }
 
+/**
+ * Initializes the portfolio Swiper carousel after the portfolio slides have been rendered.
+ * The function checks that the carousel element and external Swiper library are available before running.
+ */
 function initPortfolioCarousel() {
   const portfolioSwiperElement = document.querySelector('.portfolio-swiper');
 
+  // Error handling: prevent carousel initialization if the DOM element or external Swiper library is missing.
   if (!portfolioSwiperElement || typeof Swiper === 'undefined') {
     return;
   }
@@ -54,6 +63,7 @@ function initPortfolioCarousel() {
   });
 }
 
+// Export functions for Jest tests when this file is loaded in a Node environment.
 if (typeof module !== 'undefined') {
   module.exports = { renderPortfolioSlides, initPortfolioCarousel };
 }
