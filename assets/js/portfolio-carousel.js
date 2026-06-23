@@ -25,6 +25,12 @@ function renderPortfolioSlides(items) {
 
     const actions = document.createElement('div');
     actions.classList.add('portfolio-card-actions');
+
+    const price = document.createElement('span');
+    price.classList.add('portfolio-price');
+    price.textContent = `£${item.price}`;
+
+    actions.appendChild(price);
     slide.appendChild(actions);
   }
 }

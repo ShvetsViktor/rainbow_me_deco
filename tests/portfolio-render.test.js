@@ -72,6 +72,17 @@ describe('Portfolio rendering', () => {
 
     expect(document.querySelector('.portfolio-card .portfolio-card-actions')).not.toBeNull();
   });
+  test('renders portfolio slide price in pounds inside action area', () => {
+    const items = [
+      {
+        price: 145,
+      },
+    ];
+
+    renderPortfolioSlides(items);
+
+    expect(document.querySelector('.portfolio-card .portfolio-card-actions .portfolio-price').textContent).toBe('£145');
+  });
 });
 
 describe('Portfolio carousel initialization', () => {
