@@ -9,10 +9,16 @@ function renderPortfolioSlides(items) {
     const slide = document.createElement('article');
     slide.classList.add('portfolio-card', 'swiper-slide');
 
+    const imageButton = document.createElement('button');
+    imageButton.classList.add('portfolio-image-button');
+    imageButton.setAttribute('aria-label', `View larger image: ${item.title}`);
+
     const img = document.createElement('img');
     img.src = item.image;
     img.alt = item.alt;
-    slide.appendChild(img);
+
+    imageButton.appendChild(img);
+    slide.appendChild(imageButton);
 
     const title = document.createElement('h3');
     title.textContent = item.title;

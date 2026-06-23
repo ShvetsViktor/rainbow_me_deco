@@ -87,6 +87,14 @@ describe('Portfolio rendering', () => {
 
     expect(button.getAttribute('type')).toBe('button');
   });
+
+  test('renders portfolio image button with aria label', () => {
+    renderPortfolioSlides(portfolioItems);
+
+    const imageButton = document.querySelector('.portfolio-card .portfolio-image-button');
+
+    expect(imageButton.getAttribute('aria-label')).toBe('View larger image: Pastel Balloon Arch');
+  });
 });
 
 describe('Portfolio carousel initialization', () => {
