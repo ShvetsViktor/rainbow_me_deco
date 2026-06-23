@@ -22,6 +22,10 @@ function renderPortfolioSlides(items) {
     const descr = document.createElement('p');
     descr.textContent = item.description;
     slide.appendChild(descr);
+
+    const actions = document.createElement('div');
+    actions.classList.add('portfolio-card-actions');
+    slide.appendChild(actions);
   }
 }
 
