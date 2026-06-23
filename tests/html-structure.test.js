@@ -184,4 +184,10 @@ describe('Page layout structure', () => {
     expect(enquiryLink).not.toBeNull();
     expect(enquiryLink.textContent).toBe('Enquiry');
   });
+
+  test('navbar has accessible label', () => {
+    const navbar = document.querySelector('header nav');
+
+    expect(navbar.getAttribute('aria-label')).toBe('Main navigation');
+  });
 });
