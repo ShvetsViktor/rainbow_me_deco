@@ -315,7 +315,7 @@ section {
 
 .portfolio-card {
   display: grid;
-  gap: 16px;
+  gap: 12px;
   height: 100%;
   overflow: hidden;
   background-color: var(--color-surface);
@@ -330,12 +330,11 @@ section {
 
 .portfolio-card h3,
 .portfolio-card p {
-  padding-inline: 20px;
+  padding-inline: 18px;
 }
 
 .portfolio-card h3 {
   margin-top: 4px;
-  font-size: 24px;
 }
 
 .portfolio-card p {
