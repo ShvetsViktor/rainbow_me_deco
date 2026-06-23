@@ -158,30 +158,30 @@ describe('Page layout structure', () => {
   });
 
   test('navbar has link to portfolio section', () => {
-    const servicesLink = document.querySelector('header nav a[href="#portfolio"]');
+    const portfolioLink = document.querySelector('header nav a[href="#portfolio"]');
 
-    expect(servicesLink).not.toBeNull();
-    expect(servicesLink.textContent).toBe('Portfolio');
+    expect(portfolioLink).not.toBeNull();
+    expect(portfolioLink.textContent).toBe('Portfolio');
   });
 
   test('navbar has link to how-it-works section', () => {
-    const servicesLink = document.querySelector('header nav a[href="#how-it-works"]');
+    const howItWorksLink = document.querySelector('header nav a[href="#how-it-works"]');
 
-    expect(servicesLink).not.toBeNull();
-    expect(servicesLink.textContent).toBe('How It Works');
+    expect(howItWorksLink).not.toBeNull();
+    expect(howItWorksLink.textContent).toBe('How It Works');
   });
 
   test('navbar has link to testimonials section', () => {
-    const servicesLink = document.querySelector('header nav a[href="#testimonials"]');
+    const testimonialsLink = document.querySelector('header nav a[href="#testimonials"]');
 
-    expect(servicesLink).not.toBeNull();
-    expect(servicesLink.textContent).toBe('Testimonials');
+    expect(testimonialsLink).not.toBeNull();
+    expect(testimonialsLink.textContent).toBe('Testimonials');
   });
 
   test('navbar has link to enquiry section', () => {
-    const servicesLink = document.querySelector('header nav a[href="#enquiry"]');
+    const enquiryLink = document.querySelector('header nav a[href="#enquiry"]');
 
-    expect(servicesLink).not.toBeNull();
-    expect(servicesLink.textContent).toBe('Enquiry');
+    expect(enquiryLink).not.toBeNull();
+    expect(enquiryLink.textContent).toBe('Enquiry');
   });
 });
