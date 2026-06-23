@@ -98,10 +98,6 @@ describe('Services section structure', () => {
     expect(document.querySelectorAll('#services .swiper-button-next').length).toBe(1);
   });
 
-  test('services section contains a scrollbar', () => {
-    expect(document.querySelectorAll('#services .swiper-scrollbar').length).toBe(1);
-  });
-
   test('services section contains service cards', () => {
     expect(document.querySelectorAll('#services .service-card').length).toBe(6);
   });

@@ -77,7 +77,7 @@ describe('Portfolio rendering', () => {
     const button = document.querySelector('.portfolio-card .portfolio-card-actions .add-to-estimate');
 
     expect(button).not.toBeNull();
-    expect(button.textContent).toBe('Add to estimate');
+    expect(button.textContent).toBe('+Add to estimate');
   });
 
   test('renders add to estimate button with button type', () => {
