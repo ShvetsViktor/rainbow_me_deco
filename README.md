@@ -10,7 +10,7 @@ Rainbow Me Decor Studio is an interactive front-end website for a small event de
 
 The project has two connected purposes. For the business, it presents decoration services, previous work, guide price information, and a simple enquiry route for potential customers. For the assessment, it demonstrates a dynamic and user-centred front-end web application with meaningful JavaScript interactivity, clear UX design, accessibility considerations, responsive layout, testing evidence, and professional documentation.
 
-The website is designed to allow visitors to explore services, use service cards as shortcuts to matching portfolio examples, filter work by decoration type, move through portfolio items using a View More control and visible item counter, view images in a modal gallery, build a guide estimate using selected services, review the estimate before sending an enquiry, understand the booking process, interact with scroll-triggered animations, and submit a validated enquiry form.
+The website is designed to allow visitors to explore services, browse portfolio examples through a responsive carousel, filter work by decoration type, view images in a modal gallery, build a guide estimate using selected services, review the estimate before sending an enquiry, understand the booking process, interact with scroll-triggered animations, and submit a validated enquiry form.
 
 The main project focus is front-end development. The Enquiry Form includes JavaScript validation and simulated submission, with the option to extend it in the future using server-side or serverless form processing.
 
@@ -104,27 +104,24 @@ As a visitor, I want to view selected examples of previous work so that I can ju
 **Acceptance Criteria:**
 
 - The portfolio section shows a selected set of previous work.
-- Portfolio items are displayed in a clear responsive grid.
-- Each item includes an image and relevant category information.
-- The initial number of visible items is limited to avoid overloading the page.
+- Portfolio items are displayed in a responsive carousel.
+- Each portfolio item includes an image, title, description, category, and guide price information where relevant.
 - Portfolio images remain readable and visually consistent across screen sizes.
+- The carousel remains usable on mobile, tablet, and desktop screens.
 
-#### US4 — Filter and View More Portfolio Examples
+#### US4 — Filter Portfolio Examples
 
-As a visitor, I want to filter portfolio examples by decoration type and move through more examples in small groups so that I can browse relevant work without being overwhelmed by too many images at once.
+As a visitor, I want to filter portfolio examples by decoration type so that I can browse work that is relevant to my event.
 
 **Acceptance Criteria:**
 
-- Portfolio filter buttons are visible above the portfolio grid.
+- Portfolio filter buttons are visible above the portfolio carousel.
 - Clicking a decoration category shows only relevant portfolio items.
 - The active filter is visually highlighted.
-- Only a limited number of matching items are shown at one time.
-- A View More button replaces the current visible group with the next group of matching items.
-- A visible counter shows which items are currently displayed, for example “Showing 1–6 of 18”.
-- The counter updates when the user changes filter category or clicks View More.
-- The portfolio resets to the first group when a new filter category is selected.
-- When the final matching group is reached, the button changes to “View First”.
-- Clicking “View First” returns the portfolio to the first matching group and resets the counter.
+- The carousel updates when a new filter is selected.
+- The carousel resets to the first matching item when a new category is selected.
+- The portfolio remains compact on mobile screens without showing too many images at once.
+- No console errors occur when filtering portfolio items.
 
 #### US5 — View Images Clearly
 
@@ -221,8 +218,10 @@ This project is successful when:
 - Navigation is simple, consistent, and intuitive.
 - The site uses site-specific content and images instead of placeholder content.
 - JavaScript provides meaningful responses to user actions.
-- The portfolio section displays selected examples of previous work without overloading the single-page layout.
-- Portfolio filtering, View More / View First behaviour, and the visible item counter work correctly.
+- The portfolio section displays selected examples of previous work in a responsive carousel without overloading the single-page layout.
+- Portfolio items are rendered dynamically from a JavaScript data source.
+- Portfolio filtering updates the displayed carousel items correctly.
+- The portfolio carousel works correctly on mobile, tablet, and desktop screens.
 - Portfolio images are optimised and lazy-loaded where appropriate.
 - Users can open portfolio images in a larger modal view and close the modal without page errors or console errors.
 - The estimate builder allows users to add and remove services, view an updated guide price, and continue to the enquiry form.
@@ -277,8 +276,9 @@ The project includes the following user-facing features:
 - **Call-to-Action Buttons:** guide users towards viewing the portfolio, estimating a guide price, or sending an enquiry.
 - **Main Navigation:** allows users to move between the main sections of the page.
 - **Services:** explains the six main decoration categories and allows users to jump to matching portfolio examples.
-- **Portfolio Section:** presents a selected set of previous work in a responsive image grid.
-- **Portfolio Filtering and View More:** allows users to filter work by decoration type and move through matching portfolio items in small groups without expanding the page length.
+- **Portfolio Section:** presents selected previous work in a responsive Swiper carousel.
+- **Dynamic Portfolio Rendering:** stores portfolio items in a JavaScript data source and renders portfolio cards into the page dynamically.
+- **Portfolio Filtering:** allows users to filter work by decoration type and updates the carousel with matching items.
 - **Image Modal Gallery:** allows users to view portfolio images in a larger overlay.
 - **Interactive Estimate Builder:** allows users to add services to a guide estimate, view a running total while browsing, review selected items, and continue to the enquiry form to request a final quote.
 - **How It Works:** explains the booking and setup process from enquiry through completion.
@@ -290,7 +290,7 @@ The project includes the following user-facing features:
 The selected features support the three strategy priorities:
 
 - **Clarity:** Hero, Main Navigation, Services, How It Works, and Call-to-Action Buttons help users understand the website quickly.
-- **Confidence:** Portfolio Section, Portfolio Filtering and View More, Image Modal Gallery, Interactive Estimate Builder, and Testimonials help users evaluate the service before making contact.
+- **Confidence:** Portfolio Section, Dynamic Portfolio Rendering, Portfolio Filtering, Image Modal Gallery, Interactive Estimate Builder, and Testimonials help users evaluate the service before making contact.
 - **Action:** Call-to-Action Buttons, Interactive Estimate Builder, Enquiry Form & Validation, and the Custom 404 Page help users move towards enquiry and complete tasks without unnecessary friction.
 
 ### Feature Prioritisation Method
@@ -299,21 +299,21 @@ Features were prioritised by balancing user value, business value, assessment re
 
 **Score = Importance (1–5) × Feasibility (1–5)**
 
-| Feature                           | Importance | Feasibility | Score |
-| --------------------------------- | ---------: | ----------: | ----: |
-| Hero                              |          5 |           5 |    25 |
-| Main Navigation                   |          5 |           5 |    25 |
-| Services Section                  |          5 |           5 |    25 |
-| Portfolio Section                 |          4 |           5 |    20 |
-| Portfolio Filtering and View More |          5 |           4 |    20 |
-| How It Works                      |          4 |           5 |    20 |
-| Enquiry Form & Validation         |          5 |           4 |    20 |
-| Image Modal Gallery               |          4 |           4 |    16 |
-| Interactive Estimate Builder      |          4 |           4 |    16 |
-| Custom 404 Page                   |          4 |           4 |    16 |
-| Testimonials                      |          3 |           5 |    15 |
-| Call-to-Action Buttons            |          3 |           5 |    15 |
-| Scroll Balloon Animation          |          4 |           3 |    12 |
+| Feature                          | Importance | Feasibility | Score |
+| -------------------------------- | ---------: | ----------: | ----: |
+| Hero                             |          5 |           5 |    25 |
+| Main Navigation                  |          5 |           5 |    25 |
+| Services Section                 |          5 |           5 |    25 |
+| Portfolio Section                |          5 |           4 |    20 |
+| Portfolio Filtering and Carousel |          5 |           4 |    20 |
+| How It Works                     |          4 |           5 |    20 |
+| Enquiry Form & Validation        |          5 |           4 |    20 |
+| Image Modal Gallery              |          4 |           4 |    16 |
+| Interactive Estimate Builder     |          4 |           4 |    16 |
+| Custom 404 Page                  |          4 |           4 |    16 |
+| Testimonials                     |          3 |           5 |    15 |
+| Call-to-Action Buttons           |          3 |           5 |    15 |
+| Scroll Balloon Animation         |          4 |           3 |    12 |
 
 ---
 
@@ -325,7 +325,7 @@ The website uses a single-page structure with sections arranged to support a typ
 
 1. **Hero** — introduces the business and gives users clear first actions.
 2. **Services** — explains what types of decoration are available.
-3. **Portfolio** — presents selected examples of previous work in a responsive image grid.
+3. **Portfolio** — presents selected examples of previous work in a responsive carousel with category filtering.
 4. **Interactive Estimate Builder** — allows users to build and review a guide estimate before sending an enquiry.
 5. **How It Works** — explains the booking and setup process from enquiry through completion.
 6. **Testimonials** — provides trust signals through customer-style feedback.
@@ -339,7 +339,7 @@ The navigation and interaction model supports the user journey by helping visito
 - The main navigation uses anchor links to key page sections.
 - Hero buttons link directly to Portfolio, the Estimate Builder, and the Enquiry Form.
 - Service cards act as shortcuts to matching portfolio categories.
-- The portfolio section displays selected work, while filter buttons, a View More control, and a visible item counter let users browse relevant examples in small groups without expanding the page length.
+- The portfolio section displays selected work in a responsive carousel. Filter buttons allow users to update the carousel and view examples from a specific decoration category.
 - The image modal can be opened and closed by the user.
 - The estimate builder responds when users add or remove services and updates the guide total dynamically.
 - A sticky estimate widget keeps the current estimate visible while users browse, but is hidden in the enquiry section to avoid duplicated estimate information.
@@ -369,7 +369,7 @@ Wireframes were created to plan the page layout, content hierarchy, and responsi
 | ---------------- | ----------------- |
 | Mobile wireframe | Desktop wireframe |
 
-The wireframes show the planned placement of key sections, including the hero area, services, portfolio grid, portfolio filter controls, View More button, visible item counter, estimate builder, sticky estimate widget, How It Works, testimonials, and Enquiry Form.
+The wireframes show the planned placement of key sections, including the hero area, services, portfolio carousel, portfolio filter controls, estimate builder, sticky estimate widget, How It Works, testimonials, and Enquiry Form.
 
 ---
 
@@ -417,7 +417,7 @@ The project was developed incrementally so that each stage produced a usable imp
 
 **Goal:** Add meaningful user-controlled JavaScript functionality.
 
-**Outcome:** Portfolio filtering, View More behaviour, visible item counter, image modal gallery, estimate builder logic, Enquiry Form & Validation, success feedback, and scroll-triggered animation were implemented.
+**Outcome:** Portfolio filtering, carousel behaviour, image modal gallery, estimate builder logic, Enquiry Form & Validation, success feedback, and scroll-triggered animation were implemented.
 
 ### Stage 4 — Error Recovery, Refinement and Accessibility Checks
 
@@ -470,15 +470,15 @@ Each service card includes a short description and acts as a shortcut to matchin
 
 ### Portfolio
 
-The portfolio section presents a selected set of previous work in a responsive image grid. It helps visitors review the style, quality, and range of decoration work before making an enquiry.
+The portfolio section presents selected examples of previous decoration work in a responsive Swiper carousel. This helps visitors review the style, quality, and range of decoration work before making an enquiry.
 
-Each portfolio card includes a guide starting price and an “Add to estimate” button. Portfolio images are clickable and can be opened in a larger modal view so users can inspect decoration details more clearly.
+Portfolio cards are not written manually in the HTML. Instead, portfolio item data is stored in a JavaScript data source and rendered dynamically into the carousel. This keeps the HTML cleaner, separates data from markup, and prepares the project for a possible future move to an external JSON data source.
 
-To avoid overloading the single-page layout, the portfolio does not need to show every completed project at once. Instead, it displays a limited number of representative items first, with fewer items shown on smaller screens and more items shown on larger screens.
+Each portfolio card includes an image, title, short description, category, and guide price information where relevant. Portfolio images are intended to support a future modal gallery so users can inspect decoration details more clearly.
 
-### Portfolio Filtering and View More
+### Portfolio Filtering
 
-The portfolio filtering controls are placed above the portfolio grid. They allow users to browse previous work by decoration type before viewing the images.
+The portfolio filtering controls are placed above the portfolio carousel. They allow users to browse previous work by decoration type.
 
 Users can filter portfolio examples by:
 
@@ -490,13 +490,9 @@ Users can filter portfolio examples by:
 - Business Decor
 - Custom Setups
 
-When a filter is selected, JavaScript first finds the matching portfolio items and displays only the first limited group. A View More button replaces the current visible group with the next group of matching items instead of continuously adding more cards to the page.
+When a filter is selected, JavaScript will find matching portfolio items, re-render the portfolio slides, and update the carousel. The carousel will reset to the first matching item after a filter is selected.
 
-A visible item counter shows the current range of displayed items, for example “Showing 1–6 of 18”. The counter updates when the user selects a new filter or clicks the View More button.
-
-When the final matching group is reached, the button text changes from “View More” to “View First”. This allows the user to return to the first group of matching portfolio items without changing the selected filter.
-
-This approach keeps the single-page layout compact, prevents large layout shifts, avoids overwhelming visitors with too many images at once, and still allows users to explore more examples when they choose to.
+This approach was chosen instead of a static portfolio grid with a View More button because a carousel gives a better mobile experience, keeps the page compact, and avoids showing too many images at once on small screens.
 
 ### Image Modal Gallery
 
@@ -570,26 +566,38 @@ The custom project JavaScript checks that the services carousel element and Swip
 - Touch-friendly user interaction
 - Error prevention
 
-### Portfolio Filtering and View More
+### Dynamic Portfolio Rendering and Carousel
 
-The portfolio section combines category filtering, grouped item display, a View More control, and a visible item counter. Users can filter portfolio items by decoration type, and only a limited number of matching items are displayed at one time. The View More button replaces the current visible group with the next group of matching items. When the final matching group is reached, the button changes to “View First”, allowing the user to return to the first group. The counter communicates the current range, such as “Showing 1–6 of 18”.
+The portfolio section uses a JavaScript data source to render portfolio cards dynamically. Each portfolio item is stored as an object containing information such as title, category, image path, alt text, description, and guide price.
+
+JavaScript creates portfolio card elements, adds the required Swiper slide class, inserts image and text content, and appends the cards to the portfolio carousel wrapper.
+
+After the portfolio slides are rendered, Swiper is initialised on the portfolio carousel. This order is important because the carousel needs the slide elements to exist in the DOM before it can calculate slide widths and enable swipe behaviour.
 
 **JavaScript concepts demonstrated:**
 
-- DOM selection
+- JavaScript arrays and objects
+- Dynamic DOM rendering
+- DOM element creation
+- `for...of` loops
+- Text and image attribute updates
+- Reusable render functions
+- External library initialisation
+- Defensive checks before running code
+- Preparing code for future JSON/fetch-based data loading
+
+### Portfolio Filtering
+
+Portfolio filtering will use the selected category to create a filtered array of portfolio items. The same render function will then be reused to display only matching items.
+
+**JavaScript concepts demonstrated:**
+
 - Event listeners
+- Array filtering
 - Conditional logic
-- Class manipulation
-- Dataset attributes
-- Service-card-to-portfolio linking
-- Counting matching items
-- Calculating visible item ranges
-- Updating text content dynamically
-- Button state control
-- Dynamic button text update
-- User-controlled content reveal
-- Responsive behaviour consideration
-- User feedback
+- Class manipulation for active filter states
+- Re-rendering DOM content
+- Updating Swiper after dynamic content changes
 
 ### Image Modal Gallery
 
@@ -660,7 +668,7 @@ The scroll animation starts when a relevant section enters the viewport.
 
 ### Optional / Supporting Technologies
 
-- Swiper.js — used to create the responsive services carousel with reliable touch/swipe behaviour on mobile devices.
+- Swiper.js — used to create responsive carousels for the Services and Portfolio sections, improving mobile swipe behaviour and keeping visual content compact on smaller screens.
 - Google Fonts
 - Git
 - GitHub
@@ -707,7 +715,7 @@ This includes:
 - Testing form validation.
 - Opening and closing the modal gallery.
 - Using the interactive estimate builder.
-- Testing the portfolio filter, View More control, and visible item counter.
+- Testing the portfolio filter and carousel behaviour.
 - Checking responsive layout in DevTools.
 - Checking the deployed version against the local version.
 
@@ -738,17 +746,17 @@ This includes:
 | Services Carousel      | Click pagination bullet                               | Matching service slide is shown                                                              | Not tested yet | Pending |
 | Services Carousel      | View services carousel on tablet and desktop          | Correct number of service cards is visible                                                   | Not tested yet | Pending |
 | Services               | Click Add to estimate on a service card               | Service is added to the guide estimate                                                       | Not tested yet | Pending |
-| Portfolio Section      | View initial portfolio grid                           | A limited number of portfolio items is displayed                                             | Not tested yet | Pending |
-| Portfolio Filter       | Click “Balloon Arches”                                | Only balloon arch items are shown                                                            | Not tested yet | Pending |
-| Portfolio Filter       | Click “Number Stacks”                                 | Only number stack items are shown                                                            | Not tested yet | Pending |
-| Portfolio Filter       | Click “Backdrops”                                     | Only backdrop items are shown                                                                | Not tested yet | Pending |
-| Portfolio Filter       | Click “All”                                           | First limited group of all portfolio items is shown                                          | Not tested yet | Pending |
-| Portfolio Filter       | Select a new category                                 | Initial limited number of matching items is shown and counter resets                         | Not tested yet | Pending |
-| Portfolio View More    | Click “View More”                                     | Current portfolio group is replaced with the next matching group                             | Not tested yet | Pending |
-| Portfolio View More    | Reach the last matching group                         | Button text changes from “View More” to “View First”                                         | Not tested yet | Pending |
-| Portfolio View More    | Click “View First”                                    | First matching portfolio group is shown and counter resets                                   | Not tested yet | Pending |
-| Portfolio Counter      | View initial portfolio grid                           | Counter shows the current item range, for example “Showing 1–6 of 18”                        | Not tested yet | Pending |
-| Portfolio Counter      | Click “View More”                                     | Counter updates to the next visible range                                                    | Not tested yet | Pending |
+| Portfolio Section      | View portfolio section                                | Portfolio carousel is displayed with rendered portfolio cards                                | Not tested yet | Pending |
+| Portfolio Rendering    | Load the page                                         | Portfolio cards are rendered dynamically from JavaScript data                                | Not tested yet | Pending |
+| Portfolio Carousel     | Swipe portfolio carousel on mobile                    | Carousel moves through portfolio items                                                       | Not tested yet | Pending |
+| Portfolio Carousel     | Click carousel navigation buttons                     | Previous or next portfolio item is shown                                                     | Not tested yet | Pending |
+| Portfolio Carousel     | Click pagination bullet                               | Matching portfolio slide is shown                                                            | Not tested yet | Pending |
+| Portfolio Carousel     | View portfolio on tablet and desktop                  | Correct number of portfolio cards is visible                                                 | Not tested yet | Pending |
+| Portfolio Filter       | Click “Balloon Arches”                                | Only balloon arch portfolio items are shown in the carousel                                  | Not tested yet | Pending |
+| Portfolio Filter       | Click “Number Stacks”                                 | Only number stack portfolio items are shown in the carousel                                  | Not tested yet | Pending |
+| Portfolio Filter       | Click “Backdrops”                                     | Only backdrop portfolio items are shown in the carousel                                      | Not tested yet | Pending |
+| Portfolio Filter       | Click “All”                                           | All portfolio items are available in the carousel                                            | Not tested yet | Pending |
+| Portfolio Filter       | Select a new category                                 | Carousel resets to the first matching item                                                   | Not tested yet | Pending |
 | Image Modal            | Click portfolio image                                 | Larger image opens                                                                           | Not tested yet | Pending |
 | Image Modal            | Click close button                                    | Modal closes                                                                                 | Not tested yet | Pending |
 | Image Modal            | Press Escape key                                      | Modal closes                                                                                 | Not tested yet | Pending |
@@ -848,9 +856,9 @@ The deployed website will be tested using Lighthouse in Chrome DevTools.
 
 ![Portfolio section screenshot](assets/testing/us3-portfolio.webp)
 
-#### US4 — Filter and View More Portfolio Examples
+#### US4 — Filter Portfolio Examples
 
-![Portfolio filter, View More and counter screenshot](assets/testing/us4-portfolio-filter-view-more.webp)
+![Portfolio filter and carousel screenshot](assets/testing/us4-portfolio-filter-carousel.webp)
 
 #### US5 — View Images Clearly
 
@@ -876,18 +884,11 @@ The deployed website will be tested using Lighthouse in Chrome DevTools.
 
 ## Bugs
 
-| Bug                                                  | Cause                                        | Fix                                                          | Status   |
-| ---------------------------------------------------- | -------------------------------------------- | ------------------------------------------------------------ | -------- |
-| Portfolio cards did not return after selecting “All” | Incorrect condition in filter function       | Updated logic to check for `all` category                    | ✅ Fixed |
-| Modal image remained open after clicking outside     | Missing event listener on overlay            | Added click listener to close modal when overlay is selected | ✅ Fixed |
-| Estimate total returned `NaN`                        | Selected price values were stored as strings | Used `Number()` before calculation                           | ✅ Fixed |
-| Form accepted empty name field                       | Missing presence check                       | Added validation for required fields                         | ✅ Fixed |
-| Balloon animation repeated too often                 | Observer did not unobserve section           | Added `observer.unobserve()` after first animation           | ✅ Fixed |
-| Mobile cards had uneven spacing                      | CSS gap not applied consistently             | Standardised card grid spacing                               | ✅ Fixed |
-
 ### Known Bugs
 
-At the time of final deployment, there are no known unfixed bugs.
+At this stage of development, portfolio images may show broken image icons if the image file paths in `portfolio-data.js` do not match files in `assets/images/portfolio/`. This is a data/assets issue rather than a rendering issue.
+
+Further bugs will be documented as features are implemented and tested.
 
 ---
 
@@ -937,7 +938,7 @@ The 404 page includes a clear message and a button that returns the user to the 
 
 ### Attribution
 
-- **Swiper.js:** Used for the responsive services carousel to provide reliable mobile swipe behaviour, pagination, navigation controls, and responsive slide layout. Swiper was loaded from CDN and configured with custom JavaScript for this project.
+- **Swiper.js:** Used for the responsive Services and Portfolio carousels to provide reliable mobile swipe behaviour, pagination, navigation controls, and responsive slide layouts. Swiper was loaded from CDN and configured with custom JavaScript for this project.
 - **Google Fonts:** Used for typography.
 - **Font Awesome / Bootstrap Icons:** Used for decorative and interface icons.
 - **Unsplash / Pexels / Own Images:** Used for event decoration images.
@@ -1016,7 +1017,10 @@ assets/
   css/
     style.css
   js/
+    portfolio-carousel.js
+    portfolio-data.js
     script.js
+    services-carousel.js
   images/
     hero/
     portfolio/
