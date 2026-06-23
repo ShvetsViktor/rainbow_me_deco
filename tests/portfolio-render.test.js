@@ -10,7 +10,9 @@ describe('Portfolio rendering', () => {
   });
 
   test('renders one portfolio slide', () => {
-    renderPortfolioSlides([{}]);
+    const items = [{}];
+
+    renderPortfolioSlides(items);
 
     expect(document.querySelectorAll('.portfolio-card.swiper-slide').length).toBe(1);
   });
@@ -57,6 +59,18 @@ describe('Portfolio rendering', () => {
     expect(document.querySelector('.portfolio-card p').textContent).toBe(
       'A soft pastel balloon arch created for a private celebration.'
     );
+  });
+
+  test('renders portfolio card action area', () => {
+    const items = [
+      {
+        price: 145,
+      },
+    ];
+
+    renderPortfolioSlides(items);
+
+    expect(document.querySelector('.portfolio-card .portfolio-card-actions')).not.toBeNull();
   });
 });
 
