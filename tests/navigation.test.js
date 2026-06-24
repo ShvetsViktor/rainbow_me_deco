@@ -1,3 +1,5 @@
+const { initMobileNavigation } = require('../assets/js/navigation');
+
 describe('Main navigation tests', () => {
   test('toggles mobile menu when menu button is clicked', () => {
     document.body.innerHTML = `
