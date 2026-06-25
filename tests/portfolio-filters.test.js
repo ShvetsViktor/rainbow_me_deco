@@ -89,20 +89,29 @@ describe('Portfolio filtering', () => {
     expect(balloonArchesButton.getAttribute('aria-pressed')).toBe('true');
   });
 
-  test('calls filter change handler with selected category when a filter is clicked', () => {
+  test('passes filtered portfolio items to render function when a filter button is clicked', () => {
     document.body.innerHTML = `
     <div class="portfolio-filters" aria-label="Portfolio filters"></div>
+
+    <div class="swiper portfolio-swiper">
+      <div class="swiper-wrapper"></div>
+    </div>
   `;
 
-    const handleFilterChange = jest.fn();
+    const items = [
+      { title: 'Pastel Balloon Arch', category: 'balloon-arches' },
+      { title: 'Birthday Number Stack', category: 'number-stacks' },
+    ];
+
+    const renderSlides = jest.fn();
 
     renderPortfolioFilterButtons(portfolioFilters);
-    initPortfolioFilters(handleFilterChange);
+    initPortfolioFilterRendering(items, renderSlides);
 
     const balloonArchesButton = document.querySelector('.portfolio-filter-button[data-category="balloon-arches"]');
 
     balloonArchesButton.click();
 
-    expect(handleFilterChange).toHaveBeenCalledWith('balloon-arches');
+    expect(renderSlides).toHaveBeenCalledWith([{ title: 'Pastel Balloon Arch', category: 'balloon-arches' }]);
   });
 });
