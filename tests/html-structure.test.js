@@ -111,10 +111,10 @@ describe('Services section structure', () => {
 
     expect(serviceImages.length).toBe(6);
 
-    serviceImages.forEach((image) => {
+    for (const image of serviceImages) {
       expect(image.hasAttribute('alt')).toBe(true);
       expect(image.getAttribute('alt').length > 0).toBe(true);
-    });
+    }
   });
 
   test('each service card contains an add to estimate button', () => {

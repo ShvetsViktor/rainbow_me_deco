@@ -17,8 +17,8 @@ describe('Swiper helpers', () => {
 
     const paginationBullets = document.querySelectorAll('.swiper-pagination-bullet');
 
-    paginationBullets.forEach((bullet) => {
+    for (const bullet of paginationBullets) {
       expect(bullet.getAttribute('tabindex')).toBe('-1');
-    });
+    }
   });
 });

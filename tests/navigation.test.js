@@ -53,7 +53,7 @@ describe('Main navigation behavior', () => {
     const nav = document.querySelector('header nav');
     const navLinks = document.querySelectorAll('header nav a');
 
-    navLinks.forEach((link) => {
+    for (const link of navLinks) {
       menuButton.click();
 
       expect(menuButton.getAttribute('aria-expanded')).toBe('true');
@@ -63,6 +63,6 @@ describe('Main navigation behavior', () => {
 
       expect(menuButton.getAttribute('aria-expanded')).toBe('false');
       expect(nav.classList.contains('is-open')).toBe(false);
-    });
+    }
   });
 });

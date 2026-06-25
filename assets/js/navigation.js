@@ -17,12 +17,12 @@ function initMobileNavigation() {
     }
   });
 
-  navLinks.forEach((link) => {
+  for (const link of navLinks) {
     link.addEventListener('click', () => {
       nav.classList.remove('is-open');
       menuButton.setAttribute('aria-expanded', 'false');
     });
-  });
+  }
 }
 
 // Export functions for Jest tests when this file is loaded in a Node environment.

@@ -5,9 +5,9 @@
 function removePaginationBulletsFromTabOrder(swiperElement) {
   const paginationBullets = swiperElement.querySelectorAll('.swiper-pagination-bullet');
 
-  paginationBullets.forEach((bullet) => {
+  for (const bullet of paginationBullets) {
     bullet.setAttribute('tabindex', '-1');
-  });
+  }
 }
 
 // Export functions for Jest tests when this file is loaded in a Node environment.
