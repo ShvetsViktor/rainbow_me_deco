@@ -53,4 +53,24 @@ describe('Portfolio filtering', () => {
     expect(filterButtons[6].textContent).toBe('Custom Setups');
     expect(filterButtons[6].getAttribute('data-category')).toBe('custom-setups');
   });
+
+  test('sets all filter button as active by default', () => {
+    document.body.innerHTML = `
+    <div class="portfolio-filters" aria-label="Portfolio filters"></div>
+  `;
+
+    const categories = [
+      { label: 'All', category: 'all' },
+      { label: 'Balloon Arches', category: 'balloon-arches' },
+      { label: 'Number Stacks', category: 'number-stacks' },
+    ];
+
+    renderPortfolioFilterButtons(categories);
+
+    const allButton = document.querySelector('.portfolio-filter-button[data-category="all"]');
+    const balloonArchesButton = document.querySelector('.portfolio-filter-button[data-category="balloon-arches"]');
+
+    expect(allButton.getAttribute('aria-pressed')).toBe('true');
+    expect(balloonArchesButton.getAttribute('aria-pressed')).toBe('false');
+  });
 });
