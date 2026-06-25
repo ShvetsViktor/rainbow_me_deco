@@ -1,4 +1,8 @@
 function filterPortfolioItems(items, category) {
+  if (category === 'all') {
+    return items;
+  }
+
   const filteredItems = [];
 
   for (let item of items) {
