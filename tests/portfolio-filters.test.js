@@ -88,4 +88,21 @@ describe('Portfolio filtering', () => {
     expect(allButton.getAttribute('aria-pressed')).toBe('false');
     expect(balloonArchesButton.getAttribute('aria-pressed')).toBe('true');
   });
+
+  test('calls filter change handler with selected category when a filter is clicked', () => {
+    document.body.innerHTML = `
+    <div class="portfolio-filters" aria-label="Portfolio filters"></div>
+  `;
+
+    const handleFilterChange = jest.fn();
+
+    renderPortfolioFilterButtons(portfolioFilters);
+    initPortfolioFilters(handleFilterChange);
+
+    const balloonArchesButton = document.querySelector('.portfolio-filter-button[data-category="balloon-arches"]');
+
+    balloonArchesButton.click();
+
+    expect(handleFilterChange).toHaveBeenCalledWith('balloon-arches');
+  });
 });
