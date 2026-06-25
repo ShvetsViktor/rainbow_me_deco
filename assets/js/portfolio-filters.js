@@ -62,11 +62,27 @@ function initPortfolioFilters() {
   }
 }
 
+function initPortfolioFilterRendering(items, renderSlides) {
+  const filterButtons = document.querySelectorAll('.portfolio-filter-button');
+
+  for (let button of filterButtons) {
+    button.addEventListener('click', () => {
+      const selectedCategory = button.getAttribute('data-category');
+      const filteredItems = filterPortfolioItems(items, selectedCategory);
+      const portfolioWrapper = document.querySelector('.portfolio-swiper .swiper-wrapper');
+
+      portfolioWrapper.innerHTML = '';
+      renderSlides(filteredItems);
+    });
+  }
+}
+
 if (typeof module !== 'undefined') {
   module.exports = {
     portfolioFilters,
     filterPortfolioItems,
     renderPortfolioFilterButtons,
     initPortfolioFilters,
+    initPortfolioFilterRendering,
   };
 }

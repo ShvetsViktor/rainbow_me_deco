@@ -25,4 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof initPortfolioFilters === 'function') {
     initPortfolioFilters();
   }
+
+  if (
+    typeof initPortfolioFilterRendering === 'function' &&
+    Array.isArray(portfolioItems) &&
+    typeof renderPortfolioSlides === 'function'
+  ) {
+    initPortfolioFilterRendering(portfolioItems, renderPortfolioSlides);
+  }
 });

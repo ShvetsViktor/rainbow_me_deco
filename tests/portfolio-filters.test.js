@@ -3,6 +3,7 @@ const {
   renderPortfolioFilterButtons,
   portfolioFilters,
   initPortfolioFilters,
+  initPortfolioFilterRendering,
 } = require('../assets/js/portfolio-filters');
 
 describe('Portfolio filtering', () => {
