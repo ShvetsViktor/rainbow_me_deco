@@ -1,6 +1,7 @@
 function initMobileNavigation() {
   const menuButton = document.querySelector('header .menu-toggle');
   const nav = document.querySelector('header nav');
+  const navLinks = document.querySelectorAll('header nav a');
 
   if (!menuButton || !nav) {
     return;
@@ -14,6 +15,13 @@ function initMobileNavigation() {
       nav.classList.remove('is-open');
       menuButton.setAttribute('aria-expanded', 'false');
     }
+  });
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('is-open');
+      menuButton.setAttribute('aria-expanded', 'false');
+    });
   });
 }
 
