@@ -46,10 +46,27 @@ function renderPortfolioFilterButtons(filters) {
   }
 }
 
+function initPortfolioFilters() {
+  const filterButtons = document.querySelectorAll('.portfolio-filter-button');
+
+  for (let button of filterButtons) {
+    button.addEventListener('click', () => {
+      for (let filterButton of filterButtons) {
+        filterButton.classList.remove('is-active');
+        filterButton.setAttribute('aria-pressed', 'false');
+      }
+
+      button.classList.add('is-active');
+      button.setAttribute('aria-pressed', 'true');
+    });
+  }
+}
+
 if (typeof module !== 'undefined') {
   module.exports = {
     portfolioFilters,
     filterPortfolioItems,
     renderPortfolioFilterButtons,
+    initPortfolioFilters,
   };
 }
