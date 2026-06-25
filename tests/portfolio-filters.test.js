@@ -1,3 +1,5 @@
+const { filterPortfolioItems } = require('../assets/js/portfolio-filters');
+
 describe('Portfolio filtering', () => {
   test('filters portfolio items by category', () => {
     const items = [

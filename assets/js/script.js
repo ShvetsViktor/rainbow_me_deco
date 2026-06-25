@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof initPortfolioCarousel === 'function') {
     initPortfolioCarousel();
   }
+
   if (typeof initMobileNavigation === 'function') {
     initMobileNavigation();
   }
