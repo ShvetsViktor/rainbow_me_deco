@@ -93,6 +93,14 @@ function initPortfolioCarousel() {
         spaceBetween: 24,
       },
     },
+    on: {
+      init() {
+        removePaginationBulletsFromTabOrder(portfolioSwiperElement);
+      },
+      paginationUpdate() {
+        removePaginationBulletsFromTabOrder(portfolioSwiperElement);
+      },
+    },
   });
 }
 

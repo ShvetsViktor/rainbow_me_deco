@@ -1,3 +1,5 @@
+const { removePaginationBulletsFromTabOrder } = require('../assets/js/swiper-helpers');
+
 describe('Swiper helpers', () => {
   test('removes pagination bullets from keyboard tab order', () => {
     document.body.innerHTML = `

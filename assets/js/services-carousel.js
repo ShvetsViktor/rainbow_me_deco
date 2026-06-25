@@ -34,5 +34,13 @@ function initServicesCarousel() {
         spaceBetween: 24,
       },
     },
+    on: {
+      init() {
+        removePaginationBulletsFromTabOrder(servicesSwiperElement);
+      },
+      paginationUpdate() {
+        removePaginationBulletsFromTabOrder(servicesSwiperElement);
+      },
+    },
   });
 }
