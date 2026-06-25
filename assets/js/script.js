@@ -21,4 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof renderPortfolioFilterButtons === 'function' && Array.isArray(portfolioFilters)) {
     renderPortfolioFilterButtons(portfolioFilters);
   }
+
+  if (typeof initPortfolioFilters === 'function') {
+    initPortfolioFilters();
+  }
 });
