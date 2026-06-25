@@ -1,3 +1,13 @@
+const portfolioFilters = [
+  { label: 'All', category: 'all' },
+  { label: 'Balloon Arches', category: 'balloon-arches' },
+  { label: 'Number Stacks', category: 'number-stacks' },
+  { label: 'Backdrops', category: 'backdrops' },
+  { label: 'Table Decor', category: 'table-decor' },
+  { label: 'Business Decor', category: 'business-decor' },
+  { label: 'Custom Setups', category: 'custom-setups' },
+];
+
 function filterPortfolioItems(items, category) {
   if (category === 'all') {
     return items;
@@ -14,22 +24,32 @@ function filterPortfolioItems(items, category) {
   return filteredItems;
 }
 
-function renderPortfolioFilterButtons(categories) {
+function renderPortfolioFilterButtons(filters) {
   const target = document.querySelector('.portfolio-filters');
 
-  for (let category of categories) {
+  for (let filter of filters) {
     const button = document.createElement('button');
 
     button.classList.add('portfolio-filter-button');
     button.type = 'button';
-    button.textContent = category.label;
-    button.setAttribute('data-category', category.value);
+    button.textContent = filter.label;
+    button.setAttribute('data-category', filter.category);
+
+    if (filter.category === 'all') {
+      button.classList.add('is-active');
+      button.setAttribute('aria-pressed', 'true');
+    } else {
+      button.setAttribute('aria-pressed', 'false');
+    }
 
     target.appendChild(button);
   }
 }
 
-// Export functions for Jest tests when this file is loaded in a Node environment.
 if (typeof module !== 'undefined') {
-  module.exports = { filterPortfolioItems, renderPortfolioFilterButtons };
+  module.exports = {
+    portfolioFilters,
+    filterPortfolioItems,
+    renderPortfolioFilterButtons,
+  };
 }

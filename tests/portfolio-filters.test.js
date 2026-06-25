@@ -1,4 +1,8 @@
-const { filterPortfolioItems, renderPortfolioFilterButtons } = require('../assets/js/portfolio-filters');
+const {
+  filterPortfolioItems,
+  renderPortfolioFilterButtons,
+  portfolioFilters,
+} = require('../assets/js/portfolio-filters');
 
 describe('Portfolio filtering', () => {
   test('filters portfolio items by category', () => {
@@ -28,22 +32,21 @@ describe('Portfolio filtering', () => {
     expect(filteredItems).toEqual(items);
   });
 
+  test('portfolio filters contain all required filter categories', () => {
+    expect(portfolioFilters.length).toBe(7);
+    expect(portfolioFilters[0]).toEqual({ label: 'All', category: 'all' });
+    expect(portfolioFilters[6]).toEqual({
+      label: 'Custom Setups',
+      category: 'custom-setups',
+    });
+  });
+
   test('renders portfolio filter buttons', () => {
     document.body.innerHTML = `
-    <div class="portfolio-filters" aria-label="Portfolio filters"></div>
-  `;
+      <div class="portfolio-filters" aria-label="Portfolio filters"></div>
+    `;
 
-    const categories = [
-      { label: 'All', value: 'all' },
-      { label: 'Balloon Arches', value: 'balloon-arches' },
-      { label: 'Number Stacks', value: 'number-stacks' },
-      { label: 'Backdrops', value: 'backdrops' },
-      { label: 'Table Decor', value: 'table-decor' },
-      { label: 'Business Decor', value: 'business-decor' },
-      { label: 'Custom Setups', value: 'custom-setups' },
-    ];
-
-    renderPortfolioFilterButtons(categories);
+    renderPortfolioFilterButtons(portfolioFilters);
 
     const filterButtons = document.querySelectorAll('.portfolio-filter-button');
 
@@ -56,16 +59,10 @@ describe('Portfolio filtering', () => {
 
   test('sets all filter button as active by default', () => {
     document.body.innerHTML = `
-    <div class="portfolio-filters" aria-label="Portfolio filters"></div>
-  `;
+      <div class="portfolio-filters" aria-label="Portfolio filters"></div>
+    `;
 
-    const categories = [
-      { label: 'All', category: 'all' },
-      { label: 'Balloon Arches', category: 'balloon-arches' },
-      { label: 'Number Stacks', category: 'number-stacks' },
-    ];
-
-    renderPortfolioFilterButtons(categories);
+    renderPortfolioFilterButtons(portfolioFilters);
 
     const allButton = document.querySelector('.portfolio-filter-button[data-category="all"]');
     const balloonArchesButton = document.querySelector('.portfolio-filter-button[data-category="balloon-arches"]');

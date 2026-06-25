@@ -17,4 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof initMobileNavigation === 'function') {
     initMobileNavigation();
   }
+
+  if (typeof renderPortfolioFilterButtons === 'function' && Array.isArray(portfolioFilters)) {
+    renderPortfolioFilterButtons(portfolioFilters);
+  }
 });
