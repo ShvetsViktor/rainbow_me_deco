@@ -88,4 +88,45 @@ describe('Portfolio filtering', () => {
     expect(allButton.getAttribute('aria-pressed')).toBe('false');
     expect(balloonArchesButton.getAttribute('aria-pressed')).toBe('true');
   });
+
+  test('renders filtered portfolio cards when a filter button is clicked', () => {
+    document.body.innerHTML = `
+    <div class="portfolio-filters" aria-label="Portfolio filters"></div>
+
+    <div class="swiper portfolio-swiper">
+      <div class="swiper-wrapper"></div>
+    </div>
+  `;
+
+    const items = [
+      {
+        title: 'Pastel Balloon Arch',
+        category: 'balloon-arches',
+        image: 'assets/images/portfolio/balloon-arches-1.avif',
+        alt: 'Pastel balloon arch decoration',
+        description: 'A pastel balloon arch.',
+        price: 120,
+      },
+      {
+        title: 'Birthday Number Stack',
+        category: 'number-stacks',
+        image: 'assets/images/portfolio/number-stacks-1.avif',
+        alt: 'Birthday number stack decoration',
+        description: 'A number stack decoration.',
+        price: 65,
+      },
+    ];
+
+    renderPortfolioFilterButtons(portfolioFilters);
+    initPortfolioFilters(items);
+
+    const balloonArchesButton = document.querySelector('.portfolio-filter-button[data-category="balloon-arches"]');
+
+    balloonArchesButton.click();
+
+    const renderedCards = document.querySelectorAll('.portfolio-card');
+
+    expect(renderedCards.length).toBe(1);
+    expect(renderedCards[0].querySelector('h3').textContent).toBe('Pastel Balloon Arch');
+  });
 });
