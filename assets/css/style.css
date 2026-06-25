@@ -60,6 +60,10 @@ ol {
   list-style: none;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-body);
   font-size: var(--text-base);
@@ -126,6 +130,7 @@ select {
 
 section {
   padding-block: var(--section-padding);
+  scroll-margin-top: 72px;
 }
 
 .container {
