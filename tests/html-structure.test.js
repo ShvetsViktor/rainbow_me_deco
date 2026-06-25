@@ -149,7 +149,7 @@ describe('Portfolio section structure', () => {
   });
 });
 
-describe('Page layout structure', () => {
+describe('Navbar layout structure', () => {
   test('navbar has link to services section', () => {
     const servicesLink = document.querySelector('header nav a[href="#services"]');
 
@@ -196,5 +196,17 @@ describe('Page layout structure', () => {
 
     expect(menuButton).not.toBeNull();
     expect(menuButton.getAttribute('type')).toBe('button');
+  });
+
+  test('navbar has logo link to hero section', () => {
+    const logoLink = document.querySelector('header .logo[href="#hero"]');
+    const logoImage = document.querySelector('header .logo img');
+
+    expect(logoLink).not.toBeNull();
+    expect(logoLink.getAttribute('aria-label')).toBe('Rainbow Me home');
+
+    expect(logoImage).not.toBeNull();
+    expect(logoImage.getAttribute('src')).toBe('assets/images/logo/rainbow_me_logo.png');
+    expect(logoImage.getAttribute('alt')).toBe('Rainbow Me');
   });
 });

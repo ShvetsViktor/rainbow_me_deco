@@ -65,7 +65,7 @@ body {
   font-size: var(--text-base);
   line-height: 1.5;
   color: var(--color-text);
-  background-color: var(--color-background);
+  background-color: var(--color-scheme-3-background);
   overflow-x: hidden;
 }
 
@@ -434,6 +434,79 @@ section {
 }
 
 /* ============================================
+   HEADER / NAVIGATION
+   ============================================ */
+
+.nav-layout {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+  padding-inline: var(--page-padding);
+  gap: 24px;
+  background-color: var(--color-scheme-3-background);
+}
+
+.logo img {
+  width: 60px;
+  height: auto;
+}
+
+.menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+header nav {
+  display: none;
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  z-index: 999;
+
+  padding: 20px var(--page-padding) 24px;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 12px 30px var(--opacity-neutral-darkest-15);
+}
+
+header nav.is-open {
+  display: block;
+}
+
+header nav ul {
+  display: grid;
+  gap: 4px;
+}
+
+header nav a {
+  display: block;
+  padding-block: 12px;
+  font-size: 18px;
+}
+
+header nav a:hover,
+header nav a:focus-visible {
+  color: var(--color-primary);
+}
+
+/* ============================================
    RESPONSIVE LAYOUT
    ============================================ */
 
@@ -479,6 +552,29 @@ section {
   .portfolio-swiper .swiper-button-prev,
   .portfolio-swiper .swiper-button-next {
     top: 30%;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  header nav {
+    position: static;
+    display: block;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+  }
+
+  header nav ul {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  header nav a {
+    padding: 0;
   }
 }
 
