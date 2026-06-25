@@ -70,4 +70,21 @@ describe('Portfolio filtering', () => {
     expect(allButton.getAttribute('aria-pressed')).toBe('true');
     expect(balloonArchesButton.getAttribute('aria-pressed')).toBe('false');
   });
+
+  test('updates active filter button when a filter is clicked', () => {
+    document.body.innerHTML = `
+    <div class="portfolio-filters" aria-label="Portfolio filters"></div>
+  `;
+
+    renderPortfolioFilterButtons(portfolioFilters);
+    initPortfolioFilters();
+
+    const allButton = document.querySelector('.portfolio-filter-button[data-category="all"]');
+    const balloonArchesButton = document.querySelector('.portfolio-filter-button[data-category="balloon-arches"]');
+
+    balloonArchesButton.click();
+
+    expect(allButton.getAttribute('aria-pressed')).toBe('false');
+    expect(balloonArchesButton.getAttribute('aria-pressed')).toBe('true');
+  });
 });
