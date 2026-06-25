@@ -15,4 +15,16 @@ describe('Portfolio filtering', () => {
       { title: 'Wedding Entrance Arch', category: 'balloon-arches' },
     ]);
   });
+
+  test('returns all portfolio items when category is all', () => {
+    const items = [
+      { title: 'Pastel Balloon Arch', category: 'balloon-arches' },
+      { title: 'Birthday Number Stack', category: 'number-stacks' },
+      { title: 'Wedding Entrance Arch', category: 'balloon-arches' },
+    ];
+
+    const filteredItems = filterPortfolioItems(items, 'all');
+
+    expect(filteredItems).toEqual(items);
+  });
 });
