@@ -23,16 +23,18 @@ function setupEstimateDom(buttonTitle = 'Pastel Balloon Arch') {
 
     <aside class="estimate-widget" aria-label="Estimate summary" hidden>
       <div class="estimate-widget-content">
-        <p class="estimate-widget-title">Estimate</p>
+        <div>
+          <p class="estimate-widget-title">Estimated total</p>
 
-        <p class="estimate-widget-summary">
-          <span class="estimate-total">£0</span>
-          <span>·</span>
-          <span class="estimate-count">0 items</span>
-        </p>
+          <p class="estimate-widget-summary">
+            <span class="estimate-total">£0</span>
+            <span class="estimate-count" hidden>0 items</span>
+          </p>
+        </div>
 
-        <button class="button button-secondary estimate-view-button" type="button">
-          View estimate
+        <button class="button button-primary estimate-view-button" type="button">
+          <span>View estimate</span>
+          <span class="estimate-count-badge">0</span>
         </button>
       </div>
     </aside>
@@ -40,9 +42,27 @@ function setupEstimateDom(buttonTitle = 'Pastel Balloon Arch') {
     <div class="estimate-backdrop" hidden></div>
 
     <div class="estimate-panel" hidden>
-      <button class="estimate-panel-close" type="button">Close</button>
-      <h2>Your estimate</h2>
-      <ul class="estimate-list"></ul>
+      <div class="estimate-panel-header">
+        <div>
+          <h2>Your Estimate</h2>
+          <p>Review your selected decorations and request a quote.</p>
+        </div>
+
+        <button class="estimate-panel-close" type="button" aria-label="Close estimate panel">×</button>
+      </div>
+
+      <ul class="estimate-list" aria-label="Selected decorations"></ul>
+
+      <div class="estimate-panel-footer">
+        <div>
+          <p class="estimate-panel-total-label">Estimated total</p>
+          <p class="estimate-panel-total">£0</p>
+        </div>
+
+        <button class="button button-primary estimate-request-button" type="button">
+          Request a Quote
+        </button>
+      </div>
     </div>
   `;
 
@@ -54,12 +74,12 @@ function setupEstimateDom(buttonTitle = 'Pastel Balloon Arch') {
     estimateWidget: document.querySelector('.estimate-widget'),
     estimateTotal: document.querySelector('.estimate-total'),
     estimateCount: document.querySelector('.estimate-count'),
+    estimateCountBadge: document.querySelector('.estimate-count-badge'),
     viewEstimateButton: document.querySelector('.estimate-view-button'),
     closeButton: document.querySelector('.estimate-panel-close'),
     estimatePanel: document.querySelector('.estimate-panel'),
-    estimateBackdrop: document.querySelector('.estimate-backdrop'),
-    estimateCountBadge: document.querySelector('.estimate-count-badge'),
     estimatePanelTotal: document.querySelector('.estimate-panel-total'),
+    estimateBackdrop: document.querySelector('.estimate-backdrop'),
   };
 }
 
