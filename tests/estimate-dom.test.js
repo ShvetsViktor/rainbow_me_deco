@@ -120,3 +120,18 @@ test('closes estimate panel when close button is clicked', () => {
 
   expect(estimatePanel.hidden).toBe(true);
 });
+
+test('closes estimate panel when Escape key is pressed', () => {
+  const { addButton, viewEstimateButton, estimatePanel } = setupEstimateDom();
+
+  addButton.click();
+  viewEstimateButton.click();
+
+  expect(estimatePanel.hidden).toBe(false);
+
+  const escapeKeyEvent = new KeyboardEvent('keydown', { key: 'Escape' });
+
+  document.dispatchEvent(escapeKeyEvent);
+
+  expect(estimatePanel.hidden).toBe(true);
+});
