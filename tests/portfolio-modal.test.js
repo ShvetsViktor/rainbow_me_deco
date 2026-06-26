@@ -38,3 +38,31 @@ test('opens portfolio image modal when portfolio image button is clicked', () =>
   expect(modalImage.getAttribute('src')).toBe(testPortfolioItems[0].image);
   expect(modalImage.getAttribute('alt')).toBe(testPortfolioItems[0].alt);
 });
+
+test('closes portfolio image modal when close button is clicked', () => {
+  document.body.innerHTML = `
+    <div class="swiper portfolio-swiper">
+      <div class="swiper-wrapper"></div>
+    </div>
+
+    <div class="portfolio-modal" hidden>
+      <button class="portfolio-modal-close" type="button">Close</button>
+      <img class="portfolio-modal-image" src="" alt="" />
+    </div>
+  `;
+
+  renderPortfolioSlides(testPortfolioItems);
+  initPortfolioImageModal();
+
+  const imageButton = document.querySelector('.portfolio-image-button');
+  const closeButton = document.querySelector('.portfolio-modal-close');
+  const modal = document.querySelector('.portfolio-modal');
+
+  imageButton.click();
+
+  expect(modal.hidden).toBe(false);
+
+  closeButton.click();
+
+  expect(modal.hidden).toBe(true);
+});
