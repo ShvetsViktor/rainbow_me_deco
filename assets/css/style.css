@@ -272,7 +272,7 @@ section {
 
 .service-card h3,
 .service-card p,
-.service-card .add-to-estimate {
+.service-card .service-card-actions {
   position: relative;
   z-index: 2;
 }
@@ -288,15 +288,28 @@ section {
   color: var(--color-surface);
 }
 
+.service-card-actions {
+  display: grid;
+  gap: 12px;
+}
+
+.service-card .view-portfolio-category,
 .service-card .add-to-estimate {
-  justify-self: start;
-  padding: 0;
-  border: none;
-  background: none;
-  color: var(--color-surface);
-  font-size: 14px;
-  font-weight: 600;
+  width: 100%;
+  min-height: 48px;
   cursor: pointer;
+}
+
+.service-card .view-portfolio-category {
+  background-color: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--color-border);
+  border-bottom: 4px solid var(--opacity-neutral-darkest-15);
+  color: var(--color-primary);
+}
+
+.service-card .add-to-estimate {
+  justify-content: space-between;
+  padding-inline: 24px;
 }
 
 /* ============================================
@@ -431,6 +444,19 @@ section {
   line-height: 1;
 }
 
+.portfolio-card .add-to-estimate .button-icon,
+.service-card .add-to-estimate .button-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  padding-bottom: 3px;
+  padding-left: 1px;
+}
+
 .services-swiper .swiper-button-prev,
 .services-swiper .swiper-button-next,
 .portfolio-swiper .swiper-button-prev,
@@ -515,7 +541,7 @@ header nav a:focus-visible {
    RESPONSIVE LAYOUT
    ============================================ */
 
-@media (max-width: 325px) {
+@media (max-width: 350px) {
   .portfolio-card .add-to-estimate span:last-child {
     display: none;
   }
@@ -527,6 +553,22 @@ header nav a:focus-visible {
 
   .portfolio-card .add-to-estimate::after {
     content: 'Add';
+  }
+}
+
+@media (min-width: 415px) {
+  .service-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .service-card .view-portfolio-category,
+  .service-card .add-to-estimate {
+    flex: 0 1 204px;
+    width: 204px;
+    max-width: 100%;
   }
 }
 
