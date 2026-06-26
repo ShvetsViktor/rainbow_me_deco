@@ -148,3 +148,18 @@ test('shows estimate backdrop when estimate panel is opened', () => {
   expect(estimatePanel.hidden).toBe(false);
   expect(estimateBackdrop.hidden).toBe(false);
 });
+
+test('closes estimate panel when backdrop is clicked', () => {
+  const { addButton, viewEstimateButton, estimatePanel, estimateBackdrop } = setupEstimateDom();
+
+  addButton.click();
+  viewEstimateButton.click();
+
+  expect(estimatePanel.hidden).toBe(false);
+  expect(estimateBackdrop.hidden).toBe(false);
+
+  estimateBackdrop.click();
+
+  expect(estimatePanel.hidden).toBe(true);
+  expect(estimateBackdrop.hidden).toBe(true);
+});
