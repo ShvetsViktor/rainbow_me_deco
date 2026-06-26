@@ -1,4 +1,4 @@
-const { addItemToEstimate, calculateEstimateTotal } = require('../assets/js/estimate');
+const { addItemToEstimate, calculateEstimateTotal, removeItemFromEstimate } = require('../assets/js/estimate');
 
 const testItem = {
   title: 'Pastel Balloon Arch',
@@ -34,4 +34,12 @@ test('calculates estimate total price', () => {
   const total = calculateEstimateTotal(estimateItems);
 
   expect(total).toBe(185);
+});
+
+test('removes item from estimate list', () => {
+  const estimateItems = [testItem, secondTestItem];
+
+  const updatedEstimateItems = removeItemFromEstimate(estimateItems, testItem.title);
+
+  expect(updatedEstimateItems).toEqual([secondTestItem]);
 });
