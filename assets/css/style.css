@@ -790,31 +790,31 @@ section {
 
 .balloon-one {
   left: 8px;
-  background-color: var(--color-primary);
+  background-color: #e94f72;
   animation-delay: 0s;
 }
 
 .balloon-two {
   left: 34px;
-  background-color: var(--color-primary-dark);
+  background-color: #ffd166;
   animation-delay: 0.14s;
 }
 
 .balloon-three {
   left: 60px;
-  background-color: var(--color-heading);
+  background-color: #6ecbff;
   animation-delay: 0.28s;
 }
 
 .balloon-four {
   left: 86px;
-  background-color: #f6a6bc;
+  background-color: #95d67f;
   animation-delay: 0.42s;
 }
 
 .balloon-five {
   left: 112px;
-  background-color: #f7d7e1;
+  background-color: #b58cff;
   animation-delay: 0.56s;
 }
 
