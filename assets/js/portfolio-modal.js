@@ -8,6 +8,10 @@ function initPortfolioImageModal() {
     return;
   }
 
+  function closeModal() {
+    modal.hidden = true;
+  }
+
   for (let imageButton of imageButtons) {
     imageButton.addEventListener('click', () => {
       const image = imageButton.querySelector('img');
@@ -18,13 +22,13 @@ function initPortfolioImageModal() {
     });
   }
 
-  closeButton.addEventListener('click', () => {
-    modal.hidden = true;
-  });
-}
+  closeButton.addEventListener('click', closeModal);
 
-if (typeof module !== 'undefined') {
-  module.exports = { initPortfolioImageModal };
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeModal();
+    }
+  });
 }
 
 if (typeof module !== 'undefined') {
