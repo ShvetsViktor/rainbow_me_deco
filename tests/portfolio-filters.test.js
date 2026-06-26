@@ -139,4 +139,31 @@ describe('Portfolio filtering', () => {
     // Remove the temporary global function so it does not affect other tests.
     delete global.renderPortfolioSlides;
   });
+
+  test('renders all portfolio cards when all filter is clicked', () => {
+    document.body.innerHTML = `
+    <div class="portfolio-filters" aria-label="Portfolio filters"></div>
+
+    <div class="swiper portfolio-swiper">
+      <div class="swiper-wrapper"></div>
+    </div>
+  `;
+
+    global.renderPortfolioSlides = renderPortfolioSlides;
+
+    renderPortfolioFilterButtons(portfolioFilters);
+    initPortfolioFilterRendering(testPortfolioItems);
+
+    const allButton = document.querySelector('.portfolio-filter-button[data-category="all"]');
+
+    allButton.click();
+
+    const renderedCards = document.querySelectorAll('.portfolio-card');
+
+    expect(renderedCards.length).toBe(testPortfolioItems.length);
+    expect(renderedCards[0].querySelector('h3').textContent).toBe('Pastel Balloon Arch');
+    expect(renderedCards[2].querySelector('h3').textContent).toBe('Wedding Entrance Arch');
+
+    delete global.renderPortfolioSlides;
+  });
 });
