@@ -18,6 +18,18 @@ function calculateEstimateTotal(estimateItems) {
   return total;
 }
 
+function removeItemFromEstimate(estimateItems, title) {
+  const updatedEstimateItems = [];
+
+  for (let item of estimateItems) {
+    if (item.title !== title) {
+      updatedEstimateItems.push(item);
+    }
+  }
+
+  return updatedEstimateItems;
+}
+
 if (typeof module !== 'undefined') {
-  module.exports = { addItemToEstimate, calculateEstimateTotal };
+  module.exports = { addItemToEstimate, calculateEstimateTotal, removeItemFromEstimate };
 }
