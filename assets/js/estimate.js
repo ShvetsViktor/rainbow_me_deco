@@ -217,9 +217,15 @@ function initEstimateBuilder(items) {
       price: selectedPrice,
     };
 
+    const previousItemsCount = estimateItems.length;
+
     estimateItems = addItemToEstimate(estimateItems, selectedItem);
 
     updateEstimateWidget();
+
+    if (estimateItems.length > previousItemsCount) {
+      showBalloonAnimation(serviceAddButton);
+    }
   });
 }
 
