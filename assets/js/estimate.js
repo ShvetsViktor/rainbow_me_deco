@@ -37,6 +37,7 @@ function initEstimateBuilder(items) {
   const estimateCount = document.querySelector('.estimate-count');
   const viewEstimateButton = document.querySelector('.estimate-view-button');
   const estimatePanel = document.querySelector('.estimate-panel');
+  const estimateList = document.querySelector('.estimate-list');
 
   if (
     !portfolioWrapper ||
@@ -44,12 +45,30 @@ function initEstimateBuilder(items) {
     !estimateTotal ||
     !estimateCount ||
     !viewEstimateButton ||
-    !estimatePanel
+    !estimatePanel ||
+    !estimateList
   ) {
     return;
   }
 
   let estimateItems = [];
+
+  function renderEstimateList() {
+    estimateList.innerHTML = '';
+
+    for (let item of estimateItems) {
+      const listItem = document.createElement('li');
+
+      listItem.classList.add('estimate-list-item');
+
+      listItem.innerHTML = `
+        <span>${item.title}</span>
+        <span>£${item.price}</span>
+      `;
+
+      estimateList.appendChild(listItem);
+    }
+  }
 
   function updateEstimateWidget() {
     const total = calculateEstimateTotal(estimateItems);
@@ -62,6 +81,8 @@ function initEstimateBuilder(items) {
     } else {
       estimateCount.textContent = `${estimateItems.length} items`;
     }
+
+    renderEstimateList();
   }
 
   viewEstimateButton.addEventListener('click', () => {
@@ -95,5 +116,10 @@ function initEstimateBuilder(items) {
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = { addItemToEstimate, calculateEstimateTotal, removeItemFromEstimate, initEstimateBuilder };
+  module.exports = {
+    addItemToEstimate,
+    calculateEstimateTotal,
+    removeItemFromEstimate,
+    initEstimateBuilder,
+  };
 }
