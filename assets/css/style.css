@@ -748,6 +748,96 @@ section {
   width: 100%;
 }
 
+.balloon-animation {
+  position: fixed;
+  z-index: 7000;
+
+  width: 140px;
+  height: 220px;
+
+  pointer-events: none;
+
+  transform: translate(-50%, -50%);
+}
+
+.balloon {
+  position: absolute;
+  bottom: 0;
+
+  width: 28px;
+  height: 36px;
+
+  border-radius: 50% 50% 45% 45%;
+
+  animation-name: balloon-float;
+  animation-duration: 2.2s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.balloon::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 34px;
+
+  width: 1px;
+  height: 38px;
+
+  background-color: var(--color-border);
+  transform: translateX(-50%);
+}
+
+.balloon-one {
+  left: 8px;
+  background-color: var(--color-primary);
+  animation-delay: 0s;
+}
+
+.balloon-two {
+  left: 34px;
+  background-color: var(--color-primary-dark);
+  animation-delay: 0.14s;
+}
+
+.balloon-three {
+  left: 60px;
+  background-color: var(--color-heading);
+  animation-delay: 0.28s;
+}
+
+.balloon-four {
+  left: 86px;
+  background-color: #f6a6bc;
+  animation-delay: 0.42s;
+}
+
+.balloon-five {
+  left: 112px;
+  background-color: #f7d7e1;
+  animation-delay: 0.56s;
+}
+
+@keyframes balloon-float {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.75);
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-170px) scale(1.05);
+  }
+}
+
 @media (min-width: 768px) {
   .estimate-widget {
     left: auto;
