@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
     renderPortfolioSlides(portfolioItems);
   }
 
+  if (typeof initPortfolioImageModal === 'function') {
+    initPortfolioImageModal();
+  }
+
   // Initialize portfolio carousel after portfolio slides are rendered.
   if (typeof initPortfolioCarousel === 'function') {
     initPortfolioCarousel();
