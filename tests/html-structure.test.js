@@ -163,6 +163,24 @@ describe('Portfolio section structure', () => {
     expect(document.querySelectorAll('#portfolio .portfolio-swiper .swiper-button-prev').length).toBe(1);
     expect(document.querySelectorAll('#portfolio .portfolio-swiper .swiper-button-next').length).toBe(1);
   });
+
+  test('portfolio image modal has accessible dialog attributes', () => {
+    const modal = document.querySelector('.portfolio-modal');
+    const closeButton = document.querySelector('.portfolio-modal-close');
+    const modalImage = document.querySelector('.portfolio-modal-image');
+
+    expect(modal).not.toBeNull();
+    expect(modal.getAttribute('role')).toBe('dialog');
+    expect(modal.getAttribute('aria-modal')).toBe('true');
+    expect(modal.getAttribute('aria-label')).toBe('Enlarged portfolio image');
+    expect(modal.hasAttribute('hidden')).toBe(true);
+
+    expect(closeButton).not.toBeNull();
+    expect(closeButton.getAttribute('type')).toBe('button');
+    expect(closeButton.getAttribute('aria-label')).toBe('Close enlarged portfolio image');
+
+    expect(modalImage).not.toBeNull();
+  });
 });
 
 describe('Navbar layout structure', () => {
