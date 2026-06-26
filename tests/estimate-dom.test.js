@@ -11,45 +11,55 @@ const testPortfolioItems = [
   },
 ];
 
-test('shows estimate widget when add to estimate button is clicked', () => {
+function setupEstimateDom(buttonTitle = 'Pastel Balloon Arch') {
   document.body.innerHTML = `
     <div class="swiper portfolio-swiper">
       <div class="swiper-wrapper">
-        <button class="add-to-estimate" type="button" data-title="Pastel Balloon Arch">
+        <button class="add-to-estimate" type="button" data-title="${buttonTitle}">
           Add to estimate
         </button>
       </div>
     </div>
 
     <aside class="estimate-widget" aria-label="Estimate summary" hidden>
-        <div class="estimate-widget-content">
-            <p class="estimate-widget-title">Estimate</p>
+      <div class="estimate-widget-content">
+        <p class="estimate-widget-title">Estimate</p>
 
-            <p class="estimate-widget-summary">
-            <span class="estimate-total">£0</span>
-            <span>·</span>
-            <span class="estimate-count">0 items</span>
-            </p>
+        <p class="estimate-widget-summary">
+          <span class="estimate-total">£0</span>
+          <span>·</span>
+          <span class="estimate-count">0 items</span>
+        </p>
 
-            <button class="button button-secondary estimate-view-button" type="button">
-            View estimate
-            </button>
-        </div>
+        <button class="button button-secondary estimate-view-button" type="button">
+          View estimate
+        </button>
+      </div>
     </aside>
 
     <div class="estimate-panel" hidden>
-    <button class="estimate-panel-close" type="button">Close</button>
-    <h2>Your estimate</h2>
-    <ul class="estimate-list"></ul>
+      <button class="estimate-panel-close" type="button">Close</button>
+      <h2>Your estimate</h2>
+      <ul class="estimate-list"></ul>
     </div>
   `;
 
   initEstimateBuilder(testPortfolioItems);
 
-  const addButton = document.querySelector('.add-to-estimate');
-  const estimateWidget = document.querySelector('.estimate-widget');
-  const estimateTotal = document.querySelector('.estimate-total');
-  const estimateCount = document.querySelector('.estimate-count');
+  return {
+    portfolioWrapper: document.querySelector('.portfolio-swiper .swiper-wrapper'),
+    addButton: document.querySelector('.add-to-estimate'),
+    estimateWidget: document.querySelector('.estimate-widget'),
+    estimateTotal: document.querySelector('.estimate-total'),
+    estimateCount: document.querySelector('.estimate-count'),
+    viewEstimateButton: document.querySelector('.estimate-view-button'),
+    closeButton: document.querySelector('.estimate-panel-close'),
+    estimatePanel: document.querySelector('.estimate-panel'),
+  };
+}
+
+test('shows estimate widget when add to estimate button is clicked', () => {
+  const { addButton, estimateWidget, estimateTotal, estimateCount } = setupEstimateDom();
 
   addButton.click();
 
@@ -59,41 +69,7 @@ test('shows estimate widget when add to estimate button is clicked', () => {
 });
 
 test('adds item to estimate after portfolio cards are re-rendered', () => {
-  document.body.innerHTML = `
-    <div class="swiper portfolio-swiper">
-      <div class="swiper-wrapper">
-        <button class="add-to-estimate" type="button" data-title="Old Item">
-          Add to estimate
-        </button>
-      </div>
-    </div>
-
-    <aside class="estimate-widget" aria-label="Estimate summary" hidden>
-      <div class="estimate-widget-content">
-        <p class="estimate-widget-title">Estimate</p>
-
-        <p class="estimate-widget-summary">
-          <span class="estimate-total">£0</span>
-          <span>·</span>
-          <span class="estimate-count">0 items</span>
-        </p>
-
-        <button class="button button-secondary estimate-view-button" type="button">
-          View estimate
-        </button>
-      </div>
-    </aside>
-
-    <div class="estimate-panel" hidden>
-        <button class="estimate-panel-close" type="button">Close</button>
-        <h2>Your estimate</h2>
-        <ul class="estimate-list"></ul>
-    </div>
-  `;
-
-  initEstimateBuilder(testPortfolioItems);
-
-  const portfolioWrapper = document.querySelector('.portfolio-swiper .swiper-wrapper');
+  const { portfolioWrapper, estimateWidget, estimateTotal, estimateCount } = setupEstimateDom('Old Item');
 
   portfolioWrapper.innerHTML = `
     <button class="add-to-estimate" type="button" data-title="Pastel Balloon Arch">
@@ -102,9 +78,6 @@ test('adds item to estimate after portfolio cards are re-rendered', () => {
   `;
 
   const addButton = document.querySelector('.add-to-estimate');
-  const estimateWidget = document.querySelector('.estimate-widget');
-  const estimateTotal = document.querySelector('.estimate-total');
-  const estimateCount = document.querySelector('.estimate-count');
 
   addButton.click();
 
@@ -114,43 +87,7 @@ test('adds item to estimate after portfolio cards are re-rendered', () => {
 });
 
 test('opens estimate panel when view estimate button is clicked', () => {
-  document.body.innerHTML = `
-    <div class="swiper portfolio-swiper">
-      <div class="swiper-wrapper">
-        <button class="add-to-estimate" type="button" data-title="Pastel Balloon Arch">
-          Add to estimate
-        </button>
-      </div>
-    </div>
-
-    <aside class="estimate-widget" aria-label="Estimate summary" hidden>
-      <div class="estimate-widget-content">
-        <p class="estimate-widget-title">Estimate</p>
-
-        <p class="estimate-widget-summary">
-          <span class="estimate-total">£0</span>
-          <span>·</span>
-          <span class="estimate-count">0 items</span>
-        </p>
-
-        <button class="button button-secondary estimate-view-button" type="button">
-          View estimate
-        </button>
-      </div>
-    </aside>
-
-    <div class="estimate-panel" hidden>
-      <button class="estimate-panel-close" type="button">Close</button>
-      <h2>Your estimate</h2>
-      <ul class="estimate-list"></ul>
-    </div>
-  `;
-
-  initEstimateBuilder(testPortfolioItems);
-
-  const addButton = document.querySelector('.add-to-estimate');
-  const viewEstimateButton = document.querySelector('.estimate-view-button');
-  const estimatePanel = document.querySelector('.estimate-panel');
+  const { addButton, viewEstimateButton, estimatePanel } = setupEstimateDom();
 
   addButton.click();
   viewEstimateButton.click();
@@ -159,42 +96,7 @@ test('opens estimate panel when view estimate button is clicked', () => {
 });
 
 test('renders selected items inside estimate panel', () => {
-  document.body.innerHTML = `
-    <div class="swiper portfolio-swiper">
-      <div class="swiper-wrapper">
-        <button class="add-to-estimate" type="button" data-title="Pastel Balloon Arch">
-          Add to estimate
-        </button>
-      </div>
-    </div>
-
-    <aside class="estimate-widget" aria-label="Estimate summary" hidden>
-      <div class="estimate-widget-content">
-        <p class="estimate-widget-title">Estimate</p>
-
-        <p class="estimate-widget-summary">
-          <span class="estimate-total">£0</span>
-          <span>·</span>
-          <span class="estimate-count">0 items</span>
-        </p>
-
-        <button class="button button-secondary estimate-view-button" type="button">
-          View estimate
-        </button>
-      </div>
-    </aside>
-
-    <div class="estimate-panel" hidden>
-      <button class="estimate-panel-close" type="button">Close</button>
-      <h2>Your estimate</h2>
-      <ul class="estimate-list"></ul>
-    </div>
-  `;
-
-  initEstimateBuilder(testPortfolioItems);
-
-  const addButton = document.querySelector('.add-to-estimate');
-  const viewEstimateButton = document.querySelector('.estimate-view-button');
+  const { addButton, viewEstimateButton } = setupEstimateDom();
 
   addButton.click();
   viewEstimateButton.click();
@@ -204,4 +106,17 @@ test('renders selected items inside estimate panel', () => {
   expect(estimateListItems.length).toBe(1);
   expect(estimateListItems[0].textContent).toContain('Pastel Balloon Arch');
   expect(estimateListItems[0].textContent).toContain('£120');
+});
+
+test('closes estimate panel when close button is clicked', () => {
+  const { addButton, viewEstimateButton, closeButton, estimatePanel } = setupEstimateDom();
+
+  addButton.click();
+  viewEstimateButton.click();
+
+  expect(estimatePanel.hidden).toBe(false);
+
+  closeButton.click();
+
+  expect(estimatePanel.hidden).toBe(true);
 });
