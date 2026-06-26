@@ -58,6 +58,8 @@ function setupEstimateDom(buttonTitle = 'Pastel Balloon Arch') {
     closeButton: document.querySelector('.estimate-panel-close'),
     estimatePanel: document.querySelector('.estimate-panel'),
     estimateBackdrop: document.querySelector('.estimate-backdrop'),
+    estimateCountBadge: document.querySelector('.estimate-count-badge'),
+    estimatePanelTotal: document.querySelector('.estimate-panel-total'),
   };
 }
 
@@ -162,4 +164,13 @@ test('closes estimate panel when backdrop is clicked', () => {
 
   expect(estimatePanel.hidden).toBe(true);
   expect(estimateBackdrop.hidden).toBe(true);
+});
+
+test('updates estimate badge and panel total when item is added', () => {
+  const { addButton, estimateCountBadge, estimatePanelTotal } = setupEstimateDom();
+
+  addButton.click();
+
+  expect(estimateCountBadge.textContent).toBe('1');
+  expect(estimatePanelTotal.textContent).toBe('£120');
 });
