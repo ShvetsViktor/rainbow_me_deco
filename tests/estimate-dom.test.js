@@ -22,20 +22,26 @@ test('shows estimate widget when add to estimate button is clicked', () => {
     </div>
 
     <aside class="estimate-widget" aria-label="Estimate summary" hidden>
-      <div class="estimate-widget-content">
-        <p class="estimate-widget-title">Estimate</p>
+        <div class="estimate-widget-content">
+            <p class="estimate-widget-title">Estimate</p>
 
-        <p class="estimate-widget-summary">
-          <span class="estimate-total">£0</span>
-          <span>·</span>
-          <span class="estimate-count">0 items</span>
-        </p>
+            <p class="estimate-widget-summary">
+            <span class="estimate-total">£0</span>
+            <span>·</span>
+            <span class="estimate-count">0 items</span>
+            </p>
 
-        <button class="button button-secondary estimate-view-button" type="button">
-          View estimate
-        </button>
-      </div>
+            <button class="button button-secondary estimate-view-button" type="button">
+            View estimate
+            </button>
+        </div>
     </aside>
+
+    <div class="estimate-panel" hidden>
+    <button class="estimate-panel-close" type="button">Close</button>
+    <h2>Your estimate</h2>
+    <ul class="estimate-list"></ul>
+    </div>
   `;
 
   initEstimateBuilder(testPortfolioItems);
@@ -77,6 +83,12 @@ test('adds item to estimate after portfolio cards are re-rendered', () => {
         </button>
       </div>
     </aside>
+
+    <div class="estimate-panel" hidden>
+        <button class="estimate-panel-close" type="button">Close</button>
+        <h2>Your estimate</h2>
+        <ul class="estimate-list"></ul>
+    </div>
   `;
 
   initEstimateBuilder(testPortfolioItems);
