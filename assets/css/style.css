@@ -130,7 +130,7 @@ select {
 
 section {
   padding-block: var(--section-padding);
-  scroll-margin-top: 72px;
+  scroll-margin-top: 16px;
 }
 
 .container {
@@ -182,6 +182,7 @@ section {
 #hero {
   display: grid;
   align-items: center;
+  padding-top: calc(var(--section-padding) + 24px);
   background-color: var(--color-scheme-3-background);
 }
 
