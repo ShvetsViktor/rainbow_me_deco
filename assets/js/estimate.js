@@ -8,6 +8,16 @@ function addItemToEstimate(estimateItems, item) {
   return [...estimateItems, item];
 }
 
+function calculateEstimateTotal(estimateItems) {
+  let total = 0;
+
+  for (let item of estimateItems) {
+    total += item.price;
+  }
+
+  return total;
+}
+
 if (typeof module !== 'undefined') {
-  module.exports = { addItemToEstimate };
+  module.exports = { addItemToEstimate, calculateEstimateTotal };
 }
