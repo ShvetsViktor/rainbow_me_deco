@@ -332,6 +332,43 @@ section {
   gap: 24px;
 }
 
+.portfolio-filters {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+}
+
+.portfolio-filter-button {
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 8px 18px;
+  border: 1px solid var(--color-border);
+  border-bottom: 4px solid var(--opacity-neutral-darkest-15);
+  border-radius: 999px;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  scroll-snap-align: start;
+}
+
+.portfolio-filter-button:hover,
+.portfolio-filter-button:focus-visible {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.portfolio-filter-button.is-active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  border-bottom-color: var(--color-primary-dark);
+  color: var(--color-surface);
+}
+
 .portfolio-swiper {
   width: calc(100% + (var(--page-padding) * 2));
   margin-inline: calc(var(--page-padding) * -1);
