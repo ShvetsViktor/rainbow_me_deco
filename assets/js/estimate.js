@@ -97,11 +97,14 @@ function initEstimateBuilder(items) {
       listItem.classList.add('estimate-list-item');
 
       listItem.innerHTML = `
-      <span class="estimate-list-item-title">${item.title}</span>
-      <span class="estimate-list-item-price">£${item.price}</span>
-      <button class="estimate-remove-button" type="button" data-title="${item.title}">
-        Remove
-      </button>
+      <img class="estimate-list-item-image" src="${item.image}" alt="${item.alt}">
+      <div class="estimate-list-item-content">
+        <span class="estimate-list-item-title">${item.title}</span>
+        <span class="estimate-list-item-price">£${item.price}</span>
+        <button class="estimate-remove-button" type="button" data-title="${item.title}">
+          Remove
+        </button>
+      </div>
     `;
 
       estimateList.appendChild(listItem);
