@@ -164,6 +164,30 @@ function initEstimateBuilder(items) {
 
     updateEstimateWidget();
   });
+
+  document.addEventListener('click', (event) => {
+    const serviceAddButton = event.target.closest('#services .add-to-estimate');
+
+    if (!serviceAddButton) {
+      return;
+    }
+
+    const selectedTitle = serviceAddButton.getAttribute('data-title');
+    const selectedPrice = Number(serviceAddButton.getAttribute('data-price'));
+
+    if (!selectedTitle || !selectedPrice) {
+      return;
+    }
+
+    const selectedItem = {
+      title: selectedTitle,
+      price: selectedPrice,
+    };
+
+    estimateItems = addItemToEstimate(estimateItems, selectedItem);
+
+    updateEstimateWidget();
+  });
 }
 
 if (typeof module !== 'undefined') {
