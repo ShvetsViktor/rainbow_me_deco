@@ -8,32 +8,44 @@ const {
 
 const { renderPortfolioSlides } = require('../assets/js/portfolio-carousel');
 
+const testPortfolioItems = [
+  {
+    title: 'Pastel Balloon Arch',
+    category: 'balloon-arches',
+    image: 'assets/images/portfolio/balloon-arches-1.avif',
+    alt: 'Pastel balloon arch decoration',
+    description: 'A pastel balloon arch.',
+    price: 120,
+  },
+  {
+    title: 'Birthday Number Stack',
+    category: 'number-stacks',
+    image: 'assets/images/portfolio/number-stacks-1.avif',
+    alt: 'Birthday number stack decoration',
+    description: 'A number stack decoration.',
+    price: 65,
+  },
+  {
+    title: 'Wedding Entrance Arch',
+    category: 'balloon-arches',
+    image: 'assets/images/portfolio/balloon-arches-2.avif',
+    alt: 'Wedding balloon arch decoration',
+    description: 'A wedding entrance balloon arch.',
+    price: 150,
+  },
+];
+
 describe('Portfolio filtering', () => {
   test('filters portfolio items by category', () => {
-    const items = [
-      { title: 'Pastel Balloon Arch', category: 'balloon-arches' },
-      { title: 'Birthday Number Stack', category: 'number-stacks' },
-      { title: 'Wedding Entrance Arch', category: 'balloon-arches' },
-    ];
+    const filteredItems = filterPortfolioItems(testPortfolioItems, 'balloon-arches');
 
-    const filteredItems = filterPortfolioItems(items, 'balloon-arches');
-
-    expect(filteredItems).toEqual([
-      { title: 'Pastel Balloon Arch', category: 'balloon-arches' },
-      { title: 'Wedding Entrance Arch', category: 'balloon-arches' },
-    ]);
+    expect(filteredItems).toEqual([testPortfolioItems[0], testPortfolioItems[2]]);
   });
 
   test('returns all portfolio items when category is all', () => {
-    const items = [
-      { title: 'Pastel Balloon Arch', category: 'balloon-arches' },
-      { title: 'Birthday Number Stack', category: 'number-stacks' },
-      { title: 'Wedding Entrance Arch', category: 'balloon-arches' },
-    ];
+    const filteredItems = filterPortfolioItems(testPortfolioItems, 'all');
 
-    const filteredItems = filterPortfolioItems(items, 'all');
-
-    expect(filteredItems).toEqual(items);
+    expect(filteredItems).toEqual(testPortfolioItems);
   });
 
   test('portfolio filters contain all required filter categories', () => {
@@ -77,8 +89,8 @@ describe('Portfolio filtering', () => {
 
   test('updates active filter button when a filter is clicked', () => {
     document.body.innerHTML = `
-    <div class="portfolio-filters" aria-label="Portfolio filters"></div>
-  `;
+      <div class="portfolio-filters" aria-label="Portfolio filters"></div>
+    `;
 
     renderPortfolioFilterButtons(portfolioFilters);
     initPortfolioFilters();
@@ -94,12 +106,12 @@ describe('Portfolio filtering', () => {
 
   test('renders filtered portfolio cards when a filter button is clicked', () => {
     document.body.innerHTML = `
-    <div class="portfolio-filters" aria-label="Portfolio filters"></div>
+      <div class="portfolio-filters" aria-label="Portfolio filters"></div>
 
-    <div class="swiper portfolio-swiper">
-      <div class="swiper-wrapper"></div>
-    </div>
-  `;
+      <div class="swiper portfolio-swiper">
+        <div class="swiper-wrapper"></div>
+      </div>
+    `;
 
     // In the real browser, JavaScript files are loaded through <script> tags.
     // portfolio-carousel.js is loaded before portfolio-filters.js in index.html,
@@ -111,27 +123,8 @@ describe('Portfolio filtering', () => {
     // To match the browser behaviour, we temporarily attach it to the global object.
     global.renderPortfolioSlides = renderPortfolioSlides;
 
-    const items = [
-      {
-        title: 'Pastel Balloon Arch',
-        category: 'balloon-arches',
-        image: 'assets/images/portfolio/balloon-arches-1.avif',
-        alt: 'Pastel balloon arch decoration',
-        description: 'A pastel balloon arch.',
-        price: 120,
-      },
-      {
-        title: 'Birthday Number Stack',
-        category: 'number-stacks',
-        image: 'assets/images/portfolio/number-stacks-1.avif',
-        alt: 'Birthday number stack decoration',
-        description: 'A number stack decoration.',
-        price: 65,
-      },
-    ];
-
     renderPortfolioFilterButtons(portfolioFilters);
-    initPortfolioFilterRendering(items);
+    initPortfolioFilterRendering(testPortfolioItems);
 
     const balloonArchesButton = document.querySelector('.portfolio-filter-button[data-category="balloon-arches"]');
 
@@ -139,9 +132,11 @@ describe('Portfolio filtering', () => {
 
     const renderedCards = document.querySelectorAll('.portfolio-card');
 
-    expect(renderedCards.length).toBe(1);
+    expect(renderedCards.length).toBe(2);
     expect(renderedCards[0].querySelector('h3').textContent).toBe('Pastel Balloon Arch');
+    expect(renderedCards[1].querySelector('h3').textContent).toBe('Wedding Entrance Arch');
 
+    // Remove the temporary global function so it does not affect other tests.
     delete global.renderPortfolioSlides;
   });
 });
