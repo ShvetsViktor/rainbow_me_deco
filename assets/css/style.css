@@ -8,6 +8,7 @@
   /* Colours */
   --color-primary: #e94f72;
   --color-primary-dark: #ba3f5b;
+  --color-heading: #a11b4d;
   --color-background: #f2f2f2;
   --color-scheme-3-background: #fcedf0;
   --color-surface: #ffffff;
@@ -82,6 +83,7 @@ h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   line-height: 1.2;
+  color: var(--color-heading);
 }
 
 h1 {
