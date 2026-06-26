@@ -280,3 +280,41 @@ test('shows balloon animation from portfolio add button when item is added', () 
   expect(balloonAnimation.style.top).toBe('220px');
   expect(balloons.length).toBe(5);
 });
+
+test('shows balloon animation from service add button when service item is added', () => {
+  setupEstimateDom();
+
+  document.body.insertAdjacentHTML(
+    'beforeend',
+    `
+      <section id="services">
+        <button
+          class="button button-primary add-to-estimate"
+          type="button"
+          data-title="Balloon Arches"
+          data-price="120"
+        >
+          <span>Add to estimate</span>
+          <span class="button-icon" aria-hidden="true">+</span>
+        </button>
+      </section>
+    `
+  );
+
+  const serviceAddButton = document.querySelector('#services .add-to-estimate');
+
+  serviceAddButton.getBoundingClientRect = jest.fn(() => ({
+    left: 50,
+    top: 300,
+    width: 100,
+    height: 50,
+  }));
+
+  serviceAddButton.click();
+
+  const balloonAnimation = document.querySelector('.balloon-animation');
+
+  expect(balloonAnimation).not.toBeNull();
+  expect(balloonAnimation.style.left).toBe('100px');
+  expect(balloonAnimation.style.top).toBe('325px');
+});
