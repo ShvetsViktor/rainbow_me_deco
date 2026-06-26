@@ -223,10 +223,10 @@
         <div>
           <p class="estimate-widget-title">Estimated total</p>
 
-        <p class="estimate-widget-summary">
-          <span class="estimate-total">£0</span>
+          <p class="estimate-widget-summary">
+            <span class="estimate-total">£0</span>
             <span class="estimate-count" hidden>0 items</span>
-        </p>
+          </p>
         </div>
 
         <button class="button button-primary estimate-view-button" type="button">
@@ -237,11 +237,25 @@
     </aside>
 
     <div class="estimate-panel" hidden>
-      <button class="estimate-panel-close" type="button" aria-label="Close estimate panel">Close</button>
+      <div class="estimate-panel-header">
+        <div>
+          <h2>Your Estimate</h2>
+          <p>Review your selected decorations and request a quote.</p>
+        </div>
 
-      <h2>Your estimate</h2>
+        <button class="estimate-panel-close" type="button" aria-label="Close estimate panel">×</button>
+      </div>
 
       <ul class="estimate-list" aria-label="Selected decorations"></ul>
+
+      <div class="estimate-panel-footer">
+        <div>
+          <p class="estimate-panel-total-label">Estimated total</p>
+          <p class="estimate-panel-total">£0</p>
+        </div>
+
+        <button class="button button-primary estimate-request-button" type="button">Request a Quote</button>
+      </div>
     </div>
 
     <!-- Swiper JS -->

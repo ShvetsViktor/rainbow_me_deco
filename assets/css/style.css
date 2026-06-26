@@ -617,17 +617,123 @@ section {
 
 .estimate-panel {
   position: fixed;
-  inset: 20px;
-  z-index: 2500;
-  padding: 24px;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  z-index: 5000;
+
+  display: flex;
+  flex-direction: column;
+
+  max-height: calc(90dvh - 24px);
+  padding: 20px var(--page-padding) calc(20px + env(safe-area-inset-bottom));
+
+  overflow-y: auto;
+
   background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
   border-radius: 24px;
   box-shadow: 0 24px 80px rgba(10, 4, 11, 0.35);
+
+  transform: none;
 }
 
 .estimate-panel[hidden] {
   display: none;
+}
+
+.estimate-panel-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.estimate-panel-header h2 {
+  margin-bottom: 8px;
+  font-size: 24px;
+}
+
+.estimate-panel-header p {
+  font-size: 14px;
+}
+
+.estimate-panel-close {
+  flex: 0 0 auto;
+
+  width: 44px;
+  height: 44px;
+
+  border: none;
+  border-radius: 50%;
+  background-color: var(--opacity-neutral-darkest-5);
+  color: var(--color-text);
+
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.estimate-list {
+  display: grid;
+  gap: 16px;
+  padding-block: 20px;
+}
+
+.estimate-list-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 16px;
+
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.estimate-list-item-title {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.estimate-list-item-price {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.estimate-remove-button {
+  grid-column: 1 / -1;
+  justify-self: start;
+
+  border: none;
+  background: none;
+  color: var(--color-primary);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.estimate-panel-footer {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+
+  display: grid;
+  gap: 16px;
+}
+
+.estimate-panel-total-label {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.estimate-panel-total {
+  color: var(--color-primary);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.estimate-request-button {
+  width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -651,6 +757,18 @@ section {
   .estimate-view-button {
     width: 100%;
   }
+
+  .estimate-panel {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+
+    width: min(560px, calc(100% - 48px));
+    max-height: calc(100dvh - 48px);
+
+    border-radius: 24px;
+    transform: translate(-50%, -50%);
   }
 }
 
