@@ -210,14 +210,18 @@ function initEstimateBuilder(items) {
 
     const selectedTitle = serviceAddButton.getAttribute('data-title');
     const selectedPrice = Number(serviceAddButton.getAttribute('data-price'));
+    const selectedImage = serviceAddButton.getAttribute('data-image');
+    const selectedAlt = serviceAddButton.getAttribute('data-alt');
 
-    if (!selectedTitle || !selectedPrice) {
+    if (!selectedTitle || !selectedPrice || !selectedImage || !selectedAlt) {
       return;
     }
 
     const selectedItem = {
       title: selectedTitle,
       price: selectedPrice,
+      image: selectedImage,
+      alt: selectedAlt,
     };
 
     const previousItemsCount = estimateItems.length;

@@ -240,10 +240,9 @@ test('adds service item to estimate when service add button is clicked', () => {
           type="button"
           data-title="Balloon Arches"
           data-price="120"
+          data-image="assets/images/services/balloon-arches.avif"
+          data-alt="Balloon arch decoration for an event"
         >
-          <span>Add to estimate</span>
-          <span class="button-icon" aria-hidden="true">+</span>
-        </button>
       </section>
     `
   );
@@ -293,6 +292,8 @@ test('shows balloon animation from service add button when service item is added
           type="button"
           data-title="Balloon Arches"
           data-price="120"
+          data-image="assets/images/services/balloon-arches.avif"
+          data-alt="Balloon arch decoration for an event"
         >
           <span>Add to estimate</span>
           <span class="button-icon" aria-hidden="true">+</span>
