@@ -1,14 +1,30 @@
 function initPortfolioImageModal() {
-  const imageButtons = document.querySelectorAll('.portfolio-image-button');
+  const portfolioWrapper = document.querySelector('.portfolio-swiper .swiper-wrapper');
   const modal = document.querySelector('.portfolio-modal');
   const modalImage = document.querySelector('.portfolio-modal-image');
   const closeButton = document.querySelector('.portfolio-modal-close');
 
-  if (!modal || !modalImage || !closeButton) {
+  if (!portfolioWrapper || !modal || !modalImage || !closeButton) {
     return;
   }
 
   let lastOpenedImageButton = null;
+
+  function openModal(imageButton) {
+    const image = imageButton.querySelector('img');
+
+    if (!image) {
+      return;
+    }
+
+    lastOpenedImageButton = imageButton;
+
+    modal.hidden = false;
+    modalImage.src = image.getAttribute('src');
+    modalImage.alt = image.getAttribute('alt');
+
+    closeButton.focus();
+  }
 
   function closeModal() {
     modal.hidden = true;
@@ -18,19 +34,15 @@ function initPortfolioImageModal() {
     }
   }
 
-  for (let imageButton of imageButtons) {
-    imageButton.addEventListener('click', () => {
-      const image = imageButton.querySelector('img');
+  portfolioWrapper.addEventListener('click', (event) => {
+    const imageButton = event.target.closest('.portfolio-image-button');
 
-      lastOpenedImageButton = imageButton;
+    if (!imageButton) {
+      return;
+    }
 
-      modal.hidden = false;
-      modalImage.src = image.getAttribute('src');
-      modalImage.alt = image.getAttribute('alt');
-
-      closeButton.focus();
-    });
-  }
+    openModal(imageButton);
+  });
 
   closeButton.addEventListener('click', closeModal);
 
