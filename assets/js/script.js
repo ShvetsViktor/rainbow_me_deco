@@ -13,6 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initPortfolioImageModal();
   }
 
+  if (typeof initEstimateBuilder === 'function' && Array.isArray(portfolioItems)) {
+    initEstimateBuilder(portfolioItems);
+  }
+
   // Initialize portfolio carousel after portfolio slides are rendered.
   if (typeof initPortfolioCarousel === 'function') {
     initPortfolioCarousel();
