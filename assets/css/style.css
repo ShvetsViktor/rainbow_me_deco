@@ -839,6 +839,77 @@ section {
   }
 }
 
+/* ============================================
+   ENQUIRY / REQUEST A QUOTE
+   ============================================ */
+
+#enquiry {
+  background-color: var(--color-scheme-3-background);
+}
+
+.enquiry-layout {
+  display: grid;
+  gap: 40px;
+}
+
+.enquiry-form {
+  display: grid;
+  gap: 20px;
+
+  width: 100%;
+  max-width: 680px;
+  margin-inline: auto;
+  padding: 24px;
+
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(10, 4, 11, 0.08);
+}
+
+.form-field {
+  display: grid;
+  gap: 8px;
+}
+
+.form-field label {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+
+  font-size: 16px;
+}
+
+.form-field textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: 3px solid rgba(233, 79, 114, 0.24);
+  border-color: var(--color-primary);
+}
+
+.enquiry-submit-button {
+  width: 100%;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
 @media (min-width: 768px) {
   .estimate-widget {
     left: auto;
@@ -1033,6 +1104,15 @@ header nav a:focus-visible {
 
   header nav a {
     padding: 0;
+  }
+
+  .enquiry-form {
+    padding: 32px;
+  }
+
+  .enquiry-submit-button {
+    width: fit-content;
+    justify-self: start;
   }
 }
 
