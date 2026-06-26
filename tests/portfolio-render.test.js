@@ -109,6 +109,20 @@ describe('Portfolio rendering', () => {
 
     expect(document.querySelector('.portfolio-card .portfolio-card-actions .portfolio-price-wrapper')).not.toBeNull();
   });
+
+  test('renders add to estimate button with portfolio item title', () => {
+    document.body.innerHTML = `
+    <div class="swiper portfolio-swiper">
+      <div class="swiper-wrapper"></div>
+    </div>
+  `;
+
+    renderPortfolioSlides(portfolioItems);
+
+    const addButton = document.querySelector('.portfolio-card .add-to-estimate');
+
+    expect(addButton.getAttribute('data-title')).toBe(portfolioItems[0].title);
+  });
 });
 
 describe('Portfolio carousel initialization', () => {
