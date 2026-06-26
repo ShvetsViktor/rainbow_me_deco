@@ -2,8 +2,9 @@ function initPortfolioImageModal() {
   const imageButtons = document.querySelectorAll('.portfolio-image-button');
   const modal = document.querySelector('.portfolio-modal');
   const modalImage = document.querySelector('.portfolio-modal-image');
+  const closeButton = document.querySelector('.portfolio-modal-close');
 
-  if (!modal || !modalImage) {
+  if (!modal || !modalImage || !closeButton) {
     return;
   }
 
@@ -16,6 +17,14 @@ function initPortfolioImageModal() {
       modalImage.alt = image.getAttribute('alt');
     });
   }
+
+  closeButton.addEventListener('click', () => {
+    modal.hidden = true;
+  });
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = { initPortfolioImageModal };
 }
 
 if (typeof module !== 'undefined') {
