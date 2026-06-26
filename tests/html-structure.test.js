@@ -117,6 +117,22 @@ describe('Services section structure', () => {
     }
   });
 
+  test('service cards contain view examples buttons with portfolio categories', () => {
+    const viewExamplesButtons = document.querySelectorAll('.service-card .view-portfolio-category');
+
+    expect(viewExamplesButtons.length).toBe(6);
+
+    expect(viewExamplesButtons[0].getAttribute('type')).toBe('button');
+    expect(viewExamplesButtons[0].getAttribute('data-category')).toBe('balloon-arches');
+    expect(viewExamplesButtons[0].textContent).toContain('View examples');
+
+    expect(viewExamplesButtons[1].getAttribute('data-category')).toBe('number-stacks');
+    expect(viewExamplesButtons[2].getAttribute('data-category')).toBe('backdrops');
+    expect(viewExamplesButtons[3].getAttribute('data-category')).toBe('table-decor');
+    expect(viewExamplesButtons[4].getAttribute('data-category')).toBe('business-decor');
+    expect(viewExamplesButtons[5].getAttribute('data-category')).toBe('custom-setups');
+  });
+
   test('each service card contains an add to estimate button', () => {
     expect(document.querySelectorAll('#services .service-card button.add-to-estimate').length).toBe(6);
   });

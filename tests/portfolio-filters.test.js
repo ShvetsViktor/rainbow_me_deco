@@ -166,4 +166,41 @@ describe('Portfolio filtering', () => {
 
     delete global.renderPortfolioSlides;
   });
+
+  // test('filters portfolio when a service link with category is clicked', () => {
+  //   document.body.innerHTML = `
+  //   <section id="services">
+  //     <button class="service-filter-link" type="button" data-category="balloon-arches">
+  //       Balloon Arches
+  //     </button>
+  //   </section>
+
+  //   <section id="portfolio">
+  //     <div class="portfolio-filters" aria-label="Portfolio filters"></div>
+
+  //     <div class="swiper portfolio-swiper">
+  //       <div class="swiper-wrapper"></div>
+  //     </div>
+  //   </section>
+  // `;
+
+  //   global.renderPortfolioSlides = renderPortfolioSlides;
+
+  //   renderPortfolioFilterButtons(portfolioFilters);
+  //   initPortfolioFilters();
+  //   initPortfolioFilterRendering(testPortfolioItems);
+  //   initServicePortfolioLinks();
+
+  //   const serviceButton = document.querySelector('.service-filter-link[data-category="balloon-arches"]');
+
+  //   serviceButton.click();
+
+  //   const activeFilter = document.querySelector('.portfolio-filter-button[aria-pressed="true"]');
+  //   const renderedCards = document.querySelectorAll('.portfolio-card');
+
+  //   expect(activeFilter.getAttribute('data-category')).toBe('balloon-arches');
+  //   expect(renderedCards.length).toBe(2);
+
+  //   delete global.renderPortfolioSlides;
+  // });
 });
