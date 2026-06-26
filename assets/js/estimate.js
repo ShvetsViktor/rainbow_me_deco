@@ -125,6 +125,12 @@ function initEstimateBuilder(items) {
     estimateItems = removeItemFromEstimate(estimateItems, selectedTitle);
 
     updateEstimateWidget();
+
+    if (estimateItems.length === 0) {
+      estimateWidget.hidden = true;
+      estimatePanel.hidden = true;
+      estimateBackdrop.hidden = true;
+    }
   });
 
   document.addEventListener('keydown', (event) => {
