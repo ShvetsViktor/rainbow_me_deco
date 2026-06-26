@@ -13,9 +13,13 @@ const testPortfolioItems = [
 
 test('shows estimate widget when add to estimate button is clicked', () => {
   document.body.innerHTML = `
-    <button class="add-to-estimate" type="button" data-title="Pastel Balloon Arch">
-      Add to estimate
-    </button>
+    <div class="swiper portfolio-swiper">
+      <div class="swiper-wrapper">
+        <button class="add-to-estimate" type="button" data-title="Pastel Balloon Arch">
+          Add to estimate
+        </button>
+      </div>
+    </div>
 
     <aside class="estimate-widget" aria-label="Estimate summary" hidden>
       <div class="estimate-widget-content">

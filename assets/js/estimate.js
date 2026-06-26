@@ -31,46 +31,54 @@ function removeItemFromEstimate(estimateItems, title) {
 }
 
 function initEstimateBuilder(items) {
-  const addButtons = document.querySelectorAll('.add-to-estimate');
+  const portfolioWrapper = document.querySelector('.portfolio-swiper .swiper-wrapper');
   const estimateWidget = document.querySelector('.estimate-widget');
   const estimateTotal = document.querySelector('.estimate-total');
   const estimateCount = document.querySelector('.estimate-count');
 
-  if (!estimateWidget || !estimateTotal || !estimateCount) {
+  if (!portfolioWrapper || !estimateWidget || !estimateTotal || !estimateCount) {
     return;
   }
 
   let estimateItems = [];
 
-  for (let addButton of addButtons) {
-    addButton.addEventListener('click', () => {
-      const selectedTitle = addButton.getAttribute('data-title');
-      let selectedItem = null;
+  function updateEstimateWidget() {
+    const total = calculateEstimateTotal(estimateItems);
 
-      for (let item of items) {
-        if (item.title === selectedTitle) {
-          selectedItem = item;
-        }
-      }
+    estimateWidget.hidden = false;
+    estimateTotal.textContent = `£${total}`;
 
-      if (!selectedItem) {
-        return;
-      }
-
-      estimateItems = addItemToEstimate(estimateItems, selectedItem);
-
-      const total = calculateEstimateTotal(estimateItems);
-
-      estimateWidget.hidden = false;
-      estimateTotal.textContent = `£${total}`;
-
-      if (estimateItems.length === 1) {
-        estimateCount.textContent = '1 item';
-      } else {
-        estimateCount.textContent = `${estimateItems.length} items`;
-      }
-    });
+    if (estimateItems.length === 1) {
+      estimateCount.textContent = '1 item';
+    } else {
+      estimateCount.textContent = `${estimateItems.length} items`;
+    }
   }
+
+  portfolioWrapper.addEventListener('click', (event) => {
+    const addButton = event.target.closest('.add-to-estimate');
+
+    if (!addButton) {
+      return;
+    }
+
+    const selectedTitle = addButton.getAttribute('data-title');
+    let selectedItem = null;
+
+    for (let item of items) {
+      if (item.title === selectedTitle) {
+        selectedItem = item;
+      }
+    }
+
+    if (!selectedItem) {
+      return;
+    }
+
+    estimateItems = addItemToEstimate(estimateItems, selectedItem);
+
+    updateEstimateWidget();
+  });
 }
 
 if (typeof module !== 'undefined') {
