@@ -96,11 +96,18 @@ function initEstimateBuilder(items) {
 
   closeEstimateButton.addEventListener('click', () => {
     estimatePanel.hidden = true;
+    estimateBackdrop.hidden = true;
+  });
+
+  estimateBackdrop.addEventListener('click', () => {
+    estimatePanel.hidden = true;
+    estimateBackdrop.hidden = true;
   });
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
       estimatePanel.hidden = true;
+      estimateBackdrop.hidden = true;
     }
   });
 
