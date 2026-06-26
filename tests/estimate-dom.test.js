@@ -331,3 +331,38 @@ test('renders selected item image inside estimate panel', () => {
   expect(estimateImage.getAttribute('src')).toBe('assets/images/portfolio/balloon-arches-1.avif');
   expect(estimateImage.getAttribute('alt')).toBe('Pastel balloon arch decoration');
 });
+
+test('renders selected service image inside estimate panel', () => {
+  setupEstimateDom();
+
+  document.body.insertAdjacentHTML(
+    'beforeend',
+    `
+      <section id="services">
+        <button
+          class="button button-primary add-to-estimate"
+          type="button"
+          data-title="Balloon Arches"
+          data-price="120"
+          data-image="assets/images/services/balloon-arches.avif"
+          data-alt="Balloon arch decoration for an event"
+        >
+          <span>Add to estimate</span>
+          <span class="button-icon" aria-hidden="true">+</span>
+        </button>
+      </section>
+    `
+  );
+
+  const serviceAddButton = document.querySelector('#services .add-to-estimate');
+  const viewEstimateButton = document.querySelector('.estimate-view-button');
+
+  serviceAddButton.click();
+  viewEstimateButton.click();
+
+  const estimateImage = document.querySelector('.estimate-list-item-image');
+
+  expect(estimateImage).not.toBeNull();
+  expect(estimateImage.getAttribute('src')).toBe('assets/images/services/balloon-arches.avif');
+  expect(estimateImage.getAttribute('alt')).toBe('Balloon arch decoration for an event');
+});
