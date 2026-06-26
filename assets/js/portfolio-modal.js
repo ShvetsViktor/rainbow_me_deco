@@ -19,6 +19,8 @@ function initPortfolioImageModal() {
       modal.hidden = false;
       modalImage.src = image.getAttribute('src');
       modalImage.alt = image.getAttribute('alt');
+
+      closeButton.focus();
     });
   }
 
