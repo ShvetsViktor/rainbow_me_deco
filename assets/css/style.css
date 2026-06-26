@@ -606,6 +606,7 @@ section {
 
   width: 24px;
   height: 24px;
+  padding-top: 1px;
 
   border-radius: 50%;
   background-color: var(--color-surface);

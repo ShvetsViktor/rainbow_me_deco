@@ -266,3 +266,40 @@ describe('Estimate widget', () => {
     expect(viewEstimateButton.textContent).toContain('View estimate');
   });
 });
+
+describe('Enquiry section', () => {
+  test('contains request quote form fields', () => {
+    const enquirySection = document.querySelector('#enquiry');
+    const enquiryForm = document.querySelector('.enquiry-form');
+    const nameInput = document.querySelector('#customer-name');
+    const emailInput = document.querySelector('#customer-email');
+    const eventTypeSelect = document.querySelector('#event-type');
+    const messageTextarea = document.querySelector('#customer-message');
+    const submitButton = document.querySelector('.enquiry-submit-button');
+
+    expect(enquirySection).not.toBeNull();
+
+    expect(enquiryForm).not.toBeNull();
+    expect(enquiryForm.getAttribute('novalidate')).not.toBeNull();
+
+    expect(nameInput).not.toBeNull();
+    expect(nameInput.getAttribute('name')).toBe('customer-name');
+    expect(nameInput.getAttribute('type')).toBe('text');
+    expect(nameInput.hasAttribute('required')).toBe(true);
+
+    expect(emailInput).not.toBeNull();
+    expect(emailInput.getAttribute('name')).toBe('customer-email');
+    expect(emailInput.getAttribute('type')).toBe('email');
+    expect(emailInput.hasAttribute('required')).toBe(true);
+
+    expect(eventTypeSelect).not.toBeNull();
+    expect(eventTypeSelect.getAttribute('name')).toBe('event-type');
+
+    expect(messageTextarea).not.toBeNull();
+    expect(messageTextarea.getAttribute('name')).toBe('customer-message');
+
+    expect(submitButton).not.toBeNull();
+    expect(submitButton.getAttribute('type')).toBe('submit');
+    expect(submitButton.textContent).toContain('Request a Quote');
+  });
+});
