@@ -212,3 +212,18 @@ test('removes item from estimate when remove button is clicked', () => {
   expect(estimateCountBadge.textContent).toBe('0');
   expect(estimatePanelTotal.textContent).toBe('£0');
 });
+
+test('hides estimate UI when last item is removed', () => {
+  const { addButton, viewEstimateButton, estimateWidget, estimatePanel, estimateBackdrop } = setupEstimateDom();
+
+  addButton.click();
+  viewEstimateButton.click();
+
+  const removeButton = document.querySelector('.estimate-remove-button');
+
+  removeButton.click();
+
+  expect(estimateWidget.hidden).toBe(true);
+  expect(estimatePanel.hidden).toBe(true);
+  expect(estimateBackdrop.hidden).toBe(true);
+});
