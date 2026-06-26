@@ -24,11 +24,21 @@ function initPortfolioImageModal() {
 
   closeButton.addEventListener('click', closeModal);
 
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      closeModal();
+    }
+  });
+
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
       closeModal();
     }
   });
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = { initPortfolioImageModal };
 }
 
 if (typeof module !== 'undefined') {
