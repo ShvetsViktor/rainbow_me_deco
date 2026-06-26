@@ -1,4 +1,5 @@
 const { renderPortfolioSlides } = require('../assets/js/portfolio-carousel');
+const { initPortfolioImageModal } = require('../assets/js/portfolio-modal');
 
 const testPortfolioItems = [
   {
