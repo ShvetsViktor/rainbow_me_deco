@@ -93,3 +93,30 @@ test('closes portfolio image modal when Escape key is pressed', () => {
 
   expect(modal.hidden).toBe(true);
 });
+
+test('closes portfolio image modal when backdrop is clicked', () => {
+  document.body.innerHTML = `
+    <div class="swiper portfolio-swiper">
+      <div class="swiper-wrapper"></div>
+    </div>
+
+    <div class="portfolio-modal" hidden>
+      <button class="portfolio-modal-close" type="button">Close</button>
+      <img class="portfolio-modal-image" src="" alt="" />
+    </div>
+  `;
+
+  renderPortfolioSlides(testPortfolioItems);
+  initPortfolioImageModal();
+
+  const imageButton = document.querySelector('.portfolio-image-button');
+  const modal = document.querySelector('.portfolio-modal');
+
+  imageButton.click();
+
+  expect(modal.hidden).toBe(false);
+
+  modal.click();
+
+  expect(modal.hidden).toBe(true);
+});
