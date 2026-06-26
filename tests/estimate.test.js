@@ -13,3 +13,11 @@ test('adds item to estimate list', () => {
 
   expect(updatedEstimateItems).toEqual([testItem]);
 });
+
+test('does not add duplicate item to estimate list', () => {
+  const estimateItems = [testItem];
+
+  const updatedEstimateItems = addItemToEstimate(estimateItems, testItem);
+
+  expect(updatedEstimateItems).toEqual([testItem]);
+});
