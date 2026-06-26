@@ -95,6 +95,12 @@ function initEstimateBuilder(items) {
     estimatePanel.hidden = true;
   });
 
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      estimatePanel.hidden = true;
+    }
+  });
+
   portfolioWrapper.addEventListener('click', (event) => {
     const addButton = event.target.closest('.add-to-estimate');
 
