@@ -30,6 +30,33 @@ function removeItemFromEstimate(estimateItems, title) {
   return updatedEstimateItems;
 }
 
+function showBalloonAnimation(addButton) {
+  const buttonPosition = addButton.getBoundingClientRect();
+  const animation = document.createElement('div');
+
+  const animationLeft = buttonPosition.left + buttonPosition.width / 2;
+  const animationTop = buttonPosition.top + buttonPosition.height / 2;
+
+  animation.classList.add('balloon-animation');
+  animation.setAttribute('aria-hidden', 'true');
+  animation.style.left = `${animationLeft}px`;
+  animation.style.top = `${animationTop}px`;
+
+  animation.innerHTML = `
+    <span class="balloon balloon-one"></span>
+    <span class="balloon balloon-two"></span>
+    <span class="balloon balloon-three"></span>
+    <span class="balloon balloon-four"></span>
+    <span class="balloon balloon-five"></span>
+  `;
+
+  document.body.appendChild(animation);
+
+  setTimeout(() => {
+    animation.remove();
+  }, 2200);
+}
+
 function initEstimateBuilder(items) {
   const portfolioWrapper = document.querySelector('.portfolio-swiper .swiper-wrapper');
   const estimateWidget = document.querySelector('.estimate-widget');
@@ -160,9 +187,15 @@ function initEstimateBuilder(items) {
       return;
     }
 
+    const previousItemsCount = estimateItems.length;
+
     estimateItems = addItemToEstimate(estimateItems, selectedItem);
 
     updateEstimateWidget();
+
+    if (estimateItems.length > previousItemsCount) {
+      showBalloonAnimation(addButton);
+    }
   });
 
   document.addEventListener('click', (event) => {
