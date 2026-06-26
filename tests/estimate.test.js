@@ -1,9 +1,15 @@
-const { addItemToEstimate } = require('../assets/js/estimate');
+const { addItemToEstimate, calculateEstimateTotal } = require('../assets/js/estimate');
 
 const testItem = {
   title: 'Pastel Balloon Arch',
   category: 'balloon-arches',
   price: 120,
+};
+
+const secondTestItem = {
+  title: 'Birthday Number Stack',
+  category: 'number-stacks',
+  price: 65,
 };
 
 test('adds item to estimate list', () => {
@@ -20,4 +26,12 @@ test('does not add duplicate item to estimate list', () => {
   const updatedEstimateItems = addItemToEstimate(estimateItems, testItem);
 
   expect(updatedEstimateItems).toEqual([testItem]);
+});
+
+test('calculates estimate total price', () => {
+  const estimateItems = [testItem, secondTestItem];
+
+  const total = calculateEstimateTotal(estimateItems);
+
+  expect(total).toBe(185);
 });
