@@ -29,4 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof initPortfolioFilterRendering === 'function' && Array.isArray(portfolioItems)) {
     initPortfolioFilterRendering(portfolioItems);
   }
+
+  if (typeof initServicePortfolioLinks === 'function') {
+    initServicePortfolioLinks();
+  }
 });

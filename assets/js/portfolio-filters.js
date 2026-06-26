@@ -77,6 +77,23 @@ function initPortfolioFilterRendering(items) {
   }
 }
 
+function initServicePortfolioLinks() {
+  const serviceButtons = document.querySelectorAll('.view-portfolio-category');
+
+  for (let serviceButton of serviceButtons) {
+    serviceButton.addEventListener('click', () => {
+      const selectedCategory = serviceButton.getAttribute('data-category');
+      const matchingFilterButton = document.querySelector(
+        `.portfolio-filter-button[data-category="${selectedCategory}"]`
+      );
+
+      if (matchingFilterButton) {
+        matchingFilterButton.click();
+      }
+    });
+  }
+}
+
 if (typeof module !== 'undefined') {
   module.exports = {
     portfolioFilters,
@@ -84,5 +101,6 @@ if (typeof module !== 'undefined') {
     renderPortfolioFilterButtons,
     initPortfolioFilters,
     initPortfolioFilterRendering,
+    initServicePortfolioLinks,
   };
 }
