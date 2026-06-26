@@ -186,6 +186,7 @@ describe('Portfolio filtering', () => {
   `;
 
     global.renderPortfolioSlides = renderPortfolioSlides;
+    Element.prototype.scrollIntoView = jest.fn();
 
     renderPortfolioFilterButtons(portfolioFilters);
     initPortfolioFilters();

@@ -86,9 +86,14 @@ function initServicePortfolioLinks() {
       const matchingFilterButton = document.querySelector(
         `.portfolio-filter-button[data-category="${selectedCategory}"]`
       );
+      const portfolioSection = document.querySelector('#portfolio');
 
       if (matchingFilterButton) {
         matchingFilterButton.click();
+      }
+
+      if (portfolioSection) {
+        portfolioSection.scrollIntoView({ behavior: 'smooth' });
       }
     });
   }
