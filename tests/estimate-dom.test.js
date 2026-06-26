@@ -258,3 +258,25 @@ test('adds service item to estimate when service add button is clicked', () => {
   expect(estimateCountBadge.textContent).toBe('1');
   expect(estimatePanelTotal.textContent).toBe('£120');
 });
+
+test('shows balloon animation from portfolio add button when item is added', () => {
+  const { addButton } = setupEstimateDom();
+
+  addButton.getBoundingClientRect = jest.fn(() => ({
+    left: 100,
+    top: 200,
+    width: 80,
+    height: 40,
+  }));
+
+  addButton.click();
+
+  const balloonAnimation = document.querySelector('.balloon-animation');
+  const balloons = document.querySelectorAll('.balloon-animation .balloon');
+
+  expect(balloonAnimation).not.toBeNull();
+  expect(balloonAnimation.getAttribute('aria-hidden')).toBe('true');
+  expect(balloonAnimation.style.left).toBe('140px');
+  expect(balloonAnimation.style.top).toBe('220px');
+  expect(balloons.length).toBe(5);
+});
