@@ -100,3 +100,48 @@ test('adds item to estimate after portfolio cards are re-rendered', () => {
   expect(estimateTotal.textContent).toBe('£120');
   expect(estimateCount.textContent).toBe('1 item');
 });
+
+test('opens estimate panel when view estimate button is clicked', () => {
+  document.body.innerHTML = `
+    <div class="swiper portfolio-swiper">
+      <div class="swiper-wrapper">
+        <button class="add-to-estimate" type="button" data-title="Pastel Balloon Arch">
+          Add to estimate
+        </button>
+      </div>
+    </div>
+
+    <aside class="estimate-widget" aria-label="Estimate summary" hidden>
+      <div class="estimate-widget-content">
+        <p class="estimate-widget-title">Estimate</p>
+
+        <p class="estimate-widget-summary">
+          <span class="estimate-total">£0</span>
+          <span>·</span>
+          <span class="estimate-count">0 items</span>
+        </p>
+
+        <button class="button button-secondary estimate-view-button" type="button">
+          View estimate
+        </button>
+      </div>
+    </aside>
+
+    <div class="estimate-panel" hidden>
+      <button class="estimate-panel-close" type="button">Close</button>
+      <h2>Your estimate</h2>
+      <ul class="estimate-list"></ul>
+    </div>
+  `;
+
+  initEstimateBuilder(testPortfolioItems);
+
+  const addButton = document.querySelector('.add-to-estimate');
+  const viewEstimateButton = document.querySelector('.estimate-view-button');
+  const estimatePanel = document.querySelector('.estimate-panel');
+
+  addButton.click();
+  viewEstimateButton.click();
+
+  expect(estimatePanel.hidden).toBe(false);
+});
