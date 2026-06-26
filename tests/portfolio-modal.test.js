@@ -120,3 +120,26 @@ test('closes portfolio image modal when backdrop is clicked', () => {
 
   expect(modal.hidden).toBe(true);
 });
+
+test('moves focus to close button when portfolio image modal opens', () => {
+  document.body.innerHTML = `
+    <div class="swiper portfolio-swiper">
+      <div class="swiper-wrapper"></div>
+    </div>
+
+    <div class="portfolio-modal" hidden>
+      <button class="portfolio-modal-close" type="button">Close</button>
+      <img class="portfolio-modal-image" src="" alt="" />
+    </div>
+  `;
+
+  renderPortfolioSlides(testPortfolioItems);
+  initPortfolioImageModal();
+
+  const imageButton = document.querySelector('.portfolio-image-button');
+  const closeButton = document.querySelector('.portfolio-modal-close');
+
+  imageButton.click();
+
+  expect(document.activeElement).toBe(closeButton);
+});
