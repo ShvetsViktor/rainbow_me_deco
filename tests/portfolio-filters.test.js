@@ -6,6 +6,8 @@ const {
   initPortfolioFilterRendering,
 } = require('../assets/js/portfolio-filters');
 
+const { renderPortfolioSlides } = require('../assets/js/portfolio-carousel');
+
 describe('Portfolio filtering', () => {
   test('filters portfolio items by category', () => {
     const items = [
@@ -90,7 +92,7 @@ describe('Portfolio filtering', () => {
     expect(balloonArchesButton.getAttribute('aria-pressed')).toBe('true');
   });
 
-  test('passes filtered portfolio items to render function when a filter button is clicked', () => {
+  test('renders filtered portfolio cards when a filter button is clicked', () => {
     document.body.innerHTML = `
     <div class="portfolio-filters" aria-label="Portfolio filters"></div>
 
@@ -99,20 +101,47 @@ describe('Portfolio filtering', () => {
     </div>
   `;
 
+    // In the real browser, JavaScript files are loaded through <script> tags.
+    // portfolio-carousel.js is loaded before portfolio-filters.js in index.html,
+    // so renderPortfolioSlides becomes available as a global browser function.
+    // That allows portfolio-filters.js to call renderPortfolioSlides(filteredItems).
+    //
+    // Jest does not automatically share functions between required files in the same way.
+    // After importing renderPortfolioSlides here, it only exists inside this test file.
+    // To match the browser behaviour, we temporarily attach it to the global object.
+    global.renderPortfolioSlides = renderPortfolioSlides;
+
     const items = [
-      { title: 'Pastel Balloon Arch', category: 'balloon-arches' },
-      { title: 'Birthday Number Stack', category: 'number-stacks' },
+      {
+        title: 'Pastel Balloon Arch',
+        category: 'balloon-arches',
+        image: 'assets/images/portfolio/balloon-arches-1.avif',
+        alt: 'Pastel balloon arch decoration',
+        description: 'A pastel balloon arch.',
+        price: 120,
+      },
+      {
+        title: 'Birthday Number Stack',
+        category: 'number-stacks',
+        image: 'assets/images/portfolio/number-stacks-1.avif',
+        alt: 'Birthday number stack decoration',
+        description: 'A number stack decoration.',
+        price: 65,
+      },
     ];
 
-    const renderSlides = jest.fn();
-
     renderPortfolioFilterButtons(portfolioFilters);
-    initPortfolioFilterRendering(items, renderSlides);
+    initPortfolioFilterRendering(items);
 
     const balloonArchesButton = document.querySelector('.portfolio-filter-button[data-category="balloon-arches"]');
 
     balloonArchesButton.click();
 
-    expect(renderSlides).toHaveBeenCalledWith([{ title: 'Pastel Balloon Arch', category: 'balloon-arches' }]);
+    const renderedCards = document.querySelectorAll('.portfolio-card');
+
+    expect(renderedCards.length).toBe(1);
+    expect(renderedCards[0].querySelector('h3').textContent).toBe('Pastel Balloon Arch');
+
+    delete global.renderPortfolioSlides;
   });
 });

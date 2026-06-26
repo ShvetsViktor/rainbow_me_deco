@@ -26,11 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initPortfolioFilters();
   }
 
-  if (
-    typeof initPortfolioFilterRendering === 'function' &&
-    Array.isArray(portfolioItems) &&
-    typeof renderPortfolioSlides === 'function'
-  ) {
-    initPortfolioFilterRendering(portfolioItems, renderPortfolioSlides);
+  if (typeof initPortfolioFilterRendering === 'function' && Array.isArray(portfolioItems)) {
+    initPortfolioFilterRendering(portfolioItems);
   }
 });

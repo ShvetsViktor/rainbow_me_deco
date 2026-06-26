@@ -62,7 +62,7 @@ function initPortfolioFilters() {
   }
 }
 
-function initPortfolioFilterRendering(items, renderSlides) {
+function initPortfolioFilterRendering(items) {
   const filterButtons = document.querySelectorAll('.portfolio-filter-button');
 
   for (let button of filterButtons) {
@@ -72,7 +72,7 @@ function initPortfolioFilterRendering(items, renderSlides) {
       const portfolioWrapper = document.querySelector('.portfolio-swiper .swiper-wrapper');
 
       portfolioWrapper.innerHTML = '';
-      renderSlides(filteredItems);
+      renderPortfolioSlides(filteredItems);
     });
   }
 }
