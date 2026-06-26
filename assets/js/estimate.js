@@ -39,6 +39,7 @@ function initEstimateBuilder(items) {
   const estimatePanel = document.querySelector('.estimate-panel');
   const estimateList = document.querySelector('.estimate-list');
   const closeEstimateButton = document.querySelector('.estimate-panel-close');
+  const estimateBackdrop = document.querySelector('.estimate-backdrop');
 
   if (
     !portfolioWrapper ||
@@ -48,7 +49,8 @@ function initEstimateBuilder(items) {
     !viewEstimateButton ||
     !estimatePanel ||
     !estimateList ||
-    !closeEstimateButton
+    !closeEstimateButton ||
+    !estimateBackdrop
   ) {
     return;
   }
@@ -89,6 +91,7 @@ function initEstimateBuilder(items) {
 
   viewEstimateButton.addEventListener('click', () => {
     estimatePanel.hidden = false;
+    estimateBackdrop.hidden = false;
   });
 
   closeEstimateButton.addEventListener('click', () => {
