@@ -227,3 +227,34 @@ test('hides estimate UI when last item is removed', () => {
   expect(estimatePanel.hidden).toBe(true);
   expect(estimateBackdrop.hidden).toBe(true);
 });
+
+test('adds service item to estimate when service add button is clicked', () => {
+  const { estimateWidget, estimateTotal, estimateCount, estimateCountBadge, estimatePanelTotal } = setupEstimateDom();
+
+  const serviceArea = document.createElement('section');
+
+  serviceArea.id = 'services';
+  serviceArea.innerHTML = `
+    <button
+      class="button button-primary add-to-estimate"
+      type="button"
+      data-title="Balloon Arches"
+      data-price="120"
+    >
+      <span>Add to estimate</span>
+      <span class="button-icon" aria-hidden="true">+</span>
+    </button>
+  `;
+
+  document.body.appendChild(serviceArea);
+
+  const serviceAddButton = document.querySelector('#services .add-to-estimate');
+
+  serviceAddButton.click();
+
+  expect(estimateWidget.hidden).toBe(false);
+  expect(estimateTotal.textContent).toBe('£120');
+  expect(estimateCount.textContent).toBe('1 item');
+  expect(estimateCountBadge.textContent).toBe('1');
+  expect(estimatePanelTotal.textContent).toBe('£120');
+});
