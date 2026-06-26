@@ -206,26 +206,6 @@
           </div>
         </div>
       </section>
-      <section id="estimate">
-        <div class="container">
-          <div class="section-header">
-            <p class="section-label">Estimate</p>
-            <h2>Your estimate</h2>
-            <p>Review selected decorations before sending your request.</p>
-          </div>
-
-          <div class="estimate-builder">
-            <p class="estimate-empty-message">No decorations selected yet.</p>
-
-            <ul class="estimate-list" aria-label="Selected decorations"></ul>
-
-            <div class="estimate-summary">
-              <p>Total from:</p>
-              <p class="estimate-total">£0</p>
-            </div>
-          </div>
-        </div>
-      </section>
       <section id="how-it-works"></section>
       <section id="testimonials"></section>
       <section id="enquiry"></section>
@@ -237,6 +217,20 @@
 
       <img class="portfolio-modal-image" src="" alt="" />
     </div>
+
+    <aside class="estimate-widget" aria-label="Estimate summary" hidden>
+      <div class="estimate-widget-content">
+        <p class="estimate-widget-title">Estimate</p>
+
+        <p class="estimate-widget-summary">
+          <span class="estimate-total">£0</span>
+          <span>·</span>
+          <span class="estimate-count">0 items</span>
+        </p>
+
+        <button class="button button-secondary estimate-view-button" type="button">View estimate</button>
+      </div>
+    </aside>
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>

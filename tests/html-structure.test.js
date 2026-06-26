@@ -245,18 +245,24 @@ describe('Navbar layout structure', () => {
   });
 });
 
-describe('Estimate section', () => {
-  test('estimate section contains estimate builder elements', () => {
-    const estimateSection = document.querySelector('#estimate');
-    const estimateList = document.querySelector('.estimate-list');
+describe('Estimate widget', () => {
+  test('estimate widget contains summary elements', () => {
+    const estimateWidget = document.querySelector('.estimate-widget');
     const estimateTotal = document.querySelector('.estimate-total');
-    const estimateEmptyMessage = document.querySelector('.estimate-empty-message');
+    const estimateCount = document.querySelector('.estimate-count');
+    const viewEstimateButton = document.querySelector('.estimate-view-button');
 
-    expect(estimateSection).not.toBeNull();
-    expect(estimateList).not.toBeNull();
+    expect(estimateWidget).not.toBeNull();
+    expect(estimateWidget.hasAttribute('hidden')).toBe(true);
+
     expect(estimateTotal).not.toBeNull();
-    expect(estimateEmptyMessage).not.toBeNull();
+    expect(estimateTotal.textContent).toBe('£0');
 
-    expect(estimateSection.querySelector('h2').textContent).toContain('Your estimate');
+    expect(estimateCount).not.toBeNull();
+    expect(estimateCount.textContent).toBe('0 items');
+
+    expect(viewEstimateButton).not.toBeNull();
+    expect(viewEstimateButton.getAttribute('type')).toBe('button');
+    expect(viewEstimateButton.textContent).toContain('View estimate');
   });
 });
