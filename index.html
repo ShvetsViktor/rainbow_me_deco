@@ -220,15 +220,19 @@
 
     <aside class="estimate-widget" aria-label="Estimate summary" hidden>
       <div class="estimate-widget-content">
-        <p class="estimate-widget-title">Estimate</p>
+        <div>
+          <p class="estimate-widget-title">Estimated total</p>
 
         <p class="estimate-widget-summary">
           <span class="estimate-total">£0</span>
-          <span>·</span>
-          <span class="estimate-count">0 items</span>
+            <span class="estimate-count" hidden>0 items</span>
         </p>
+        </div>
 
-        <button class="button button-secondary estimate-view-button" type="button">View estimate</button>
+        <button class="button button-primary estimate-view-button" type="button">
+          <span>View estimate</span>
+          <span class="estimate-count-badge">0</span>
+        </button>
       </div>
     </aside>
 
