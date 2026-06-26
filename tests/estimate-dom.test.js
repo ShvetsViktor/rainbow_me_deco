@@ -194,3 +194,21 @@ test('updates estimate badge and panel total when item is added', () => {
   expect(estimateCountBadge.textContent).toBe('1');
   expect(estimatePanelTotal.textContent).toBe('£120');
 });
+
+test('removes item from estimate when remove button is clicked', () => {
+  const { addButton, estimateTotal, estimateCount, estimateCountBadge, estimatePanelTotal } = setupEstimateDom();
+
+  addButton.click();
+
+  const removeButton = document.querySelector('.estimate-remove-button');
+
+  removeButton.click();
+
+  const estimateListItems = document.querySelectorAll('.estimate-list-item');
+
+  expect(estimateListItems.length).toBe(0);
+  expect(estimateTotal.textContent).toBe('£0');
+  expect(estimateCount.textContent).toBe('0 items');
+  expect(estimateCountBadge.textContent).toBe('0');
+  expect(estimatePanelTotal.textContent).toBe('£0');
+});
