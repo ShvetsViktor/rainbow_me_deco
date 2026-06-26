@@ -4,6 +4,7 @@ const {
   portfolioFilters,
   initPortfolioFilters,
   initPortfolioFilterRendering,
+  initServicePortfolioLinks,
 } = require('../assets/js/portfolio-filters');
 
 const { renderPortfolioSlides } = require('../assets/js/portfolio-carousel');
@@ -167,40 +168,40 @@ describe('Portfolio filtering', () => {
     delete global.renderPortfolioSlides;
   });
 
-  // test('filters portfolio when a service link with category is clicked', () => {
-  //   document.body.innerHTML = `
-  //   <section id="services">
-  //     <button class="service-filter-link" type="button" data-category="balloon-arches">
-  //       Balloon Arches
-  //     </button>
-  //   </section>
+  test('filters portfolio when a service button with category is clicked', () => {
+    document.body.innerHTML = `
+    <section id="services">
+      <button class="view-portfolio-category" type="button" data-category="balloon-arches">
+        View examples
+      </button>
+    </section>
 
-  //   <section id="portfolio">
-  //     <div class="portfolio-filters" aria-label="Portfolio filters"></div>
+    <section id="portfolio">
+      <div class="portfolio-filters" aria-label="Portfolio filters"></div>
 
-  //     <div class="swiper portfolio-swiper">
-  //       <div class="swiper-wrapper"></div>
-  //     </div>
-  //   </section>
-  // `;
+      <div class="swiper portfolio-swiper">
+        <div class="swiper-wrapper"></div>
+      </div>
+    </section>
+  `;
 
-  //   global.renderPortfolioSlides = renderPortfolioSlides;
+    global.renderPortfolioSlides = renderPortfolioSlides;
 
-  //   renderPortfolioFilterButtons(portfolioFilters);
-  //   initPortfolioFilters();
-  //   initPortfolioFilterRendering(testPortfolioItems);
-  //   initServicePortfolioLinks();
+    renderPortfolioFilterButtons(portfolioFilters);
+    initPortfolioFilters();
+    initPortfolioFilterRendering(testPortfolioItems);
+    initServicePortfolioLinks();
 
-  //   const serviceButton = document.querySelector('.service-filter-link[data-category="balloon-arches"]');
+    const serviceButton = document.querySelector('.view-portfolio-category[data-category="balloon-arches"]');
 
-  //   serviceButton.click();
+    serviceButton.click();
 
-  //   const activeFilter = document.querySelector('.portfolio-filter-button[aria-pressed="true"]');
-  //   const renderedCards = document.querySelectorAll('.portfolio-card');
+    const activeFilter = document.querySelector('.portfolio-filter-button[aria-pressed="true"]');
+    const renderedCards = document.querySelectorAll('.portfolio-card');
 
-  //   expect(activeFilter.getAttribute('data-category')).toBe('balloon-arches');
-  //   expect(renderedCards.length).toBe(2);
+    expect(activeFilter.getAttribute('data-category')).toBe('balloon-arches');
+    expect(renderedCards.length).toBe(2);
 
-  //   delete global.renderPortfolioSlides;
-  // });
+    delete global.renderPortfolioSlides;
+  });
 });
