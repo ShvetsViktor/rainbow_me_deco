@@ -8,13 +8,21 @@ function initPortfolioImageModal() {
     return;
   }
 
+  let lastOpenedImageButton = null;
+
   function closeModal() {
     modal.hidden = true;
+
+    if (lastOpenedImageButton) {
+      lastOpenedImageButton.focus();
+    }
   }
 
   for (let imageButton of imageButtons) {
     imageButton.addEventListener('click', () => {
       const image = imageButton.querySelector('img');
+
+      lastOpenedImageButton = imageButton;
 
       modal.hidden = false;
       modalImage.src = image.getAttribute('src');
@@ -37,10 +45,6 @@ function initPortfolioImageModal() {
       closeModal();
     }
   });
-}
-
-if (typeof module !== 'undefined') {
-  module.exports = { initPortfolioImageModal };
 }
 
 if (typeof module !== 'undefined') {
