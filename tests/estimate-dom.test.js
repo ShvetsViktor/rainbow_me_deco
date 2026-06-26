@@ -318,3 +318,16 @@ test('shows balloon animation from service add button when service item is added
   expect(balloonAnimation.style.left).toBe('100px');
   expect(balloonAnimation.style.top).toBe('325px');
 });
+
+test('renders selected item image inside estimate panel', () => {
+  const { addButton, viewEstimateButton } = setupEstimateDom();
+
+  addButton.click();
+  viewEstimateButton.click();
+
+  const estimateImage = document.querySelector('.estimate-list-item-image');
+
+  expect(estimateImage).not.toBeNull();
+  expect(estimateImage.getAttribute('src')).toBe('assets/images/portfolio/balloon-arches-1.avif');
+  expect(estimateImage.getAttribute('alt')).toBe('Pastel balloon arch decoration');
+});
