@@ -70,9 +70,12 @@ function initEstimateBuilder(items) {
       listItem.classList.add('estimate-list-item');
 
       listItem.innerHTML = `
-        <span>${item.title}</span>
-        <span>£${item.price}</span>
-      `;
+      <span class="estimate-list-item-title">${item.title}</span>
+      <span class="estimate-list-item-price">£${item.price}</span>
+      <button class="estimate-remove-button" type="button" data-title="${item.title}">
+        Remove
+      </button>
+    `;
 
       estimateList.appendChild(listItem);
     }
@@ -108,6 +111,20 @@ function initEstimateBuilder(items) {
   estimateBackdrop.addEventListener('click', () => {
     estimatePanel.hidden = true;
     estimateBackdrop.hidden = true;
+  });
+
+  estimateList.addEventListener('click', (event) => {
+    const removeButton = event.target.closest('.estimate-remove-button');
+
+    if (!removeButton) {
+      return;
+    }
+
+    const selectedTitle = removeButton.getAttribute('data-title');
+
+    estimateItems = removeItemFromEstimate(estimateItems, selectedTitle);
+
+    updateEstimateWidget();
   });
 
   document.addEventListener('keydown', (event) => {
