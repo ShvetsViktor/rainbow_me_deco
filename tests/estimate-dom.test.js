@@ -37,6 +37,8 @@ function setupEstimateDom(buttonTitle = 'Pastel Balloon Arch') {
       </div>
     </aside>
 
+    <div class="estimate-backdrop" hidden></div>
+
     <div class="estimate-panel" hidden>
       <button class="estimate-panel-close" type="button">Close</button>
       <h2>Your estimate</h2>
@@ -55,6 +57,7 @@ function setupEstimateDom(buttonTitle = 'Pastel Balloon Arch') {
     viewEstimateButton: document.querySelector('.estimate-view-button'),
     closeButton: document.querySelector('.estimate-panel-close'),
     estimatePanel: document.querySelector('.estimate-panel'),
+    estimateBackdrop: document.querySelector('.estimate-backdrop'),
   };
 }
 
@@ -134,4 +137,14 @@ test('closes estimate panel when Escape key is pressed', () => {
   document.dispatchEvent(escapeKeyEvent);
 
   expect(estimatePanel.hidden).toBe(true);
+});
+
+test('shows estimate backdrop when estimate panel is opened', () => {
+  const { addButton, viewEstimateButton, estimatePanel, estimateBackdrop } = setupEstimateDom();
+
+  addButton.click();
+  viewEstimateButton.click();
+
+  expect(estimatePanel.hidden).toBe(false);
+  expect(estimateBackdrop.hidden).toBe(false);
 });
