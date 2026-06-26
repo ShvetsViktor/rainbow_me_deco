@@ -244,3 +244,19 @@ describe('Navbar layout structure', () => {
     expect(logoImage.getAttribute('alt')).toBe('Rainbow Me');
   });
 });
+
+describe('Estimate section', () => {
+  test('estimate section contains estimate builder elements', () => {
+    const estimateSection = document.querySelector('#estimate');
+    const estimateList = document.querySelector('.estimate-list');
+    const estimateTotal = document.querySelector('.estimate-total');
+    const estimateEmptyMessage = document.querySelector('.estimate-empty-message');
+
+    expect(estimateSection).not.toBeNull();
+    expect(estimateList).not.toBeNull();
+    expect(estimateTotal).not.toBeNull();
+    expect(estimateEmptyMessage).not.toBeNull();
+
+    expect(estimateSection.querySelector('h2').textContent).toContain('Your estimate');
+  });
+});
