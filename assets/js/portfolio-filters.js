@@ -69,10 +69,16 @@ function initPortfolioFilterRendering(items) {
     button.addEventListener('click', () => {
       const selectedCategory = button.getAttribute('data-category');
       const filteredItems = filterPortfolioItems(items, selectedCategory);
+      const portfolioSwiperElement = document.querySelector('.portfolio-swiper');
       const portfolioWrapper = document.querySelector('.portfolio-swiper .swiper-wrapper');
 
       portfolioWrapper.innerHTML = '';
       renderPortfolioSlides(filteredItems);
+
+      if (portfolioSwiperElement && portfolioSwiperElement.swiper) {
+        portfolioSwiperElement.swiper.update();
+        portfolioSwiperElement.swiper.slideTo(0, 0);
+      }
     });
   }
 }
