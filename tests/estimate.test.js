@@ -10,34 +10,36 @@ const secondTestItem = {
   price: 65,
 };
 
-test('adds item to estimate list', () => {
-  const estimateItems = [];
+describe('Estimate pure functions', () => {
+  test('adds item to estimate list', () => {
+    const estimateItems = [];
 
-  const updatedEstimateItems = addItemToEstimate(estimateItems, testItem);
+    const updatedEstimateItems = addItemToEstimate(estimateItems, testItem);
 
-  expect(updatedEstimateItems).toEqual([testItem]);
-});
+    expect(updatedEstimateItems).toEqual([testItem]);
+  });
 
-test('does not add duplicate item to estimate list', () => {
-  const estimateItems = [testItem];
+  test('does not add duplicate item to estimate list', () => {
+    const estimateItems = [testItem];
 
-  const updatedEstimateItems = addItemToEstimate(estimateItems, testItem);
+    const updatedEstimateItems = addItemToEstimate(estimateItems, testItem);
 
-  expect(updatedEstimateItems).toEqual([testItem]);
-});
+    expect(updatedEstimateItems).toEqual([testItem]);
+  });
 
-test('calculates estimate total price', () => {
-  const estimateItems = [testItem, secondTestItem];
+  test('calculates estimate total price', () => {
+    const estimateItems = [testItem, secondTestItem];
 
-  const total = calculateEstimateTotal(estimateItems);
+    const total = calculateEstimateTotal(estimateItems);
 
-  expect(total).toBe(185);
-});
+    expect(total).toBe(185);
+  });
 
-test('removes item from estimate list', () => {
-  const estimateItems = [testItem, secondTestItem];
+  test('removes item from estimate list', () => {
+    const estimateItems = [testItem, secondTestItem];
 
-  const updatedEstimateItems = removeItemFromEstimate(estimateItems, testItem.title);
+    const updatedEstimateItems = removeItemFromEstimate(estimateItems, testItem.title);
 
-  expect(updatedEstimateItems).toEqual([secondTestItem]);
+    expect(updatedEstimateItems).toEqual([secondTestItem]);
+  });
 });

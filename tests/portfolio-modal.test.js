@@ -2,164 +2,166 @@ const { renderPortfolioSlides } = require('../assets/js/portfolio-carousel');
 const { initPortfolioImageModal } = require('../assets/js/portfolio-modal');
 const { testPortfolioItems } = require('./fixtures/portfolio-items');
 
-test('opens portfolio image modal when portfolio image button is clicked', () => {
-  document.body.innerHTML = `
-    <div class="swiper portfolio-swiper">
-      <div class="swiper-wrapper"></div>
-    </div>
+describe('Portfolio image modal', () => {
+  test('opens portfolio image modal when portfolio image button is clicked', () => {
+    document.body.innerHTML = `
+      <div class="swiper portfolio-swiper">
+        <div class="swiper-wrapper"></div>
+      </div>
 
-    <div class="portfolio-modal" hidden>
-      <button class="portfolio-modal-close" type="button">Close</button>
-      <img class="portfolio-modal-image" src="" alt="" />
-    </div>
-  `;
+      <div class="portfolio-modal" hidden>
+        <button class="portfolio-modal-close" type="button">Close</button>
+        <img class="portfolio-modal-image" src="" alt="" />
+      </div>
+    `;
 
-  renderPortfolioSlides(testPortfolioItems);
-  initPortfolioImageModal();
+    renderPortfolioSlides(testPortfolioItems);
+    initPortfolioImageModal();
 
-  const imageButton = document.querySelector('.portfolio-image-button');
+    const imageButton = document.querySelector('.portfolio-image-button');
 
-  imageButton.click();
+    imageButton.click();
 
-  const modal = document.querySelector('.portfolio-modal');
-  const modalImage = document.querySelector('.portfolio-modal-image');
+    const modal = document.querySelector('.portfolio-modal');
+    const modalImage = document.querySelector('.portfolio-modal-image');
 
-  expect(modal.hidden).toBe(false);
-  expect(modalImage.getAttribute('src')).toBe(testPortfolioItems[0].image);
-  expect(modalImage.getAttribute('alt')).toBe(testPortfolioItems[0].alt);
-});
+    expect(modal.hidden).toBe(false);
+    expect(modalImage.getAttribute('src')).toBe(testPortfolioItems[0].image);
+    expect(modalImage.getAttribute('alt')).toBe(testPortfolioItems[0].alt);
+  });
 
-test('closes portfolio image modal when close button is clicked', () => {
-  document.body.innerHTML = `
-    <div class="swiper portfolio-swiper">
-      <div class="swiper-wrapper"></div>
-    </div>
+  test('closes portfolio image modal when close button is clicked', () => {
+    document.body.innerHTML = `
+      <div class="swiper portfolio-swiper">
+        <div class="swiper-wrapper"></div>
+      </div>
 
-    <div class="portfolio-modal" hidden>
-      <button class="portfolio-modal-close" type="button">Close</button>
-      <img class="portfolio-modal-image" src="" alt="" />
-    </div>
-  `;
+      <div class="portfolio-modal" hidden>
+        <button class="portfolio-modal-close" type="button">Close</button>
+        <img class="portfolio-modal-image" src="" alt="" />
+      </div>
+    `;
 
-  renderPortfolioSlides(testPortfolioItems);
-  initPortfolioImageModal();
+    renderPortfolioSlides(testPortfolioItems);
+    initPortfolioImageModal();
 
-  const imageButton = document.querySelector('.portfolio-image-button');
-  const closeButton = document.querySelector('.portfolio-modal-close');
-  const modal = document.querySelector('.portfolio-modal');
+    const imageButton = document.querySelector('.portfolio-image-button');
+    const closeButton = document.querySelector('.portfolio-modal-close');
+    const modal = document.querySelector('.portfolio-modal');
 
-  imageButton.click();
+    imageButton.click();
 
-  expect(modal.hidden).toBe(false);
+    expect(modal.hidden).toBe(false);
 
-  closeButton.click();
+    closeButton.click();
 
-  expect(modal.hidden).toBe(true);
-});
+    expect(modal.hidden).toBe(true);
+  });
 
-test('closes portfolio image modal when Escape key is pressed', () => {
-  document.body.innerHTML = `
-    <div class="swiper portfolio-swiper">
-      <div class="swiper-wrapper"></div>
-    </div>
+  test('closes portfolio image modal when Escape key is pressed', () => {
+    document.body.innerHTML = `
+      <div class="swiper portfolio-swiper">
+        <div class="swiper-wrapper"></div>
+      </div>
 
-    <div class="portfolio-modal" hidden>
-      <button class="portfolio-modal-close" type="button">Close</button>
-      <img class="portfolio-modal-image" src="" alt="" />
-    </div>
-  `;
+      <div class="portfolio-modal" hidden>
+        <button class="portfolio-modal-close" type="button">Close</button>
+        <img class="portfolio-modal-image" src="" alt="" />
+      </div>
+    `;
 
-  renderPortfolioSlides(testPortfolioItems);
-  initPortfolioImageModal();
+    renderPortfolioSlides(testPortfolioItems);
+    initPortfolioImageModal();
 
-  const imageButton = document.querySelector('.portfolio-image-button');
-  const modal = document.querySelector('.portfolio-modal');
+    const imageButton = document.querySelector('.portfolio-image-button');
+    const modal = document.querySelector('.portfolio-modal');
 
-  imageButton.click();
+    imageButton.click();
 
-  expect(modal.hidden).toBe(false);
+    expect(modal.hidden).toBe(false);
 
-  document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
 
-  expect(modal.hidden).toBe(true);
-});
+    expect(modal.hidden).toBe(true);
+  });
 
-test('closes portfolio image modal when backdrop is clicked', () => {
-  document.body.innerHTML = `
-    <div class="swiper portfolio-swiper">
-      <div class="swiper-wrapper"></div>
-    </div>
+  test('closes portfolio image modal when backdrop is clicked', () => {
+    document.body.innerHTML = `
+      <div class="swiper portfolio-swiper">
+        <div class="swiper-wrapper"></div>
+      </div>
 
-    <div class="portfolio-modal" hidden>
-      <button class="portfolio-modal-close" type="button">Close</button>
-      <img class="portfolio-modal-image" src="" alt="" />
-    </div>
-  `;
+      <div class="portfolio-modal" hidden>
+        <button class="portfolio-modal-close" type="button">Close</button>
+        <img class="portfolio-modal-image" src="" alt="" />
+      </div>
+    `;
 
-  renderPortfolioSlides(testPortfolioItems);
-  initPortfolioImageModal();
+    renderPortfolioSlides(testPortfolioItems);
+    initPortfolioImageModal();
 
-  const imageButton = document.querySelector('.portfolio-image-button');
-  const modal = document.querySelector('.portfolio-modal');
+    const imageButton = document.querySelector('.portfolio-image-button');
+    const modal = document.querySelector('.portfolio-modal');
 
-  imageButton.click();
+    imageButton.click();
 
-  expect(modal.hidden).toBe(false);
+    expect(modal.hidden).toBe(false);
 
-  modal.click();
+    modal.click();
 
-  expect(modal.hidden).toBe(true);
-});
+    expect(modal.hidden).toBe(true);
+  });
 
-test('moves focus to close button when portfolio image modal opens', () => {
-  document.body.innerHTML = `
-    <div class="swiper portfolio-swiper">
-      <div class="swiper-wrapper"></div>
-    </div>
+  test('moves focus to close button when portfolio image modal opens', () => {
+    document.body.innerHTML = `
+      <div class="swiper portfolio-swiper">
+        <div class="swiper-wrapper"></div>
+      </div>
 
-    <div class="portfolio-modal" hidden>
-      <button class="portfolio-modal-close" type="button">Close</button>
-      <img class="portfolio-modal-image" src="" alt="" />
-    </div>
-  `;
+      <div class="portfolio-modal" hidden>
+        <button class="portfolio-modal-close" type="button">Close</button>
+        <img class="portfolio-modal-image" src="" alt="" />
+      </div>
+    `;
 
-  renderPortfolioSlides(testPortfolioItems);
-  initPortfolioImageModal();
+    renderPortfolioSlides(testPortfolioItems);
+    initPortfolioImageModal();
 
-  const imageButton = document.querySelector('.portfolio-image-button');
-  const closeButton = document.querySelector('.portfolio-modal-close');
+    const imageButton = document.querySelector('.portfolio-image-button');
+    const closeButton = document.querySelector('.portfolio-modal-close');
 
-  imageButton.click();
+    imageButton.click();
 
-  expect(document.activeElement).toBe(closeButton);
-});
+    expect(document.activeElement).toBe(closeButton);
+  });
 
-test('returns focus to portfolio image button when modal closes', () => {
-  document.body.innerHTML = `
-    <div class="swiper portfolio-swiper">
-      <div class="swiper-wrapper"></div>
-    </div>
+  test('returns focus to portfolio image button when modal closes', () => {
+    document.body.innerHTML = `
+      <div class="swiper portfolio-swiper">
+        <div class="swiper-wrapper"></div>
+      </div>
 
-    <div class="portfolio-modal" hidden>
-      <button class="portfolio-modal-close" type="button">Close</button>
-      <img class="portfolio-modal-image" src="" alt="" />
-    </div>
-  `;
+      <div class="portfolio-modal" hidden>
+        <button class="portfolio-modal-close" type="button">Close</button>
+        <img class="portfolio-modal-image" src="" alt="" />
+      </div>
+    `;
 
-  renderPortfolioSlides(testPortfolioItems);
-  initPortfolioImageModal();
+    renderPortfolioSlides(testPortfolioItems);
+    initPortfolioImageModal();
 
-  const imageButton = document.querySelector('.portfolio-image-button');
-  const closeButton = document.querySelector('.portfolio-modal-close');
-  const modal = document.querySelector('.portfolio-modal');
+    const imageButton = document.querySelector('.portfolio-image-button');
+    const closeButton = document.querySelector('.portfolio-modal-close');
+    const modal = document.querySelector('.portfolio-modal');
 
-  imageButton.click();
+    imageButton.click();
 
-  expect(modal.hidden).toBe(false);
-  expect(document.activeElement).toBe(closeButton);
+    expect(modal.hidden).toBe(false);
+    expect(document.activeElement).toBe(closeButton);
 
-  closeButton.click();
+    closeButton.click();
 
-  expect(modal.hidden).toBe(true);
-  expect(document.activeElement).toBe(imageButton);
+    expect(modal.hidden).toBe(true);
+    expect(document.activeElement).toBe(imageButton);
+  });
 });
