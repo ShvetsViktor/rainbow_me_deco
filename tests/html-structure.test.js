@@ -240,7 +240,7 @@ describe('Navbar layout structure', () => {
     expect(logoLink.getAttribute('aria-label')).toBe('Rainbow Me home');
 
     expect(logoImage).not.toBeNull();
-    expect(logoImage.getAttribute('src')).toBe('assets/images/logo/rainbow_me_logo.png');
+    expect(logoImage.getAttribute('src')).toBe('assets/images/logo/rainbow-me-logo.png');
     expect(logoImage.getAttribute('alt')).toBe('Rainbow Me');
   });
 });
