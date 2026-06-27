@@ -371,17 +371,45 @@ describe('Estimate builder', () => {
     expect(estimateImage.getAttribute('alt')).toBe('Balloon arch decoration for an event');
   });
 
-  test('updates enquiry estimate summary when item is added', () => {
+  test('updates enquiry estimate summary with selected item image when item is added', () => {
     const { addButton } = setupEstimateDom();
 
     addButton.click();
 
     const enquiryEstimateItems = document.querySelectorAll('.enquiry-estimate-list li');
+    const enquiryEstimateImage = document.querySelector('.enquiry-estimate-item-image');
     const enquiryEstimateTotal = document.querySelector('.enquiry-estimate-total strong');
 
     expect(enquiryEstimateItems.length).toBe(1);
     expect(enquiryEstimateItems[0].textContent).toContain('Pastel Balloon Arch');
     expect(enquiryEstimateItems[0].textContent).toContain('£120');
+
+    expect(enquiryEstimateImage).not.toBeNull();
+    expect(enquiryEstimateImage.getAttribute('src')).toBe('assets/images/gallery/ballon-arch-backdrop.webp');
+    expect(enquiryEstimateImage.getAttribute('alt')).toBe('Pastel balloon arch decoration');
+
+    expect(enquiryEstimateTotal.textContent).toBe('£120');
+  });
+
+  test('updates enquiry estimate summary with selected service image when service item is added', () => {
+    setupEstimateDom();
+
+    const serviceAddButton = addServiceButtonToDom();
+
+    serviceAddButton.click();
+
+    const enquiryEstimateItems = document.querySelectorAll('.enquiry-estimate-list li');
+    const enquiryEstimateImage = document.querySelector('.enquiry-estimate-item-image');
+    const enquiryEstimateTotal = document.querySelector('.enquiry-estimate-total strong');
+
+    expect(enquiryEstimateItems.length).toBe(1);
+    expect(enquiryEstimateItems[0].textContent).toContain('Balloon Arches');
+    expect(enquiryEstimateItems[0].textContent).toContain('£120');
+
+    expect(enquiryEstimateImage).not.toBeNull();
+    expect(enquiryEstimateImage.getAttribute('src')).toBe('assets/images/gallery/ballon-arch-backdrop.webp');
+    expect(enquiryEstimateImage.getAttribute('alt')).toBe('Balloon arch decoration for an event');
+
     expect(enquiryEstimateTotal.textContent).toBe('£120');
   });
 
@@ -395,9 +423,11 @@ describe('Estimate builder', () => {
     removeButton.click();
 
     const enquiryEstimateItems = document.querySelectorAll('.enquiry-estimate-list li');
+    const enquiryEstimateImage = document.querySelector('.enquiry-estimate-item-image');
     const enquiryEstimateTotal = document.querySelector('.enquiry-estimate-total strong');
 
     expect(enquiryEstimateItems.length).toBe(0);
+    expect(enquiryEstimateImage).toBeNull();
     expect(enquiryEstimateTotal.textContent).toBe('£0');
   });
 });
