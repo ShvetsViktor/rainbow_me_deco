@@ -71,6 +71,8 @@ function initEstimateBuilder(items) {
   const estimatePanelTotal = document.querySelector('.estimate-panel-total');
   const estimateRequestButton = document.querySelector('.estimate-request-button');
   const enquirySection = document.querySelector('#enquiry');
+  const enquiryEstimateList = document.querySelector('.enquiry-estimate-list');
+  const enquiryEstimateTotal = document.querySelector('.enquiry-estimate-total strong');
 
   if (
     !portfolioWrapper ||
@@ -121,6 +123,8 @@ function initEstimateBuilder(items) {
     estimateCountBadge.textContent = estimateItems.length;
     estimatePanelTotal.textContent = `£${total}`;
 
+    updateEnquiryEstimateSummary();
+
     if (estimateItems.length === 1) {
       estimateCount.textContent = '1 item';
     } else {
@@ -128,6 +132,27 @@ function initEstimateBuilder(items) {
     }
 
     renderEstimateList();
+  }
+
+  function updateEnquiryEstimateSummary() {
+    if (!enquiryEstimateList || !enquiryEstimateTotal) {
+      return;
+    }
+
+    enquiryEstimateList.innerHTML = '';
+
+    for (let item of estimateItems) {
+      const listItem = document.createElement('li');
+
+      listItem.innerHTML = `
+      <span>${item.title}</span>
+      <span>£${item.price}</span>
+    `;
+
+      enquiryEstimateList.appendChild(listItem);
+    }
+
+    enquiryEstimateTotal.textContent = `£${calculateEstimateTotal(estimateItems)}`;
   }
 
   viewEstimateButton.addEventListener('click', () => {
