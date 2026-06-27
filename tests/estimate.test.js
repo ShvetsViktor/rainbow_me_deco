@@ -2,13 +2,11 @@ const { addItemToEstimate, calculateEstimateTotal, removeItemFromEstimate } = re
 
 const testItem = {
   title: 'Pastel Balloon Arch',
-  category: 'balloon-arches',
   price: 120,
 };
 
 const secondTestItem = {
   title: 'Birthday Number Stack',
-  category: 'number-stacks',
   price: 65,
 };
 

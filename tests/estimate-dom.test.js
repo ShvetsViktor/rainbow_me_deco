@@ -1,15 +1,5 @@
 const { initEstimateBuilder } = require('../assets/js/estimate');
-
-const testPortfolioItems = [
-  {
-    title: 'Pastel Balloon Arch',
-    category: 'balloon-arches',
-    image: 'assets/images/portfolio/balloon-arches-1.avif',
-    alt: 'Pastel balloon arch decoration',
-    description: 'A soft pastel balloon arch.',
-    price: 120,
-  },
-];
+const { testPortfolioItems } = require('./fixtures/portfolio-items');
 
 function setupEstimateDom(buttonTitle = 'Pastel Balloon Arch') {
   document.body.innerHTML = `
@@ -240,9 +230,12 @@ test('adds service item to estimate when service add button is clicked', () => {
           type="button"
           data-title="Balloon Arches"
           data-price="120"
-          data-image="assets/images/services/balloon-arches.avif"
+          data-image="assets/images/gallery/ballon-arch-backdrop.webp"
           data-alt="Balloon arch decoration for an event"
         >
+          <span>Add to estimate</span>
+          <span class="button-icon" aria-hidden="true">+</span>
+        </button>
       </section>
     `
   );
@@ -292,7 +285,7 @@ test('shows balloon animation from service add button when service item is added
           type="button"
           data-title="Balloon Arches"
           data-price="120"
-          data-image="assets/images/services/balloon-arches.avif"
+          data-image="assets/images/gallery/ballon-arch-backdrop.webp"
           data-alt="Balloon arch decoration for an event"
         >
           <span>Add to estimate</span>
@@ -329,7 +322,7 @@ test('renders selected item image inside estimate panel', () => {
   const estimateImage = document.querySelector('.estimate-list-item-image');
 
   expect(estimateImage).not.toBeNull();
-  expect(estimateImage.getAttribute('src')).toBe('assets/images/portfolio/balloon-arches-1.avif');
+  expect(estimateImage.getAttribute('src')).toBe('assets/images/gallery/ballon-arch-backdrop.webp');
   expect(estimateImage.getAttribute('alt')).toBe('Pastel balloon arch decoration');
 });
 
@@ -345,7 +338,7 @@ test('renders selected service image inside estimate panel', () => {
           type="button"
           data-title="Balloon Arches"
           data-price="120"
-          data-image="assets/images/services/balloon-arches.avif"
+          data-image="assets/images/gallery/ballon-arch-backdrop.webp"
           data-alt="Balloon arch decoration for an event"
         >
           <span>Add to estimate</span>
@@ -364,6 +357,6 @@ test('renders selected service image inside estimate panel', () => {
   const estimateImage = document.querySelector('.estimate-list-item-image');
 
   expect(estimateImage).not.toBeNull();
-  expect(estimateImage.getAttribute('src')).toBe('assets/images/services/balloon-arches.avif');
+  expect(estimateImage.getAttribute('src')).toBe('assets/images/gallery/ballon-arch-backdrop.webp');
   expect(estimateImage.getAttribute('alt')).toBe('Balloon arch decoration for an event');
 });

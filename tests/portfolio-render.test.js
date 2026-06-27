@@ -4,7 +4,7 @@ describe('Portfolio rendering', () => {
   const portfolioItems = [
     {
       title: 'Pastel Balloon Arch',
-      image: 'assets/images/portfolio/balloon-arches-1.avif',
+      image: 'assets/images/gallery/ballon-arch-backdrop.webp',
       alt: 'Pastel balloon arch decoration for a celebration',
       description: 'A soft pastel balloon arch created for a private celebration.',
       price: 145,
@@ -35,7 +35,7 @@ describe('Portfolio rendering', () => {
     renderPortfolioSlides(portfolioItems);
 
     expect(document.querySelector('.portfolio-card img').getAttribute('src')).toBe(
-      'assets/images/portfolio/balloon-arches-1.avif'
+      'assets/images/gallery/ballon-arch-backdrop.webp'
     );
 
     expect(document.querySelector('.portfolio-card img').getAttribute('alt')).toBe(

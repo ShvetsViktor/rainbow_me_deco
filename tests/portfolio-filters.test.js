@@ -8,33 +8,7 @@ const {
 } = require('../assets/js/portfolio-filters');
 
 const { renderPortfolioSlides } = require('../assets/js/portfolio-carousel');
-
-const testPortfolioItems = [
-  {
-    title: 'Pastel Balloon Arch',
-    category: 'balloon-arches',
-    image: 'assets/images/portfolio/balloon-arches-1.avif',
-    alt: 'Pastel balloon arch decoration',
-    description: 'A pastel balloon arch.',
-    price: 120,
-  },
-  {
-    title: 'Birthday Number Stack',
-    category: 'number-stacks',
-    image: 'assets/images/portfolio/number-stacks-1.avif',
-    alt: 'Birthday number stack decoration',
-    description: 'A number stack decoration.',
-    price: 65,
-  },
-  {
-    title: 'Wedding Entrance Arch',
-    category: 'balloon-arches',
-    image: 'assets/images/portfolio/balloon-arches-2.avif',
-    alt: 'Wedding balloon arch decoration',
-    description: 'A wedding entrance balloon arch.',
-    price: 150,
-  },
-];
+const { testPortfolioItems } = require('./fixtures/portfolio-items');
 
 describe('Portfolio filtering', () => {
   test('filters portfolio items by category', () => {
@@ -207,20 +181,9 @@ describe('Portfolio filtering', () => {
   });
 
   test('returns portfolio items that include selected category', () => {
-    const items = [
-      {
-        title: 'Balloon Arch with Backdrop',
-        categories: ['balloon-arches', 'backdrops'],
-      },
-      {
-        title: 'Number Stack',
-        categories: ['number-stacks'],
-      },
-    ];
-
-    const filteredItems = filterPortfolioItems(items, 'backdrops');
+    const filteredItems = filterPortfolioItems(testPortfolioItems, 'backdrops');
 
     expect(filteredItems.length).toBe(1);
-    expect(filteredItems[0].title).toBe('Balloon Arch with Backdrop');
+    expect(filteredItems[0].title).toBe('Pastel Balloon Arch');
   });
 });

@@ -1,16 +1,6 @@
 const { renderPortfolioSlides } = require('../assets/js/portfolio-carousel');
 const { initPortfolioImageModal } = require('../assets/js/portfolio-modal');
-
-const testPortfolioItems = [
-  {
-    title: 'Pastel Balloon Arch',
-    category: 'balloon-arches',
-    image: 'assets/images/portfolio/balloon-arches-1.avif',
-    alt: 'Pastel balloon arch decoration',
-    description: 'A soft pastel balloon arch.',
-    price: 120,
-  },
-];
+const { testPortfolioItems } = require('./fixtures/portfolio-items');
 
 test('opens portfolio image modal when portfolio image button is clicked', () => {
   document.body.innerHTML = `
