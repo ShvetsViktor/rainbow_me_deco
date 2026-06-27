@@ -2,19 +2,25 @@ const { initEstimateBuilder } = require('../assets/js/estimate');
 const { testPortfolioItems } = require('./fixtures/portfolio-items');
 
 let intersectionObserverCallback;
+let intersectionObserverObserve;
 
 beforeEach(() => {
   intersectionObserverCallback = null;
+  intersectionObserverObserve = jest.fn();
 
   window.IntersectionObserver = jest.fn((callback) => {
     intersectionObserverCallback = callback;
 
     return {
-      observe: jest.fn(),
+      observe: intersectionObserverObserve,
       unobserve: jest.fn(),
       disconnect: jest.fn(),
     };
   });
+});
+
+afterEach(() => {
+  delete window.IntersectionObserver;
 });
 
 afterEach(() => {
@@ -482,7 +488,7 @@ describe('Estimate builder', () => {
     expect(enquiryEstimateTotal.textContent).toBe('£0');
   });
 
-  test('hides estimate widget when enquiry section is visible', () => {
+  test('hides estimate widget when enquiry estimate total is visible', () => {
     const { addButton, estimateWidget } = setupEstimateDom();
 
     addButton.click();
@@ -494,7 +500,7 @@ describe('Estimate builder', () => {
     expect(estimateWidget.hidden).toBe(true);
   });
 
-  test('shows estimate widget when enquiry section is not visible and estimate has items', () => {
+  test('shows estimate widget when enquiry estimate total is not visible and estimate has items', () => {
     const { addButton, estimateWidget } = setupEstimateDom();
 
     addButton.click();
@@ -508,11 +514,19 @@ describe('Estimate builder', () => {
     expect(estimateWidget.hidden).toBe(false);
   });
 
-  test('keeps estimate widget hidden when enquiry section is not visible and estimate is empty', () => {
+  test('keeps estimate widget hidden when enquiry estimate total is not visible and estimate is empty', () => {
     const { estimateWidget } = setupEstimateDom();
 
     intersectionObserverCallback([{ isIntersecting: false }]);
 
     expect(estimateWidget.hidden).toBe(true);
+  });
+
+  test('observes enquiry estimate total for estimate widget visibility', () => {
+    setupEstimateDom();
+
+    const enquiryEstimateTotal = document.querySelector('.enquiry-estimate-total');
+
+    expect(intersectionObserverObserve).toHaveBeenCalledWith(enquiryEstimateTotal);
   });
 });

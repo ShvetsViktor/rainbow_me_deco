@@ -73,8 +73,9 @@ function initEstimateBuilder(items) {
   const enquirySection = document.querySelector('#enquiry');
   const enquiryEstimateList = document.querySelector('.enquiry-estimate-list');
   const enquiryEstimateTotal = document.querySelector('.enquiry-estimate-total strong');
+  const enquiryEstimateTotalBlock = document.querySelector('.enquiry-estimate-total');
 
-  if (enquirySection && 'IntersectionObserver' in window) {
+  if (enquiryEstimateTotalBlock && 'IntersectionObserver' in window) {
     const enquiryObserver = new IntersectionObserver((entries) => {
       const enquiryEntry = entries[0];
 
@@ -83,7 +84,7 @@ function initEstimateBuilder(items) {
       updateEstimateWidgetVisibility();
     });
 
-    enquiryObserver.observe(enquirySection);
+    enquiryObserver.observe(enquiryEstimateTotalBlock);
   }
 
   if (
