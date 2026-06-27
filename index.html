@@ -270,47 +270,146 @@
       <section id="testimonials" hidden></section>
       <section id="enquiry">
         <div class="container enquiry-layout">
-          <div class="section-header">
-            <p class="section-label">Request a Quote</p>
-            <h2>Tell us about your event</h2>
-            <p>Share a few details and we will get back to you with a personalised estimate.</p>
+          <div class="section-header enquiry-header">
+            <p class="section-label">Enquiry</p>
+            <h2>Get in touch</h2>
+            <p>Tell us about your event and we’ll help you plan the perfect setup.</p>
           </div>
 
-          <form class="enquiry-form" novalidate>
-            <div class="form-field">
-              <label for="customer-name">Name</label>
-              <input id="customer-name" name="customer-name" type="text" required />
-            </div>
+          <div class="enquiry-content">
+            <aside class="enquiry-estimate-card" aria-label="Selected estimate summary">
+              <div class="enquiry-estimate-content">
+                <h3>Your selected estimate</h3>
 
-            <div class="form-field">
-              <label for="customer-email">Email</label>
-              <input id="customer-email" name="customer-email" type="email" required />
-            </div>
+                <ul class="enquiry-estimate-list">
+                  <li>
+                    <span>Blush garden arch</span>
+                    <span>£120</span>
+                  </li>
+                  <li>
+                    <span>Coral number stack</span>
+                    <span>£80</span>
+                  </li>
+                  <li>
+                    <span>Delivery &amp; setup</span>
+                    <span>£30</span>
+                  </li>
+                </ul>
 
-            <div class="form-field">
-              <label for="event-type">Event type</label>
-              <select id="event-type" name="event-type">
-                <option value="">Select an event type</option>
-                <option value="birthday">Birthday</option>
-                <option value="wedding">Wedding</option>
-                <option value="baby-shower">Baby shower</option>
-                <option value="business">Business event</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
+                <div class="enquiry-estimate-total">
+                  <span>Estimated total</span>
+                  <strong>£230</strong>
+                </div>
+              </div>
 
-            <div class="form-field">
-              <label for="customer-message">Message</label>
-              <textarea
-                id="customer-message"
-                name="customer-message"
-                rows="5"
-                placeholder="Tell us about your date, venue, colours, theme, and any decorations you like."
-              ></textarea>
-            </div>
+              <div class="enquiry-message-card">
+                <div class="enquiry-icon" aria-hidden="true">♡</div>
+                <h3>We can’t wait to bring your celebration to life!</h3>
+                <p>Our team will be in touch soon to confirm the details and provide your final quote.</p>
+              </div>
+            </aside>
 
-            <button class="button button-primary enquiry-submit-button" type="submit">Request a Quote</button>
-          </form>
+            <form class="enquiry-form" novalidate>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="customer-first-name">First name <span aria-hidden="true">*</span></label>
+                  <input
+                    id="customer-first-name"
+                    name="customer-first-name"
+                    type="text"
+                    placeholder="First name"
+                    required
+                  />
+                </div>
+
+                <div class="form-field">
+                  <label for="customer-last-name">Last name <span aria-hidden="true">*</span></label>
+                  <input
+                    id="customer-last-name"
+                    name="customer-last-name"
+                    type="text"
+                    placeholder="Last name"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="customer-email">Email <span aria-hidden="true">*</span></label>
+                  <input id="customer-email" name="customer-email" type="email" placeholder="your@email.com" required />
+                </div>
+
+                <div class="form-field">
+                  <label for="customer-phone">Phone number <span aria-hidden="true">*</span></label>
+                  <input id="customer-phone" name="customer-phone" type="tel" placeholder="0412 345 678" required />
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="event-type">Event type <span aria-hidden="true">*</span></label>
+                <select id="event-type" name="event-type" required>
+                  <option value="">Select event type...</option>
+                  <option value="birthday">Birthday</option>
+                  <option value="wedding">Wedding</option>
+                  <option value="baby-shower">Baby shower</option>
+                  <option value="business">Business event</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label for="decoration-type"
+                  >Decoration type / Service interested in <span aria-hidden="true">*</span></label
+                >
+                <select id="decoration-type" name="decoration-type" required>
+                  <option value="">Select decoration type...</option>
+                  <option value="balloon-arches">Balloon Arches</option>
+                  <option value="number-stacks">Number Stacks</option>
+                  <option value="backdrops">Backdrops</option>
+                  <option value="table-decor">Table Decor</option>
+                  <option value="business-decor">Business Decor</option>
+                  <option value="custom-setups">Custom Setups</option>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="event-date">Event date <span aria-hidden="true">*</span></label>
+                  <input id="event-date" name="event-date" type="date" required />
+                </div>
+
+                <div class="form-field">
+                  <label for="event-location">Event location <span aria-hidden="true">*</span></label>
+                  <input
+                    id="event-location"
+                    name="event-location"
+                    type="text"
+                    placeholder="Town, venue or general area"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="customer-message">Message <span aria-hidden="true">*</span></label>
+                <textarea
+                  id="customer-message"
+                  name="customer-message"
+                  rows="6"
+                  placeholder="Tell us about your vision, colours, theme, venue details, or anything else we should know..."
+                  required
+                ></textarea>
+              </div>
+
+              <button class="button button-primary enquiry-submit-button" type="submit">Submit enquiry</button>
+
+              <p class="enquiry-privacy-note">
+                <span aria-hidden="true">♧</span>
+                Your details are safe with us and will only be used to respond to your enquiry.
+              </p>
+            </form>
+          </div>
         </div>
       </section>
     </main>
