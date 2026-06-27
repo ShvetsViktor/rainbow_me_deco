@@ -93,6 +93,7 @@ function initEstimateBuilder(items) {
 
   let estimateItems = [];
   let hasReachedEnquirySummary = false;
+  let isPortfolioModalOpen = false;
 
   function closeEstimatePanel() {
     estimatePanel.hidden = true;
@@ -100,7 +101,7 @@ function initEstimateBuilder(items) {
   }
 
   function updateEstimateWidgetVisibility() {
-    if (estimateItems.length === 0 || hasReachedEnquirySummary) {
+    if (estimateItems.length === 0 || hasReachedEnquirySummary || isPortfolioModalOpen) {
       estimateWidget.hidden = true;
       return;
     }
@@ -252,6 +253,16 @@ function initEstimateBuilder(items) {
       }
     });
   }
+
+  document.addEventListener('portfolioModal:open', () => {
+    isPortfolioModalOpen = true;
+    updateEstimateWidgetVisibility();
+  });
+
+  document.addEventListener('portfolioModal:close', () => {
+    isPortfolioModalOpen = false;
+    updateEstimateWidgetVisibility();
+  });
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {

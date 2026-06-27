@@ -23,11 +23,19 @@ function initPortfolioImageModal() {
     modalImage.src = image.getAttribute('src');
     modalImage.alt = image.getAttribute('alt');
 
+    document.dispatchEvent(new Event('portfolioModal:open'));
+
     closeButton.focus();
   }
 
   function closeModal() {
+    if (modal.hidden) {
+      return;
+    }
+
     modal.hidden = true;
+
+    document.dispatchEvent(new Event('portfolioModal:close'));
 
     if (lastOpenedImageButton) {
       lastOpenedImageButton.focus();
