@@ -16,7 +16,7 @@ function filterPortfolioItems(items, category) {
   const filteredItems = [];
 
   for (let item of items) {
-    if (item.category === category) {
+    if (item.categories.includes(category)) {
       filteredItems.push(item);
     }
   }
