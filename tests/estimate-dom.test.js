@@ -520,4 +520,34 @@ describe('Estimate builder', () => {
 
     expect(estimateWidget.hidden).toBe(true);
   });
+
+  test('hides estimate widget when portfolio modal is opened', () => {
+    const { addButton, estimateWidget, enquiryEstimateTotalBlock } = setupEstimateDom();
+
+    setEnquiryEstimateTotalPosition(enquiryEstimateTotalBlock, 1000);
+
+    addButton.click();
+
+    expect(estimateWidget.hidden).toBe(false);
+
+    document.dispatchEvent(new Event('portfolioModal:open'));
+
+    expect(estimateWidget.hidden).toBe(true);
+  });
+
+  test('shows estimate widget when portfolio modal is closed and estimate has items', () => {
+    const { addButton, estimateWidget, enquiryEstimateTotalBlock } = setupEstimateDom();
+
+    setEnquiryEstimateTotalPosition(enquiryEstimateTotalBlock, 1000);
+
+    addButton.click();
+
+    document.dispatchEvent(new Event('portfolioModal:open'));
+
+    expect(estimateWidget.hidden).toBe(true);
+
+    document.dispatchEvent(new Event('portfolioModal:close'));
+
+    expect(estimateWidget.hidden).toBe(false);
+  });
 });
