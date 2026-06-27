@@ -200,6 +200,34 @@ describe('Estimate builder', () => {
     expect(estimateBackdrop.hidden).toBe(true);
   });
 
+  test('closes estimate panel and scrolls to enquiry section when request quote button is clicked', () => {
+    document.body.insertAdjacentHTML(
+      'beforeend',
+      `
+      <section id="enquiry"></section>
+    `
+    );
+
+    Element.prototype.scrollIntoView = jest.fn();
+
+    const { addButton, viewEstimateButton, estimatePanel, estimateBackdrop } = setupEstimateDom();
+
+    addButton.click();
+    viewEstimateButton.click();
+
+    const requestQuoteButton = document.querySelector('.estimate-request-button');
+    const enquirySection = document.querySelector('#enquiry');
+
+    expect(estimatePanel.hidden).toBe(false);
+    expect(estimateBackdrop.hidden).toBe(false);
+
+    requestQuoteButton.click();
+
+    expect(estimatePanel.hidden).toBe(true);
+    expect(estimateBackdrop.hidden).toBe(true);
+    expect(enquirySection.scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' });
+  });
+
   test('updates estimate badge and panel total when item is added', () => {
     const { addButton, estimateCountBadge, estimatePanelTotal } = setupEstimateDom();
 
