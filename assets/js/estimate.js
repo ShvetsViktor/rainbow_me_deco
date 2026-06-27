@@ -150,6 +150,9 @@ function initEstimateBuilder(items) {
       <div class="enquiry-estimate-item-content">
         <span class="enquiry-estimate-item-title">${item.title}</span>
         <span class="enquiry-estimate-item-price">£${item.price}</span>
+        <button class="enquiry-estimate-remove-button" type="button" data-title="${item.title}">
+          Remove
+        </button>
       </div>
     `;
 
@@ -204,6 +207,27 @@ function initEstimateBuilder(items) {
       estimateBackdrop.hidden = true;
     }
   });
+
+  if (enquiryEstimateList) {
+    enquiryEstimateList.addEventListener('click', (event) => {
+      const removeButton = event.target.closest('.enquiry-estimate-remove-button');
+
+      if (!removeButton) {
+        return;
+      }
+
+      const selectedTitle = removeButton.getAttribute('data-title');
+
+      estimateItems = removeItemFromEstimate(estimateItems, selectedTitle);
+      updateEstimateWidget();
+
+      if (estimateItems.length === 0) {
+        estimateWidget.hidden = true;
+        estimatePanel.hidden = true;
+        estimateBackdrop.hidden = true;
+      }
+    });
+  }
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {

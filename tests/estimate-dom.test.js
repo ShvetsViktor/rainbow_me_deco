@@ -394,7 +394,7 @@ describe('Estimate builder', () => {
     expect(enquiryRemoveButton).not.toBeNull();
     expect(enquiryRemoveButton.getAttribute('type')).toBe('button');
     expect(enquiryRemoveButton.getAttribute('data-title')).toBe('Pastel Balloon Arch');
-    expect(enquiryRemoveButton.textContent).toBe('Remove');
+    expect(enquiryRemoveButton.textContent.trim()).toBe('Remove');
   });
 
   test('updates enquiry estimate summary with selected service image when service item is added', () => {
