@@ -69,6 +69,8 @@ function initEstimateBuilder(items) {
   const estimateBackdrop = document.querySelector('.estimate-backdrop');
   const estimateCountBadge = document.querySelector('.estimate-count-badge');
   const estimatePanelTotal = document.querySelector('.estimate-panel-total');
+  const estimateRequestButton = document.querySelector('.estimate-request-button');
+  const enquirySection = document.querySelector('#enquiry');
 
   if (
     !portfolioWrapper ||
@@ -142,6 +144,17 @@ function initEstimateBuilder(items) {
     estimatePanel.hidden = true;
     estimateBackdrop.hidden = true;
   });
+
+  if (estimateRequestButton) {
+    estimateRequestButton.addEventListener('click', () => {
+      estimatePanel.hidden = true;
+      estimateBackdrop.hidden = true;
+
+      if (enquirySection) {
+        enquirySection.scrollIntoView();
+      }
+    });
+  }
 
   estimateList.addEventListener('click', (event) => {
     const removeButton = event.target.closest('.estimate-remove-button');

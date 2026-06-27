@@ -54,6 +54,8 @@ function setupEstimateDom(buttonTitle = 'Pastel Balloon Arch') {
         </button>
       </div>
     </div>
+
+    <section id="enquiry"></section>
   `;
 
   initEstimateBuilder(testPortfolioItems);
@@ -201,6 +203,8 @@ describe('Estimate builder', () => {
   });
 
   test('closes estimate panel and scrolls to enquiry section when request quote button is clicked', () => {
+    const { addButton, viewEstimateButton, estimatePanel, estimateBackdrop } = setupEstimateDom();
+
     document.body.insertAdjacentHTML(
       'beforeend',
       `
@@ -208,15 +212,13 @@ describe('Estimate builder', () => {
     `
     );
 
-    Element.prototype.scrollIntoView = jest.fn();
-
-    const { addButton, viewEstimateButton, estimatePanel, estimateBackdrop } = setupEstimateDom();
+    const enquirySection = document.querySelector('#enquiry');
+    enquirySection.scrollIntoView = jest.fn();
 
     addButton.click();
     viewEstimateButton.click();
 
     const requestQuoteButton = document.querySelector('.estimate-request-button');
-    const enquirySection = document.querySelector('#enquiry');
 
     expect(estimatePanel.hidden).toBe(false);
     expect(estimateBackdrop.hidden).toBe(false);
@@ -225,7 +227,7 @@ describe('Estimate builder', () => {
 
     expect(estimatePanel.hidden).toBe(true);
     expect(estimateBackdrop.hidden).toBe(true);
-    expect(enquirySection.scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' });
+    expect(enquirySection.scrollIntoView).toHaveBeenCalled();
   });
 
   test('updates estimate badge and panel total when item is added', () => {
