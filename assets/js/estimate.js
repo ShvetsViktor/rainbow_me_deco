@@ -74,6 +74,18 @@ function initEstimateBuilder(items) {
   const enquiryEstimateList = document.querySelector('.enquiry-estimate-list');
   const enquiryEstimateTotal = document.querySelector('.enquiry-estimate-total strong');
 
+  if (enquirySection && 'IntersectionObserver' in window) {
+    const enquiryObserver = new IntersectionObserver((entries) => {
+      const enquiryEntry = entries[0];
+
+      isEnquiryVisible = enquiryEntry.isIntersecting;
+
+      updateEstimateWidgetVisibility();
+    });
+
+    enquiryObserver.observe(enquirySection);
+  }
+
   if (
     !portfolioWrapper ||
     !estimateWidget ||
@@ -91,6 +103,8 @@ function initEstimateBuilder(items) {
   }
 
   let estimateItems = [];
+
+  let isEnquiryVisible = false;
 
   function renderEstimateList() {
     estimateList.innerHTML = '';
@@ -115,10 +129,18 @@ function initEstimateBuilder(items) {
     }
   }
 
+  function updateEstimateWidgetVisibility() {
+    if (estimateItems.length === 0 || isEnquiryVisible) {
+      estimateWidget.hidden = true;
+      return;
+    }
+
+    estimateWidget.hidden = false;
+  }
+
   function updateEstimateWidget() {
     const total = calculateEstimateTotal(estimateItems);
 
-    estimateWidget.hidden = false;
     estimateTotal.textContent = `£${total}`;
     estimateCountBadge.textContent = estimateItems.length;
     estimatePanelTotal.textContent = `£${total}`;
@@ -132,6 +154,7 @@ function initEstimateBuilder(items) {
     }
 
     renderEstimateList();
+    updateEstimateWidgetVisibility();
   }
 
   function updateEnquiryEstimateSummary() {
