@@ -55,7 +55,20 @@ function setupEstimateDom(buttonTitle = 'Pastel Balloon Arch') {
       </div>
     </div>
 
-    <section id="enquiry"></section>
+    <section id="enquiry">
+      <aside class="enquiry-estimate-card" aria-label="Selected estimate summary">
+        <div class="enquiry-estimate-content">
+          <h3>Your selected estimate</h3>
+
+          <ul class="enquiry-estimate-list"></ul>
+
+          <div class="enquiry-estimate-total">
+            <span>Estimated total</span>
+            <strong>£0</strong>
+          </div>
+        </div>
+      </aside>
+    </section>
   `;
 
   initEstimateBuilder(testPortfolioItems);
@@ -356,5 +369,35 @@ describe('Estimate builder', () => {
     expect(estimateImage).not.toBeNull();
     expect(estimateImage.getAttribute('src')).toBe('assets/images/gallery/ballon-arch-backdrop.webp');
     expect(estimateImage.getAttribute('alt')).toBe('Balloon arch decoration for an event');
+  });
+
+  test('updates enquiry estimate summary when item is added', () => {
+    const { addButton } = setupEstimateDom();
+
+    addButton.click();
+
+    const enquiryEstimateItems = document.querySelectorAll('.enquiry-estimate-list li');
+    const enquiryEstimateTotal = document.querySelector('.enquiry-estimate-total strong');
+
+    expect(enquiryEstimateItems.length).toBe(1);
+    expect(enquiryEstimateItems[0].textContent).toContain('Pastel Balloon Arch');
+    expect(enquiryEstimateItems[0].textContent).toContain('£120');
+    expect(enquiryEstimateTotal.textContent).toBe('£120');
+  });
+
+  test('updates enquiry estimate summary when item is removed', () => {
+    const { addButton } = setupEstimateDom();
+
+    addButton.click();
+
+    const removeButton = document.querySelector('.estimate-remove-button');
+
+    removeButton.click();
+
+    const enquiryEstimateItems = document.querySelectorAll('.enquiry-estimate-list li');
+    const enquiryEstimateTotal = document.querySelector('.enquiry-estimate-total strong');
+
+    expect(enquiryEstimateItems.length).toBe(0);
+    expect(enquiryEstimateTotal.textContent).toBe('£0');
   });
 });
