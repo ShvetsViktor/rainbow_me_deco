@@ -205,4 +205,22 @@ describe('Portfolio filtering', () => {
 
     delete global.renderPortfolioSlides;
   });
+
+  test('returns portfolio items that include selected category', () => {
+    const items = [
+      {
+        title: 'Balloon Arch with Backdrop',
+        categories: ['balloon-arches', 'backdrops'],
+      },
+      {
+        title: 'Number Stack',
+        categories: ['number-stacks'],
+      },
+    ];
+
+    const filteredItems = filterPortfolioItems(items, 'backdrops');
+
+    expect(filteredItems.length).toBe(1);
+    expect(filteredItems[0].title).toBe('Balloon Arch with Backdrop');
+  });
 });
