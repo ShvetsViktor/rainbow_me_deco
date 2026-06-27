@@ -999,7 +999,6 @@ header nav a:focus-visible {
   border-bottom: 1px solid var(--color-border);
 }
 
-.enquiry-estimate-list li,
 .enquiry-estimate-total {
   display: flex;
   justify-content: space-between;
@@ -1044,6 +1043,37 @@ header nav a:focus-visible {
 .enquiry-form {
   display: grid;
   gap: 24px;
+}
+
+.enquiry-estimate-item {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 14px;
+  align-items: center;
+}
+
+.enquiry-estimate-item-image {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.enquiry-estimate-item-content {
+  display: grid;
+  gap: 6px;
+}
+
+.enquiry-estimate-item-title {
+  color: var(--color-text);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.enquiry-estimate-item-price {
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  font-weight: 700;
 }
 
 .form-row {

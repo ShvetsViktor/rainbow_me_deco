@@ -143,10 +143,14 @@ function initEstimateBuilder(items) {
 
     for (let item of estimateItems) {
       const listItem = document.createElement('li');
+      listItem.classList.add('enquiry-estimate-item');
 
       listItem.innerHTML = `
-      <span>${item.title}</span>
-      <span>£${item.price}</span>
+      <img class="enquiry-estimate-item-image" src="${item.image}" alt="${item.alt}">
+      <div class="enquiry-estimate-item-content">
+        <span class="enquiry-estimate-item-title">${item.title}</span>
+        <span class="enquiry-estimate-item-price">£${item.price}</span>
+      </div>
     `;
 
       enquiryEstimateList.appendChild(listItem);
