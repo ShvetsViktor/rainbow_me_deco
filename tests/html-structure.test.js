@@ -268,38 +268,103 @@ describe('Estimate widget', () => {
 });
 
 describe('Enquiry section', () => {
-  test('contains request quote form fields', () => {
+  test('contains enquiry section heading content', () => {
     const enquirySection = document.querySelector('#enquiry');
-    const enquiryForm = document.querySelector('.enquiry-form');
-    const nameInput = document.querySelector('#customer-name');
-    const emailInput = document.querySelector('#customer-email');
-    const eventTypeSelect = document.querySelector('#event-type');
-    const messageTextarea = document.querySelector('#customer-message');
-    const submitButton = document.querySelector('.enquiry-submit-button');
+    const sectionLabel = document.querySelector('#enquiry .section-label');
+    const heading = document.querySelector('#enquiry h2');
 
     expect(enquirySection).not.toBeNull();
+    expect(sectionLabel).not.toBeNull();
+    expect(sectionLabel.textContent).toBe('Enquiry');
+    expect(heading).not.toBeNull();
+    expect(heading.textContent).toBe('Get in touch');
+  });
+
+  test('contains enquiry content layout and selected estimate card', () => {
+    const enquiryContent = document.querySelector('#enquiry .enquiry-content');
+    const estimateCard = document.querySelector('#enquiry .enquiry-estimate-card');
+    const estimateList = document.querySelector('#enquiry .enquiry-estimate-list');
+    const estimateTotal = document.querySelector('#enquiry .enquiry-estimate-total');
+
+    expect(enquiryContent).not.toBeNull();
+
+    expect(estimateCard).not.toBeNull();
+    expect(estimateCard.getAttribute('aria-label')).toBe('Selected estimate summary');
+
+    expect(estimateList).not.toBeNull();
+    expect(estimateList.querySelectorAll('li').length).toBeGreaterThan(0);
+
+    expect(estimateTotal).not.toBeNull();
+    expect(estimateTotal.textContent).toContain('Estimated total');
+  });
+
+  test('contains enquiry encouragement message card', () => {
+    const messageCard = document.querySelector('#enquiry .enquiry-message-card');
+    const messageHeading = document.querySelector('#enquiry .enquiry-message-card h3');
+
+    expect(messageCard).not.toBeNull();
+    expect(messageHeading).not.toBeNull();
+    expect(messageHeading.textContent).toBe('We can’t wait to bring your celebration to life!');
+  });
+
+  test('contains required enquiry form fields from the design', () => {
+    const enquiryForm = document.querySelector('#enquiry .enquiry-form');
+    const firstNameInput = document.querySelector('#customer-first-name');
+    const lastNameInput = document.querySelector('#customer-last-name');
+    const emailInput = document.querySelector('#customer-email');
+    const phoneInput = document.querySelector('#customer-phone');
+    const eventTypeSelect = document.querySelector('#event-type');
+    const decorationTypeSelect = document.querySelector('#decoration-type');
+    const eventDateInput = document.querySelector('#event-date');
+    const eventLocationInput = document.querySelector('#event-location');
+    const messageTextarea = document.querySelector('#customer-message');
 
     expect(enquiryForm).not.toBeNull();
     expect(enquiryForm.getAttribute('novalidate')).not.toBeNull();
 
-    expect(nameInput).not.toBeNull();
-    expect(nameInput.getAttribute('name')).toBe('customer-name');
-    expect(nameInput.getAttribute('type')).toBe('text');
-    expect(nameInput.hasAttribute('required')).toBe(true);
+    expect(firstNameInput).not.toBeNull();
+    expect(firstNameInput.getAttribute('type')).toBe('text');
+    expect(firstNameInput.hasAttribute('required')).toBe(true);
+
+    expect(lastNameInput).not.toBeNull();
+    expect(lastNameInput.getAttribute('type')).toBe('text');
+    expect(lastNameInput.hasAttribute('required')).toBe(true);
 
     expect(emailInput).not.toBeNull();
-    expect(emailInput.getAttribute('name')).toBe('customer-email');
     expect(emailInput.getAttribute('type')).toBe('email');
     expect(emailInput.hasAttribute('required')).toBe(true);
 
+    expect(phoneInput).not.toBeNull();
+    expect(phoneInput.getAttribute('type')).toBe('tel');
+    expect(phoneInput.hasAttribute('required')).toBe(true);
+
     expect(eventTypeSelect).not.toBeNull();
-    expect(eventTypeSelect.getAttribute('name')).toBe('event-type');
+    expect(eventTypeSelect.hasAttribute('required')).toBe(true);
+
+    expect(decorationTypeSelect).not.toBeNull();
+    expect(decorationTypeSelect.hasAttribute('required')).toBe(true);
+
+    expect(eventDateInput).not.toBeNull();
+    expect(eventDateInput.getAttribute('type')).toBe('date');
+    expect(eventDateInput.hasAttribute('required')).toBe(true);
+
+    expect(eventLocationInput).not.toBeNull();
+    expect(eventLocationInput.getAttribute('type')).toBe('text');
+    expect(eventLocationInput.hasAttribute('required')).toBe(true);
 
     expect(messageTextarea).not.toBeNull();
-    expect(messageTextarea.getAttribute('name')).toBe('customer-message');
+    expect(messageTextarea.hasAttribute('required')).toBe(true);
+  });
+
+  test('contains enquiry submit button and privacy note', () => {
+    const submitButton = document.querySelector('#enquiry .enquiry-submit-button');
+    const privacyNote = document.querySelector('#enquiry .enquiry-privacy-note');
 
     expect(submitButton).not.toBeNull();
     expect(submitButton.getAttribute('type')).toBe('submit');
-    expect(submitButton.textContent).toContain('Request a Quote');
+    expect(submitButton.textContent).toBe('Submit enquiry');
+
+    expect(privacyNote).not.toBeNull();
+    expect(privacyNote.textContent).toContain('Your details are safe with us');
   });
 });
