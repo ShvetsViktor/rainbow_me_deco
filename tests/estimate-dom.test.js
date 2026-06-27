@@ -1,6 +1,26 @@
 const { initEstimateBuilder } = require('../assets/js/estimate');
 const { testPortfolioItems } = require('./fixtures/portfolio-items');
 
+let intersectionObserverCallback;
+
+beforeEach(() => {
+  intersectionObserverCallback = null;
+
+  window.IntersectionObserver = jest.fn((callback) => {
+    intersectionObserverCallback = callback;
+
+    return {
+      observe: jest.fn(),
+      unobserve: jest.fn(),
+      disconnect: jest.fn(),
+    };
+  });
+});
+
+afterEach(() => {
+  delete window.IntersectionObserver;
+});
+
 function setupEstimateDom(buttonTitle = 'Pastel Balloon Arch') {
   document.body.innerHTML = `
     <div class="swiper portfolio-swiper">
@@ -460,5 +480,39 @@ describe('Estimate builder', () => {
     expect(estimateCountBadge.textContent).toBe('0');
     expect(estimatePanelTotal.textContent).toBe('£0');
     expect(enquiryEstimateTotal.textContent).toBe('£0');
+  });
+
+  test('hides estimate widget when enquiry section is visible', () => {
+    const { addButton, estimateWidget } = setupEstimateDom();
+
+    addButton.click();
+
+    expect(estimateWidget.hidden).toBe(false);
+
+    intersectionObserverCallback([{ isIntersecting: true }]);
+
+    expect(estimateWidget.hidden).toBe(true);
+  });
+
+  test('shows estimate widget when enquiry section is not visible and estimate has items', () => {
+    const { addButton, estimateWidget } = setupEstimateDom();
+
+    addButton.click();
+
+    intersectionObserverCallback([{ isIntersecting: true }]);
+
+    expect(estimateWidget.hidden).toBe(true);
+
+    intersectionObserverCallback([{ isIntersecting: false }]);
+
+    expect(estimateWidget.hidden).toBe(false);
+  });
+
+  test('keeps estimate widget hidden when enquiry section is not visible and estimate is empty', () => {
+    const { estimateWidget } = setupEstimateDom();
+
+    intersectionObserverCallback([{ isIntersecting: false }]);
+
+    expect(estimateWidget.hidden).toBe(true);
   });
 });
