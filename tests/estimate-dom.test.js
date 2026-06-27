@@ -73,290 +73,258 @@ function setupEstimateDom(buttonTitle = 'Pastel Balloon Arch') {
   };
 }
 
-test('shows estimate widget when add to estimate button is clicked', () => {
-  const { addButton, estimateWidget, estimateTotal, estimateCount } = setupEstimateDom();
+function addServiceButtonToDom() {
+  document.body.insertAdjacentHTML(
+    'beforeend',
+    `
+      <section id="services">
+        <button
+          class="button button-primary add-to-estimate"
+          type="button"
+          data-title="Balloon Arches"
+          data-price="120"
+          data-image="assets/images/gallery/ballon-arch-backdrop.webp"
+          data-alt="Balloon arch decoration for an event"
+        >
+          <span>Add to estimate</span>
+          <span class="button-icon" aria-hidden="true">+</span>
+        </button>
+      </section>
+    `
+  );
 
-  addButton.click();
+  return document.querySelector('#services .add-to-estimate');
+}
 
-  expect(estimateWidget.hidden).toBe(false);
-  expect(estimateTotal.textContent).toBe('£120');
-  expect(estimateCount.textContent).toBe('1 item');
-});
+describe('Estimate builder', () => {
+  test('shows estimate widget when add to estimate button is clicked', () => {
+    const { addButton, estimateWidget, estimateTotal, estimateCount } = setupEstimateDom();
 
-test('adds item to estimate after portfolio cards are re-rendered', () => {
-  const { portfolioWrapper, estimateWidget, estimateTotal, estimateCount } = setupEstimateDom('Old Item');
+    addButton.click();
 
-  portfolioWrapper.innerHTML = `
+    expect(estimateWidget.hidden).toBe(false);
+    expect(estimateTotal.textContent).toBe('£120');
+    expect(estimateCount.textContent).toBe('1 item');
+  });
+
+  test('adds item to estimate after portfolio cards are re-rendered', () => {
+    const { portfolioWrapper, estimateWidget, estimateTotal, estimateCount } = setupEstimateDom('Old Item');
+
+    portfolioWrapper.innerHTML = `
     <button class="add-to-estimate" type="button" data-title="Pastel Balloon Arch">
       Add to estimate
     </button>
   `;
 
-  const addButton = document.querySelector('.add-to-estimate');
+    const addButton = document.querySelector('.add-to-estimate');
 
-  addButton.click();
+    addButton.click();
 
-  expect(estimateWidget.hidden).toBe(false);
-  expect(estimateTotal.textContent).toBe('£120');
-  expect(estimateCount.textContent).toBe('1 item');
-});
+    expect(estimateWidget.hidden).toBe(false);
+    expect(estimateTotal.textContent).toBe('£120');
+    expect(estimateCount.textContent).toBe('1 item');
+  });
 
-test('opens estimate panel when view estimate button is clicked', () => {
-  const { addButton, viewEstimateButton, estimatePanel } = setupEstimateDom();
+  test('opens estimate panel when view estimate button is clicked', () => {
+    const { addButton, viewEstimateButton, estimatePanel } = setupEstimateDom();
 
-  addButton.click();
-  viewEstimateButton.click();
+    addButton.click();
+    viewEstimateButton.click();
 
-  expect(estimatePanel.hidden).toBe(false);
-});
+    expect(estimatePanel.hidden).toBe(false);
+  });
 
-test('renders selected items inside estimate panel', () => {
-  const { addButton, viewEstimateButton } = setupEstimateDom();
+  test('renders selected items inside estimate panel', () => {
+    const { addButton, viewEstimateButton } = setupEstimateDom();
 
-  addButton.click();
-  viewEstimateButton.click();
+    addButton.click();
+    viewEstimateButton.click();
 
-  const estimateListItems = document.querySelectorAll('.estimate-list-item');
+    const estimateListItems = document.querySelectorAll('.estimate-list-item');
 
-  expect(estimateListItems.length).toBe(1);
-  expect(estimateListItems[0].textContent).toContain('Pastel Balloon Arch');
-  expect(estimateListItems[0].textContent).toContain('£120');
-});
+    expect(estimateListItems.length).toBe(1);
+    expect(estimateListItems[0].textContent).toContain('Pastel Balloon Arch');
+    expect(estimateListItems[0].textContent).toContain('£120');
+  });
 
-test('closes estimate panel when close button is clicked', () => {
-  const { addButton, viewEstimateButton, closeButton, estimatePanel } = setupEstimateDom();
+  test('closes estimate panel when close button is clicked', () => {
+    const { addButton, viewEstimateButton, closeButton, estimatePanel } = setupEstimateDom();
 
-  addButton.click();
-  viewEstimateButton.click();
+    addButton.click();
+    viewEstimateButton.click();
 
-  expect(estimatePanel.hidden).toBe(false);
+    expect(estimatePanel.hidden).toBe(false);
 
-  closeButton.click();
+    closeButton.click();
 
-  expect(estimatePanel.hidden).toBe(true);
-});
+    expect(estimatePanel.hidden).toBe(true);
+  });
 
-test('closes estimate panel when Escape key is pressed', () => {
-  const { addButton, viewEstimateButton, estimatePanel } = setupEstimateDom();
+  test('closes estimate panel when Escape key is pressed', () => {
+    const { addButton, viewEstimateButton, estimatePanel } = setupEstimateDom();
 
-  addButton.click();
-  viewEstimateButton.click();
+    addButton.click();
+    viewEstimateButton.click();
 
-  expect(estimatePanel.hidden).toBe(false);
+    expect(estimatePanel.hidden).toBe(false);
 
-  const escapeKeyEvent = new KeyboardEvent('keydown', { key: 'Escape' });
+    const escapeKeyEvent = new KeyboardEvent('keydown', { key: 'Escape' });
 
-  document.dispatchEvent(escapeKeyEvent);
+    document.dispatchEvent(escapeKeyEvent);
 
-  expect(estimatePanel.hidden).toBe(true);
-});
+    expect(estimatePanel.hidden).toBe(true);
+  });
 
-test('shows estimate backdrop when estimate panel is opened', () => {
-  const { addButton, viewEstimateButton, estimatePanel, estimateBackdrop } = setupEstimateDom();
+  test('shows estimate backdrop when estimate panel is opened', () => {
+    const { addButton, viewEstimateButton, estimatePanel, estimateBackdrop } = setupEstimateDom();
 
-  addButton.click();
-  viewEstimateButton.click();
+    addButton.click();
+    viewEstimateButton.click();
 
-  expect(estimatePanel.hidden).toBe(false);
-  expect(estimateBackdrop.hidden).toBe(false);
-});
+    expect(estimatePanel.hidden).toBe(false);
+    expect(estimateBackdrop.hidden).toBe(false);
+  });
 
-test('closes estimate panel when backdrop is clicked', () => {
-  const { addButton, viewEstimateButton, estimatePanel, estimateBackdrop } = setupEstimateDom();
+  test('closes estimate panel when backdrop is clicked', () => {
+    const { addButton, viewEstimateButton, estimatePanel, estimateBackdrop } = setupEstimateDom();
 
-  addButton.click();
-  viewEstimateButton.click();
+    addButton.click();
+    viewEstimateButton.click();
 
-  expect(estimatePanel.hidden).toBe(false);
-  expect(estimateBackdrop.hidden).toBe(false);
+    expect(estimatePanel.hidden).toBe(false);
+    expect(estimateBackdrop.hidden).toBe(false);
 
-  estimateBackdrop.click();
+    estimateBackdrop.click();
 
-  expect(estimatePanel.hidden).toBe(true);
-  expect(estimateBackdrop.hidden).toBe(true);
-});
+    expect(estimatePanel.hidden).toBe(true);
+    expect(estimateBackdrop.hidden).toBe(true);
+  });
 
-test('updates estimate badge and panel total when item is added', () => {
-  const { addButton, estimateCountBadge, estimatePanelTotal } = setupEstimateDom();
+  test('updates estimate badge and panel total when item is added', () => {
+    const { addButton, estimateCountBadge, estimatePanelTotal } = setupEstimateDom();
 
-  addButton.click();
+    addButton.click();
 
-  expect(estimateCountBadge.textContent).toBe('1');
-  expect(estimatePanelTotal.textContent).toBe('£120');
-});
+    expect(estimateCountBadge.textContent).toBe('1');
+    expect(estimatePanelTotal.textContent).toBe('£120');
+  });
 
-test('removes item from estimate when remove button is clicked', () => {
-  const { addButton, estimateTotal, estimateCount, estimateCountBadge, estimatePanelTotal } = setupEstimateDom();
+  test('removes item from estimate when remove button is clicked', () => {
+    const { addButton, estimateTotal, estimateCount, estimateCountBadge, estimatePanelTotal } = setupEstimateDom();
 
-  addButton.click();
+    addButton.click();
 
-  const removeButton = document.querySelector('.estimate-remove-button');
+    const removeButton = document.querySelector('.estimate-remove-button');
 
-  removeButton.click();
-
-  const estimateListItems = document.querySelectorAll('.estimate-list-item');
-
-  expect(estimateListItems.length).toBe(0);
-  expect(estimateTotal.textContent).toBe('£0');
-  expect(estimateCount.textContent).toBe('0 items');
-  expect(estimateCountBadge.textContent).toBe('0');
-  expect(estimatePanelTotal.textContent).toBe('£0');
-});
-
-test('hides estimate UI when last item is removed', () => {
-  const { addButton, viewEstimateButton, estimateWidget, estimatePanel, estimateBackdrop } = setupEstimateDom();
-
-  addButton.click();
-  viewEstimateButton.click();
-
-  const removeButton = document.querySelector('.estimate-remove-button');
-
-  removeButton.click();
-
-  expect(estimateWidget.hidden).toBe(true);
-  expect(estimatePanel.hidden).toBe(true);
-  expect(estimateBackdrop.hidden).toBe(true);
-});
-
-test('adds service item to estimate when service add button is clicked', () => {
-  const { estimateWidget, estimateTotal, estimateCount, estimateCountBadge, estimatePanelTotal } = setupEstimateDom();
-
-  document.body.insertAdjacentHTML(
-    'beforeend',
-    `
-      <section id="services">
-        <button
-          class="button button-primary add-to-estimate"
-          type="button"
-          data-title="Balloon Arches"
-          data-price="120"
-          data-image="assets/images/gallery/ballon-arch-backdrop.webp"
-          data-alt="Balloon arch decoration for an event"
-        >
-          <span>Add to estimate</span>
-          <span class="button-icon" aria-hidden="true">+</span>
-        </button>
-      </section>
-    `
-  );
-
-  const serviceAddButton = document.querySelector('#services .add-to-estimate');
-
-  serviceAddButton.click();
-
-  expect(estimateWidget.hidden).toBe(false);
-  expect(estimateTotal.textContent).toBe('£120');
-  expect(estimateCount.textContent).toBe('1 item');
-  expect(estimateCountBadge.textContent).toBe('1');
-  expect(estimatePanelTotal.textContent).toBe('£120');
-});
-
-test('shows balloon animation from portfolio add button when item is added', () => {
-  const { addButton } = setupEstimateDom();
-
-  addButton.getBoundingClientRect = jest.fn(() => ({
-    left: 100,
-    top: 200,
-    width: 80,
-    height: 40,
-  }));
-
-  addButton.click();
-
-  const balloonAnimation = document.querySelector('.balloon-animation');
-  const balloons = document.querySelectorAll('.balloon-animation .balloon');
-
-  expect(balloonAnimation).not.toBeNull();
-  expect(balloonAnimation.getAttribute('aria-hidden')).toBe('true');
-  expect(balloonAnimation.style.left).toBe('140px');
-  expect(balloonAnimation.style.top).toBe('220px');
-  expect(balloons.length).toBe(5);
-});
-
-test('shows balloon animation from service add button when service item is added', () => {
-  setupEstimateDom();
-
-  document.body.insertAdjacentHTML(
-    'beforeend',
-    `
-      <section id="services">
-        <button
-          class="button button-primary add-to-estimate"
-          type="button"
-          data-title="Balloon Arches"
-          data-price="120"
-          data-image="assets/images/gallery/ballon-arch-backdrop.webp"
-          data-alt="Balloon arch decoration for an event"
-        >
-          <span>Add to estimate</span>
-          <span class="button-icon" aria-hidden="true">+</span>
-        </button>
-      </section>
-    `
-  );
-
-  const serviceAddButton = document.querySelector('#services .add-to-estimate');
-
-  serviceAddButton.getBoundingClientRect = jest.fn(() => ({
-    left: 50,
-    top: 300,
-    width: 100,
-    height: 50,
-  }));
-
-  serviceAddButton.click();
-
-  const balloonAnimation = document.querySelector('.balloon-animation');
-
-  expect(balloonAnimation).not.toBeNull();
-  expect(balloonAnimation.style.left).toBe('100px');
-  expect(balloonAnimation.style.top).toBe('325px');
-});
-
-test('renders selected item image inside estimate panel', () => {
-  const { addButton, viewEstimateButton } = setupEstimateDom();
-
-  addButton.click();
-  viewEstimateButton.click();
-
-  const estimateImage = document.querySelector('.estimate-list-item-image');
-
-  expect(estimateImage).not.toBeNull();
-  expect(estimateImage.getAttribute('src')).toBe('assets/images/gallery/ballon-arch-backdrop.webp');
-  expect(estimateImage.getAttribute('alt')).toBe('Pastel balloon arch decoration');
-});
-
-test('renders selected service image inside estimate panel', () => {
-  setupEstimateDom();
-
-  document.body.insertAdjacentHTML(
-    'beforeend',
-    `
-      <section id="services">
-        <button
-          class="button button-primary add-to-estimate"
-          type="button"
-          data-title="Balloon Arches"
-          data-price="120"
-          data-image="assets/images/gallery/ballon-arch-backdrop.webp"
-          data-alt="Balloon arch decoration for an event"
-        >
-          <span>Add to estimate</span>
-          <span class="button-icon" aria-hidden="true">+</span>
-        </button>
-      </section>
-    `
-  );
-
-  const serviceAddButton = document.querySelector('#services .add-to-estimate');
-  const viewEstimateButton = document.querySelector('.estimate-view-button');
-
-  serviceAddButton.click();
-  viewEstimateButton.click();
-
-  const estimateImage = document.querySelector('.estimate-list-item-image');
-
-  expect(estimateImage).not.toBeNull();
-  expect(estimateImage.getAttribute('src')).toBe('assets/images/gallery/ballon-arch-backdrop.webp');
-  expect(estimateImage.getAttribute('alt')).toBe('Balloon arch decoration for an event');
+    removeButton.click();
+
+    const estimateListItems = document.querySelectorAll('.estimate-list-item');
+
+    expect(estimateListItems.length).toBe(0);
+    expect(estimateTotal.textContent).toBe('£0');
+    expect(estimateCount.textContent).toBe('0 items');
+    expect(estimateCountBadge.textContent).toBe('0');
+    expect(estimatePanelTotal.textContent).toBe('£0');
+  });
+
+  test('hides estimate UI when last item is removed', () => {
+    const { addButton, viewEstimateButton, estimateWidget, estimatePanel, estimateBackdrop } = setupEstimateDom();
+
+    addButton.click();
+    viewEstimateButton.click();
+
+    const removeButton = document.querySelector('.estimate-remove-button');
+
+    removeButton.click();
+
+    expect(estimateWidget.hidden).toBe(true);
+    expect(estimatePanel.hidden).toBe(true);
+    expect(estimateBackdrop.hidden).toBe(true);
+  });
+
+  test('adds service item to estimate when service add button is clicked', () => {
+    const { estimateWidget, estimateTotal, estimateCount, estimateCountBadge, estimatePanelTotal } = setupEstimateDom();
+    const serviceAddButton = addServiceButtonToDom();
+
+    serviceAddButton.click();
+
+    expect(estimateWidget.hidden).toBe(false);
+    expect(estimateTotal.textContent).toBe('£120');
+    expect(estimateCount.textContent).toBe('1 item');
+    expect(estimateCountBadge.textContent).toBe('1');
+    expect(estimatePanelTotal.textContent).toBe('£120');
+  });
+
+  test('shows balloon animation from portfolio add button when item is added', () => {
+    const { addButton } = setupEstimateDom();
+
+    addButton.getBoundingClientRect = jest.fn(() => ({
+      left: 100,
+      top: 200,
+      width: 80,
+      height: 40,
+    }));
+
+    addButton.click();
+
+    const balloonAnimation = document.querySelector('.balloon-animation');
+    const balloons = document.querySelectorAll('.balloon-animation .balloon');
+
+    expect(balloonAnimation).not.toBeNull();
+    expect(balloonAnimation.getAttribute('aria-hidden')).toBe('true');
+    expect(balloonAnimation.style.left).toBe('140px');
+    expect(balloonAnimation.style.top).toBe('220px');
+    expect(balloons.length).toBe(5);
+  });
+
+  test('shows balloon animation from service add button when service item is added', () => {
+    setupEstimateDom();
+
+    const serviceAddButton = addServiceButtonToDom();
+
+    serviceAddButton.getBoundingClientRect = jest.fn(() => ({
+      left: 50,
+      top: 300,
+      width: 100,
+      height: 50,
+    }));
+
+    serviceAddButton.click();
+
+    const balloonAnimation = document.querySelector('.balloon-animation');
+
+    expect(balloonAnimation).not.toBeNull();
+    expect(balloonAnimation.style.left).toBe('100px');
+    expect(balloonAnimation.style.top).toBe('325px');
+  });
+
+  test('renders selected item image inside estimate panel', () => {
+    const { addButton, viewEstimateButton } = setupEstimateDom();
+
+    addButton.click();
+    viewEstimateButton.click();
+
+    const estimateImage = document.querySelector('.estimate-list-item-image');
+
+    expect(estimateImage).not.toBeNull();
+    expect(estimateImage.getAttribute('src')).toBe('assets/images/gallery/ballon-arch-backdrop.webp');
+    expect(estimateImage.getAttribute('alt')).toBe('Pastel balloon arch decoration');
+  });
+
+  test('renders selected service image inside estimate panel', () => {
+    setupEstimateDom();
+
+    const serviceAddButton = addServiceButtonToDom();
+
+    const viewEstimateButton = document.querySelector('.estimate-view-button');
+
+    serviceAddButton.click();
+    viewEstimateButton.click();
+
+    const estimateImage = document.querySelector('.estimate-list-item-image');
+
+    expect(estimateImage).not.toBeNull();
+    expect(estimateImage.getAttribute('src')).toBe('assets/images/gallery/ballon-arch-backdrop.webp');
+    expect(estimateImage.getAttribute('alt')).toBe('Balloon arch decoration for an event');
+  });
 });
