@@ -379,6 +379,7 @@ describe('Estimate builder', () => {
     const enquiryEstimateItems = document.querySelectorAll('.enquiry-estimate-list li');
     const enquiryEstimateImage = document.querySelector('.enquiry-estimate-item-image');
     const enquiryEstimateTotal = document.querySelector('.enquiry-estimate-total strong');
+    const enquiryRemoveButton = document.querySelector('.enquiry-estimate-remove-button');
 
     expect(enquiryEstimateItems.length).toBe(1);
     expect(enquiryEstimateItems[0].textContent).toContain('Pastel Balloon Arch');
@@ -389,6 +390,11 @@ describe('Estimate builder', () => {
     expect(enquiryEstimateImage.getAttribute('alt')).toBe('Pastel balloon arch decoration');
 
     expect(enquiryEstimateTotal.textContent).toBe('£120');
+
+    expect(enquiryRemoveButton).not.toBeNull();
+    expect(enquiryRemoveButton.getAttribute('type')).toBe('button');
+    expect(enquiryRemoveButton.getAttribute('data-title')).toBe('Pastel Balloon Arch');
+    expect(enquiryRemoveButton.textContent).toBe('Remove');
   });
 
   test('updates enquiry estimate summary with selected service image when service item is added', () => {
@@ -428,6 +434,31 @@ describe('Estimate builder', () => {
 
     expect(enquiryEstimateItems.length).toBe(0);
     expect(enquiryEstimateImage).toBeNull();
+    expect(enquiryEstimateTotal.textContent).toBe('£0');
+  });
+
+  test('removes item from estimate when enquiry summary remove button is clicked', () => {
+    const { addButton, estimateTotal, estimateCount, estimateCountBadge, estimatePanelTotal } = setupEstimateDom();
+
+    addButton.click();
+
+    const enquiryRemoveButton = document.querySelector('.enquiry-estimate-remove-button');
+
+    expect(enquiryRemoveButton).not.toBeNull();
+
+    enquiryRemoveButton.click();
+
+    const enquiryEstimateItems = document.querySelectorAll('.enquiry-estimate-list li');
+    const estimateListItems = document.querySelectorAll('.estimate-list-item');
+    const enquiryEstimateTotal = document.querySelector('.enquiry-estimate-total strong');
+
+    expect(enquiryEstimateItems.length).toBe(0);
+    expect(estimateListItems.length).toBe(0);
+
+    expect(estimateTotal.textContent).toBe('£0');
+    expect(estimateCount.textContent).toBe('0 items');
+    expect(estimateCountBadge.textContent).toBe('0');
+    expect(estimatePanelTotal.textContent).toBe('£0');
     expect(enquiryEstimateTotal.textContent).toBe('£0');
   });
 });
