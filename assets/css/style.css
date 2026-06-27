@@ -1076,6 +1076,29 @@ header nav a:focus-visible {
   font-weight: 700;
 }
 
+.enquiry-estimate-remove-button {
+  justify-self: start;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-muted);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.enquiry-estimate-remove-button:hover,
+.enquiry-estimate-remove-button:focus-visible {
+  color: var(--color-primary);
+}
+
+.enquiry-estimate-remove-button:focus-visible {
+  outline: 3px solid rgba(233, 79, 114, 0.18);
+  outline-offset: 3px;
+}
+
 .form-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
