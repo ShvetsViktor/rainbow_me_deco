@@ -75,18 +75,6 @@ function initEstimateBuilder(items) {
   const enquiryEstimateTotal = document.querySelector('.enquiry-estimate-total strong');
   const enquiryEstimateTotalBlock = document.querySelector('.enquiry-estimate-total');
 
-  if (enquiryEstimateTotalBlock && 'IntersectionObserver' in window) {
-    const enquiryObserver = new IntersectionObserver((entries) => {
-      const enquiryEntry = entries[0];
-
-      isEnquiryVisible = enquiryEntry.isIntersecting;
-
-      updateEstimateWidgetVisibility();
-    });
-
-    enquiryObserver.observe(enquiryEstimateTotalBlock);
-  }
-
   if (
     !portfolioWrapper ||
     !estimateWidget ||
@@ -104,8 +92,35 @@ function initEstimateBuilder(items) {
   }
 
   let estimateItems = [];
+  let hasReachedEnquirySummary = false;
 
-  let isEnquiryVisible = false;
+  function closeEstimatePanel() {
+    estimatePanel.hidden = true;
+    estimateBackdrop.hidden = true;
+  }
+
+  function updateEstimateWidgetVisibility() {
+    if (estimateItems.length === 0 || hasReachedEnquirySummary) {
+      estimateWidget.hidden = true;
+      return;
+    }
+
+    estimateWidget.hidden = false;
+  }
+
+  function updateEnquirySummaryPositionState() {
+    if (!enquiryEstimateTotalBlock) {
+      hasReachedEnquirySummary = false;
+      updateEstimateWidgetVisibility();
+      return;
+    }
+
+    const enquiryEstimateTotalPosition = enquiryEstimateTotalBlock.getBoundingClientRect();
+
+    hasReachedEnquirySummary = enquiryEstimateTotalPosition.top <= window.innerHeight;
+
+    updateEstimateWidgetVisibility();
+  }
 
   function renderEstimateList() {
     estimateList.innerHTML = '';
@@ -116,27 +131,46 @@ function initEstimateBuilder(items) {
       listItem.classList.add('estimate-list-item');
 
       listItem.innerHTML = `
-      <img class="estimate-list-item-image" src="${item.image}" alt="${item.alt}">
-      <div class="estimate-list-item-content">
-        <span class="estimate-list-item-title">${item.title}</span>
-        <span class="estimate-list-item-price">£${item.price}</span>
-        <button class="estimate-remove-button" type="button" data-title="${item.title}">
-          Remove
-        </button>
-      </div>
-    `;
+        <img class="estimate-list-item-image" src="${item.image}" alt="${item.alt}">
+        <div class="estimate-list-item-content">
+          <span class="estimate-list-item-title">${item.title}</span>
+          <span class="estimate-list-item-price">£${item.price}</span>
+          <button class="estimate-remove-button" type="button" data-title="${item.title}">
+            Remove
+          </button>
+        </div>
+      `;
 
       estimateList.appendChild(listItem);
     }
   }
 
-  function updateEstimateWidgetVisibility() {
-    if (estimateItems.length === 0 || isEnquiryVisible) {
-      estimateWidget.hidden = true;
+  function updateEnquiryEstimateSummary() {
+    if (!enquiryEstimateList || !enquiryEstimateTotal) {
       return;
     }
 
-    estimateWidget.hidden = false;
+    enquiryEstimateList.innerHTML = '';
+
+    for (let item of estimateItems) {
+      const listItem = document.createElement('li');
+      listItem.classList.add('enquiry-estimate-item');
+
+      listItem.innerHTML = `
+        <img class="enquiry-estimate-item-image" src="${item.image}" alt="${item.alt}">
+        <div class="enquiry-estimate-item-content">
+          <span class="enquiry-estimate-item-title">${item.title}</span>
+          <span class="enquiry-estimate-item-price">£${item.price}</span>
+          <button class="enquiry-estimate-remove-button" type="button" data-title="${item.title}">
+            Remove
+          </button>
+        </div>
+      `;
+
+      enquiryEstimateList.appendChild(listItem);
+    }
+
+    enquiryEstimateTotal.textContent = `£${calculateEstimateTotal(estimateItems)}`;
   }
 
   function updateEstimateWidget() {
@@ -155,35 +189,7 @@ function initEstimateBuilder(items) {
     }
 
     renderEstimateList();
-    updateEstimateWidgetVisibility();
-  }
-
-  function updateEnquiryEstimateSummary() {
-    if (!enquiryEstimateList || !enquiryEstimateTotal) {
-      return;
-    }
-
-    enquiryEstimateList.innerHTML = '';
-
-    for (let item of estimateItems) {
-      const listItem = document.createElement('li');
-      listItem.classList.add('enquiry-estimate-item');
-
-      listItem.innerHTML = `
-      <img class="enquiry-estimate-item-image" src="${item.image}" alt="${item.alt}">
-      <div class="enquiry-estimate-item-content">
-        <span class="enquiry-estimate-item-title">${item.title}</span>
-        <span class="enquiry-estimate-item-price">£${item.price}</span>
-        <button class="enquiry-estimate-remove-button" type="button" data-title="${item.title}">
-          Remove
-        </button>
-      </div>
-    `;
-
-      enquiryEstimateList.appendChild(listItem);
-    }
-
-    enquiryEstimateTotal.textContent = `£${calculateEstimateTotal(estimateItems)}`;
+    updateEnquirySummaryPositionState();
   }
 
   viewEstimateButton.addEventListener('click', () => {
@@ -192,19 +198,16 @@ function initEstimateBuilder(items) {
   });
 
   closeEstimateButton.addEventListener('click', () => {
-    estimatePanel.hidden = true;
-    estimateBackdrop.hidden = true;
+    closeEstimatePanel();
   });
 
   estimateBackdrop.addEventListener('click', () => {
-    estimatePanel.hidden = true;
-    estimateBackdrop.hidden = true;
+    closeEstimatePanel();
   });
 
   if (estimateRequestButton) {
     estimateRequestButton.addEventListener('click', () => {
-      estimatePanel.hidden = true;
-      estimateBackdrop.hidden = true;
+      closeEstimatePanel();
 
       if (enquirySection) {
         enquirySection.scrollIntoView();
@@ -226,9 +229,7 @@ function initEstimateBuilder(items) {
     updateEstimateWidget();
 
     if (estimateItems.length === 0) {
-      estimateWidget.hidden = true;
-      estimatePanel.hidden = true;
-      estimateBackdrop.hidden = true;
+      closeEstimatePanel();
     }
   });
 
@@ -243,22 +244,25 @@ function initEstimateBuilder(items) {
       const selectedTitle = removeButton.getAttribute('data-title');
 
       estimateItems = removeItemFromEstimate(estimateItems, selectedTitle);
+
       updateEstimateWidget();
 
       if (estimateItems.length === 0) {
-        estimateWidget.hidden = true;
-        estimatePanel.hidden = true;
-        estimateBackdrop.hidden = true;
+        closeEstimatePanel();
       }
     });
   }
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
-      estimatePanel.hidden = true;
-      estimateBackdrop.hidden = true;
+      closeEstimatePanel();
     }
   });
+
+  window.addEventListener('scroll', updateEnquirySummaryPositionState);
+  window.addEventListener('resize', updateEnquirySummaryPositionState);
+
+  updateEnquirySummaryPositionState();
 
   portfolioWrapper.addEventListener('click', (event) => {
     const addButton = event.target.closest('.add-to-estimate');

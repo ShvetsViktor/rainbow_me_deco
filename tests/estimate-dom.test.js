@@ -1,32 +1,6 @@
 const { initEstimateBuilder } = require('../assets/js/estimate');
 const { testPortfolioItems } = require('./fixtures/portfolio-items');
 
-let intersectionObserverCallback;
-let intersectionObserverObserve;
-
-beforeEach(() => {
-  intersectionObserverCallback = null;
-  intersectionObserverObserve = jest.fn();
-
-  window.IntersectionObserver = jest.fn((callback) => {
-    intersectionObserverCallback = callback;
-
-    return {
-      observe: intersectionObserverObserve,
-      unobserve: jest.fn(),
-      disconnect: jest.fn(),
-    };
-  });
-});
-
-afterEach(() => {
-  delete window.IntersectionObserver;
-});
-
-afterEach(() => {
-  delete window.IntersectionObserver;
-});
-
 function setupEstimateDom(buttonTitle = 'Pastel Balloon Arch') {
   document.body.innerHTML = `
     <div class="swiper portfolio-swiper">
@@ -97,6 +71,17 @@ function setupEstimateDom(buttonTitle = 'Pastel Balloon Arch') {
     </section>
   `;
 
+  const enquiryEstimateTotalBlock = document.querySelector('.enquiry-estimate-total');
+
+  enquiryEstimateTotalBlock.getBoundingClientRect = jest.fn(() => ({
+    top: 1000,
+    bottom: 1060,
+    left: 0,
+    right: 300,
+    width: 300,
+    height: 60,
+  }));
+
   initEstimateBuilder(testPortfolioItems);
 
   return {
@@ -111,6 +96,8 @@ function setupEstimateDom(buttonTitle = 'Pastel Balloon Arch') {
     estimatePanel: document.querySelector('.estimate-panel'),
     estimatePanelTotal: document.querySelector('.estimate-panel-total'),
     estimateBackdrop: document.querySelector('.estimate-backdrop'),
+    enquirySection: document.querySelector('#enquiry'),
+    enquiryEstimateTotalBlock,
   };
 }
 
@@ -137,6 +124,19 @@ function addServiceButtonToDom() {
   return document.querySelector('#services .add-to-estimate');
 }
 
+function setEnquiryEstimateTotalPosition(enquiryEstimateTotalBlock, top) {
+  enquiryEstimateTotalBlock.getBoundingClientRect = jest.fn(() => ({
+    top,
+    bottom: top + 60,
+    left: 0,
+    right: 300,
+    width: 300,
+    height: 60,
+  }));
+
+  window.dispatchEvent(new Event('scroll'));
+}
+
 describe('Estimate builder', () => {
   test('shows estimate widget when add to estimate button is clicked', () => {
     const { addButton, estimateWidget, estimateTotal, estimateCount } = setupEstimateDom();
@@ -152,10 +152,10 @@ describe('Estimate builder', () => {
     const { portfolioWrapper, estimateWidget, estimateTotal, estimateCount } = setupEstimateDom('Old Item');
 
     portfolioWrapper.innerHTML = `
-    <button class="add-to-estimate" type="button" data-title="Pastel Balloon Arch">
-      Add to estimate
-    </button>
-  `;
+      <button class="add-to-estimate" type="button" data-title="Pastel Balloon Arch">
+        Add to estimate
+      </button>
+    `;
 
     const addButton = document.querySelector('.add-to-estimate');
 
@@ -242,16 +242,8 @@ describe('Estimate builder', () => {
   });
 
   test('closes estimate panel and scrolls to enquiry section when request quote button is clicked', () => {
-    const { addButton, viewEstimateButton, estimatePanel, estimateBackdrop } = setupEstimateDom();
+    const { addButton, viewEstimateButton, estimatePanel, estimateBackdrop, enquirySection } = setupEstimateDom();
 
-    document.body.insertAdjacentHTML(
-      'beforeend',
-      `
-      <section id="enquiry"></section>
-    `
-    );
-
-    const enquirySection = document.querySelector('#enquiry');
     enquirySection.scrollIntoView = jest.fn();
 
     addButton.click();
@@ -384,7 +376,6 @@ describe('Estimate builder', () => {
     setupEstimateDom();
 
     const serviceAddButton = addServiceButtonToDom();
-
     const viewEstimateButton = document.querySelector('.estimate-view-button');
 
     serviceAddButton.click();
@@ -488,45 +479,45 @@ describe('Estimate builder', () => {
     expect(enquiryEstimateTotal.textContent).toBe('£0');
   });
 
+  test('shows estimate widget when enquiry estimate total has not been reached and estimate has items', () => {
+    const { addButton, estimateWidget, enquiryEstimateTotalBlock } = setupEstimateDom();
+
+    setEnquiryEstimateTotalPosition(enquiryEstimateTotalBlock, 1000);
+
+    addButton.click();
+
+    expect(estimateWidget.hidden).toBe(false);
+  });
+
   test('hides estimate widget when enquiry estimate total is visible', () => {
-    const { addButton, estimateWidget } = setupEstimateDom();
+    const { addButton, estimateWidget, enquiryEstimateTotalBlock } = setupEstimateDom();
 
     addButton.click();
 
     expect(estimateWidget.hidden).toBe(false);
 
-    intersectionObserverCallback([{ isIntersecting: true }]);
+    setEnquiryEstimateTotalPosition(enquiryEstimateTotalBlock, 500);
 
     expect(estimateWidget.hidden).toBe(true);
   });
 
-  test('shows estimate widget when enquiry estimate total is not visible and estimate has items', () => {
-    const { addButton, estimateWidget } = setupEstimateDom();
+  test('keeps estimate widget hidden when user has scrolled below enquiry estimate total', () => {
+    const { addButton, estimateWidget, enquiryEstimateTotalBlock } = setupEstimateDom();
 
     addButton.click();
 
-    intersectionObserverCallback([{ isIntersecting: true }]);
-
-    expect(estimateWidget.hidden).toBe(true);
-
-    intersectionObserverCallback([{ isIntersecting: false }]);
-
     expect(estimateWidget.hidden).toBe(false);
-  });
 
-  test('keeps estimate widget hidden when enquiry estimate total is not visible and estimate is empty', () => {
-    const { estimateWidget } = setupEstimateDom();
-
-    intersectionObserverCallback([{ isIntersecting: false }]);
+    setEnquiryEstimateTotalPosition(enquiryEstimateTotalBlock, -100);
 
     expect(estimateWidget.hidden).toBe(true);
   });
 
-  test('observes enquiry estimate total for estimate widget visibility', () => {
-    setupEstimateDom();
+  test('keeps estimate widget hidden when estimate is empty even before enquiry estimate total is reached', () => {
+    const { estimateWidget, enquiryEstimateTotalBlock } = setupEstimateDom();
 
-    const enquiryEstimateTotal = document.querySelector('.enquiry-estimate-total');
+    setEnquiryEstimateTotalPosition(enquiryEstimateTotalBlock, 1000);
 
-    expect(intersectionObserverObserve).toHaveBeenCalledWith(enquiryEstimateTotal);
+    expect(estimateWidget.hidden).toBe(true);
   });
 });
