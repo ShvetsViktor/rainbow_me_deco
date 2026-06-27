@@ -280,11 +280,12 @@ describe('Enquiry section', () => {
     expect(heading.textContent).toBe('Get in touch');
   });
 
-  test('contains enquiry content layout and selected estimate card', () => {
+  test('contains enquiry content layout and empty selected estimate card', () => {
     const enquiryContent = document.querySelector('#enquiry .enquiry-content');
     const estimateCard = document.querySelector('#enquiry .enquiry-estimate-card');
     const estimateList = document.querySelector('#enquiry .enquiry-estimate-list');
     const estimateTotal = document.querySelector('#enquiry .enquiry-estimate-total');
+    const estimateTotalValue = document.querySelector('#enquiry .enquiry-estimate-total strong');
 
     expect(enquiryContent).not.toBeNull();
 
@@ -292,10 +293,14 @@ describe('Enquiry section', () => {
     expect(estimateCard.getAttribute('aria-label')).toBe('Selected estimate summary');
 
     expect(estimateList).not.toBeNull();
-    expect(estimateList.querySelectorAll('li').length).toBeGreaterThan(0);
+    expect(estimateList.getAttribute('aria-label')).toBe('Selected estimate items');
+    expect(estimateList.querySelectorAll('li').length).toBe(0);
 
     expect(estimateTotal).not.toBeNull();
     expect(estimateTotal.textContent).toContain('Estimated total');
+
+    expect(estimateTotalValue).not.toBeNull();
+    expect(estimateTotalValue.textContent).toBe('£0');
   });
 
   test('contains enquiry encouragement message card', () => {
