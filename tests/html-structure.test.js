@@ -198,6 +198,62 @@ describe('How it works section structure', () => {
   });
 });
 
+describe('Testimonials section structure', () => {
+  test('testimonials section contains accessible heading content', () => {
+    const section = document.querySelector('#testimonials');
+    const sectionLabel = document.querySelector('#testimonials .section-label');
+    const heading = document.querySelector('#testimonials-title');
+    const introText = document.querySelector('#testimonials .testimonials-intro');
+
+    expect(section).not.toBeNull();
+    expect(section.getAttribute('aria-labelledby')).toBe('testimonials-title');
+
+    expect(sectionLabel).not.toBeNull();
+    expect(sectionLabel.textContent).toBe('Testimonials');
+
+    expect(heading).not.toBeNull();
+    expect(heading.textContent).toBe('What clients say');
+
+    expect(introText).not.toBeNull();
+    expect(introText.textContent).toContain('Real comments from happy clients');
+  });
+
+  test('testimonials section contains three testimonial cards', () => {
+    const testimonialCards = document.querySelectorAll('#testimonials .testimonial-card');
+
+    expect(testimonialCards.length).toBe(3);
+  });
+
+  test('testimonial cards contain review text and authors', () => {
+    const testimonialCards = document.querySelectorAll('#testimonials .testimonial-card');
+    const authors = document.querySelectorAll('#testimonials .testimonial-author');
+
+    expect(testimonialCards[0].textContent).toContain('Your attention to detail and beautiful designs are first class');
+    expect(testimonialCards[1].textContent).toContain('Thank you for making such a beautiful gift for us');
+    expect(testimonialCards[2].textContent).toContain('So stunning and so talented');
+
+    expect(authors[0].textContent).toBe('@emelina_james');
+    expect(authors[1].textContent).toBe('@littl_efolk');
+    expect(authors[2].textContent).toBe('@the_skinologyclinic');
+  });
+
+  test('testimonial ratings are accessible and decorative stars are hidden', () => {
+    const ratings = document.querySelectorAll('#testimonials .testimonial-rating');
+    const ratingStars = document.querySelectorAll('#testimonials .testimonial-rating span');
+
+    expect(ratings.length).toBe(3);
+    expect(ratingStars.length).toBe(3);
+
+    for (let rating of ratings) {
+      expect(rating.getAttribute('aria-label')).toBe('5 out of 5 stars');
+    }
+
+    for (let stars of ratingStars) {
+      expect(stars.getAttribute('aria-hidden')).toBe('true');
+    }
+  });
+});
+
 describe('Portfolio section structure', () => {
   test('portfolio section contains a heading', () => {
     expect(document.querySelectorAll('#portfolio h2').length).toBe(1);
