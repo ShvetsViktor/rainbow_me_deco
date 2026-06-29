@@ -154,6 +154,50 @@ describe('Services section structure', () => {
   });
 });
 
+describe('How it works section structure', () => {
+  test('how it works section contains heading content', () => {
+    const section = document.querySelector('#how-it-works');
+    const sectionLabel = document.querySelector('#how-it-works .section-label');
+    const heading = document.querySelector('#how-it-works h2');
+    const introText = document.querySelector('#how-it-works .how-it-works-intro');
+
+    expect(section).not.toBeNull();
+
+    expect(sectionLabel).not.toBeNull();
+    expect(sectionLabel.textContent).toBe('How It Works');
+
+    expect(heading).not.toBeNull();
+    expect(heading.textContent).toBe('Simple steps to your perfect celebration');
+
+    expect(introText).not.toBeNull();
+    expect(introText.textContent).toContain('From ideas to unforgettable moments');
+  });
+
+  test('how it works section contains four process steps', () => {
+    const steps = document.querySelectorAll('#how-it-works .process-step');
+
+    expect(steps.length).toBe(4);
+
+    expect(steps[0].textContent).toContain('Share Your Vision');
+    expect(steps[1].textContent).toContain('Get a Custom Quote');
+    expect(steps[2].textContent).toContain('We Design & Plan');
+    expect(steps[3].textContent).toContain('You Celebrate');
+  });
+
+  test('each process step contains a number and icon', () => {
+    const stepNumbers = document.querySelectorAll('#how-it-works .process-step-number');
+    const stepIcons = document.querySelectorAll('#how-it-works .process-step-icon');
+
+    expect(stepNumbers.length).toBe(4);
+    expect(stepIcons.length).toBe(4);
+
+    expect(stepNumbers[0].textContent).toBe('1');
+    expect(stepNumbers[1].textContent).toBe('2');
+    expect(stepNumbers[2].textContent).toBe('3');
+    expect(stepNumbers[3].textContent).toBe('4');
+  });
+});
+
 describe('Portfolio section structure', () => {
   test('portfolio section contains a heading', () => {
     expect(document.querySelectorAll('#portfolio h2').length).toBe(1);
