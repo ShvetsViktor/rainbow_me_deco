@@ -122,6 +122,7 @@ function getSuccessMessage(enquiryForm) {
 
 function initEnquiryForm() {
   const enquiryForm = document.querySelector('.enquiry-form');
+  const enquirySection = document.querySelector('#enquiry');
 
   if (!enquiryForm) {
     return;
@@ -157,6 +158,11 @@ function initEnquiryForm() {
     if (isFormValid) {
       successMessage.hidden = false;
       enquiryForm.classList.add('is-submitted');
+
+      if (enquirySection) {
+        enquirySection.classList.add('is-submitted');
+      }
+
       enquiryForm.reset();
     }
   });

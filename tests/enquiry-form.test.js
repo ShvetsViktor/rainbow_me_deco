@@ -2,34 +2,43 @@ const { isValidEmail, isValidPhone, initEnquiryForm } = require('../assets/js/en
 
 function setupEnquiryFormDom() {
   document.body.innerHTML = `
-    <form class="enquiry-form" novalidate>
-      <div class="form-field">
-        <label for="customer-first-name">First name</label>
-        <input id="customer-first-name" name="customer-first-name" type="text" required />
-      </div>
+    <section id="enquiry">
+      <div class="section-header enquiry-header"></div>
 
-      <div class="form-field">
-        <label for="customer-email">Email</label>
-        <input id="customer-email" name="customer-email" type="email" required />
-      </div>
+      <div class="enquiry-content">
+        <aside class="enquiry-estimate-card"></aside>
 
-      <div class="form-field">
-        <label for="customer-phone">Phone number</label>
-        <input id="customer-phone" name="customer-phone" type="tel" required />
-      </div>
+        <form class="enquiry-form" novalidate>
+          <div class="form-field">
+            <label for="customer-first-name">First name</label>
+            <input id="customer-first-name" name="customer-first-name" type="text" required />
+          </div>
 
-      <div class="form-field">
-        <label for="customer-message">Message</label>
-        <textarea id="customer-message" name="customer-message" required></textarea>
-      </div>
+          <div class="form-field">
+            <label for="customer-email">Email</label>
+            <input id="customer-email" name="customer-email" type="email" required />
+          </div>
 
-      <button class="enquiry-submit-button" type="submit">Submit enquiry</button>
-    </form>
+          <div class="form-field">
+            <label for="customer-phone">Phone number</label>
+            <input id="customer-phone" name="customer-phone" type="tel" required />
+          </div>
+
+          <div class="form-field">
+            <label for="customer-message">Message</label>
+            <textarea id="customer-message" name="customer-message" required></textarea>
+          </div>
+
+          <button class="enquiry-submit-button" type="submit">Submit enquiry</button>
+        </form>
+      </div>
+    </section>
   `;
 
   initEnquiryForm();
 
   return {
+    enquirySection: document.querySelector('#enquiry'),
     enquiryForm: document.querySelector('.enquiry-form'),
     firstNameInput: document.querySelector('#customer-first-name'),
     emailInput: document.querySelector('#customer-email'),
@@ -95,21 +104,7 @@ describe('enquiry form validation', () => {
   });
 
   test('shows only success message when enquiry form is valid', () => {
-    const { enquiryForm, firstNameInput, emailInput, phoneInput, messageInput } = setupEnquiryFormDom();
-
-    document.body.insertAdjacentHTML(
-      'afterbegin',
-      `
-      <section id="enquiry">
-        <div class="section-header enquiry-header"></div>
-        <aside class="enquiry-estimate-card"></aside>
-      </section>
-    `
-    );
-
-    const enquirySection = document.querySelector('#enquiry');
-
-    enquirySection.appendChild(enquiryForm);
+    const { enquirySection, enquiryForm, firstNameInput, emailInput, phoneInput, messageInput } = setupEnquiryFormDom();
 
     firstNameInput.value = 'Viktor';
     emailInput.value = 'test@example.com';
