@@ -252,6 +252,17 @@ describe('Testimonials section structure', () => {
       expect(stars.getAttribute('aria-hidden')).toBe('true');
     }
   });
+
+  test('testimonial cards contain decorative avatar placeholders', () => {
+    const avatars = document.querySelectorAll('#testimonials .testimonial-avatar');
+
+    expect(avatars.length).toBe(3);
+
+    for (let avatar of avatars) {
+      expect(avatar.getAttribute('aria-hidden')).toBe('true');
+      expect(avatar.textContent.length).toBeGreaterThan(0);
+    }
+  });
 });
 
 describe('Portfolio section structure', () => {
