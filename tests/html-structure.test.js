@@ -167,10 +167,10 @@ describe('How it works section structure', () => {
     expect(sectionLabel.textContent).toBe('How It Works');
 
     expect(heading).not.toBeNull();
-    expect(heading.textContent).toBe('Simple steps to your perfect celebration');
+    expect(heading.textContent).toBe('Simple steps');
 
     expect(introText).not.toBeNull();
-    expect(introText.textContent).toContain('From ideas to unforgettable moments');
+    expect(introText.textContent).toContain('We make the process easy and enjoyable.');
   });
 
   test('how it works section contains four process steps', () => {
