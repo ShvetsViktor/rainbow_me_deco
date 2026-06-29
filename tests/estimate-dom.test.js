@@ -56,6 +56,10 @@ function setupEstimateDom(buttonTitle = 'Pastel Balloon Arch') {
     </div>
 
     <section id="enquiry">
+      <form class="enquiry-form"></form>
+
+      <p class="form-success" hidden>Thank you! Your quote request has been prepared.</p>
+
       <aside class="enquiry-estimate-card" aria-label="Selected estimate summary">
         <div class="enquiry-estimate-content">
           <h3>Your selected estimate</h3>
@@ -97,6 +101,8 @@ function setupEstimateDom(buttonTitle = 'Pastel Balloon Arch') {
     estimatePanelTotal: document.querySelector('.estimate-panel-total'),
     estimateBackdrop: document.querySelector('.estimate-backdrop'),
     enquirySection: document.querySelector('#enquiry'),
+    enquiryForm: document.querySelector('.enquiry-form'),
+    successMessage: document.querySelector('.form-success'),
     enquiryEstimateTotalBlock,
   };
 }
@@ -549,5 +555,43 @@ describe('Estimate builder', () => {
     document.dispatchEvent(new Event('portfolioModal:close'));
 
     expect(estimateWidget.hidden).toBe(false);
+  });
+
+  test('resets estimate and starts a new enquiry flow after enquiry submission', () => {
+    const {
+      addButton,
+      estimateWidget,
+      estimateTotal,
+      estimateCountBadge,
+      enquirySection,
+      enquiryForm,
+      successMessage,
+    } = setupEstimateDom();
+
+    addButton.click();
+
+    expect(estimateWidget.hidden).toBe(false);
+    expect(estimateTotal.textContent).toBe('£120');
+    expect(estimateCountBadge.textContent).toBe('1');
+
+    enquirySection.classList.add('is-submitted');
+    enquiryForm.classList.add('is-submitted');
+    successMessage.hidden = false;
+
+    document.dispatchEvent(new CustomEvent('enquiry:submitted'));
+
+    expect(estimateWidget.hidden).toBe(true);
+    expect(estimateTotal.textContent).toBe('£0');
+    expect(estimateCountBadge.textContent).toBe('0');
+
+    addButton.click();
+
+    expect(enquirySection.classList.contains('is-submitted')).toBe(false);
+    expect(enquiryForm.classList.contains('is-submitted')).toBe(false);
+    expect(successMessage.hidden).toBe(true);
+
+    expect(estimateWidget.hidden).toBe(false);
+    expect(estimateTotal.textContent).toBe('£120');
+    expect(estimateCountBadge.textContent).toBe('1');
   });
 });
