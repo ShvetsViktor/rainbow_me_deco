@@ -104,6 +104,8 @@ function createSuccessMessage(enquiryForm) {
   successMessage.classList.add('form-success');
   successMessage.hidden = true;
   successMessage.textContent = 'Thank you! Your quote request has been prepared.';
+  successMessage.setAttribute('role', 'status');
+  successMessage.setAttribute('aria-live', 'polite');
 
   enquiryForm.insertBefore(successMessage, submitButton);
 
@@ -162,6 +164,8 @@ function initEnquiryForm() {
       if (enquirySection) {
         enquirySection.classList.add('is-submitted');
       }
+
+      document.dispatchEvent(new CustomEvent('enquiry:submitted'));
 
       enquiryForm.reset();
     }

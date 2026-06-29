@@ -95,6 +95,23 @@ function initEstimateBuilder(items) {
   let hasReachedEnquirySummary = false;
   let isPortfolioModalOpen = false;
 
+  function resetEnquirySubmittedState() {
+    const enquiryForm = document.querySelector('.enquiry-form');
+    const successMessage = document.querySelector('.form-success');
+
+    if (enquirySection) {
+      enquirySection.classList.remove('is-submitted');
+    }
+
+    if (enquiryForm) {
+      enquiryForm.classList.remove('is-submitted');
+    }
+
+    if (successMessage) {
+      successMessage.hidden = true;
+    }
+  }
+
   function closeEstimatePanel() {
     estimatePanel.hidden = true;
     estimateBackdrop.hidden = true;
@@ -192,6 +209,12 @@ function initEstimateBuilder(items) {
     renderEstimateList();
     updateEnquirySummaryPositionState();
   }
+
+  document.addEventListener('enquiry:submitted', () => {
+    estimateItems = [];
+    closeEstimatePanel();
+    updateEstimateWidget();
+  });
 
   viewEstimateButton.addEventListener('click', () => {
     estimatePanel.hidden = false;
@@ -295,6 +318,8 @@ function initEstimateBuilder(items) {
       return;
     }
 
+    resetEnquirySubmittedState();
+
     const previousItemsCount = estimateItems.length;
 
     estimateItems = addItemToEstimate(estimateItems, selectedItem);
@@ -328,6 +353,8 @@ function initEstimateBuilder(items) {
       image: selectedImage,
       alt: selectedAlt,
     };
+
+    resetEnquirySubmittedState();
 
     const previousItemsCount = estimateItems.length;
 
