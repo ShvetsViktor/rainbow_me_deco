@@ -484,6 +484,20 @@ header nav a:focus-visible {
    TESTIMONIALS
    ============================================ */
 
+#testimonials {
+  background-color: var(--color-scheme-3-background);
+}
+
+.testimonials-layout {
+  display: grid;
+  gap: 40px;
+}
+
+.testimonials-intro {
+  max-width: 520px;
+  margin-inline: auto;
+}
+
 .testimonial-grid {
   display: grid;
   gap: 24px;
