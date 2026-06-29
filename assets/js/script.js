@@ -41,4 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof initServicePortfolioLinks === 'function') {
     initServicePortfolioLinks();
   }
+
+  if (typeof initEnquiryForm === 'function') {
+    initEnquiryForm();
+  }
 });
