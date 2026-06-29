@@ -56,7 +56,7 @@
           </div>
 
           <div class="hero-image">
-            <img src="assets/images/hero/hero.webp" alt="Placeholder for balloon decoration hero image" />
+            <img src="assets/images/hero/hero.webp" alt="Outdoor balloon decoration setup for a birthday celebration" />
           </div>
         </div>
       </section>
@@ -249,8 +249,8 @@
             </div>
 
             <div class="swiper-pagination"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev" aria-label="Previous service"></div>
+            <div class="swiper-button-next" aria-label="Next service"></div>
           </div>
         </div>
       </section>
@@ -261,12 +261,12 @@
             <h2>Work we've done</h2>
             <p>Browse decorations by category.</p>
           </div>
-          <div class="portfolio-filters" aria-label="Portfolio filters"></div>
+          <div class="portfolio-filters" role="group" aria-label="Portfolio filters"></div>
           <div class="swiper portfolio-swiper">
             <div class="swiper-wrapper"></div>
             <div class="swiper-pagination"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev" aria-label="Previous portfolio item"></div>
+            <div class="swiper-button-next" aria-label="Next portfolio item"></div>
           </div>
         </div>
       </section>
@@ -423,19 +423,19 @@
           </p>
         </div>
 
-        <button class="button button-primary estimate-view-button" type="button">
-          <span>View estimate</span>
-          <span class="estimate-count-badge">0</span>
+        <button class="button button-primary estimate-view-button" type="button" aria-label="View selected estimate">
+          <span aria-hidden="true">View estimate</span>
+          <span class="estimate-count-badge" aria-hidden="true">0</span>
         </button>
       </div>
     </aside>
 
     <div class="estimate-backdrop" hidden></div>
 
-    <div class="estimate-panel" hidden>
+    <div class="estimate-panel" role="dialog" aria-modal="true" aria-labelledby="estimate-panel-title" hidden>
       <div class="estimate-panel-header">
         <div>
-          <h2>Your Estimate</h2>
+          <h2 id="estimate-panel-title">Your Estimate</h2>
           <p>Review your selected decorations and request a quote.</p>
         </div>
 

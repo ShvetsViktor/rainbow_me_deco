@@ -44,6 +44,22 @@ describe('Page layout structure', () => {
   test('footer is on the page', () => {
     expect(document.getElementsByTagName('footer').length).toBe(1);
   });
+
+  test('footer contains copyright content', () => {
+    const footer = document.querySelector('.site-footer');
+    const footerText = document.querySelector('.site-footer p');
+
+    expect(footer).not.toBeNull();
+    expect(footerText).not.toBeNull();
+    expect(footerText.textContent).toContain('Rainbow Me');
+  });
+
+  test('footer contains back to top link', () => {
+    const backToTopLink = document.querySelector('.site-footer a[href="#hero"]');
+
+    expect(backToTopLink).not.toBeNull();
+    expect(backToTopLink.textContent).toBe('Back to top');
+  });
 });
 
 describe('Hero section content', () => {
