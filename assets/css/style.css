@@ -697,6 +697,85 @@ header nav a:focus-visible {
 }
 
 /* ============================================
+   HOW IT WORKS
+   ============================================ */
+
+#how-it-works {
+  background-color: var(--color-surface);
+}
+
+.how-it-works-layout {
+  display: grid;
+  gap: 56px;
+}
+
+.how-it-works-intro {
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+.process-steps {
+  display: grid;
+  gap: 32px;
+  counter-reset: process-step;
+}
+
+.process-step {
+  display: grid;
+  gap: 18px;
+  justify-items: center;
+  text-align: center;
+}
+
+.process-step-icon {
+  display: grid;
+  place-items: center;
+
+  width: 112px;
+  height: 112px;
+
+  border-radius: 50%;
+  background-color: var(--color-scheme-3-background);
+  color: var(--color-primary);
+
+  font-size: 42px;
+  line-height: 1;
+}
+
+.process-step-content {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+}
+
+.process-step-number {
+  display: inline-grid;
+  place-items: center;
+
+  width: 28px;
+  height: 28px;
+
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.process-step h3 {
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.process-step p {
+  max-width: 260px;
+  font-size: 14px;
+}
+
+/* ============================================
    ESTIMATE PANEL
    ============================================ */
 
@@ -1304,6 +1383,35 @@ header nav a:focus-visible {
 }
 
 @media (max-width: 767px) {
+  .how-it-works-layout {
+    gap: 40px;
+  }
+
+  .process-steps {
+    gap: 28px;
+  }
+
+  .process-step {
+    grid-template-columns: 88px 1fr;
+    align-items: center;
+    justify-items: start;
+    text-align: left;
+  }
+
+  .process-step-icon {
+    width: 72px;
+    height: 72px;
+    font-size: 30px;
+  }
+
+  .process-step-content {
+    justify-items: start;
+  }
+
+  .process-step p {
+    max-width: none;
+  }
+
   .enquiry-layout {
     gap: 32px;
   }
@@ -1374,6 +1482,27 @@ header nav a:focus-visible {
 
   .hero-layout {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .process-steps {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    align-items: start;
+  }
+
+  .process-step {
+    position: relative;
+  }
+
+  .process-step:not(:last-child)::after {
+    content: '›';
+    position: absolute;
+    top: 42px;
+    right: -22px;
+
+    color: var(--color-primary);
+    font-size: 32px;
+    line-height: 1;
   }
 
   .services-swiper,
