@@ -94,8 +94,22 @@ describe('enquiry form validation', () => {
     expect(phoneInput.getAttribute('aria-invalid')).toBe('true');
   });
 
-  test('hides form fields and shows success message when enquiry form is valid', () => {
+  test('shows only success message when enquiry form is valid', () => {
     const { enquiryForm, firstNameInput, emailInput, phoneInput, messageInput } = setupEnquiryFormDom();
+
+    document.body.insertAdjacentHTML(
+      'afterbegin',
+      `
+      <section id="enquiry">
+        <div class="section-header enquiry-header"></div>
+        <aside class="enquiry-estimate-card"></aside>
+      </section>
+    `
+    );
+
+    const enquirySection = document.querySelector('#enquiry');
+
+    enquirySection.appendChild(enquiryForm);
 
     firstNameInput.value = 'Viktor';
     emailInput.value = 'test@example.com';
@@ -110,5 +124,6 @@ describe('enquiry form validation', () => {
     expect(successMessage.hidden).toBe(false);
     expect(successMessage.textContent).toBe('Thank you! Your quote request has been prepared.');
     expect(enquiryForm.classList.contains('is-submitted')).toBe(true);
+    expect(enquirySection.classList.contains('is-submitted')).toBe(true);
   });
 });
