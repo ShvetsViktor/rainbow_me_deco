@@ -12,7 +12,7 @@ describe('404 page', () => {
 
   test('contains a not found message and a back home link', () => {
     const heading = document.querySelector('h1');
-    const homeLink = document.querySelector('a[href="index.html"]');
+    const homeLink = document.querySelector('.not-found-card a[href="index.html"]');
 
     expect(heading).not.toBeNull();
     expect(heading.textContent).toContain('Page not found');
