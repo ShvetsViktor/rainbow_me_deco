@@ -94,7 +94,7 @@ describe('enquiry form validation', () => {
     expect(phoneInput.getAttribute('aria-invalid')).toBe('true');
   });
 
-  test('shows success message when enquiry form is valid', () => {
+  test('hides form fields and shows success message when enquiry form is valid', () => {
     const { enquiryForm, firstNameInput, emailInput, phoneInput, messageInput } = setupEnquiryFormDom();
 
     firstNameInput.value = 'Viktor';
@@ -109,5 +109,6 @@ describe('enquiry form validation', () => {
     expect(successMessage).not.toBeNull();
     expect(successMessage.hidden).toBe(false);
     expect(successMessage.textContent).toBe('Thank you! Your quote request has been prepared.');
+    expect(enquiryForm.classList.contains('is-submitted')).toBe(true);
   });
 });
