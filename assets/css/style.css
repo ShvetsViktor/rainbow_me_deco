@@ -706,7 +706,7 @@ header nav a:focus-visible {
 
 .how-it-works-layout {
   display: grid;
-  gap: 56px;
+  gap: 40px;
 }
 
 .how-it-works-intro {
@@ -714,31 +714,47 @@ header nav a:focus-visible {
   margin-inline: auto;
 }
 
+/* Mobile-first layout */
 .process-steps {
   display: grid;
-  gap: 32px;
-  counter-reset: process-step;
+  gap: 44px;
 }
 
 .process-step {
+  position: relative;
+
   display: grid;
   gap: 18px;
   justify-items: center;
+
   text-align: center;
+}
+
+.process-step:not(:last-child)::after {
+  content: '↓';
+  position: absolute;
+  left: 50%;
+  bottom: -34px;
+
+  color: var(--color-primary);
+  font-size: 24px;
+  line-height: 1;
+
+  transform: translateX(-50%);
 }
 
 .process-step-icon {
   display: grid;
   place-items: center;
 
-  width: 112px;
-  height: 112px;
+  width: 72px;
+  height: 72px;
 
   border-radius: 50%;
   background-color: var(--color-scheme-3-background);
   color: var(--color-primary);
 
-  font-size: 42px;
+  font-size: 30px;
   line-height: 1;
 }
 
@@ -771,7 +787,7 @@ header nav a:focus-visible {
 }
 
 .process-step p {
-  max-width: 260px;
+  max-width: 300px;
   font-size: 14px;
 }
 
@@ -1383,35 +1399,6 @@ header nav a:focus-visible {
 }
 
 @media (max-width: 767px) {
-  .how-it-works-layout {
-    gap: 40px;
-  }
-
-  .process-steps {
-    gap: 28px;
-  }
-
-  .process-step {
-    grid-template-columns: 88px 1fr;
-    align-items: center;
-    justify-items: start;
-    text-align: left;
-  }
-
-  .process-step-icon {
-    width: 72px;
-    height: 72px;
-    font-size: 30px;
-  }
-
-  .process-step-content {
-    justify-items: start;
-  }
-
-  .process-step p {
-    max-width: none;
-  }
-
   .enquiry-layout {
     gap: 32px;
   }
@@ -1480,8 +1467,8 @@ header nav a:focus-visible {
     --section-padding: 80px;
   }
 
-  .hero-layout {
-    grid-template-columns: 1fr 1fr;
+  .how-it-works-layout {
+    gap: 56px;
   }
 
   .process-steps {
@@ -1491,18 +1478,29 @@ header nav a:focus-visible {
   }
 
   .process-step {
-    position: relative;
+    gap: 24px;
   }
 
   .process-step:not(:last-child)::after {
     content: '›';
-    position: absolute;
     top: 42px;
     right: -22px;
+    bottom: auto;
+    left: auto;
 
-    color: var(--color-primary);
     font-size: 32px;
-    line-height: 1;
+
+    transform: none;
+  }
+
+  .process-step-icon {
+    width: 112px;
+    height: 112px;
+    font-size: 42px;
+  }
+
+  .hero-layout {
+    grid-template-columns: 1fr 1fr;
   }
 
   .services-swiper,
