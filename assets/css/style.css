@@ -460,6 +460,12 @@ header nav a:focus-visible {
   justify-items: center;
 }
 
+.process-step-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
 .process-step-number {
   display: inline-grid;
   place-items: center;
@@ -1478,6 +1484,11 @@ header nav a:focus-visible {
 
   .process-step p {
     max-width: 240px;
+  }
+
+  .process-step-icon img {
+    width: 50px;
+    height: 50px;
   }
 }
 
