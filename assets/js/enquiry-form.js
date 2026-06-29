@@ -2,6 +2,23 @@ function isValidEmail(email) {
   return email.includes('@') && email.includes('.');
 }
 
+function isValidPhone(phone) {
+  for (let character of phone) {
+    if (
+      character !== ' ' &&
+      character !== '+' &&
+      character !== '-' &&
+      character !== '(' &&
+      character !== ')' &&
+      !Number.isInteger(Number(character))
+    ) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 function getFieldErrorMessage(field) {
   if (field.id === 'customer-first-name') {
     return 'Please enter your first name.';
@@ -82,12 +99,13 @@ function clearFieldError(field) {
 
 function createSuccessMessage(enquiryForm) {
   const successMessage = document.createElement('p');
+  const submitButton = enquiryForm.querySelector('.enquiry-submit-button');
 
   successMessage.classList.add('form-success');
   successMessage.hidden = true;
   successMessage.textContent = 'Thank you! Your quote request has been prepared.';
 
-  enquiryForm.appendChild(successMessage);
+  enquiryForm.insertBefore(successMessage, submitButton);
 
   return successMessage;
 }
@@ -130,6 +148,9 @@ function initEnquiryForm() {
       } else if (field.type === 'email' && !isValidEmail(fieldValue)) {
         showFieldError(field, 'Please enter a valid email address.');
         isFormValid = false;
+      } else if (field.type === 'tel' && !isValidPhone(fieldValue)) {
+        showFieldError(field, 'Please enter a valid phone number.');
+        isFormValid = false;
       }
     }
 
@@ -143,6 +164,7 @@ function initEnquiryForm() {
 if (typeof module !== 'undefined') {
   module.exports = {
     isValidEmail,
+    isValidPhone,
     getFieldErrorMessage,
     initEnquiryForm,
   };
