@@ -1461,6 +1461,25 @@ header nav a:focus-visible {
   }
 }
 
+@media (min-width: 560px) and (max-width: 767px) {
+  .process-steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 28px;
+  }
+
+  .process-step:not(:last-child)::after {
+    content: '';
+  }
+
+  .process-step {
+    align-content: start;
+  }
+
+  .process-step p {
+    max-width: 240px;
+  }
+}
+
 @media (min-width: 768px) {
   :root {
     --page-padding: 40px;
