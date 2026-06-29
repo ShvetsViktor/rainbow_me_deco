@@ -156,6 +156,7 @@ function initEnquiryForm() {
 
     if (isFormValid) {
       successMessage.hidden = false;
+      enquiryForm.classList.add('is-submitted');
       enquiryForm.reset();
     }
   });
