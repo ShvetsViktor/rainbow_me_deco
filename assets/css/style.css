@@ -1189,6 +1189,13 @@ header nav a:focus-visible {
   display: none;
 }
 
+.enquiry-form.is-submitted .form-row,
+.enquiry-form.is-submitted .form-field,
+.enquiry-form.is-submitted .enquiry-submit-button,
+.enquiry-form.is-submitted .enquiry-privacy-note {
+  display: none;
+}
+
 @media (max-width: 1024px) {
   .enquiry-content {
     grid-template-columns: 1fr;
