@@ -484,20 +484,6 @@ header nav a:focus-visible {
    TESTIMONIALS
    ============================================ */
 
-#testimonials {
-  background-color: var(--color-scheme-3-background);
-}
-
-.testimonials-layout {
-  display: grid;
-  gap: 40px;
-}
-
-.testimonials-intro {
-  max-width: 520px;
-  margin-inline: auto;
-}
-
 .testimonial-grid {
   display: grid;
   gap: 24px;
@@ -505,7 +491,9 @@ header nav a:focus-visible {
 
 .testimonial-card {
   display: grid;
-  gap: 20px;
+  gap: 24px;
+  align-content: start;
+  min-height: 260px;
   padding: 28px;
   border: 1px solid var(--color-border);
   border-radius: 24px;
@@ -513,9 +501,42 @@ header nav a:focus-visible {
   box-shadow: 0 18px 48px rgba(10, 4, 11, 0.06);
 }
 
+.testimonial-header {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.testimonial-avatar {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+
+  width: 56px;
+  height: 56px;
+
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), transparent 35%),
+    linear-gradient(135deg, #fcedf0, #e94f72);
+
+  color: var(--color-primary-dark);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+
+  box-shadow: 0 10px 30px rgba(233, 79, 114, 0.18);
+}
+
+.testimonial-author {
+  color: var(--color-text);
+  font-weight: 800;
+}
+
 .testimonial-rating {
+  margin-top: 4px;
   color: var(--color-primary);
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: 2px;
 }
 
@@ -523,13 +544,10 @@ header nav a:focus-visible {
   margin: 0;
 }
 
-.testimonial-card p {
+.testimonial-card blockquote p {
   color: var(--color-text);
-}
-
-.testimonial-author {
-  color: var(--color-primary);
-  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.65;
 }
 
 /* ============================================
