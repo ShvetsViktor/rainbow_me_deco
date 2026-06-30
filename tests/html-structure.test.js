@@ -239,16 +239,19 @@ describe('Testimonials section structure', () => {
 
   test('testimonial ratings are accessible and decorative stars are hidden', () => {
     const ratings = document.querySelectorAll('#testimonials .testimonial-rating');
-    const ratingStars = document.querySelectorAll('#testimonials .testimonial-rating span');
+    const hiddenRatingTexts = document.querySelectorAll('#testimonials .testimonial-rating .visually-hidden');
+    const decorativeStars = document.querySelectorAll('#testimonials .testimonial-rating span[aria-hidden="true"]');
 
     expect(ratings.length).toBe(3);
-    expect(ratingStars.length).toBe(3);
+    expect(hiddenRatingTexts.length).toBe(3);
+    expect(decorativeStars.length).toBe(3);
 
-    for (let rating of ratings) {
-      expect(rating.getAttribute('aria-label')).toBe('5 out of 5 stars');
+    for (let hiddenText of hiddenRatingTexts) {
+      expect(hiddenText.textContent).toBe('5 out of 5 stars');
     }
 
-    for (let stars of ratingStars) {
+    for (let stars of decorativeStars) {
+      expect(stars.textContent).toBe('★★★★★');
       expect(stars.getAttribute('aria-hidden')).toBe('true');
     }
   });
