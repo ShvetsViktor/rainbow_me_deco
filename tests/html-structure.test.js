@@ -367,7 +367,12 @@ describe('Navbar layout structure', () => {
     expect(logoLink.getAttribute('aria-label')).toBe('Rainbow Me home');
 
     expect(logoImage).not.toBeNull();
-    expect(logoImage.getAttribute('src')).toBe('assets/images/logo/rainbow-me-logo.png');
+    expect(logoImage.getAttribute('src')).toBe('assets/images/logo/responsive/rainbow-me-logo-160.png');
+    expect(logoImage.getAttribute('srcset')).toContain('assets/images/logo/responsive/rainbow-me-logo-160.png 160w');
+    expect(logoImage.getAttribute('srcset')).toContain('assets/images/logo/responsive/rainbow-me-logo-240.png 240w');
+    expect(logoImage.getAttribute('sizes')).toBe('120px');
+    expect(logoImage.getAttribute('width')).toBe('120');
+    expect(logoImage.getAttribute('height')).toBe('80');
     expect(logoImage.getAttribute('alt')).toBe('Rainbow Me');
   });
 });

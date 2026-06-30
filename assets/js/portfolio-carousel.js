@@ -18,7 +18,7 @@ function renderPortfolioSlides(items) {
 
     const img = document.createElement('img');
     img.src = item.image;
-    img.srcset = `${item.mobileImage} 650w, ${item.image} ${item.imageWidth}w`;
+    img.srcset = `${item.mobileImage} 800w, ${item.image} ${item.imageWidth}w`;
     img.sizes = '(max-width: 768px) 100vw, 615px';
     img.alt = item.alt;
     img.loading = 'lazy';
