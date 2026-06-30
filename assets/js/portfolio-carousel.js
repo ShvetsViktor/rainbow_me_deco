@@ -13,10 +13,16 @@ function renderPortfolioSlides(items) {
     imageButton.classList.add('portfolio-image-button');
     imageButton.type = 'button';
     imageButton.setAttribute('aria-label', `View larger image: ${item.title}`);
+    imageButton.setAttribute('data-full-image', item.image);
+    imageButton.setAttribute('data-alt', item.alt);
 
     const img = document.createElement('img');
     img.src = item.image;
+    img.srcset = `${item.mobileImage} 650w, ${item.image} ${item.imageWidth}w`;
+    img.sizes = '(max-width: 768px) 100vw, 615px';
     img.alt = item.alt;
+    img.loading = 'lazy';
+    img.decoding = 'async';
 
     imageButton.appendChild(img);
     slide.appendChild(imageButton);
@@ -49,6 +55,9 @@ function renderPortfolioSlides(items) {
     button.classList.add('button', 'button-primary', 'add-to-estimate');
     button.type = 'button';
     button.setAttribute('data-title', item.title);
+    button.setAttribute('data-price', item.price);
+    button.setAttribute('data-image', item.image);
+    button.setAttribute('data-alt', item.alt);
     button.innerHTML = '<span class="button-icon" aria-hidden="true">+</span><span>Add to estimate</span>';
 
     actions.appendChild(priceWrapper);
