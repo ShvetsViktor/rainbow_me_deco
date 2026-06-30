@@ -75,19 +75,26 @@ function initEstimateBuilder(items) {
   const enquiryEstimateTotal = document.querySelector('.enquiry-estimate-total strong');
   const enquiryEstimateTotalBlock = document.querySelector('.enquiry-estimate-total');
 
-  if (
-    !portfolioWrapper ||
-    !estimateWidget ||
-    !estimateTotal ||
-    !estimateCount ||
-    !estimateCountBadge ||
-    !viewEstimateButton ||
-    !estimatePanel ||
-    !estimatePanelTotal ||
-    !estimateList ||
-    !closeEstimateButton ||
-    !estimateBackdrop
-  ) {
+  const requiredElements = {
+    portfolioWrapper,
+    estimateWidget,
+    estimateTotal,
+    estimateCount,
+    estimateCountBadge,
+    viewEstimateButton,
+    estimatePanel,
+    estimatePanelTotal,
+    estimateList,
+    closeEstimateButton,
+    estimateBackdrop,
+  };
+
+  const missingElements = Object.entries(requiredElements)
+    .filter(([, element]) => !element)
+    .map(([name]) => name);
+
+  if (missingElements.length > 0) {
+    console.warn(`Estimate builder could not initialise. Missing elements: ${missingElements.join(', ')}`);
     return;
   }
 
