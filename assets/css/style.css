@@ -782,6 +782,48 @@ header nav a:focus-visible {
 .services-swiper .swiper-button-next,
 .portfolio-swiper .swiper-button-prev,
 .portfolio-swiper .swiper-button-next {
+  appearance: none;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.services-swiper .swiper-button-prev::after,
+.services-swiper .swiper-button-next::after,
+.portfolio-swiper .swiper-button-prev::after,
+.portfolio-swiper .swiper-button-next::after {
+  font-size: 44px;
+  font-weight: 400;
+}
+
+.services-swiper .swiper-button-prev::after,
+.portfolio-swiper .swiper-button-prev::after {
+  content: '‹';
+}
+
+.services-swiper .swiper-button-next::after,
+.portfolio-swiper .swiper-button-next::after {
+  content: '›';
+}
+
+.services-swiper .swiper-button-prev:focus-visible,
+.services-swiper .swiper-button-next:focus-visible,
+.portfolio-swiper .swiper-button-prev:focus-visible,
+.portfolio-swiper .swiper-button-next:focus-visible {
+  outline: 3px solid rgba(233, 79, 114, 0.25);
+  outline-offset: 4px;
+}
+
+.services-swiper .swiper-button-prev,
+.services-swiper .swiper-button-next,
+.portfolio-swiper .swiper-button-prev,
+.portfolio-swiper .swiper-button-next {
   display: none;
 }
 
