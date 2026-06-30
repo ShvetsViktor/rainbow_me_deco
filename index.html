@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rainbow Me</title>
 
-    <!-- Favicons -->
+    <!-- Favicons used by browsers and tabs for the site identity -->
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/icon-16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/icon-32.png" />
 
-    <!-- Google Fonts: Inter and Playfair Display -->
+    <!-- External Google Fonts used for the project typography.
+     The fonts are attributed in README.md. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,14 +18,16 @@
       rel="stylesheet"
     />
 
-    <!-- Swiper CSS -->
+    <!-- External Swiper CSS used for the Services and Portfolio carousels.
+     Swiper is initialised in separate custom JavaScript files. -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
 
-    <!-- Custom CSS file import -->
+    <!-- Custom stylesheet for all project-specific layout, typography and responsive design -->
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
 
   <body>
+    <!-- Site header contains the fixed navigation and hero section. The mobile menu button is controlled by assets/js/navigation.js. -->
     <header>
       <div class="nav-layout">
         <a href="#hero" class="logo" aria-label="Rainbow Me home">
@@ -41,6 +44,7 @@
           />
         </a>
 
+        <!-- Mobile navigation toggle. Aria-expanded is updated by JavaScript when the menu opens or closes. -->
         <button class="menu-toggle" type="button" aria-label="Open main navigation" aria-expanded="false">Menu</button>
 
         <nav aria-label="Main navigation">
@@ -54,6 +58,7 @@
         </nav>
       </div>
 
+      <!-- Hero section introduces the business and gives users the two main actions: view previous work or go directly to the enquiry form. -->
       <section id="hero">
         <div class="container hero-layout">
           <div class="hero-content">
@@ -69,6 +74,7 @@
             </div>
           </div>
 
+          <!-- Hero image uses srcset for responsive loading. Fetchpriority="high" is used because this is the main above-the-fold image. -->
           <div class="hero-image">
             <img
               src="assets/images/hero/responsive/hero-1200.webp"
