@@ -400,6 +400,28 @@ describe('Estimate widget', () => {
     expect(viewEstimateButton.getAttribute('type')).toBe('button');
     expect(viewEstimateButton.textContent).toContain('View estimate');
   });
+
+  test('estimate builder has all required DOM elements', () => {
+    expect(document.querySelector('.portfolio-swiper .swiper-wrapper')).not.toBeNull();
+
+    expect(document.querySelector('.estimate-widget')).not.toBeNull();
+    expect(document.querySelector('.estimate-total')).not.toBeNull();
+    expect(document.querySelector('.estimate-count')).not.toBeNull();
+    expect(document.querySelector('.estimate-count-badge')).not.toBeNull();
+    expect(document.querySelector('.estimate-view-button')).not.toBeNull();
+
+    expect(document.querySelector('.estimate-panel')).not.toBeNull();
+    expect(document.querySelector('.estimate-panel-total')).not.toBeNull();
+    expect(document.querySelector('.estimate-list')).not.toBeNull();
+    expect(document.querySelector('.estimate-panel-close')).not.toBeNull();
+    expect(document.querySelector('.estimate-backdrop')).not.toBeNull();
+    expect(document.querySelector('.estimate-request-button')).not.toBeNull();
+
+    expect(document.querySelector('#enquiry')).not.toBeNull();
+    expect(document.querySelector('.enquiry-estimate-list')).not.toBeNull();
+    expect(document.querySelector('.enquiry-estimate-total')).not.toBeNull();
+    expect(document.querySelector('.enquiry-estimate-total strong')).not.toBeNull();
+  });
 });
 
 describe('Enquiry section', () => {
