@@ -26,7 +26,7 @@
 
   /* Base typography scale for headings and body text */
   --text-base: 16px;
-  --heading-1: 56px;
+  --heading-1: 40px;
   --heading-2: 36px;
   --heading-3: 20px;
   --heading-4: 18px;
@@ -1592,8 +1592,12 @@ header nav a:focus-visible {
   }
 }
 
-/* Large mobile / small tablet: How It Works changes from one column to two columns. */
+/* Large mobile / small tablet: How It Works changes from one column to two columns. h1 font-size increases */
 @media (min-width: 560px) {
+  :root {
+    --heading-1: 56px;
+  }
+
   .process-steps {
     grid-template-columns: repeat(2, 1fr);
     gap: 40px 28px;
