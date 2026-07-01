@@ -542,6 +542,7 @@
               </div>
             </aside>
 
+            <!-- Enquiry form uses novalidate so custom JavaScript validation can control error messages, aria-invalid and aria-describedby consistently. -->
             <form class="enquiry-form" novalidate>
               <div class="form-row">
                 <div class="form-field">
@@ -647,6 +648,7 @@
       </section>
     </main>
 
+    <!-- Footer provides final site information and a quick route back to the top of the page. -->
     <footer class="site-footer">
       <div class="container site-footer-layout">
         <p>&copy; 2026 Rainbow Me. All rights reserved.</p>
@@ -654,6 +656,7 @@
       </div>
     </footer>
 
+    <!-- Portfolio image modal. The image src starts with a tiny transparent placeholder so the HTML remains valid. JavaScript replaces src and alt when a user opens a portfolio image. -->
     <div class="portfolio-modal" role="dialog" aria-modal="true" aria-label="Enlarged portfolio image" hidden>
       <button class="portfolio-modal-close" type="button" aria-label="Close enlarged portfolio image">Close</button>
 
@@ -664,6 +667,7 @@
       />
     </div>
 
+    <!-- Sticky estimate widget. It appears after the user adds an item and shows the running guide total. JavaScript updates the total, count and visibility. -->
     <aside class="estimate-widget" aria-label="Estimate summary" hidden>
       <div class="estimate-widget-content">
         <div>
@@ -684,6 +688,7 @@
 
     <div class="estimate-backdrop" hidden></div>
 
+    <!-- Estimate panel dialog. Users can review selected items, remove items and continue to the enquiry form. -->
     <div class="estimate-panel" role="dialog" aria-modal="true" aria-labelledby="estimate-panel-title" hidden>
       <div class="estimate-panel-header">
         <div>
@@ -706,37 +711,38 @@
       </div>
     </div>
 
-    <!-- Swiper JS -->
+    <!-- External Swiper library loaded from CDN.
+     Used only for carousel behaviour and attributed in README.md. -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 
-    <!-- Script for removing swiper pagination from the keyboard tab order -->
+    <!-- Custom helper that improves Swiper pagination accessibility -->
     <script src="assets/js/swiper-helpers.js"></script>
 
-    <!-- Services carousel script -->
+    <!-- Initialises the Services carousel using Swiper -->
     <script src="assets/js/services-carousel.js"></script>
 
-    <!-- Portfolio data import -->
+    <!-- Portfolio item data used by rendering, filtering and estimate features -->
     <script src="assets/js/portfolio-data.js"></script>
 
-    <!-- Portfolio carousel script -->
+    <!-- Renders portfolio cards and initialises the Portfolio carousel -->
     <script src="assets/js/portfolio-carousel.js"></script>
 
-    <!-- Portfolio modal script -->
+    <!-- Controls opening and closing of the portfolio image modal -->
     <script src="assets/js/portfolio-modal.js"></script>
 
-    <!-- Portfolio filters script -->
+    <!-- Renders portfolio filters and updates portfolio content by category -->
     <script src="assets/js/portfolio-filters.js"></script>
 
-    <!-- Estimate builder script -->
+    <!-- Handles add/remove estimate logic, totals, panel, widget and balloon animation -->
     <script src="assets/js/estimate.js"></script>
 
-    <!-- Navigation script -->
+    <!-- Handles mobile navigation open/close behaviour -->
     <script src="assets/js/navigation.js"></script>
 
-    <!-- Enquiry form script -->
+    <!-- Handles enquiry form validation and success state -->
     <script src="assets/js/enquiry-form.js"></script>
 
-    <!-- Main script import -->
+    <!-- Main entry point that initialises all available project features after DOM load -->
     <script src="assets/js/script.js"></script>
   </body>
 </html>
