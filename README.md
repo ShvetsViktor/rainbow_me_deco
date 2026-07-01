@@ -388,18 +388,6 @@ Wireframes were used to plan page layout, content hierarchy, and responsive beha
 | ----------------------------------------------------------- | ------------------------------------------------------------- |
 | ![Mobile wireframe](assets/wireframes/mobile-wireframe.png) | ![Desktop wireframe](assets/wireframes/desktop-wireframe.png) |
 
-The final wireframes show the current page structure:
-
-```text
-Hero
-Services
-How It Works
-Portfolio
-Testimonials
-Enquiry
-Footer
-```
-
 ### Surface
 
 The visual design is intended to feel:
@@ -873,7 +861,7 @@ It also shows the current total and a Request a Quote button.
 
 Users can add items from both service cards and portfolio cards.
 
-Duplicate items are prevented.
+Duplicate items are prevented, so clicking the same Add to estimate button again does not change the estimate.
 
 ### Remove from Estimate
 
@@ -1125,8 +1113,10 @@ Implemented accessibility decisions include:
 
 HTML was tested using the W3C HTML Validator.
 
+**index.html:**
 ![HTML validation screenshot](assets/readme/testing/html-validator-index.png)
 
+**404.html:**
 ![404 validation screenshot](assets/readme/testing/html-validator-404.png)
 
 **Result:** Pass.
@@ -1154,18 +1144,6 @@ The deployed website was tested using Lighthouse in Chrome DevTools.
 ![Lighthouse mobile screenshot](assets/readme/testing/lighthouse-mobile.png)
 
 ![Lighthouse desktop screenshot](assets/readme/testing/lighthouse-desktop.png)
-
-### Lighthouse Targets
-
-| Category       | Target |
-| -------------- | -----: |
-| Performance    |    80+ |
-| Accessibility  |    90+ |
-| Best Practices |    90+ |
-
-SEO was not formally scored as part of the final Lighthouse evidence for this project.
-
-Final Lighthouse scores were used to confirm the deployed version met the project targets.
 
 ---
 
