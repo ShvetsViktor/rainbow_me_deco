@@ -1464,8 +1464,6 @@ assets/
 tests/
   fixtures/
     portfolio-items.js
-README-2.md
-README-3.md
 404.html
 index.html
 package-lock.json
