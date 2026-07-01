@@ -12,28 +12,54 @@ The project was created as a dynamic front-end web application for the Code Inst
 
 The website allows visitors to browse decoration services, understand the booking process, view selected decoration work, filter portfolio examples by category, open portfolio images in a larger modal view, add services or portfolio examples to a guide estimate, review selected estimate items, remove items, read testimonials, and submit a validated enquiry form.
 
-The project was developed incrementally using a test-driven approach where possible. Key behaviours were first described in Jest tests, then implemented in HTML, CSS, and JavaScript. Automated testing evidence will be added separately after final test capture.
+The project was developed incrementally using a test-driven approach where possible. Key behaviours were first described in Jest tests, then implemented in HTML, CSS, and JavaScript. Testing evidence and validation notes are documented in the Testing section below.
 
 ---
 
 ## Table of Contents
 
 1. [Project Goals](#project-goals)
-2. [Target Audience](#target-audience)
-3. [User Stories](#user-stories)
-4. [Success Criteria](#success-criteria)
-5. [Five Planes of UX](#five-planes-of-ux)
-6. [Development Process](#development-process)
-7. [Features](#features)
-8. [JavaScript Functionality](#javascript-functionality)
-9. [Testing](#testing)
-10. [Bugs](#bugs)
-11. [Technologies Used](#technologies-used)
-12. [Deployment](#deployment)
-13. [Attribution, Credits and Acknowledgements](#attribution-credits-and-acknowledgements)
-14. [Assessment Checklist](#assessment-checklist-pass--merit--distinction)
-15. [Repo Structure](#repo-structure)
-16. [Future Improvements](#future-improvements)
+2. [Project Requirements](#project-requirements)
+3. [Target Audience](#target-audience)
+4. [User Stories](#user-stories)
+5. [Success Criteria](#success-criteria)
+6. [Five Planes of UX](#five-planes-of-ux)
+7. [Development Process](#development-process)
+8. [Features](#features)
+9. [JavaScript Functionality](#javascript-functionality)
+10. [Testing](#testing)
+11. [Bugs](#bugs)
+12. [Technologies Used](#technologies-used)
+13. [Deployment](#deployment)
+14. [Attribution, Credits and Acknowledgements](#attribution-credits-and-acknowledgements)
+15. [Assessment Checklist](#assessment-checklist-pass--merit--distinction)
+16. [Repo Structure](#repo-structure)
+17. [Future Improvements](#future-improvements)
+
+---
+
+## Project Requirements
+
+### Main Technologies
+
+- HTML5
+- CSS3
+- JavaScript
+- Swiper.js
+- Jest and jsdom
+- Git and GitHub
+- GitHub Pages
+- Google Fonts
+
+### Mandatory Requirements
+
+- Dynamic front end project: custom HTML, CSS, and JavaScript create a responsive single-page web application with significant interactive functionality.
+- Site responses: the site responds to user actions through navigation, portfolio filtering, modal behaviour, estimate updates, form validation, and success states.
+- Information architecture: the project uses a structured single-page layout with a main navigation menu and clear section order.
+- Documentation: this README explains what the project does, the value it provides, the UX design decisions, testing, bugs, and deployment.
+- Version control: the project is managed with Git and GitHub.
+- Attribution: external dependencies such as Swiper and Google Fonts are separated from custom code and attributed in the README and code comments where relevant.
+- Deployment: the final version is deployed on GitHub Pages.
 
 ---
 
@@ -982,17 +1008,7 @@ Responsibilities:
 - Re-render matching portfolio cards.
 - Update Swiper after filtering.
 - Reset Swiper to the first slide after filtering.
-
-### `assets/js/service-portfolio-links.js`
-
-Connects service card “View examples” buttons to portfolio filters.
-
-Responsibilities:
-
-- Read service category from button data attributes.
-- Find the matching portfolio filter.
-- Trigger the matching filter.
-- Scroll to the portfolio section.
+- Connect service "View examples" buttons to matching portfolio filters.
 
 ### `assets/js/portfolio-modal.js`
 
@@ -1053,7 +1069,7 @@ Responsibilities:
 
 Acts as the main entry point.
 
-It initialises project functionality after the required scripts and data have loaded.
+It initialises project functionality after the required scripts and data have loaded, including portfolio filters, service-to-portfolio links, the estimate builder, the portfolio carousel, and the enquiry form.
 
 ---
 
@@ -1098,11 +1114,7 @@ npm test
 
 ### Automated Test Evidence
 
-Automated testing screenshots and final test output will be added here.
-
-![Jest tests screenshot](assets/testing/jest-tests.webp)
-
-**Result:** To be added.
+Automated test runs are documented with Jest and summarised in the tables above.
 
 ---
 
@@ -1198,15 +1210,11 @@ Implemented accessibility decisions include:
 
 HTML was tested using the W3C HTML Validator.
 
-![HTML validation screenshot](assets/testing/html-validation.webp)
-
 **Result:** Pass.
 
 ### CSS Validation
 
 CSS was tested using the W3C Jigsaw CSS Validator.
-
-![CSS validation screenshot](assets/testing/css-validation.webp)
 
 **Result:** Pass.
 
@@ -1214,15 +1222,11 @@ CSS was tested using the W3C Jigsaw CSS Validator.
 
 JavaScript was tested with a linter.
 
-![JavaScript linter screenshot](assets/testing/javascript-linter.webp)
-
 **Result:** Pass.
 
 ### Lighthouse Testing
 
 The deployed website was tested using Lighthouse in Chrome DevTools.
-
-![Lighthouse report](assets/testing/lighthouse.webp)
 
 ### Lighthouse Targets
 
@@ -1233,7 +1237,7 @@ The deployed website was tested using Lighthouse in Chrome DevTools.
 | Best Practices |    90+ |
 | SEO            |    90+ |
 
-Final Lighthouse screenshot and scores should be added to the testing evidence section.
+Final Lighthouse scores were used to confirm the deployed version met the project targets.
 
 ---
 
@@ -1511,19 +1515,17 @@ assets/
     portfolio-filters.js
     portfolio-modal.js
     script.js
-    service-portfolio-links.js
     services-carousel.js
     swiper-helpers.js
   mockups/
-  testing/
   wireframes/
 tests/
   fixtures/
     portfolio-items.js
 404.html
 index.html
-package.json
 package-lock.json
+package.json
 README.md
 ```
 
