@@ -1,3 +1,9 @@
+/**
+ * Adds an item to the estimate unless an item with the same title already exists.
+ *
+ * This prevents duplicate estimate items when the user clicks the same
+ * Add to estimate button more than once.
+ */
 function addItemToEstimate(estimateItems, item) {
   for (let estimateItem of estimateItems) {
     if (estimateItem.title === item.title) {
@@ -8,6 +14,9 @@ function addItemToEstimate(estimateItems, item) {
   return [...estimateItems, item];
 }
 
+/**
+ * Calculates the current guide estimate total from selected items.
+ */
 function calculateEstimateTotal(estimateItems) {
   let total = 0;
 
@@ -18,6 +27,9 @@ function calculateEstimateTotal(estimateItems) {
   return total;
 }
 
+/**
+ * Removes an estimate item by title and returns the updated estimate array.
+ */
 function removeItemFromEstimate(estimateItems, title) {
   const updatedEstimateItems = [];
 
@@ -30,6 +42,11 @@ function removeItemFromEstimate(estimateItems, title) {
   return updatedEstimateItems;
 }
 
+/**
+ * Shows a short decorative balloon animation near the clicked Add to estimate button.
+ *
+ * The animation is visual feedback only, so it is hidden from assistive technology.
+ */
 function showBalloonAnimation(addButton) {
   const buttonPosition = addButton.getBoundingClientRect();
   const animation = document.createElement('div');
@@ -52,11 +69,23 @@ function showBalloonAnimation(addButton) {
 
   document.body.appendChild(animation);
 
+  // Removes the animation after the CSS animation has finished.
   setTimeout(() => {
     animation.remove();
   }, 2200);
 }
 
+/**
+ * Initialises the estimate builder.
+ *
+ * This connects:
+ * - portfolio Add to estimate buttons;
+ * - service Add to estimate buttons;
+ * - sticky estimate widget;
+ * - estimate review panel;
+ * - enquiry estimate summary;
+ * - enquiry form submission reset behaviour.
+ */
 function initEstimateBuilder(items) {
   const portfolioWrapper = document.querySelector('.portfolio-swiper .swiper-wrapper');
   const estimateWidget = document.querySelector('.estimate-widget');
@@ -75,6 +104,12 @@ function initEstimateBuilder(items) {
   const enquiryEstimateTotal = document.querySelector('.enquiry-estimate-total strong');
   const enquiryEstimateTotalBlock = document.querySelector('.enquiry-estimate-total');
 
+  /**
+   * Required DOM elements for the estimate builder.
+   *
+   * Keeping these elements in an object makes the missing-element warning more useful:
+   * instead of only failing silently, the console can show exactly which selector target is missing.
+   */
   const requiredElements = {
     portfolioWrapper,
     estimateWidget,
@@ -89,6 +124,12 @@ function initEstimateBuilder(items) {
     estimateBackdrop,
   };
 
+  /**
+   * Finds missing required elements before the feature starts.
+   *
+   * This is defensive programming: if the HTML structure changes,
+   * the feature exits safely and gives a useful warning for debugging.
+   */
   const missingElements = Object.entries(requiredElements)
     .filter(([, element]) => !element)
     .map(([name]) => name);
@@ -99,9 +140,20 @@ function initEstimateBuilder(items) {
   }
 
   let estimateItems = [];
+
+  // Tracks whether the enquiry estimate summary is visible.
+  // If it is visible, the sticky widget is hidden to avoid duplicated information.
   let hasReachedEnquirySummary = false;
+
+  // Tracks portfolio modal state so the sticky estimate widget does not appear over the modal.
   let isPortfolioModalOpen = false;
 
+  /**
+   * Clears the submitted enquiry state when the user starts a new estimate flow.
+   *
+   * This is needed after successful form submission. If the user adds a new item,
+   * the previous success message should disappear and the enquiry form area should be usable again.
+   */
   function resetEnquirySubmittedState() {
     const enquiryForm = document.querySelector('.enquiry-form');
     const successMessage = document.querySelector('.form-success');
@@ -119,11 +171,22 @@ function initEstimateBuilder(items) {
     }
   }
 
+  /**
+   * Closes the estimate panel and its backdrop.
+   */
   function closeEstimatePanel() {
     estimatePanel.hidden = true;
     estimateBackdrop.hidden = true;
   }
 
+  /**
+   * Shows or hides the sticky estimate widget.
+   *
+   * The widget is hidden when:
+   * - the estimate is empty;
+   * - the enquiry estimate summary is already visible;
+   * - the portfolio modal is open.
+   */
   function updateEstimateWidgetVisibility() {
     if (estimateItems.length === 0 || hasReachedEnquirySummary || isPortfolioModalOpen) {
       estimateWidget.hidden = true;
@@ -133,6 +196,12 @@ function initEstimateBuilder(items) {
     estimateWidget.hidden = false;
   }
 
+  /**
+   * Checks whether the enquiry estimate summary is visible in the viewport.
+   *
+   * This prevents the same estimate information appearing twice:
+   * once in the sticky widget and once in the enquiry section.
+   */
   function updateEnquirySummaryPositionState() {
     if (!enquiryEstimateTotalBlock) {
       hasReachedEnquirySummary = false;
@@ -147,6 +216,11 @@ function initEstimateBuilder(items) {
     updateEstimateWidgetVisibility();
   }
 
+  /**
+   * Renders selected estimate items inside the estimate panel.
+   *
+   * The panel is used when the user wants to review the estimate before continuing.
+   */
   function renderEstimateList() {
     estimateList.innerHTML = '';
 
@@ -170,6 +244,11 @@ function initEstimateBuilder(items) {
     }
   }
 
+  /**
+   * Renders selected estimate items inside the enquiry section.
+   *
+   * This keeps the final enquiry step connected to the estimate the user built earlier.
+   */
   function updateEnquiryEstimateSummary() {
     if (!enquiryEstimateList || !enquiryEstimateTotal) {
       return;
@@ -198,6 +277,12 @@ function initEstimateBuilder(items) {
     enquiryEstimateTotal.textContent = `£${calculateEstimateTotal(estimateItems)}`;
   }
 
+  /**
+   * Updates all estimate UI after items are added or removed.
+   *
+   * This keeps widget total, count badge, panel total, panel list,
+   * and enquiry summary in sync.
+   */
   function updateEstimateWidget() {
     const total = calculateEstimateTotal(estimateItems);
 
@@ -217,12 +302,20 @@ function initEstimateBuilder(items) {
     updateEnquirySummaryPositionState();
   }
 
+  /**
+   * Resets the estimate after the enquiry form confirms a valid submission.
+   *
+   * enquiry-form.js dispatches this custom event.
+   */
   document.addEventListener('enquiry:submitted', () => {
     estimateItems = [];
     closeEstimatePanel();
     updateEstimateWidget();
   });
 
+  /**
+   * Opens the estimate panel when the user wants to review selected items.
+   */
   viewEstimateButton.addEventListener('click', () => {
     estimatePanel.hidden = false;
     estimateBackdrop.hidden = false;
@@ -236,6 +329,9 @@ function initEstimateBuilder(items) {
     closeEstimatePanel();
   });
 
+  /**
+   * Moves the user from the estimate panel to the enquiry section.
+   */
   if (estimateRequestButton) {
     estimateRequestButton.addEventListener('click', () => {
       closeEstimatePanel();
@@ -246,6 +342,11 @@ function initEstimateBuilder(items) {
     });
   }
 
+  /**
+   * Handles removing items from the estimate panel.
+   *
+   * Event delegation is used because estimate list items are rendered dynamically.
+   */
   estimateList.addEventListener('click', (event) => {
     const removeButton = event.target.closest('.estimate-remove-button');
 
@@ -264,6 +365,11 @@ function initEstimateBuilder(items) {
     }
   });
 
+  /**
+   * Handles removing items from the enquiry estimate summary.
+   *
+   * This gives users another chance to adjust the estimate before submitting the form.
+   */
   if (enquiryEstimateList) {
     enquiryEstimateList.addEventListener('click', (event) => {
       const removeButton = event.target.closest('.enquiry-estimate-remove-button');
@@ -284,6 +390,11 @@ function initEstimateBuilder(items) {
     });
   }
 
+  /**
+   * Hide the sticky estimate widget while the portfolio image modal is open.
+   *
+   * The portfolio modal dispatches these custom events.
+   */
   document.addEventListener('portfolioModal:open', () => {
     isPortfolioModalOpen = true;
     updateEstimateWidgetVisibility();
@@ -294,17 +405,30 @@ function initEstimateBuilder(items) {
     updateEstimateWidgetVisibility();
   });
 
+  /**
+   * Escape closes the estimate panel for keyboard users.
+   */
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
       closeEstimatePanel();
     }
   });
 
+  /**
+   * Re-check widget visibility when the page moves or changes size.
+   *
+   * This is needed because the enquiry summary may enter or leave the viewport.
+   */
   window.addEventListener('scroll', updateEnquirySummaryPositionState);
   window.addEventListener('resize', updateEnquirySummaryPositionState);
 
   updateEnquirySummaryPositionState();
 
+  /**
+   * Handles Add to estimate clicks from dynamically rendered portfolio cards.
+   *
+   * Event delegation is used because portfolio cards are created by JavaScript.
+   */
   portfolioWrapper.addEventListener('click', (event) => {
     const addButton = event.target.closest('.add-to-estimate');
 
@@ -333,11 +457,18 @@ function initEstimateBuilder(items) {
 
     updateEstimateWidget();
 
+    // Balloon animation only runs when a new item was actually added.
     if (estimateItems.length > previousItemsCount) {
       showBalloonAnimation(addButton);
     }
   });
 
+  /**
+   * Handles Add to estimate clicks from static service cards.
+   *
+   * Service cards are written in index.html, so their estimate data is read
+   * from data-title, data-price, data-image and data-alt attributes.
+   */
   document.addEventListener('click', (event) => {
     const serviceAddButton = event.target.closest('#services .add-to-estimate');
 
@@ -350,6 +481,7 @@ function initEstimateBuilder(items) {
     const selectedImage = serviceAddButton.getAttribute('data-image');
     const selectedAlt = serviceAddButton.getAttribute('data-alt');
 
+    // Prevents incomplete service data from creating broken estimate items.
     if (!selectedTitle || !selectedPrice || !selectedImage || !selectedAlt) {
       return;
     }
@@ -369,12 +501,14 @@ function initEstimateBuilder(items) {
 
     updateEstimateWidget();
 
+    // Balloon animation only runs when a new item was actually added.
     if (estimateItems.length > previousItemsCount) {
       showBalloonAnimation(serviceAddButton);
     }
   });
 }
 
+// Export functions for Jest tests when this file is loaded in a Node environment.
 if (typeof module !== 'undefined') {
   module.exports = {
     addItemToEstimate,
