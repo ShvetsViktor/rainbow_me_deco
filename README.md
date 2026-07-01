@@ -384,9 +384,9 @@ This structure was chosen to mix interactive and static content. Services introd
 
 Wireframes were used to plan page layout, content hierarchy, and responsive behaviour before and during implementation.
 
-| Mobile Wireframe                                                       | Desktop Wireframe                                                        |
-| ---------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| ![Mobile wireframe](assets/wireframes/rainbow_me_mobile_wireframe.png) | ![Desktop wireframe](assets/wireframes/rainbow_me_desktop_wireframe.png) |
+| Mobile Wireframe                                            | Desktop Wireframe                                             |
+| ----------------------------------------------------------- | ------------------------------------------------------------- |
+| ![Mobile wireframe](assets/wireframes/mobile-wireframe.png) | ![Desktop wireframe](assets/wireframes/desktop-wireframe.png) |
 
 The final wireframes show the current page structure:
 
