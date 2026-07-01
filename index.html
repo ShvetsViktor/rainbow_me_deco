@@ -93,6 +93,7 @@
     </header>
 
     <main>
+      <!-- Services section presents the main decoration categories. Each card can either send the user to matching portfolio examples or add that service to the guide estimate. -->
       <section id="services">
         <div class="container">
           <div class="section-header">
@@ -101,9 +102,10 @@
             <p>Each decoration tells a story. We listen, we design, and we deliver.</p>
           </div>
 
-          <!-- Swiper carousel for the services cards -->
+          <!-- Swiper carousel for service cards. The required Swiper structure is: .swiper >  swiper-wrapper > .swiper-slide. The carousel is initialised in assets/js/services-carousel.js. -->
           <div class="swiper services-swiper">
             <div class="swiper-wrapper">
+              <!-- Service cards use data attributes so JavaScript can: - filter matching portfolio examples using data-category; - add a guide estimate item using data-title, data-price, data-image and data-alt. -->
               <article class="service-card swiper-slide">
                 <img
                   src="assets/images/gallery/responsive/ballon-arch-1200.webp"
@@ -346,6 +348,7 @@
         </div>
       </section>
 
+      <!-- How It Works explains the booking process before users browse the portfolio. An ordered list is used because the steps happen in sequence. -->
       <section id="how-it-works">
         <div class="container how-it-works-layout">
           <div class="section-header">
@@ -356,6 +359,7 @@
 
           <ol class="process-steps" aria-label="Decoration booking process">
             <li class="process-step">
+              <!-- Icons are decorative, so the wrapper is hidden from assistive technology. The text step number and heading provide the meaningful content. -->
               <div class="process-step-icon" aria-hidden="true">
                 <img src="assets/icons/dialog.svg" alt="" />
               </div>
@@ -410,6 +414,7 @@
         </div>
       </section>
 
+      <!-- Portfolio section is populated partly by JavaScript. Filter buttons and portfolio cards are rendered from JavaScript data. -->
       <section id="portfolio">
         <div class="container">
           <div class="section-header">
@@ -418,8 +423,10 @@
             <p>Browse decorations by category.</p>
           </div>
 
+          <!-- Portfolio filter buttons are rendered by assets/js/portfolio-filters.js.role="group" gives assistive technology a clear label for the filter controls. -->
           <div class="portfolio-filters" role="group" aria-label="Portfolio filters"></div>
 
+          <!-- Portfolio carousel container. Slides are inserted dynamically by assets/js/portfolio-carousel.js. -->
           <div class="swiper portfolio-swiper">
             <div class="swiper-wrapper"></div>
             <div class="swiper-pagination"></div>
@@ -429,6 +436,7 @@
         </div>
       </section>
 
+      <!-- Testimonials provide social proof before the user reaches the enquiry form. Real screenshots are not embedded; text and decorative avatar placeholders are used for better accessibility and performance. -->
       <section id="testimonials" aria-labelledby="testimonials-title">
         <div class="container testimonials-layout">
           <div class="section-header">
@@ -446,6 +454,7 @@
 
                 <div>
                   <h3 class="testimonial-author">@emelina_james</h3>
+                  <!-- Rating stars are visible decoration. The visually-hidden text gives screen readers the rating meaning. -->
                   <p class="testimonial-rating">
                     <span class="visually-hidden">5 out of 5 stars</span>
                     <span aria-hidden="true">★★★★★</span>
@@ -503,6 +512,7 @@
         </div>
       </section>
 
+      <!-- Enquiry section is the final conversion point. It combines the selected estimate summary with a validated enquiry form. -->
       <section id="enquiry">
         <div class="container enquiry-layout">
           <div class="section-header enquiry-header">
@@ -512,6 +522,7 @@
           </div>
 
           <div class="enquiry-content">
+            <!-- Selected estimate summary is updated by assets/js/estimate.js. It mirrors the items selected through the estimate builder. -->
             <aside class="enquiry-estimate-card" aria-label="Selected estimate summary">
               <div class="enquiry-estimate-content">
                 <h3>Your selected estimate</h3>
