@@ -1165,30 +1165,32 @@ Final Lighthouse scores were used to confirm the deployed version met the projec
 
 ## Bugs
 
-### Fixed Bugs
+During development, bugs were recorded, tested, and fixed as part of the incremental build process. Most issues were found during Jest testing, manual interaction testing, responsive layout checks, or final README review.
 
-| Bug                                                                         | Cause                                                                                   | Fix                                                                                           |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| Portfolio filtering failed after changing from `category` to `categories`.  | Some test data and project data still used the old single-category format.              | Portfolio items and test fixtures were migrated to the `categories` array format.             |
-| Portfolio carousel did not reset after filtering.                           | Swiper kept the previous active slide index after the DOM was re-rendered.              | After filtering, Swiper is updated and moved back to slide `0`.                               |
-| Service items in the estimate did not have images.                          | Service buttons originally only provided title and price.                               | Service buttons were updated with `data-image` and `data-alt`.                                |
-| Estimate panel did not show selected item images.                           | Estimate list rendering only included text and price.                                   | Estimate list items now render image, title, price, and remove button.                        |
-| Repeated portfolio mock data existed across several tests.                  | Each test file created its own mock portfolio array.                                    | Shared fixture data was moved to `tests/fixtures/portfolio-items.js`.                         |
-| Jest failed because `serviceAddButton` was declared twice.                  | During test refactoring, the helper return and manual query used the same `const` name. | Duplicate declaration was removed.                                                            |
-| Portfolio and services used separate image folders.                         | Placeholder images were organised separately from real gallery images.                  | Services and portfolio data were migrated to `assets/images/gallery/`.                        |
-| Portfolio card filtering did not support items with multiple visual roles.  | A single `category` string was too limited.                                             | Items now use `categories` arrays, allowing one item to appear under multiple filters.        |
-| Swiper pagination bullets could receive keyboard focus unnecessarily.       | Swiper generated pagination bullets with tab focus.                                     | A helper removes pagination bullets from the keyboard tab order.                              |
-| Form success message was not visually focused enough.                       | Success message appeared while other enquiry section elements were still visible.       | Enquiry section now hides form fields and other distracting content after valid submission.   |
-| Estimate widget did not restart correctly after successful form submission. | The enquiry submitted state remained active after a new item was added.                 | Adding a new item after submission clears the submitted state and restarts the estimate flow. |
-| How It Works mobile wireframe had overlapping elements.                     | The wireframe section height and icon spacing were too small.                           | The wireframe was updated with improved spacing and correct section height.                   |
-| Footer overlapped the enquiry wireframe.                                    | Footer was placed too close to the enquiry section in the wireframe.                    | Footer was moved below the enquiry block and enquiry height was increased.                    |
-| 404 page test failed because Back to home text was not visible as expected. | The test expected visible link text but the markup did not match.                       | The 404 page link text was corrected.                                                         |
+The table below summarises the main fixed bugs. One detailed bug example is included after the table to show how a more complex issue was identified, reproduced, fixed, and retested.
 
-### Bug Story: Portfolio Carousel Reset After Filtering
+### Fixed Bugs Summary
+
+| Bug                                                                         | Cause                                                                                   | Fix                                                                                             | Status |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------ |
+| Portfolio filtering failed after changing from `category` to `categories`.  | Some test data and project data still used the old single-category format.              | Portfolio items and test fixtures were migrated to the `categories` array format.               | Fixed  |
+| Portfolio carousel did not reset after filtering.                           | Swiper kept the previous active slide index after the DOM was re-rendered.              | After filtering, the Swiper instance is updated and moved back to slide `0`.                    | Fixed  |
+| Service items in the estimate did not have images.                          | Service buttons originally only provided title and price data.                          | Service buttons were updated with `data-image` and `data-alt` attributes.                       | Fixed  |
+| Estimate panel did not show selected item images.                           | Estimate list rendering only included text and price.                                   | Estimate list items now render image, title, price, and remove button.                          | Fixed  |
+| Repeated portfolio mock data existed across several tests.                  | Each test file created its own mock portfolio array.                                    | Shared fixture data was moved to `tests/fixtures/portfolio-items.js`.                           | Fixed  |
+| Jest failed because `serviceAddButton` was declared twice.                  | During test refactoring, the helper return and manual query used the same `const` name. | The duplicate declaration was removed.                                                          | Fixed  |
+| Portfolio and services used separate image folders.                         | Placeholder images were organised separately from real gallery images.                  | Services and portfolio data were migrated to `assets/images/gallery/`.                          | Fixed  |
+| Portfolio card filtering did not support items with multiple visual roles.  | A single `category` string was too limited for real decoration examples.                | Items now use `categories` arrays, allowing one item to appear under multiple filters.          | Fixed  |
+| Swiper pagination bullets could receive keyboard focus unnecessarily.       | Swiper generated pagination bullets that could be reached with keyboard tabbing.        | A helper removes pagination bullets from the keyboard tab order.                                | Fixed  |
+| Form success message was not visually focused enough.                       | The success message appeared while other enquiry section elements were still visible.   | The enquiry section now hides form fields and other distracting content after valid submission. | Fixed  |
+| Estimate widget did not restart correctly after successful form submission. | The enquiry submitted state remained active after a new item was added.                 | Adding a new item after submission clears the submitted state and restarts the estimate flow.   | Fixed  |
+| 404 page test failed because Back to home text was not visible as expected. | The test expected visible link text, but the markup did not match.                      | The 404 page link text was corrected.                                                           | Fixed  |
+
+### Detailed Bug Example: Portfolio Carousel Reset After Filtering
 
 #### Title
 
-Portfolio carousel keeps previous slide position after selecting a new filter.
+Portfolio carousel kept the previous slide position after selecting a new filter.
 
 #### User Story
 
@@ -1208,11 +1210,11 @@ The filtered portfolio carousel starts from the first matching item.
 
 #### Actual Result
 
-The portfolio content updates, but the carousel keeps the previous slide index.
+The portfolio content updated, but the carousel kept the previous slide index.
 
 #### Cause
 
-Swiper keeps its previous active slide index after the slide DOM is re-rendered.
+Swiper kept its previous active slide index after the slide DOM was re-rendered.
 
 #### Fix
 
@@ -1225,6 +1227,10 @@ if (portfolioSwiperElement && portfolioSwiperElement.swiper) {
 }
 ```
 
+#### Retest
+
+The issue was retested manually by swiping to a later portfolio slide, selecting a different filter, and confirming that the carousel returned to the first matching item.
+
 #### Status
 
 Fixed.
@@ -1232,8 +1238,6 @@ Fixed.
 ### Known Bugs
 
 No confirmed active bugs are currently documented.
-
----
 
 ## Technologies Used
 
