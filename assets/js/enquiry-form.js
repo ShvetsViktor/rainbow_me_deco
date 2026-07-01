@@ -1,7 +1,16 @@
+/**
+ * Checks a basic email format.
+ *
+ * This is intentionally simple for a front-end project:
+ * it rejects obviously invalid values but does not try to replace real server-side validation.
+ */
 function isValidEmail(email) {
   return email.includes('@') && email.includes('.');
 }
 
+/**
+ * Checks that the phone number only contains common phone characters.
+ */
 function isValidPhone(phone) {
   for (let character of phone) {
     if (
@@ -19,6 +28,9 @@ function isValidPhone(phone) {
   return true;
 }
 
+/**
+ * Returns a field-specific error message based on the input id.
+ */
 function getFieldErrorMessage(field) {
   if (field.id === 'customer-first-name') {
     return 'Please enter your first name.';
@@ -59,6 +71,11 @@ function getFieldErrorMessage(field) {
   return 'Please complete this field.';
 }
 
+/**
+ * Creates a reusable error message element for a form field.
+ *
+ * aria-describedby connects the input with its error message for screen readers.
+ */
 function createFieldError(field) {
   const formField = field.closest('.form-field');
   const errorMessage = document.createElement('p');
@@ -73,6 +90,9 @@ function createFieldError(field) {
   return errorMessage;
 }
 
+/**
+ * Returns an existing field error element or creates one if it does not exist yet.
+ */
 function getFieldError(field) {
   const existingError = document.querySelector(`#${field.id}-error`);
 
@@ -83,6 +103,9 @@ function getFieldError(field) {
   return createFieldError(field);
 }
 
+/**
+ * Shows a validation error and marks the field as invalid.
+ */
 function showFieldError(field, message) {
   const errorMessage = getFieldError(field);
 
@@ -90,6 +113,9 @@ function showFieldError(field, message) {
   errorMessage.textContent = message;
 }
 
+/**
+ * Clears the field error and removes the invalid state.
+ */
 function clearFieldError(field) {
   const errorMessage = getFieldError(field);
 
@@ -97,6 +123,12 @@ function clearFieldError(field) {
   errorMessage.textContent = '';
 }
 
+/**
+ * Creates the success message used after valid form submission.
+ *
+ * role="status" and aria-live="polite" allow assistive technology to announce
+ * the success message without interrupting the user.
+ */
 function createSuccessMessage(enquiryForm) {
   const successMessage = document.createElement('p');
   const submitButton = enquiryForm.querySelector('.enquiry-submit-button');
@@ -112,6 +144,9 @@ function createSuccessMessage(enquiryForm) {
   return successMessage;
 }
 
+/**
+ * Returns the existing success message or creates it once.
+ */
 function getSuccessMessage(enquiryForm) {
   const existingSuccessMessage = document.querySelector('.form-success');
 
@@ -122,6 +157,9 @@ function getSuccessMessage(enquiryForm) {
   return createSuccessMessage(enquiryForm);
 }
 
+/**
+ * Initialises enquiry form validation and success state.
+ */
 function initEnquiryForm() {
   const enquiryForm = document.querySelector('.enquiry-form');
   const enquirySection = document.querySelector('#enquiry');
@@ -134,6 +172,8 @@ function initEnquiryForm() {
   const successMessage = getSuccessMessage(enquiryForm);
 
   enquiryForm.addEventListener('submit', (event) => {
+    // Prevents the browser from submitting/reloading the page.
+    // This project uses simulated front-end submission.
     event.preventDefault();
 
     let isFormValid = true;
@@ -165,6 +205,7 @@ function initEnquiryForm() {
         enquirySection.classList.add('is-submitted');
       }
 
+      // Notifies estimate.js that the enquiry flow is complete and the estimate can reset.
       document.dispatchEvent(new CustomEvent('enquiry:submitted'));
 
       enquiryForm.reset();
