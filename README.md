@@ -1339,7 +1339,7 @@ Images were converted to WebP and resized into responsive variants where appropr
 
 ### Icons
 
-Icons used in the How It Works section are decorative and are stored locally in `assets/icons/` as SVG files. They are treated as non-essential content for accessibility.
+Icons used in the How It Works section are decorative and are stored locally in `assets/icons/` as SVG files. They were sourced from Google Fonts Material Symbols and are treated as non-essential content for accessibility.
 
 ### Testimonials
 
