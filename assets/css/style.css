@@ -858,6 +858,7 @@ header nav a:focus-visible {
   outline-offset: 4px;
 }
 
+/* Navigation arrows are hidden on mobile because users can swipe. They are displayed again at the tablet breakpoint. */
 .services-swiper .swiper-button-prev,
 .services-swiper .swiper-button-next,
 .portfolio-swiper .swiper-button-prev,
@@ -869,6 +870,7 @@ header nav a:focus-visible {
    PORTFOLIO MODAL
    ============================================ */
 
+/* Full-screen image modal opened by portfolio-modal.js. */
 .portfolio-modal {
   position: fixed;
   inset: 0;
@@ -879,10 +881,12 @@ header nav a:focus-visible {
   background-color: rgba(10, 4, 11, 0.82);
 }
 
+/* Native hidden attribute fully removes the modal from layout and view. */
 .portfolio-modal[hidden] {
   display: none;
 }
 
+/* Keeps enlarged images inside the viewport without distortion. */
 .portfolio-modal-image {
   max-width: min(100%, 900px);
   max-height: 80vh;
@@ -910,6 +914,7 @@ header nav a:focus-visible {
    ESTIMATE WIDGET
    ============================================ */
 
+/* Sticky estimate summary controlled by estimate.js. On mobile it appears as a bottom bar; on desktop it becomes a floating card. */
 .estimate-widget {
   position: fixed;
   left: 0;
@@ -922,6 +927,7 @@ header nav a:focus-visible {
   box-shadow: 0 -12px 40px rgba(10, 4, 11, 0.16);
 }
 
+/* Hidden until the user adds at least one item to the estimate. */
 .estimate-widget[hidden] {
   display: none;
 }
@@ -952,6 +958,7 @@ header nav a:focus-visible {
   gap: 10px;
 }
 
+/* Visual count badge. The button has an aria-label, so the badge itself is hidden from screen readers in HTML. */
 .estimate-count-badge {
   display: inline-flex;
   align-items: center;
@@ -970,6 +977,7 @@ header nav a:focus-visible {
    ESTIMATE PANEL
    ============================================ */
 
+/* Backdrop behind the estimate panel. It visually separates the panel from the page content. */
 .estimate-backdrop {
   position: fixed;
   inset: 0;
@@ -981,6 +989,7 @@ header nav a:focus-visible {
   display: none;
 }
 
+/* Estimate panel uses a mobile-first bottom-sheet layout. At tablet size it becomes a centred dialog. */
 .estimate-panel {
   position: fixed;
   left: 12px;
@@ -1038,6 +1047,7 @@ header nav a:focus-visible {
   padding-block: 20px;
 }
 
+/* Selected estimate item layout: image on the left, text and remove button on the right. */
 .estimate-list-item {
   display: grid;
   grid-template-columns: 72px 1fr;
