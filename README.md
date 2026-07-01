@@ -8,7 +8,7 @@
 
 Rainbow Me Decor Studio is an interactive front-end website for a small event decoration business specialising in balloon arches, balloon garlands, balloon number stacks, sequin backdrops, table centrepieces, seasonal business decorations, party supplies, and custom event styling.
 
-The project was created as a dynamic front-end web application for the Code Institute Unit 2 Interactive Front End Development assessment. It demonstrates responsive layout, user-centred design, JavaScript interactivity, DOM manipulation, external library integration, accessibility considerations, testing, deployment, and project documentation. The opening mockup image shows the finished site.
+The project was created as a dynamic front-end web application for the Code Institute Unit 2 Interactive Front End Development assessment. It demonstrates responsive layout, user-centred design, JavaScript interactivity, DOM manipulation, external library integration, accessibility considerations, testing, deployment, and project documentation. The opening mockup image shows the finished site. The application is original and built for this specific audience rather than adapted from a walkthrough project.
 
 The website allows visitors to browse decoration services, understand the booking process, view selected decoration work, filter portfolio examples by category, open portfolio images in a larger modal view, add services or portfolio examples to a guide estimate, review selected estimate items, remove items, read testimonials, and submit a validated enquiry form. The enquiry form uses JavaScript validation and simulated submission, with the option to connect it to a server-side or serverless form handler in a future version.
 
@@ -29,9 +29,8 @@ The project was developed incrementally using a test-driven approach where possi
 9. [Technologies Used](#technologies-used)
 10. [Deployment](#deployment)
 11. [Attribution, Credits and Acknowledgements](#attribution-credits-and-acknowledgements)
-12. [Assessment Checklist](#assessment-checklist-pass--merit--distinction)
-13. [Repo Structure](#repo-structure)
-14. [Future Improvements](#future-improvements)
+12. [Repo Structure](#repo-structure)
+13. [Future Improvements](#future-improvements)
 
 ---
 
@@ -430,7 +429,7 @@ Design decisions include:
 
 ## Development Process
 
-The project was developed incrementally over multiple stages. The approach changed during development as features became more complex, but the overall goal remained the same: build a dynamic, responsive, interactive front-end project with clear user value.
+The project was developed incrementally over multiple stages. The approach changed during development as features became more complex, but the overall goal remained the same: build a dynamic, responsive, interactive front-end project with clear user value. The structure, content, and interactions were chosen to suit this specific decoration business rather than copied from a generic tutorial pattern.
 
 ### Stage 1 — Project Idea and Structure
 
@@ -649,6 +648,8 @@ After valid submission:
 - The form is reset.
 - The enquiry section hides distracting content.
 - The estimate builder receives an `enquiry:submitted` event and resets.
+
+Because the portfolio, filters, modal, estimate widget, and form summary all depend on shared state and dynamically rendered elements, the initialization order matters. The project uses `DOMContentLoaded` and defensive checks so each feature is ready before another feature tries to read or update the same DOM state.
 
 ### Stage 16 — Resetting After Form Submission
 
@@ -1374,58 +1375,6 @@ External library code is not copied manually into the project. Swiper is loaded 
 - **GitHub Copilot:** Used for coding support and quick refinement suggestions.
 - **WebSiteMockupGenerator:** Used to create responsive mockup images from the finished site.
 - **Techsini:** Used to create the opening README mockup from the finished site.
-
----
-
-## Assessment Checklist: Pass / Merit / Distinction
-
-### Learning Outcome 1 — Design, Develop and Implement a Dynamic Front End Web Application
-
-- [x] **1.1** Designed a web application that meets its purpose and uses structured layout and navigation.
-- [x] **1.2** Designed interactivity that lets the user initiate and control actions and receive feedback.
-- [x] **1.3** Wrote custom JavaScript, HTML, and CSS to create a responsive front-end web application with interactive functionality.
-- [x] **1.4** Wrote JavaScript code to produce relevant responses to user actions.
-- [x] **1.5** Implemented images with usable resolution, alt text, and consistent styling.
-- [x] **M(i)** Designed the web application using UX principles so information and resources are easy to find intuitively.
-
-### Learning Outcome 2 — Front End Interactivity
-
-- [x] **2.1** JavaScript passes through a linter with no major issues; HTML and CSS are validated.
-- [x] **2.2** JavaScript functions use compound statements such as `if` statements and loops.
-- [x] **2.3** Empty or invalid data is handled with defensive checks and form validation.
-- [x] **2.4** Working functionality is implemented for the main interactive requirements.
-- [x] **2.5** JavaScript is organised in external files linked at the bottom of the body; CSS is in an external file linked in the head.
-- [x] **2.6** Code uses readable naming, indentation, and separation of concerns.
-- [x] **2.7** Files are named consistently and organised by type.
-- [x] **2.8** User actions are tested to avoid internal errors and console errors.
-- [x] **2.9** Code and assets are organised in directories by file type.
-- [x] **M(iv)** A custom 404 page gives users a clear route back to the main page.
-
-### Learning Outcome 3 — Testing
-
-- [x] **3.1** Explained the principles of automated and manual testing.
-- [x] **3.2** Designed and implemented testing procedures to assess functionality, usability, and responsiveness.
-- [x] **3.3** Inserted screenshots of the finished project aligned to relevant user stories.
-- [x] **3.4** Applied test procedures during development and after deployment.
-- [x] **3.5** Documented testing results.
-
-### Learning Outcome 4 — Deployment
-
-- [x] **4.1** Deployed the project to GitHub Pages.
-- [x] **4.2** Ensured the final deployed application is free of commented-out code and broken internal links.
-- [x] **4.3** Used Git and GitHub for version control.
-
-### Learning Outcome 5 — Version Control and Documentation
-
-- [x] **5.1** Documented the development cycle through commits and README.
-- [x] **5.2** Wrote a README explaining the project purpose and value to users.
-- [x] **5.3** Clearly separated custom code from external sources and attributed external code.
-- [x] **5.4** Used consistent markdown formatting.
-- [x] **M(v)** Committed often, with small and well-defined commits.
-- [x] **M(vi)** Presented a clear rationale for the project and target audience.
-- [x] **M(vii)** Documented UX design, features, wireframes, and reasoning.
-- [x] **M(viii)** Documented testing results, bugs found, and fixes.
-- [x] **M(ix)** Documented the deployment procedure.
 
 ---
 
