@@ -293,7 +293,7 @@ As a mobile visitor, I want navigation and carousels to work comfortably so that
 - Buttons and text remain readable.
 - Form inputs remain easy to use on mobile.
 
-![Mobile responsive screenshot](assets/readme/screenshots/mockup-mobile.png.png)
+![Mobile responsive screenshot](assets/readme/screenshots/mockup-mobile.png)
 
 ---
 
