@@ -1116,6 +1116,7 @@ header nav a:focus-visible {
    BALLOON ANIMATION
    ============================================ */
 
+/* Decorative feedback animation created by estimate.js after a new item is added. pointer-events: none prevents the animation from blocking clicks. */
 .balloon-animation {
   position: fixed;
   z-index: 7000;
@@ -1137,6 +1138,7 @@ header nav a:focus-visible {
   animation-fill-mode: forwards;
 }
 
+/* Balloon string. */
 .balloon::after {
   content: '';
   position: absolute;
@@ -1148,6 +1150,7 @@ header nav a:focus-visible {
   transform: translateX(-50%);
 }
 
+/* Individual balloons use different colours and delays to create a natural floating effect. */
 .balloon-one {
   left: 8px;
   background-color: #e94f72;
@@ -1178,6 +1181,7 @@ header nav a:focus-visible {
   animation-delay: 0.56s;
 }
 
+/* Moves balloons upward and fades them out after the add-to-estimate action. */
 @keyframes balloon-float {
   0% {
     opacity: 0;
@@ -1202,6 +1206,7 @@ header nav a:focus-visible {
    ENQUIRY / REQUEST A QUOTE
    ============================================ */
 
+/* Final conversion section where users review selected estimate items and submit the enquiry form. */
 #enquiry {
   padding: var(--section-padding) 0;
   background-color: #fff;
@@ -1218,6 +1223,7 @@ header nav a:focus-visible {
   text-align: center;
 }
 
+/* Mobile-first enquiry layout. It becomes a two-column estimate/form layout on desktop. */
 .enquiry-content {
   display: grid;
   grid-template-columns: 1fr;
@@ -1227,6 +1233,7 @@ header nav a:focus-visible {
   margin: 0 auto;
 }
 
+/* Estimate summary card updated by estimate.js. */
 .enquiry-estimate-card {
   display: grid;
   min-height: 0;
@@ -1296,6 +1303,7 @@ header nav a:focus-visible {
   gap: 20px;
 }
 
+/* Estimate summary items are injected by estimate.js. */
 .enquiry-estimate-item {
   display: grid;
   grid-template-columns: 64px 1fr;
@@ -1415,6 +1423,7 @@ header nav a:focus-visible {
   text-align: center;
 }
 
+/* Field-level validation message created by enquiry-form.js. */
 .form-error {
   display: block;
   min-height: 20px;
@@ -1424,6 +1433,7 @@ header nav a:focus-visible {
   font-weight: 600;
 }
 
+/* Success message shown after the enquiry form passes validation. */
 .form-success {
   display: block;
   max-width: 680px;
@@ -1443,6 +1453,7 @@ header nav a:focus-visible {
   display: none;
 }
 
+/* Submitted state added by enquiry-form.js. The form content is hidden so the success message becomes the main focus. */
 #enquiry.is-submitted .enquiry-header,
 #enquiry.is-submitted .enquiry-estimate-card,
 #enquiry.is-submitted .form-row,
@@ -1501,6 +1512,7 @@ header nav a:focus-visible {
    404 PAGE
    ============================================ */
 
+/* Custom 404 page styling for wrong or missing GitHub Pages routes. */
 .not-found-page {
   min-height: 100vh;
   background-color: var(--color-scheme-3-background);
@@ -1540,11 +1552,14 @@ header nav a:focus-visible {
   font-size: clamp(40px, 8vw, 64px);
 }
 
+/* Responsive rules are mobile-first.
+   Base styles target small screens, then media queries progressively enhance
+   layout for larger screens. */
 /* ============================================
    RESPONSIVE LAYOUT
    ============================================ */
 
-/* Extra small phones */
+/* Extra small screens: shorten the portfolio Add to estimate button so card actions do not overflow. */
 @media (max-width: 350px) {
   .portfolio-card .add-to-estimate span:last-child {
     display: none;
@@ -1560,7 +1575,7 @@ header nav a:focus-visible {
   }
 }
 
-/* Large phones */
+/* Larger phones: service card buttons can sit next to each other instead of stacking. */
 @media (min-width: 415px) {
   .service-card-actions {
     display: flex;
@@ -1577,7 +1592,7 @@ header nav a:focus-visible {
   }
 }
 
-/* Large mobile / small tablet */
+/* Large mobile / small tablet: How It Works changes from one column to two columns. */
 @media (min-width: 560px) {
   .process-steps {
     grid-template-columns: repeat(2, 1fr);
@@ -1607,7 +1622,7 @@ header nav a:focus-visible {
   }
 }
 
-/* Tablet and up */
+/* Tablet and up: navigation becomes horizontal, hero becomes two columns, Swiper arrows appear, and dialogs become more desktop-like. */
 @media (min-width: 768px) {
   :root {
     --page-padding: 40px;
@@ -1756,6 +1771,7 @@ header nav a:focus-visible {
   }
 }
 
+/* Desktop: testimonials become three columns and enquiry becomes a two-column layout. */
 @media (min-width: 1025px) {
   .testimonial-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1782,7 +1798,7 @@ header nav a:focus-visible {
   }
 }
 
-/* Large desktop */
+/* Large desktop: increases page spacing so the layout does not feel cramped on wide screens. */
 @media (min-width: 1200px) {
   :root {
     --page-padding: 80px;
