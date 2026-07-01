@@ -1,11 +1,11 @@
 :root {
-  /* Design tokens based on the Figma/Relume design */
+  /* Design tokens used across the project. Keeping colours, spacing and typography in variables makes the design easier to update consistently from one place. */
 
-  /* Fonts */
+  /* Font families imported from Google Fonts in index.html */
   --font-body: 'Inter', sans-serif;
   --font-heading: 'Playfair Display', serif;
 
-  /* Colours */
+  /* Brand and neutral colours used for backgrounds, text, borders and actions */
   --color-primary: #e94f72;
   --color-primary-dark: #ba3f5b;
   --color-heading: #a11b4d;
@@ -19,12 +19,12 @@
   --opacity-neutral-darkest-10: rgba(10, 4, 11, 0.1);
   --opacity-neutral-darkest-15: rgba(10, 4, 11, 0.15);
 
-  /* Layout */
+  /* Shared layout spacing. These values are updated in media queries to scale the layout on larger screens. */
   --container-max-width: 80rem;
   --page-padding: 20px;
   --section-padding: 64px;
 
-  /* Typography */
+  /* Base typography scale for headings and body text */
   --text-base: 16px;
   --heading-1: 56px;
   --heading-2: 36px;
@@ -32,10 +32,13 @@
   --heading-4: 18px;
 }
 
+/* Basic reset removes browser default spacing and makes sizing predictable. This helps keep the layout consistent across browsers. */
+
 /* ============================================
    RESET & BASE
    ============================================ */
 
+/* Includes padding and border inside an element's declared width and height. */
 *,
 *::before,
 *::after {
@@ -114,6 +117,7 @@ img {
   display: block;
 }
 
+/* Accessibility utility. Keeps content available to screen readers while hiding it visually. Used for text such as testimonial rating meaning. */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -142,17 +146,20 @@ select {
    LAYOUT
    ============================================ */
 
+/* Shared section spacing and scroll offset for anchor navigation. */
 section {
   padding-block: var(--section-padding);
   scroll-margin-top: 16px;
 }
 
+/* Central page container. The width calculation keeps consistent side padding on small screens. */
 .container {
   width: calc(100% - (var(--page-padding) * 2));
   max-width: var(--container-max-width);
   margin-inline: auto;
 }
 
+/* Reusable centred heading block used at the top of major sections. */
 .section-header {
   max-width: 48rem;
   margin-inline: auto;
@@ -171,6 +178,7 @@ section {
    BUTTONS
    ============================================ */
 
+/* Shared button base. clamp() keeps buttons usable on small screens while preventing oversized text on desktop. */
 .button {
   display: inline-flex;
   align-items: center;
@@ -186,19 +194,21 @@ section {
   cursor: pointer;
 }
 
+/* Primary action style used for the most important user actions. */
 .button-primary {
   background-color: var(--color-primary);
   border-bottom: 4px solid var(--color-primary-dark);
   color: var(--color-surface);
 }
 
+/* Secondary action style used for supporting actions such as filtering or viewing examples. */
 .button-secondary {
   background-color: var(--opacity-neutral-darkest-5);
   border-bottom: 4px solid var(--opacity-neutral-darkest-15);
   color: var(--color-text);
 }
 
-/* Keeps selected CTA buttons close to the Figma design width */
+/* Fixed-width CTA buttons keep the hero actions visually balanced. */
 .button-fixed {
   width: 156px;
   max-width: 100%;
@@ -214,6 +224,7 @@ section {
    HEADER / NAVIGATION
    ============================================ */
 
+/* Fixed header keeps navigation available while users move through the single-page site. */
 .nav-layout {
   position: fixed;
   top: 0;
@@ -235,6 +246,7 @@ section {
   height: auto;
 }
 
+/* Mobile menu button. JavaScript updates aria-expanded and toggles the navigation visibility. */
 .menu-toggle {
   display: inline-flex;
   align-items: center;
@@ -249,6 +261,7 @@ section {
   cursor: pointer;
 }
 
+/* Mobile-first navigation. Hidden by default on small screens and shown when JavaScript adds .is-open. */
 header nav {
   display: none;
   position: fixed;
@@ -263,6 +276,7 @@ header nav {
   box-shadow: 0 12px 30px var(--opacity-neutral-darkest-15);
 }
 
+/* Class added by navigation.js when the mobile menu is opened. */
 header nav.is-open {
   display: block;
 }
@@ -287,6 +301,7 @@ header nav a:focus-visible {
    HERO
    ============================================ */
 
+/* Hero introduces the business and gives users the first main actions. */
 #hero {
   display: grid;
   align-items: center;
@@ -294,6 +309,7 @@ header nav a:focus-visible {
   background-color: var(--color-scheme-3-background);
 }
 
+/* Mobile-first stacked layout. It changes to two columns at tablet size. */
 .hero-layout {
   display: grid;
   gap: 48px;
@@ -325,7 +341,7 @@ header nav a:focus-visible {
   gap: 48px;
 }
 
-/* Swiper layout for the services carousel */
+/* Services carousel uses Swiper. The negative margin lets slides reach the screen edges on mobile while still keeping content aligned with the page container. */
 .services-swiper {
   width: calc(100% + (var(--page-padding) * 2));
   margin-inline: calc(var(--page-padding) * -1);
@@ -333,10 +349,12 @@ header nav a:focus-visible {
   padding-bottom: 42px;
 }
 
+/* Keeps all Swiper slides the same height so service cards align consistently. */
 .services-swiper .swiper-wrapper {
   align-items: stretch;
 }
 
+/* Service cards use a background image with text overlaid at the bottom. */
 .service-card {
   position: relative;
   display: grid;
@@ -349,6 +367,7 @@ header nav a:focus-visible {
   border-radius: 24px;
 }
 
+/* Image is positioned absolutely so it can fill the whole card behind the text. */
 .service-card img {
   position: absolute;
   inset: 0;
@@ -357,6 +376,7 @@ header nav a:focus-visible {
   object-fit: cover;
 }
 
+/* Gradient overlay improves text readability over bright images. */
 .service-card::before {
   content: '';
   position: absolute;
@@ -365,6 +385,7 @@ header nav a:focus-visible {
   z-index: 1;
 }
 
+/* Keeps card text and buttons above the image overlay. */
 .service-card h3,
 .service-card p,
 .service-card .service-card-actions {
@@ -425,7 +446,7 @@ header nav a:focus-visible {
   margin-inline: auto;
 }
 
-/* Mobile-first process layout */
+/* Mobile-first process layout. Steps stack vertically on small screens and become columns at wider breakpoints. */
 .process-steps {
   display: grid;
   gap: 44px;
@@ -439,6 +460,7 @@ header nav a:focus-visible {
   text-align: center;
 }
 
+/* Decorative connector between process steps. Uses a down arrow on mobile and changes to a horizontal arrow on desktop. */
 .process-step:not(:last-child)::after {
   content: '↓';
   position: absolute;
@@ -450,6 +472,7 @@ header nav a:focus-visible {
   transform: translateX(-50%);
 }
 
+/* Circular decorative icon holder for each process step. */
 .process-step-icon {
   display: grid;
   place-items: center;
@@ -472,6 +495,7 @@ header nav a:focus-visible {
   justify-items: center;
 }
 
+/* Groups the visible step number with the heading. */
 .process-step-wrapper {
   display: flex;
   gap: 10px;
@@ -525,6 +549,7 @@ header nav a:focus-visible {
   gap: 24px;
 }
 
+/* Testimonial cards provide social proof before the enquiry form. */
 .testimonial-card {
   display: grid;
   gap: 24px;
@@ -544,10 +569,12 @@ header nav a:focus-visible {
   align-items: center;
 }
 
+/* Prevents long usernames from forcing the card wider than its grid column. */
 .testimonial-header > div {
   min-width: 0;
 }
 
+/* Decorative CSS avatar placeholder. Real profile images are not used for privacy, performance and attribution reasons. */
 .testimonial-avatar {
   display: grid;
   place-items: center;
@@ -569,6 +596,7 @@ header nav a:focus-visible {
   box-shadow: 0 10px 30px rgba(233, 79, 114, 0.18);
 }
 
+/* Allows long usernames to wrap instead of breaking the card layout. */
 .testimonial-author {
   color: var(--color-text);
   font-family: var(--font-body);
@@ -607,6 +635,7 @@ header nav a:focus-visible {
   gap: 24px;
 }
 
+/* Horizontal filter controls. overflow-x keeps the filters usable on small screens without squeezing them. */
 .portfolio-filters {
   display: flex;
   gap: 12px;
@@ -637,6 +666,7 @@ header nav a:focus-visible {
   border-color: var(--color-primary);
 }
 
+/* Active filter state added by portfolio-filters.js. */
 .portfolio-filter-button.is-active {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
@@ -644,6 +674,7 @@ header nav a:focus-visible {
   color: var(--color-surface);
 }
 
+/* Portfolio carousel uses the same mobile edge-to-edge pattern as Services. */
 .portfolio-swiper {
   width: calc(100% + (var(--page-padding) * 2));
   margin-inline: calc(var(--page-padding) * -1);
@@ -655,6 +686,7 @@ header nav a:focus-visible {
   align-items: stretch;
 }
 
+/* Portfolio cards are created dynamically by portfolio-carousel.js. */
 .portfolio-card {
   display: grid;
   height: 100%;
@@ -663,6 +695,7 @@ header nav a:focus-visible {
   border-radius: 24px;
 }
 
+/* The image is wrapped in a button so it can open the modal by mouse or keyboard. */
 .portfolio-image-button {
   position: relative;
   display: block;
@@ -683,6 +716,7 @@ header nav a:focus-visible {
   transition: transform 0.3s ease;
 }
 
+/* Custom focus ring for keyboard users without changing the image layout. */
 .portfolio-image-button::after {
   content: '';
   position: absolute;
@@ -721,6 +755,7 @@ header nav a:focus-visible {
   color: var(--color-muted);
 }
 
+/* Keeps price information and Add to estimate button aligned at the bottom of the card. */
 .portfolio-card-actions {
   display: flex;
   align-items: center;
@@ -757,10 +792,12 @@ header nav a:focus-visible {
    ADD TO ESTIMATE BUTTON DETAILS
    ============================================ */
 
+/* Shared spacing for Add to estimate buttons used in Services and Portfolio. */
 .add-to-estimate {
   gap: 8px;
 }
 
+/* Creates the circular plus icon used inside Add to estimate buttons. */
 .portfolio-card .add-to-estimate .button-icon,
 .service-card .add-to-estimate .button-icon {
   display: inline-flex;
@@ -774,6 +811,7 @@ header nav a:focus-visible {
   padding-left: 1px;
 }
 
+/* Swiper control customisation. These rules override Swiper's default navigation button appearance so the carousel controls match the project design. Swiper itself is external and attributed in README.md. */
 /* ============================================
    SWIPER CONTROLS
    ============================================ */
