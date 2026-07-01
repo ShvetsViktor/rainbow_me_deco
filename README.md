@@ -1,6 +1,6 @@
 # Rainbow Me Decor Studio – Interactive Front End Website
 
-![Mockup image](assets/mockups/example.png)
+![Responsive site mockup](assets/readme/screenshots/mockup-all-together.png)
 
 **Live Website:** https://shvetsviktor.github.io/rainbow_me_deco/
 
@@ -8,11 +8,11 @@
 
 Rainbow Me Decor Studio is an interactive front-end website for a small event decoration business specialising in balloon arches, balloon garlands, balloon number stacks, sequin backdrops, table centrepieces, seasonal business decorations, party supplies, and custom event styling.
 
-The project has two connected purposes. For the business, it presents decoration services, previous work, guide price information, and a simple enquiry route for potential customers. For the assessment, it demonstrates a dynamic and user-centred front-end web application with meaningful JavaScript interactivity, clear UX design, accessibility considerations, responsive layout, testing evidence, and professional documentation.
+The project was created as a dynamic front-end web application for the Code Institute Unit 2 Interactive Front End Development assessment. It demonstrates responsive layout, user-centred design, JavaScript interactivity, DOM manipulation, external library integration, accessibility considerations, testing, deployment, and project documentation. The opening mockup image shows the finished site.
 
-The website is designed to allow visitors to explore services, browse portfolio examples through a responsive carousel, filter work by decoration type, view images in a modal gallery, build a guide estimate using selected services, review the estimate before sending an enquiry, understand the booking process, interact with scroll-triggered animations, and submit a validated enquiry form.
+The website allows visitors to browse decoration services, understand the booking process, view selected decoration work, filter portfolio examples by category, open portfolio images in a larger modal view, add services or portfolio examples to a guide estimate, review selected estimate items, remove items, read testimonials, and submit a validated enquiry form. The enquiry form uses JavaScript validation and simulated submission, with the option to connect it to a server-side or serverless form handler in a future version.
 
-The main project focus is front-end development. The Enquiry Form includes JavaScript validation and simulated submission, with the option to extend it in the future using server-side or serverless form processing.
+The project was developed incrementally using a test-driven approach where possible. Key behaviours were first described in Jest tests, then implemented in HTML, CSS, and JavaScript. Testing evidence and validation notes are documented in the Testing section below.
 
 ---
 
@@ -21,42 +21,63 @@ The main project focus is front-end development. The Enquiry Form includes JavaS
 1. [Project Goals](#project-goals)
 2. [Target Audience](#target-audience)
 3. [User Stories](#user-stories)
-4. [Success Criteria](#success-criteria)
-5. [Five Planes of UX](#five-planes-of-ux)
-   - [Strategy](#strategy)
-   - [Scope](#scope)
-   - [Structure](#structure)
-   - [Skeleton / Wireframes](#skeleton--wireframes)
-   - [Surface](#surface)
-6. [Development Process](#development-process)
-7. [Features](#features)
-8. [JavaScript Functionality](#javascript-functionality)
+4. [Five Planes of UX](#five-planes-of-ux)
+5. [Development Process](#development-process)
+6. [Features](#features)
+7. [Testing](#testing)
+8. [Bugs](#bugs)
 9. [Technologies Used](#technologies-used)
-10. [Testing](#testing)
-11. [Bugs](#bugs)
-12. [Deployment](#deployment)
-13. [Attribution, Credits and Acknowledgements](#attribution-credits-and-acknowledgements)
-14. [Assessment Checklist](#assessment-checklist-pass--merit--distinction)
-15. [Repo Structure](#repo-structure)
-16. [Future Improvements](#future-improvements)
+10. [Deployment](#deployment)
+11. [Attribution, Credits and Acknowledgements](#attribution-credits-and-acknowledgements)
+12. [Assessment Checklist](#assessment-checklist-pass--merit--distinction)
+13. [Repo Structure](#repo-structure)
+14. [Future Improvements](#future-improvements)
+
+---
 
 ## Project Goals
 
 ### User Goals
 
-- Find decoration inspiration for a wedding, birthday, corporate event, or special celebration.
-- Understand what types of balloon and event decoration services are available.
-- See examples of previous decoration work before making an enquiry.
-- Decide whether the service matches their event style, budget, and needs.
-- Contact the decorator with minimal friction when they are ready to enquire.
+- Understand what the decoration business offers.
+- Browse available decoration services quickly and clearly.
+- Understand how the booking process works.
+- See examples of previous decoration work.
+- Filter portfolio examples by relevant decoration type.
+- Open images in a larger view to inspect decoration details.
+- Add services or portfolio examples to a guide estimate.
+- Review selected estimate items before making an enquiry.
+- Remove items from the estimate if they change their mind.
+- Read customer feedback before making contact.
+- Submit an enquiry through a validated form.
+- Return to the home page easily if a wrong page is opened.
 
 ### Site Owner Goals
 
-- Present balloon decoration and event styling services in a professional and attractive way.
-- Showcase previous work clearly through a visual portfolio.
-- Build trust with potential customers through clear service information, images, and testimonials.
-- Encourage suitable visitors to make an enquiry.
-- Reduce repeated questions by showing service categories, example work, and guide price information.
+- Present decoration services professionally.
+- Showcase real gallery images instead of placeholder content.
+- Help visitors understand available decoration categories.
+- Explain the customer journey from enquiry to celebration.
+- Build trust with portfolio examples and testimonials.
+- Encourage users to browse previous work before making contact.
+- Provide guide pricing to reduce repeated questions.
+- Offer an interactive estimate builder to increase engagement.
+- Keep project code, data, and assets organised for future maintenance.
+
+### Assessment Goals
+
+- Build a responsive front-end web application.
+- Use custom JavaScript to respond to user actions.
+- Demonstrate DOM manipulation and dynamic rendering.
+- Use an external JavaScript library appropriately.
+- Organise code into separate HTML, CSS, and JavaScript files.
+- Use Git and GitHub throughout development.
+- Use testing to guide and verify functionality.
+- Document UX decisions, development process, testing, bugs, and deployment.
+
+### Why this project suits the brief
+
+The project matches the unit brief because it is a real-world front-end application for a specific audience, it uses custom JavaScript to control visible interactions, it separates markup, styles, and scripts into external files, and it is documented with testing, deployment, and version control evidence.
 
 ---
 
@@ -64,318 +85,323 @@ The main project focus is front-end development. The Enquiry Form includes JavaS
 
 The target audience includes:
 
+- Parents organising children’s birthday parties.
 - Couples planning weddings or engagement celebrations.
-- Parents organising children’s birthday parties or themed events.
 - People planning baby showers, private parties, or family celebrations.
-- Small businesses organising corporate events, launches, or seasonal displays.
-- Event planners looking for a reliable balloon and event decoration supplier.
+- Small businesses organising launches, displays, promotions, or seasonal events.
+- Event planners looking for a balloon and event decoration supplier.
 
 ---
 
 ## User Stories
 
-### Primary Visitor
-
-#### US1 — Understand the Business
+### US1 — Understand the Business
 
 As a visitor, I want to understand what the business offers quickly so that I know whether it is relevant to my event.
 
 **Acceptance Criteria:**
 
 - The hero section clearly explains the service.
-- The main call to action is visible above the fold.
+- The main call-to-action links are visible.
+- The navigation is easy to understand.
 - The services section is easy to find.
+- The page design matches the event decoration theme.
 
-#### US2 — Browse Services
+![Hero section screenshot](assets/readme/screenshots/hero-section.png)
 
-As a visitor, I want to browse the available decoration services so that I can decide whether the business offers what I need.
+---
 
-**Acceptance Criteria:**
+### US2 — Browse Services
 
-- Services are displayed in clear cards.
-- Each service has a short description.
-- The layout remains readable on mobile and desktop.
-- Selecting a service card takes the user to matching portfolio examples.
-
-#### US3 — Browse Portfolio Examples
-
-As a visitor, I want to view selected examples of previous work so that I can judge the style and quality of the decoration before making an enquiry.
+As a visitor, I want to browse available decoration services so that I can decide whether the business offers what I need.
 
 **Acceptance Criteria:**
 
-- The portfolio section shows a selected set of previous work.
-- Portfolio items are displayed in a responsive carousel.
-- Each portfolio item includes an image, title, description, category, and guide price information where relevant.
-- Portfolio images remain readable and visually consistent across screen sizes.
-- The carousel remains usable on mobile, tablet, and desktop screens.
+- Services are shown in clear cards.
+- Each service card includes an image, title, and short description.
+- Each service card has a “View examples” button.
+- Each service card has an “Add to estimate” button.
+- The services layout remains usable on mobile, tablet, and desktop.
+- The services carousel is swipe-friendly on touch screens.
 
-#### US4 — Filter Portfolio Examples
+![Services section screenshot](assets/readme/screenshots/services-section.png)
 
-As a visitor, I want to filter portfolio examples by decoration type so that I can browse work that is relevant to my event.
+---
 
-**Acceptance Criteria:**
-
-- Portfolio filter buttons are visible above the portfolio carousel.
-- Clicking a decoration category shows only relevant portfolio items.
-- The active filter is visually highlighted.
-- The carousel updates when a new filter is selected.
-- The carousel resets to the first matching item when a new category is selected.
-- The portfolio remains compact on mobile screens without showing too many images at once.
-- No console errors occur when filtering portfolio items.
-
-#### US5 — View Images Clearly
-
-As a visitor, I want to open portfolio images in a larger view so that I can see decoration details more clearly.
-
-**Acceptance Criteria:**
-
-- Clicking an image opens a modal.
-- The modal shows a larger image.
-- The modal can be closed by a close button.
-- The modal can be closed using the Escape key.
-- No console errors occur.
-
-#### US6 — Build a Guide Estimate
-
-As a visitor, I want to add decoration services and extras to a guide estimate so that I can understand the approximate cost before sending an enquiry.
-
-**Acceptance Criteria:**
-
-- The user can add a service to the estimate from a service card or portfolio card.
-- The user can view the current estimate total while browsing the page.
-- The user can open the estimate panel to review selected items.
-- The user can remove selected items from the estimate.
-- The estimated total updates when selected items change.
-- The estimate is clearly presented as a guide price rather than a final quote.
-- The user can continue to the enquiry form to request a final quote.
-
-#### US7 — Understand the Booking Process
+### US3 — Understand the Booking Process
 
 As a visitor, I want to understand how the booking and setup process works so that I know what to expect before sending an enquiry.
 
 **Acceptance Criteria:**
 
-- The How It Works section is easy to find.
-- The booking process is shown in clear steps.
-- Each step has a short explanation.
-- Visual numbers or icons help users follow the process.
-- The section explains the journey from enquiry to event setup.
+- The How It Works section appears after Services.
+- Four clear process steps are shown.
+- Each step has an icon, number, title, and short explanation.
+- The section explains the journey from first enquiry to event celebration.
+- The layout works on mobile, tablet, and desktop.
+- Decorative icons are hidden from assistive technology where appropriate.
 
-#### US8 — Send an Enquiry
-
-As a visitor, I want to submit an enquiry form so that I can contact the decoration provider.
-
-**Acceptance Criteria:**
-
-- Required fields are validated.
-- Empty input is rejected.
-- Invalid email format is rejected.
-- The user sees clear error messages.
-- A success message appears after valid submission.
-
-#### US9 — Recover from a Wrong Page
-
-As a visitor, I want to return to the main page if I open a non-existent page so that I do not feel stuck.
-
-**Acceptance Criteria:**
-
-- A custom 404 page is provided.
-- The page explains that the requested page was not found.
-- A clear button returns the user to the home page.
-
-### Site Owner
-
-#### US10 — Present Work Professionally
-
-As the site owner, I want to present previous work clearly so that potential clients trust the quality of the service.
-
-**Acceptance Criteria:**
-
-- Portfolio examples are organised by category.
-- Images are clear and consistent.
-- Text is specific and relevant.
-- The visual design matches the business purpose.
-
-#### US11 — Maintain the Website
-
-As the site owner, I want the code and assets to be organised clearly so that the website can be maintained and updated.
-
-**Acceptance Criteria:**
-
-- Files are grouped by type.
-- File names are lowercase and descriptive.
-- HTML, CSS, and JavaScript are separated.
-- JavaScript functions use meaningful names.
-- External code and assets are attributed.
+![How It Works section screenshot](assets/readme/screenshots/how-it-works-section.png)
 
 ---
 
-## Success Criteria
+### US4 — View Matching Examples from a Service
 
-This project is successful when:
+As a visitor, I want to click a service and see matching portfolio examples so that I can quickly find work relevant to that service.
 
-- The website purpose is immediately clear to a first-time visitor.
-- Navigation is simple, consistent, and intuitive.
-- The site uses site-specific content and images instead of placeholder content.
-- JavaScript provides meaningful responses to user actions.
-- The portfolio section displays selected examples of previous work in a responsive carousel without overloading the single-page layout.
-- Portfolio items are rendered dynamically from a JavaScript data source.
-- Portfolio filtering updates the displayed carousel items correctly.
-- The portfolio carousel works correctly on mobile, tablet, and desktop screens.
-- Portfolio images are optimised and lazy-loaded where appropriate.
-- Users can open portfolio images in a larger modal view and close the modal without page errors or console errors.
-- The estimate builder allows users to add and remove services, view an updated guide price, and continue to the enquiry form.
-- Form validation handles empty or invalid input and gives clear feedback.
-- Scroll-triggered balloon animations enhance the experience without distracting the user.
-- The website is fully responsive on mobile, tablet, and desktop screens.
-- HTML and CSS pass validation.
-- JavaScript passes through a linter with no major issues.
-- The final deployed version has no broken internal links and no commented-out code.
-- The deployed version matches the development version.
-- Code and assets are organised clearly, with HTML, CSS, and JavaScript separated into appropriate files and folders.
-- External code, libraries, images, fonts, and icons are clearly attributed.
-- Testing, bugs, deployment, UX design, and development process are documented.
+**Acceptance Criteria:**
+
+- Each service card has a category link.
+- Clicking “View examples” scrolls to the portfolio section.
+- The matching portfolio filter is activated.
+- The portfolio carousel shows relevant examples.
+- No console errors occur when the service filter action is used.
+
+![Service to portfolio filter screenshot](assets/readme/screenshots/portfolio-filter-balloon-arches.png)
+
+---
+
+### US5 — Browse Portfolio Examples
+
+As a visitor, I want to view examples of previous work so that I can judge the style and quality before making an enquiry.
+
+**Acceptance Criteria:**
+
+- Portfolio cards are rendered dynamically from JavaScript data.
+- Portfolio examples are displayed in a responsive carousel.
+- Each portfolio item includes an image, title, description, and guide price.
+- Portfolio images remain visually consistent across screen sizes.
+- Portfolio cards include an “Add to estimate” button.
+
+![Portfolio section screenshot](assets/readme/screenshots/portfolio-all.png)
+
+---
+
+### US6 — Filter Portfolio Examples
+
+As a visitor, I want to filter portfolio examples by decoration type so that I can browse work that matches my event.
+
+**Acceptance Criteria:**
+
+- Portfolio filter buttons are visible above the carousel.
+- Clicking a filter shows matching portfolio items.
+- The active filter is visually highlighted.
+- Portfolio items can belong to more than one category.
+- The carousel updates after filtering.
+- The carousel resets to the first matching item after a new filter is selected.
+- No console errors occur when filtering.
+
+![Portfolio filter screenshot](assets/readme/screenshots/portfolio-filter-balloon-arches.png)
+
+---
+
+### US7 — View Images Clearly
+
+As a visitor, I want to open portfolio images in a larger view so that I can see decoration details more clearly.
+
+**Acceptance Criteria:**
+
+- Clicking a portfolio image opens a modal.
+- The modal shows the selected image.
+- The modal image `src` and `alt` are updated dynamically.
+- The modal can be closed with the close button.
+- The modal can be closed with the Escape key.
+- The modal can be closed by clicking the backdrop.
+- The modal uses accessible dialog attributes.
+
+![Portfolio modal screenshot](assets/readme/screenshots/portfolio-modal.png)
+
+---
+
+### US8 — Build a Guide Estimate
+
+As a visitor, I want to add services and portfolio items to a guide estimate so that I can understand the approximate cost before sending an enquiry.
+
+**Acceptance Criteria:**
+
+- The user can add a service card to the estimate.
+- The user can add a portfolio card to the estimate.
+- Duplicate items are not added again.
+- The estimate widget appears after an item is added.
+- The estimate count updates.
+- The estimate total updates.
+- The estimate panel can be opened.
+- Selected items are shown with image, title, and price.
+- The user can remove selected items.
+- The estimate UI hides when the last item is removed.
+- The enquiry section shows a selected estimate summary.
+- A small balloon animation confirms when a new item is added.
+- The estimate resets after successful enquiry submission.
+
+![Estimate widget screenshot](assets/readme/screenshots/estimate-widget.png)
+
+![Estimate panel screenshot](assets/readme/screenshots/estimate-panel.png)
+
+---
+
+### US9 — Read Testimonials
+
+As a visitor, I want to read customer feedback so that I can feel more confident about the service.
+
+**Acceptance Criteria:**
+
+- The Testimonials section appears after Portfolio.
+- Three testimonial cards are displayed.
+- Each card includes a decorative avatar placeholder, username, rating, and review text.
+- Rating stars are visually decorative but have accessible text.
+- Real social media screenshots and avatars are not embedded.
+
+![Testimonials section screenshot](assets/readme/screenshots/testimonials-section.png)
+
+---
+
+### US10 — Send an Enquiry
+
+As a visitor, I want to submit my event details through an enquiry form so that I can request a quote.
+
+**Acceptance Criteria:**
+
+- The enquiry section is available from navigation and call-to-action links.
+- The form includes first name, last name, email, phone number, event type, decoration type, event date, event location, message, and submit button.
+- Required fields are marked in HTML.
+- Empty required fields are rejected.
+- Invalid email format is rejected.
+- Invalid phone format is rejected.
+- Clear error messages are shown.
+- Error messages are connected to fields using accessible attributes.
+- A success message appears after valid submission.
+- After valid submission, the form and distracting enquiry content are hidden.
+- The estimate builder is reset after successful submission.
+
+![Enquiry form validation screenshot](assets/readme/screenshots/enquiry-form-errors.png)
+
+![Enquiry form success screenshot](assets/readme/screenshots/enquiry-success.png)
+
+---
+
+### US11 — Use the Website on Mobile
+
+As a mobile visitor, I want navigation and carousels to work comfortably so that I can browse the site on a phone.
+
+**Acceptance Criteria:**
+
+- The mobile navigation can be opened and closed.
+- The menu button updates `aria-expanded`.
+- Navigation links close the mobile menu after selection.
+- Services and portfolio carousels are swipe-friendly.
+- Content fits without horizontal scrolling.
+- Buttons and text remain readable.
+- Form inputs remain easy to use on mobile.
+
+![Mobile responsive screenshot](assets/readme/screenshots/mockup-mobile.png.png)
+
+---
+
+### US12 — Recover from a Wrong Page
+
+As a visitor, I want to return to the main page if I open a non-existent page.
+
+**Acceptance Criteria:**
+
+- A custom `404.html` page exists.
+- The page explains that the requested page was not found.
+- A clear “Back to home” button returns the user to the main page.
+
+![404 page screenshot](assets/readme/screenshots/custom-404-page.png)
+
+---
+
+### US13 — Maintain the Website
+
+As the site owner or developer, I want the code and assets to be organised clearly so that the website can be maintained and updated.
+
+**Acceptance Criteria:**
+
+- HTML, CSS, and JavaScript are separated.
+- JavaScript files are organised by feature.
+- Portfolio data is stored separately from markup.
+- Portfolio items use a consistent `categories` array format.
+- Test fixtures avoid repeated mock data.
+- Image assets are stored in organised folders.
+- File names are lowercase and descriptive.
 
 ---
 
 ## Five Planes of UX
 
-The UX design decisions below are based on the project goals, target audience, and success criteria defined above.
+The Five Planes of UX were used to organise design decisions from the broad purpose of the project through to the final visual interface.
 
-The Five Planes of UX are used in this project to organise the design thinking from the broad purpose of the website through to the final visual presentation.
+### Strategy
 
-- **Strategy** explains why the website is needed and what user/business problems it supports.
-- **Scope** defines which features and content are included in the project.
-- **Structure** explains how the content, sections, navigation, and user flow are organised.
-- **Skeleton** shows how the page layout is planned through wireframes and placement of key elements.
-- **Surface** describes the visual design, styling, colours, imagery, and overall look and feel.
+The strategy is to help potential customers understand the service, trust the quality of previous work, and move towards an enquiry.
 
-This structure helps separate project purpose, functionality, layout, and visual design so that each design decision is documented clearly.
+The project is based on three priorities:
 
-## Strategy
+- **Clarity:** users should quickly understand what Rainbow Me offers.
+- **Confidence:** users should see service categories, process steps, portfolio examples, testimonials, and guide prices before contacting the business.
+- **Action:** users should be able to filter work, add items to an estimate, and submit an enquiry.
 
-The strategy for this project is to connect the needs of potential customers with the goals of a small balloon decoration business.
+### Scope
 
-Potential customers need to understand whether the service is suitable for their event, style, and budget before they make contact. The business needs to present its services clearly, build confidence through visual examples, and encourage suitable visitors to send an enquiry.
+The completed project includes:
 
-The website is built around three priorities:
+- Responsive header and navigation.
+- Hero section.
+- Services Swiper carousel.
+- Service cards with “View examples” and “Add to estimate” actions.
+- How It Works section.
+- Dynamic portfolio rendering.
+- Portfolio Swiper carousel.
+- Portfolio filter buttons.
+- Multi-category portfolio data.
+- Portfolio image modal.
+- Estimate widget.
+- Estimate panel.
+- Add/remove estimate functionality.
+- Balloon add animation.
+- Testimonials section.
+- Enquiry form with JavaScript validation.
+- Success message state after valid submission.
+- Footer with Back to top link.
+- Custom 404 page.
+- Jest automated tests.
+- Shared test fixtures.
 
-- **Clarity:** Hero, Main Navigation, Services, How It Works, and Call-to-Action Buttons help users understand the website quickly.
-- **Confidence:** visitors can review visual examples, service information, testimonials, and guide price information before making contact.
-- **Action:** visitors have clear routes to browse previous work, build a guide estimate, and send an enquiry without unnecessary friction.
+### Structure
 
----
+The final website uses a single-page structure where the header contains the navigation and hero area:
 
-## Scope
+1. **Header and Hero**
+2. **Services**
+3. **How It Works**
+4. **Portfolio**
+5. **Testimonials**
+6. **Enquiry**
+7. **Footer**
 
-### Key Features
+This structure was chosen to mix interactive and static content. Services introduce available options, How It Works explains the process, Portfolio provides visual examples, Testimonials add trust, and Enquiry provides the final action point.
 
-The project includes the following user-facing features:
+### Skeleton / Wireframes
 
-- **Hero:** helps visitors quickly understand what the business does and what action they can take next.
-- **Call-to-Action Buttons:** guide users towards viewing the portfolio, estimating a guide price, or sending an enquiry.
-- **Main Navigation:** allows users to move between the main sections of the page.
-- **Services:** explains the six main decoration categories and allows users to jump to matching portfolio examples.
-- **Portfolio Section:** presents selected previous work in a responsive Swiper carousel.
-- **Dynamic Portfolio Rendering:** stores portfolio items in a JavaScript data source and renders portfolio cards into the page dynamically.
-- **Portfolio Filtering:** allows users to filter work by decoration type and updates the carousel with matching items.
-- **Image Modal Gallery:** allows users to view portfolio images in a larger overlay.
-- **Interactive Estimate Builder:** allows users to add services to a guide estimate, view a running total while browsing, review selected items, and continue to the enquiry form to request a final quote.
-- **How It Works:** explains the booking and setup process from enquiry through completion.
-- **Testimonials:** supports trust through short customer-style comments.
-- **Scroll Balloon Animation:** adds decorative movement when selected sections enter the viewport.
-- **Enquiry Form & Validation:** checks required user input before submission and shows clear error or success feedback.
-- **Custom 404 Page:** helps users return to the main page if they open a non-existent route.
+Wireframes were used to plan page layout, content hierarchy, and responsive behaviour before and during implementation.
 
-The selected features support the three strategy priorities:
+| Mobile Wireframe                                                       | Desktop Wireframe                                                        |
+| ---------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| ![Mobile wireframe](assets/wireframes/rainbow_me_mobile_wireframe.png) | ![Desktop wireframe](assets/wireframes/rainbow_me_desktop_wireframe.png) |
 
-- **Clarity:** Hero, Main Navigation, Services, How It Works, and Call-to-Action Buttons help users understand the website quickly.
-- **Confidence:** Portfolio Section, Dynamic Portfolio Rendering, Portfolio Filtering, Image Modal Gallery, Interactive Estimate Builder, and Testimonials help users evaluate the service before making contact.
-- **Action:** Call-to-Action Buttons, Interactive Estimate Builder, Enquiry Form & Validation, and the Custom 404 Page help users move towards enquiry and complete tasks without unnecessary friction.
+The final wireframes show the current page structure:
 
-### Feature Prioritisation Method
+```text
+Hero
+Services
+How It Works
+Portfolio
+Testimonials
+Enquiry
+Footer
+```
 
-Features were prioritised by balancing user value, business value, assessment requirements, and realistic implementation scope.
-
-**Score = Importance (1–5) × Feasibility (1–5)**
-
-| Feature                          | Importance | Feasibility | Score |
-| -------------------------------- | ---------: | ----------: | ----: |
-| Hero                             |          5 |           5 |    25 |
-| Main Navigation                  |          5 |           5 |    25 |
-| Services Section                 |          5 |           5 |    25 |
-| Portfolio Section                |          5 |           4 |    20 |
-| Portfolio Filtering and Carousel |          5 |           4 |    20 |
-| How It Works                     |          4 |           5 |    20 |
-| Enquiry Form & Validation        |          5 |           4 |    20 |
-| Image Modal Gallery              |          4 |           4 |    16 |
-| Interactive Estimate Builder     |          4 |           4 |    16 |
-| Custom 404 Page                  |          4 |           4 |    16 |
-| Testimonials                     |          3 |           5 |    15 |
-| Call-to-Action Buttons           |          3 |           5 |    15 |
-| Scroll Balloon Animation         |          4 |           3 |    12 |
-
----
-
-## Structure
-
-### Information Architecture
-
-The website uses a single-page structure with sections arranged to support a typical customer journey from initial interest to enquiry:
-
-1. **Hero** — introduces the business and gives users clear first actions.
-2. **Services** — explains what types of decoration are available.
-3. **Portfolio** — presents selected examples of previous work in a responsive carousel with category filtering.
-4. **Interactive Estimate Builder** — allows users to build and review a guide estimate before sending an enquiry.
-5. **How It Works** — explains the booking and setup process from enquiry through completion.
-6. **Testimonials** — provides trust signals through customer-style feedback.
-7. **Enquiry Form** — allows users to submit event details and contact information after reviewing their selected estimate. If no estimate has been created, users can still choose a service manually using a dropdown.
-8. **Footer** — repeats key links and contact information.
-
-### Navigation and Interaction Model
-
-The navigation and interaction model supports the user journey by helping visitors move between key sections, control interactive elements, and recover from invalid routes.
-
-- The main navigation uses anchor links to key page sections.
-- Hero buttons link directly to Portfolio, the Estimate Builder, and the Enquiry Form.
-- Service cards act as shortcuts to matching portfolio categories.
-- The portfolio section displays selected work in a responsive carousel. Filter buttons allow users to update the carousel and view examples from a specific decoration category.
-- The image modal can be opened and closed by the user.
-- The estimate builder responds when users add or remove services and updates the guide total dynamically.
-- A sticky estimate widget keeps the current estimate visible while users browse, but is hidden in the enquiry section to avoid duplicated estimate information.
-- The Enquiry Form provides feedback after validation.
-- Footer links repeat important routes for convenience.
-- External links open in a new tab where appropriate.
-- A custom 404 page provides a route back to the main page.
-
-### Semantic Markup
-
-The project uses semantic HTML to give the page a clear and meaningful structure:
-
-- `header` contains the main navigation and hero area.
-- `main` contains the primary page content.
-- `section` elements divide the page into clear content areas such as services, portfolio, estimate builder, How It Works, testimonials, and enquiry form.
-- `article` elements are used for self-contained content blocks such as service cards, portfolio cards, process steps, and testimonials.
-- `form` is used for the enquiry form.
-- `footer` contains repeated navigation links and contact information.
-
----
-
-## Skeleton / Wireframes
-
-Wireframes were created to plan the page layout, content hierarchy, and responsive structure before development.
-
-| Mobile           | Desktop           |
-| ---------------- | ----------------- |
-| Mobile wireframe | Desktop wireframe |
-
-The wireframes show the planned placement of key sections, including the hero area, services, portfolio carousel, portfolio filter controls, estimate builder, sticky estimate widget, How It Works, testimonials, and Enquiry Form.
-
----
-
-## Surface
-
-### Visual Design
+### Surface
 
 The visual design is intended to feel:
 
@@ -386,78 +412,65 @@ The visual design is intended to feel:
 - Celebratory
 - Professional
 
-### Planned Style
+Design decisions include:
 
-- Light background for readability.
-- Soft pastel accent colours.
-- Clear buttons for calls to action.
-- Consistent spacing between sections.
-- High contrast between text and background.
-- Images with consistent sizing and aspect ratio.
+- Light background.
+- Pastel accent colour palette.
+- Clear call-to-action buttons.
+- Rounded cards.
+- Consistent spacing.
+- Real gallery images.
+- Decorative icons.
+- Decorative testimonial avatar placeholders.
+- Soft shadows.
+- Pink accent colour for actions, highlights, and feedback.
+- Decorative balloon feedback animation.
 
 ---
 
 ## Development Process
 
-The project was developed incrementally so that each stage produced a usable improvement before the next stage was started. A test-driven development approach was used where possible by defining expected behaviours before implementing key interactive features.
+The project was developed incrementally over multiple stages. The approach changed during development as features became more complex, but the overall goal remained the same: build a dynamic, responsive, interactive front-end project with clear user value.
 
-### Stage 1 — Project Setup and File Structure
+### Stage 1 — Project Idea and Structure
 
-**Goal:** Create the project foundation and organise the files before building the website.
+The project started as a portfolio-style website for balloon compositions and event decoration. The idea was chosen because it allowed strong visual content, clear user interaction, and realistic business value.
 
-**Outcome:** The project folder structure was created, with separate areas for HTML, CSS, JavaScript, images, wireframes, mockups, and testing assets.
+Initial planning focused on:
 
-### Stage 2 — Responsive Page Structure and Core Content
+- Page sections.
+- Services.
+- Portfolio.
+- Estimate builder idea.
+- Enquiry form.
+- Responsive layout.
+- Accessibility.
+- Testing requirements.
 
-**Goal:** Build the main page sections and create a responsive structure from the start.
+### Stage 2 — HTML Structure and Early Tests
 
-**Outcome:** The hero, call-to-action buttons, main navigation, services, portfolio content, estimate builder layout, How It Works, testimonials, Enquiry Form layout, and footer were added. Responsive layout decisions were considered while building these sections.
+The first technical focus was to create a clear page structure and verify it with automated tests.
 
-### Stage 3 — JavaScript Interactivity and User Feedback
+Tests were written for:
 
-**Goal:** Add meaningful user-controlled JavaScript functionality.
+- Header.
+- Navigation.
+- Hero section.
+- Services section.
+- Portfolio section.
+- How It Works section.
+- Testimonials section.
+- Enquiry section.
+- Footer.
+- Key links.
+- Images and alt text.
+- Buttons and form elements.
 
-**Outcome:** Portfolio filtering, carousel behaviour, image modal gallery, estimate builder logic, Enquiry Form & Validation, success feedback, and scroll-triggered animation were implemented.
+This helped keep the HTML structure stable while new features were added.
 
-### Stage 4 — Error Recovery, Refinement and Accessibility Checks
+### Stage 3 — Services Section and Swiper
 
-**Goal:** Improve the user experience and check that the interface remained clear, usable, and accessible.
-
-**Outcome:** The custom 404 page was added, and the layout, spacing, image presentation, buttons, form feedback, keyboard controls, and visual consistency were reviewed and refined.
-
-### Stage 5 — Testing, Deployment and Documentation
-
-**Goal:** Prepare the project for final submission and deployment.
-
-**Outcome:** Manual testing, responsiveness testing, accessibility checks, validation, bug documentation, deployment to GitHub Pages, attribution, and README documentation were completed.
-
----
-
-## Features
-
-The following features are planned for the final website.
-
-### Hero
-
-The hero section gives visitors an immediate understanding of what the business does, what type of events it supports, and what action they can take next.
-
-### Call-to-Action Buttons
-
-Call-to-action buttons help visitors move quickly to the most important parts of the website, such as the portfolio, estimate builder, and enquiry form.
-
-They support the user journey by giving visitors clear next steps after they understand what the business offers.
-
-### Main Navigation
-
-The navigation menu allows users to move between sections of the page.
-
-### Services
-
-The services section explains the main decoration categories offered by the business. On smaller screens, the service cards are displayed in a Swiper carousel so visitors can browse services without the page becoming too long. On larger screens, multiple service cards are visible at once.
-
-Each service card includes an image, a short description, and an “Add to estimate” button.
-
-The section includes six service cards:
+The services section was built with six service categories:
 
 - Balloon Arches
 - Number Stacks
@@ -466,21 +479,348 @@ The section includes six service cards:
 - Business Decor
 - Custom Setups
 
-Each service card includes a short description and acts as a shortcut to matching portfolio examples. When a user selects a service card, the page scrolls to the portfolio section and applies the matching portfolio filter.
+A Swiper carousel was added to make service cards easier to browse on smaller screens. A custom services carousel script checks that the carousel element and Swiper library exist before initialising.
+
+### Stage 4 — How It Works Section
+
+The How It Works section was added after the Services section to explain the booking process before users reach the portfolio.
+
+The final section includes four steps:
+
+1. Share Your Vision
+2. Get a Custom Quote
+3. We Design & Plan
+4. You Celebrate
+
+The section uses icons, numbers, short text, and responsive layout.
+
+### Stage 5 — Dynamic Portfolio Rendering
+
+The portfolio section was moved away from static HTML cards. Portfolio items are stored in `assets/js/portfolio-data.js` and rendered dynamically by JavaScript.
+
+This made the project more maintainable because content data is separated from markup.
+
+The render function creates:
+
+- Portfolio article card.
+- Image button.
+- Image.
+- Title.
+- Description.
+- Price wrapper.
+- Add to estimate button.
+
+### Stage 6 — Portfolio Carousel
+
+The dynamically rendered portfolio cards are displayed in a Swiper carousel.
+
+This keeps the page compact, especially on mobile, and allows visitors to browse images without the page becoming too long.
+
+### Stage 7 — Portfolio Filtering
+
+Portfolio filter buttons were added above the carousel.
+
+The first version used a single category value on each portfolio item:
+
+```js
+category: 'balloon-arches';
+```
+
+Later, the data model was improved to allow items to belong to multiple categories:
+
+```js
+categories: ['balloon-arches', 'backdrops'];
+```
+
+This was a more flexible solution because a real decoration photo can show both a balloon arch and a backdrop.
+
+The filter logic now checks whether the selected category is included in the item’s `categories` array.
+
+### Stage 8 — Services Linked to Portfolio Filters
+
+Service cards were connected to matching portfolio filters.
+
+When a visitor clicks “View examples” on a service card:
+
+1. JavaScript reads the service category.
+2. It finds the matching portfolio filter button.
+3. It triggers that filter.
+4. It scrolls to the portfolio section.
+
+This connects the Services and Portfolio sections into one user journey.
+
+### Stage 9 — Portfolio Modal
+
+A portfolio image modal was added so users can view images in a larger format.
+
+The modal supports:
+
+- Opening from image button.
+- Dynamic image source.
+- Dynamic alt text.
+- Close button.
+- Escape key.
+- Backdrop click.
+
+This improves user control and makes the portfolio more useful.
+
+### Stage 10 — Estimate Builder Pure Functions
+
+The estimate builder was first developed with pure JavaScript functions:
+
+- `addItemToEstimate`
+- `calculateEstimateTotal`
+- `removeItemFromEstimate`
+
+These functions were tested separately from the DOM. This made the estimate logic easier to understand and verify.
+
+### Stage 11 — Estimate Builder DOM Behaviour
+
+The estimate builder was then connected to the page.
+
+Users can add items from:
+
+- Portfolio cards.
+- Service cards.
+
+The estimate UI includes:
+
+- Floating/sticky estimate widget.
+- Item count badge.
+- Estimated total.
+- View estimate button.
+- Estimate panel.
+- Remove buttons.
+- Selected item image, title, and price.
+- Backdrop.
+- Escape key support.
+- Request a Quote button.
+
+### Stage 12 — Estimate Images and Service Data
+
+The estimate panel was improved to show selected item images.
+
+Portfolio items already had image and alt data. Service buttons were updated with:
+
+- `data-title`
+- `data-price`
+- `data-image`
+- `data-alt`
+
+This allows service-added items and portfolio-added items to be rendered consistently inside the estimate panel.
+
+### Stage 13 — Balloon Add Animation
+
+A decorative balloon animation was added when the user adds a new item to the estimate.
+
+The animation appears near the clicked button and gives visual feedback that the action worked.
+
+The animation only appears when a new item is actually added, not when the user clicks a duplicate item.
+
+### Stage 14 — Enquiry Estimate Summary
+
+The estimate builder was connected to the enquiry section.
+
+Selected items are shown in the enquiry summary with:
+
+- Image.
+- Title.
+- Price.
+- Remove button.
+- Total guide price.
+
+The sticky estimate widget is hidden when the enquiry summary is visible, so users do not see duplicated estimate information.
+
+### Stage 15 — Enquiry Form Validation
+
+The enquiry form was implemented with JavaScript validation.
+
+Validation checks:
+
+- Required fields.
+- Email format.
+- Phone format.
+
+When fields are invalid, the form shows clear field-level messages. The script also updates `aria-invalid` and connects error messages to inputs using `aria-describedby`.
+
+After valid submission:
+
+- The success message appears.
+- The form is reset.
+- The enquiry section hides distracting content.
+- The estimate builder receives an `enquiry:submitted` event and resets.
+
+### Stage 16 — Resetting After Form Submission
+
+A bug appeared after successful form submission. If the user submitted the form and then added another estimate item, only the balloon animation appeared and the estimate widget did not restart as expected.
+
+This was fixed by clearing the submitted enquiry state and resetting estimate state correctly when a new item is added after submission.
+
+### Stage 17 — Testimonials Section
+
+The Testimonials section was added after Portfolio to provide social proof before the Enquiry section.
+
+Real social media screenshots and profile images were not embedded. Instead, the section uses:
+
+- Real adapted testimonial text.
+- Usernames.
+- Decorative CSS avatar placeholders.
+- Accessible rating information.
+
+This improves performance, keeps the content accessible, and avoids unnecessary privacy or licensing problems.
+
+### Stage 18 — Footer
+
+A footer was added at the end of the page.
+
+The footer includes:
+
+- Copyright text.
+- Back to top link.
+
+### Stage 19 — Custom 404 Page
+
+A custom `404.html` page was added so users have a clear route back to the main site if they open a wrong URL.
+
+The page includes:
+
+- Simple page-not-found message.
+- “Back to home” button.
+
+### Stage 20 — Image Migration
+
+The project moved from placeholder/service-specific image folders to real client/gallery images.
+
+The image structure was simplified to use:
+
+```text
+assets/images/gallery/
+```
+
+This avoids unnecessary duplication between services and portfolio images.
+
+Service card images, service estimate data, portfolio item data, and test fixtures were updated to use the gallery image paths.
+
+### Stage 21 — Shared Test Fixtures
+
+The tests originally repeated small portfolio item arrays in multiple files.
+
+This was refactored into a shared fixture:
+
+```text
+tests/fixtures/portfolio-items.js
+```
+
+This keeps test data consistent and avoids repeating the same mock portfolio items across multiple test files.
+
+### Stage 22 — Test Organisation
+
+Tests were grouped using `describe` blocks.
+
+Examples:
+
+- `Estimate pure functions`
+- `Estimate builder`
+- `Portfolio filtering`
+- `Portfolio image modal`
+- `Portfolio rendering`
+- `Main navigation behaviour`
+- `Enquiry form validation`
+- `404 page`
+
+This made the test suite easier to read and understand.
+
+### Stage 23 — Carousel Reset Bug Fix
+
+A bug was found in the portfolio carousel after filtering.
+
+When a user swiped to a later portfolio slide and then selected a new filter, the carousel kept the previous slide index. The filtered cards changed, but the carousel did not return to the first matching item.
+
+The fix updates the Swiper instance and moves it back to slide `0` after filtering.
+
+### Stage 24 — Styling and Interaction Refinement
+
+CSS was refined during development to improve:
+
+- Spacing.
+- Responsive breakpoints.
+- Button sizing.
+- Portfolio card layout.
+- Estimate panel layout.
+- Enquiry form layout.
+- Success message design.
+- Testimonials card design.
+- How It Works layout.
+- Footer placement.
+- Visual consistency.
+
+A pointer cursor was added for key clickable buttons so interactive elements feel clickable.
+
+---
+
+## Features
+
+### Hero
+
+The hero section introduces the business and includes two call-to-action links:
+
+- View Portfolio
+- Get a Quote
+
+### Main Navigation
+
+The navigation links to the main page sections:
+
+- Services
+- How It Works
+- Portfolio
+- Testimonials
+- Enquiry
+
+The mobile menu can be opened and closed with a menu button. When a navigation link is clicked, the mobile menu closes.
+
+### Services Carousel
+
+The services section uses Swiper.js to display service cards.
+
+Each service card includes:
+
+- Image.
+- Heading.
+- Description.
+- “View examples” button.
+- “Add to estimate” button.
+
+The services use gallery images from `assets/images/gallery/`.
+
+### How It Works
+
+The How It Works section explains the booking process in four steps:
+
+1. Share Your Vision
+2. Get a Custom Quote
+3. We Design & Plan
+4. You Celebrate
+
+The section uses icons, step numbers, headings, and short descriptions.
 
 ### Portfolio
 
-The portfolio section presents selected examples of previous decoration work in a responsive Swiper carousel. This helps visitors review the style, quality, and range of decoration work before making an enquiry.
+Portfolio cards are rendered dynamically from `portfolio-data.js`.
 
-Portfolio cards are not written manually in the HTML. Instead, portfolio item data is stored in a JavaScript data source and rendered dynamically into the carousel. This keeps the HTML cleaner, separates data from markup, and prepares the project for a possible future move to an external JSON data source.
+Each portfolio item contains:
 
-Each portfolio card includes an image, title, short description, category, and guide price information where relevant. Portfolio images are intended to support a future modal gallery so users can inspect decoration details more clearly.
+- `id`
+- `title`
+- `categories`
+- `image`
+- `alt`
+- `description`
+- `price`
 
 ### Portfolio Filtering
 
-The portfolio filtering controls are placed above the portfolio carousel. They allow users to browse previous work by decoration type.
-
-Users can filter portfolio examples by:
+Portfolio filters allow users to filter by:
 
 - All
 - Balloon Arches
@@ -490,171 +830,408 @@ Users can filter portfolio examples by:
 - Business Decor
 - Custom Setups
 
-When a filter is selected, JavaScript will find matching portfolio items, re-render the portfolio slides, and update the carousel. The carousel will reset to the first matching item after a filter is selected.
+The filtering supports multiple categories per portfolio item.
 
-This approach was chosen instead of a static portfolio grid with a View More button because a carousel gives a better mobile experience, keeps the page compact, and avoids showing too many images at once on small screens.
+After filtering, the portfolio carousel resets to the first matching slide.
 
-### Image Modal Gallery
+### Portfolio Image Modal
 
-The image modal gallery allows users to click a portfolio image and view it in a larger overlay without leaving the page. The modal can be closed using the close button, by clicking outside the image, or by pressing the Escape key.
+The modal lets users view larger portfolio images.
 
-This feature improves the user experience because visitors can inspect decoration details more clearly before making an enquiry.
+It supports:
 
-JavaScript is used to:
+- Close button.
+- Escape key.
+- Backdrop click.
+- Dynamic image source.
+- Dynamic image alt text.
 
-- Detect which portfolio image was clicked.
-- Update the modal image source and alt text dynamically.
-- Open and close the modal.
-- Handle keyboard interaction with the Escape key.
-- Prevent errors if an image element or modal element is missing.
+### Estimate Widget
 
-### Scroll Balloon Animation
+The estimate widget appears after the first item is added.
 
-When the user scrolls to selected sections, balloon graphics animate into view. This feature uses JavaScript to detect when a section enters the viewport.
+It shows:
 
-### Interactive Estimate Builder
+- Current estimate total.
+- Item count.
+- View estimate button.
+- Count badge.
 
-The interactive estimate builder allows users to build an approximate decoration quote while browsing the website. Users can add services to the estimate from service cards or portfolio cards, review selected items, remove items, and see the estimated guide price update dynamically.
+### Estimate Panel
 
-A small sticky estimate widget remains visible while the user browses services and portfolio examples. On desktop and tablet screens, this appears as a compact floating widget. On mobile screens, it appears as a sticky bottom bar.
+The estimate panel shows selected items with:
 
-When users click “View estimate”, they can review the selected services in a larger estimate panel, modal, or bottom sheet depending on screen size. From there, users can continue to the enquiry form to request a final quote.
+- Image.
+- Title.
+- Price.
+- Remove button.
 
-The estimate is clearly presented as a guide price only. Final pricing may depend on event date, location, setup requirements, and custom decoration details.
+It also shows the current total and a Request a Quote button.
 
-### How It Works
+### Add to Estimate
 
-The How It Works section explains the booking and setup process from enquiry through completion. It uses simple steps, visual icons, or numbers to show how the customer moves from first contact to final event setup.
+Users can add items from both service cards and portfolio cards.
 
-This section helps reduce uncertainty by showing visitors what to expect before they send an enquiry.
+Duplicate items are prevented.
+
+### Remove from Estimate
+
+Users can remove items from the estimate panel or the enquiry estimate summary.
+
+When the final item is removed, the estimate UI hides.
+
+### Balloon Add Animation
+
+A small balloon animation appears near the clicked Add to Estimate button when a new item is added.
 
 ### Testimonials
 
-The testimonials section shows short customer-style comments to support trust.
+The Testimonials section shows three customer comments.
 
-### Enquiry Form & Validation
+Each testimonial card includes:
 
-The enquiry form checks required fields and email format before submission. It provides clear error messages for invalid input and a success message after valid submission.
+- Decorative avatar placeholder.
+- Username.
+- Accessible 5-star rating.
+- Review text.
 
-The enquiry form works as the final step after the estimate builder. If users have selected services in the estimate builder, a compact “Your selected estimate” summary is shown above the form and the service dropdown is hidden to avoid duplicate choices.
+### Enquiry Form
 
-If no estimate has been created, the form displays a “Service interested in” dropdown so users can still send an enquiry without using the estimate builder.
+The enquiry form includes:
+
+- First name.
+- Last name.
+- Email.
+- Phone number.
+- Event type.
+- Decoration type / service interested in.
+- Event date.
+- Event location.
+- Message.
+- Submit button.
+- Privacy note.
+
+The form validates input and shows a success message after valid submission.
+
+### Footer
+
+The footer includes:
+
+- Copyright text.
+- Back to top link.
 
 ### Custom 404 Page
 
-A custom 404 page gives users a clear route back to the main site without relying on browser navigation buttons.
+The custom 404 page provides a clear message and a Back to home button.
 
 ---
 
-## JavaScript Functionality
+## Testing
 
-The project includes custom JavaScript to demonstrate significant interactive functionality.
+Testing was a major part of the project development process. Automated Jest tests were used to check pure JavaScript functions and DOM behaviour. Manual testing was used to check real user flows, responsiveness, accessibility, deployed behaviour, and visual layout.
 
-### Services Carousel
+Automated testing is most useful for repeatable technical checks such as pure functions, DOM updates, validation states, and regression coverage. Manual testing is most useful for end-to-end user flows, layout checks, touch interactions, visual feedback, and overall usability.
 
-The services section uses Swiper.js to provide a responsive carousel for service cards. A CSS-only horizontal scroll layout was considered first, but it did not provide reliable one-card movement on mobile swipe. Swiper was used to improve touch behaviour and keep the services section compact on smaller screens.
+Automated testing evidence is included below alongside the manual testing results.
 
-The custom project JavaScript checks that the services carousel element and Swiper library are available before initialising the carousel. This prevents console errors if the element or external library is unavailable.
+### Automated Testing
 
-**JavaScript concepts demonstrated:**
+Automated tests are stored in the `tests/` folder.
 
-- DOM selection
-- Defensive checks before running code
-- External library initialisation
-- Object configuration
-- Responsive breakpoints
-- Touch-friendly user interaction
-- Error prevention
+| Test Area               | Purpose                                                                                                                            |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Estimate pure functions | Tests add item, prevent duplicate, calculate total, and remove item                                                                |
+| Estimate DOM behaviour  | Tests widget, panel, item adding, item removal, totals, images, backdrop, Escape key, and balloon animation                        |
+| Page structure          | Tests main sections, navigation links, service cards, portfolio structure, enquiry structure, footer, and accessibility attributes |
+| Navigation              | Tests mobile menu toggle and closing menu after link click                                                                         |
+| Portfolio filters       | Tests filter data, rendering filter buttons, active filter state, category filtering, and service-to-portfolio filter links        |
+| Portfolio modal         | Tests modal opening, closing, Escape key, backdrop click, and image updates                                                        |
+| Portfolio rendering     | Tests dynamic portfolio card rendering and portfolio Swiper initialisation                                                         |
+| Swiper helpers          | Tests that Swiper pagination bullets are removed from keyboard tab order                                                           |
+| Enquiry form            | Tests required fields, email validation, phone validation, success message, and submitted state                                    |
+| 404 page                | Tests page-not-found content and Back to home link                                                                                 |
 
-### Dynamic Portfolio Rendering and Carousel
+### Shared Test Fixtures
 
-The portfolio section uses a JavaScript data source to render portfolio cards dynamically. Each portfolio item is stored as an object containing information such as title, category, image path, alt text, description, and guide price.
+Reusable test portfolio items are stored in:
 
-JavaScript creates portfolio card elements, adds the required Swiper slide class, inserts image and text content, and appends the cards to the portfolio carousel wrapper.
+```text
+tests/fixtures/portfolio-items.js
+```
 
-After the portfolio slides are rendered, Swiper is initialised on the portfolio carousel. This order is important because the carousel needs the slide elements to exist in the DOM before it can calculate slide widths and enable swipe behaviour.
+This avoids repeating the same portfolio mock data across several test files.
 
-**JavaScript concepts demonstrated:**
+### Running Tests
 
-- JavaScript arrays and objects
-- Dynamic DOM rendering
-- DOM element creation
-- `for...of` loops
-- Text and image attribute updates
-- Reusable render functions
-- External library initialisation
-- Defensive checks before running code
-- Preparing code for future JSON/fetch-based data loading
+```bash
+npm test
+```
 
-### Portfolio Filtering
+### Automated Test Evidence
 
-Portfolio filtering will use the selected category to create a filtered array of portfolio items. The same render function will then be reused to display only matching items.
+Automated test runs are documented with Jest and summarised in the tables above.
 
-**JavaScript concepts demonstrated:**
+![Jest test results](assets/readme/testing/jest-test-results.png)
 
-- Event listeners
-- Array filtering
-- Conditional logic
-- Class manipulation for active filter states
-- Re-rendering DOM content
-- Updating Swiper after dynamic content changes
+---
 
-### Image Modal Gallery
+## Manual Testing
 
-The image modal lets users open and close larger portfolio images.
+Manual testing was used to check real user interaction, visual layout, responsiveness, accessibility, and deployed behaviour.
 
-**JavaScript concepts demonstrated:**
+| Feature            | Test                               | Expected Result                                    | Status |
+| ------------------ | ---------------------------------- | -------------------------------------------------- | ------ |
+| Navigation         | Click each navigation link         | Correct section is shown                           | Pass   |
+| Mobile navigation  | Click menu button                  | Menu opens and closes                              | Pass   |
+| Mobile navigation  | Click a nav link                   | Menu closes after link click                       | Pass   |
+| Hero CTA           | Click “View Portfolio”             | Portfolio section is shown                         | Pass   |
+| Hero CTA           | Click “Get a Quote”                | Enquiry section is shown                           | Pass   |
+| Services           | View services section              | Six service cards are displayed                    | Pass   |
+| Services carousel  | Swipe on mobile                    | Carousel moves through service cards               | Pass   |
+| Services           | Click “View examples”              | Matching portfolio filter is selected              | Pass   |
+| Services           | Click “Add to estimate”            | Service is added to estimate                       | Pass   |
+| How It Works       | View section on mobile and desktop | Four steps remain readable                         | Pass   |
+| Portfolio          | Load page                          | Portfolio cards are rendered dynamically           | Pass   |
+| Portfolio carousel | Swipe portfolio carousel           | Slides move correctly                              | Pass   |
+| Portfolio filter   | Click “Balloon Arches”             | Matching items are shown                           | Pass   |
+| Portfolio filter   | Click “Backdrops”                  | Matching items are shown                           | Pass   |
+| Portfolio filter   | Click “All”                        | All items are shown                                | Pass   |
+| Portfolio filter   | Filter after swiping               | Carousel resets to first matching item             | Pass   |
+| Portfolio modal    | Click image                        | Modal opens with selected image                    | Pass   |
+| Portfolio modal    | Click close button                 | Modal closes                                       | Pass   |
+| Portfolio modal    | Press Escape                       | Modal closes                                       | Pass   |
+| Portfolio modal    | Click backdrop                     | Modal closes                                       | Pass   |
+| Estimate           | Add portfolio item                 | Item appears in estimate                           | Pass   |
+| Estimate           | Add service item                   | Item appears in estimate                           | Pass   |
+| Estimate           | Add duplicate item                 | Duplicate is not added                             | Pass   |
+| Estimate           | Open estimate panel                | Selected items are shown                           | Pass   |
+| Estimate           | Remove item                        | Item is removed and total updates                  | Pass   |
+| Estimate           | Remove final item                  | Estimate UI hides                                  | Pass   |
+| Estimate           | Click Request a Quote              | Estimate panel closes and enquiry section is shown | Pass   |
+| Testimonials       | View testimonials                  | Three testimonial cards are displayed              | Pass   |
+| Enquiry form       | Submit empty form                  | Error messages are shown                           | Pass   |
+| Enquiry form       | Submit invalid email               | Email error is shown                               | Pass   |
+| Enquiry form       | Submit invalid phone               | Phone error is shown                               | Pass   |
+| Enquiry form       | Submit valid form                  | Success message is shown                           | Pass   |
+| After submission   | Add new estimate item              | Submitted state clears and estimate flow restarts  | Pass   |
+| Footer             | Click Back to top                  | Page returns to hero section                       | Pass   |
+| 404 page           | Open invalid URL                   | Custom 404 page appears                            | Pass   |
+| 404 page           | Click Back to home                 | User returns to main page                          | Pass   |
+| Console            | Perform main user actions          | No console errors appear                           | Pass   |
+| Deployed version   | Compare local and deployed site    | Deployed version matches local version             | Pass   |
+| Final code review  | Check for broken links/comments    | No broken internal links or unnecessary comments   | Pass   |
 
-- Click events
-- Modal state control
-- Keyboard events
-- Dynamic image source update
-- Accessibility consideration for user control
+### Screenshots Aligned to User Stories
 
-### Interactive Estimate Builder
+#### US1 — Understand the Business
 
-The estimate builder allows users to add services to a running guide estimate. JavaScript stores the selected estimate items, updates the visible total, allows users to remove items, and controls the sticky estimate widget and estimate panel.
+![Hero section screenshot](assets/readme/screenshots/hero-section.png)
 
-**JavaScript concepts demonstrated:**
+#### US2 — Browse Services
 
-- DOM selection
-- Event listeners
-- Arrays or objects for selected estimate items
-- Add and remove item logic
-- Conditional logic
-- Number calculations
-- Dynamic total updates
-- Updating text content dynamically
-- Class toggling for the estimate panel
-- Empty-state handling
-- User feedback
+![Services section screenshot](assets/readme/screenshots/services-section.png)
 
-### Enquiry Form and Estimate Summary
+#### US3 — Understand the Booking Process
 
-The enquiry form is connected to the estimate builder. When users have selected estimate items, a compact summary is displayed above the form. The sticky estimate widget is hidden in the enquiry section to avoid duplicated information.
+![How It Works section screenshot](assets/readme/screenshots/how-it-works-section.png)
 
-If the estimate is empty, the selected estimate summary is hidden and a “Service interested in” dropdown is displayed instead.
+#### US5 — Browse Portfolio Examples
 
-**JavaScript concepts demonstrated:**
+![Portfolio section screenshot](assets/readme/screenshots/portfolio-all.png)
 
-- Conditional rendering
-- DOM selection
-- Class toggling
-- Checking whether estimate items exist
-- Showing and hiding form sections
-- Updating the enquiry form based on selected estimate items
-- Form validation
+#### US6 — Filter Portfolio Examples
 
-### Scroll-Triggered Balloon Animation
+![Portfolio filter screenshot](assets/readme/screenshots/portfolio-filter-balloon-arches.png)
 
-The scroll animation starts when a relevant section enters the viewport.
+#### US7 — View Images Clearly
 
-**JavaScript concepts demonstrated:**
+![Portfolio modal screenshot](assets/readme/screenshots/portfolio-modal.png)
 
-- Intersection Observer API
-- Class toggling
-- Timing control
-- User experience enhancement
+#### US8 — Build a Guide Estimate
+
+![Estimate widget screenshot](assets/readme/screenshots/estimate-widget.png)
+
+![Estimate panel screenshot](assets/readme/screenshots/estimate-panel.png)
+
+#### US9 — Read Testimonials
+
+![Testimonials section screenshot](assets/readme/screenshots/testimonials-section.png)
+
+#### US10 — Send an Enquiry
+
+![Enquiry form validation screenshot](assets/readme/screenshots/enquiry-form-errors.png)
+
+![Enquiry form success screenshot](assets/readme/screenshots/enquiry-success.png)
+
+### US11 — Use the Website on Mobile
+
+![Mobile responsive screenshot](assets/readme/screenshots/mockup-mobile.png.png)
+
+#### US12 — Recover from a Wrong Page
+
+![404 page screenshot](assets/readme/screenshots/custom-404-page.png)
+
+---
+
+## Responsiveness Testing
+
+| Device / Width     | Expected Result                                                      | Status |
+| ------------------ | -------------------------------------------------------------------- | ------ |
+| 320px mobile       | Content fits without horizontal scroll                               | Pass   |
+| 375px mobile       | Layout remains readable and usable                                   | Pass   |
+| 560px large mobile | How It Works adapts into a wider responsive layout where appropriate | Pass   |
+| 768px tablet       | Navigation and section layouts adapt correctly                       | Pass   |
+| 1024px laptop      | Layout remains readable before full desktop enquiry split            | Pass   |
+| 1025px+ desktop    | Enquiry switches to two-column layout                                | Pass   |
+| 1440px desktop     | Full layout displays professionally                                  | Pass   |
+
+---
+
+## Accessibility Considerations
+
+Accessibility was considered during development.
+
+Implemented accessibility decisions include:
+
+- Semantic HTML structure.
+- Main navigation uses an accessible label.
+- Mobile menu button uses `aria-expanded`.
+- Images include alt text.
+- Decorative icons use `aria-hidden` where appropriate.
+- Decorative testimonial avatars are hidden from assistive technology.
+- Testimonial ratings use accessible text.
+- Portfolio modal uses dialog attributes.
+- Modal has a clear close button.
+- Escape key closes modal and estimate panel.
+- Form inputs use labels.
+- Form validation uses `aria-invalid`.
+- Error messages are connected with `aria-describedby`.
+- Swiper pagination bullets are removed from keyboard tab order.
+- Buttons use clear text.
+- Clickable elements use pointer cursor.
+- The success message is visually prominent after valid form submission.
+
+---
+
+## Validation
+
+### HTML Validation
+
+HTML was tested using the W3C HTML Validator.
+
+![HTML validation screenshot](assets/readme/testing/html-validator-index.png)
+
+![404 validation screenshot](assets/readme/testing/html-validator-404.png)
+
+**Result:** Pass.
+
+### CSS Validation
+
+CSS was tested using the W3C Jigsaw CSS Validator.
+
+![CSS validation screenshot](assets/readme/testing/css-validator.png)
+
+**Result:** Pass.
+
+### JavaScript Linting
+
+JavaScript was tested with JSHint.
+
+![JavaScript linter screenshot](assets/readme/testing/js-linter-results.png)
+
+**Result:** Pass.
+
+### Lighthouse Testing
+
+The deployed website was tested using Lighthouse in Chrome DevTools.
+
+![Lighthouse mobile screenshot](assets/readme/testing/lighthouse-mobile.png)
+
+![Lighthouse desktop screenshot](assets/readme/testing/lighthouse-desktop.png)
+
+### Lighthouse Targets
+
+| Category       | Target |
+| -------------- | -----: |
+| Performance    |    80+ |
+| Accessibility  |    90+ |
+| Best Practices |    90+ |
+
+SEO was not formally scored as part of the final Lighthouse evidence for this project.
+
+Final Lighthouse scores were used to confirm the deployed version met the project targets.
+
+---
+
+## Bugs
+
+### Fixed Bugs
+
+| Bug                                                                         | Cause                                                                                   | Fix                                                                                           |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Portfolio filtering failed after changing from `category` to `categories`.  | Some test data and project data still used the old single-category format.              | Portfolio items and test fixtures were migrated to the `categories` array format.             |
+| Portfolio carousel did not reset after filtering.                           | Swiper kept the previous active slide index after the DOM was re-rendered.              | After filtering, Swiper is updated and moved back to slide `0`.                               |
+| Service items in the estimate did not have images.                          | Service buttons originally only provided title and price.                               | Service buttons were updated with `data-image` and `data-alt`.                                |
+| Estimate panel did not show selected item images.                           | Estimate list rendering only included text and price.                                   | Estimate list items now render image, title, price, and remove button.                        |
+| Repeated portfolio mock data existed across several tests.                  | Each test file created its own mock portfolio array.                                    | Shared fixture data was moved to `tests/fixtures/portfolio-items.js`.                         |
+| Jest failed because `serviceAddButton` was declared twice.                  | During test refactoring, the helper return and manual query used the same `const` name. | Duplicate declaration was removed.                                                            |
+| Portfolio and services used separate image folders.                         | Placeholder images were organised separately from real gallery images.                  | Services and portfolio data were migrated to `assets/images/gallery/`.                        |
+| Portfolio card filtering did not support items with multiple visual roles.  | A single `category` string was too limited.                                             | Items now use `categories` arrays, allowing one item to appear under multiple filters.        |
+| Swiper pagination bullets could receive keyboard focus unnecessarily.       | Swiper generated pagination bullets with tab focus.                                     | A helper removes pagination bullets from the keyboard tab order.                              |
+| Form success message was not visually focused enough.                       | Success message appeared while other enquiry section elements were still visible.       | Enquiry section now hides form fields and other distracting content after valid submission.   |
+| Estimate widget did not restart correctly after successful form submission. | The enquiry submitted state remained active after a new item was added.                 | Adding a new item after submission clears the submitted state and restarts the estimate flow. |
+| How It Works mobile wireframe had overlapping elements.                     | The wireframe section height and icon spacing were too small.                           | The wireframe was updated with improved spacing and correct section height.                   |
+| Footer overlapped the enquiry wireframe.                                    | Footer was placed too close to the enquiry section in the wireframe.                    | Footer was moved below the enquiry block and enquiry height was increased.                    |
+| 404 page test failed because Back to home text was not visible as expected. | The test expected visible link text but the markup did not match.                       | The 404 page link text was corrected.                                                         |
+
+### Bug Story: Portfolio Carousel Reset After Filtering
+
+#### Title
+
+Portfolio carousel keeps previous slide position after selecting a new filter.
+
+#### User Story
+
+As a visitor, I want the portfolio carousel to start from the first matching item after I select a new filter, so that I can browse the selected category from the beginning instead of landing on a later slide.
+
+#### Steps to Reproduce
+
+1. Open the website.
+2. Go to the Portfolio section.
+3. Swipe or click through the portfolio carousel to a later slide.
+4. Click a different portfolio filter.
+5. Observe the carousel position.
+
+#### Expected Result
+
+The filtered portfolio carousel starts from the first matching item.
+
+#### Actual Result
+
+The portfolio content updates, but the carousel keeps the previous slide index.
+
+#### Cause
+
+Swiper keeps its previous active slide index after the slide DOM is re-rendered.
+
+#### Fix
+
+After filtering and re-rendering the slides, the Swiper instance is updated and moved back to the first slide.
+
+```js
+if (portfolioSwiperElement && portfolioSwiperElement.swiper) {
+  portfolioSwiperElement.swiper.update();
+  portfolioSwiperElement.swiper.slideTo(0, 0);
+}
+```
+
+#### Status
+
+Fixed.
+
+### Known Bugs
+
+No confirmed active bugs are currently documented.
 
 ---
 
@@ -666,235 +1243,43 @@ The scroll animation starts when a relevant section enters the viewport.
 - CSS3
 - JavaScript
 
-### Optional / Supporting Technologies
+### Libraries
 
-- Swiper.js — used to create responsive carousels for the Services and Portfolio sections, improving mobile swipe behaviour and keeping visual content compact on smaller screens.
+- Swiper.js
 - Google Fonts
+
+### Testing
+
+- Jest
+- Jest jsdom environment
+
+### Development Tools
+
+- Visual Studio Code
+- Chrome DevTools
 - Git
 - GitHub
 - GitHub Pages
 
-### Tools
+### Validation and Audit Tools
 
-- Visual Studio Code
-- Chrome DevTools
 - W3C HTML Validator
 - W3C CSS Validator / Jigsaw
-- JSLint or ESLint
 - Lighthouse
-- Figma
-- TinyPNG or Squoosh for image optimisation
+- JSHint
 
----
+### Image Tools
 
-## Testing
-
-Testing is planned and carried out during development, implementation, and after deployment.
-
-The project follows a test-driven development approach where possible. Before implementing key interactive features, expected behaviours are identified and used to guide development. These expected behaviours are then checked through manual tests, validation tools, browser testing, and console checks.
-
-The purpose of testing is to confirm that:
-
-- Features work as expected.
-- User actions produce relevant responses.
-- Invalid input is handled properly.
-- The site is responsive.
-- The deployed version matches the local version.
-- No console errors are caused by user actions.
-- Internal links are not broken.
-
-### Manual vs Automated Testing Explanation
-
-#### Manual Testing
-
-Manual testing is used to check the website from a real user’s perspective.
-
-This includes:
-
-- Clicking navigation links.
-- Testing form validation.
-- Opening and closing the modal gallery.
-- Using the interactive estimate builder.
-- Testing the portfolio filter and carousel behaviour.
-- Checking responsive layout in DevTools.
-- Checking the deployed version against the local version.
-
-Manual testing is useful when checking usability, layout, visual design, and real interaction flow.
-
-#### Automated Testing
-
-Automated testing is used where tools can quickly check code quality and technical standards.
-
-This includes:
-
-- W3C HTML validation.
-- Jigsaw CSS validation.
-- JavaScript linting.
-- Lighthouse testing.
-- Browser console checks.
-
-### Manual Testing Checklist
-
-| Feature                | Test                                                  | Expected Result                                                                              | Actual Result  | Status  |
-| ---------------------- | ----------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------- | ------- |
-| Navigation             | Click each navigation link                            | Correct section is shown                                                                     | Not tested yet | Pending |
-| Hero CTA               | Click “View Portfolio”                                | Portfolio section is shown                                                                   | Not tested yet | Pending |
-| Hero CTA               | Click “Request a Quote”                               | Contact section is shown                                                                     | Not tested yet | Pending |
-| Services               | View services section                                 | Six service cards are displayed with image, heading, description, and Add to estimate button | Not tested yet | Pending |
-| Services Carousel      | Swipe services carousel on mobile                     | Carousel moves through service cards one at a time                                           | Not tested yet | Pending |
-| Services Carousel      | Click carousel navigation buttons                     | Previous or next service card is shown                                                       | Not tested yet | Pending |
-| Services Carousel      | Click pagination bullet                               | Matching service slide is shown                                                              | Not tested yet | Pending |
-| Services Carousel      | View services carousel on tablet and desktop          | Correct number of service cards is visible                                                   | Not tested yet | Pending |
-| Services               | Click Add to estimate on a service card               | Service is added to the guide estimate                                                       | Not tested yet | Pending |
-| Portfolio Section      | View portfolio section                                | Portfolio carousel is displayed with rendered portfolio cards                                | Not tested yet | Pending |
-| Portfolio Rendering    | Load the page                                         | Portfolio cards are rendered dynamically from JavaScript data                                | Not tested yet | Pending |
-| Portfolio Carousel     | Swipe portfolio carousel on mobile                    | Carousel moves through portfolio items                                                       | Not tested yet | Pending |
-| Portfolio Carousel     | Click carousel navigation buttons                     | Previous or next portfolio item is shown                                                     | Not tested yet | Pending |
-| Portfolio Carousel     | Click pagination bullet                               | Matching portfolio slide is shown                                                            | Not tested yet | Pending |
-| Portfolio Carousel     | View portfolio on tablet and desktop                  | Correct number of portfolio cards is visible                                                 | Not tested yet | Pending |
-| Portfolio Filter       | Click “Balloon Arches”                                | Only balloon arch portfolio items are shown in the carousel                                  | Not tested yet | Pending |
-| Portfolio Filter       | Click “Number Stacks”                                 | Only number stack portfolio items are shown in the carousel                                  | Not tested yet | Pending |
-| Portfolio Filter       | Click “Backdrops”                                     | Only backdrop portfolio items are shown in the carousel                                      | Not tested yet | Pending |
-| Portfolio Filter       | Click “All”                                           | All portfolio items are available in the carousel                                            | Not tested yet | Pending |
-| Portfolio Filter       | Select a new category                                 | Carousel resets to the first matching item                                                   | Not tested yet | Pending |
-| Image Modal            | Click portfolio image                                 | Larger image opens                                                                           | Not tested yet | Pending |
-| Image Modal            | Click close button                                    | Modal closes                                                                                 | Not tested yet | Pending |
-| Image Modal            | Press Escape key                                      | Modal closes                                                                                 | Not tested yet | Pending |
-| Estimate Builder       | Click “Add to estimate” on a service card             | Service is added to the estimate and total updates                                           | Not tested yet | Pending |
-| Estimate Builder       | Click “Add to estimate” on a portfolio card           | Portfolio service is added to the estimate and total updates                                 | Not tested yet | Pending |
-| Estimate Builder       | Open estimate panel                                   | Selected services and current total are shown                                                | Not tested yet | Pending |
-| Estimate Builder       | Remove selected item                                  | Item is removed and total updates                                                            | Not tested yet | Pending |
-| Estimate Builder       | Clear estimate                                        | Selected items are removed and total resets                                                  | Not tested yet | Pending |
-| Sticky Estimate Widget | Add item and scroll page                              | Current estimate total remains visible while browsing                                        | Not tested yet | Pending |
-| How It Works           | Review process steps                                  | Booking and setup process is clear and easy to follow                                        | Not tested yet | Pending |
-| Enquiry Form           | Submit empty form                                     | Error messages are shown                                                                     | Not tested yet | Pending |
-| Enquiry Form           | Submit invalid email                                  | Email error is shown                                                                         | Not tested yet | Pending |
-| Enquiry Form           | Submit valid data                                     | Success message is shown                                                                     | Not tested yet | Pending |
-| Enquiry Form           | Open form after adding estimate items                 | Selected estimate summary is shown and service dropdown is hidden                            | Not tested yet | Pending |
-| Enquiry Form           | Open form without adding estimate items               | Selected estimate summary is hidden and service dropdown is shown                            | Not tested yet | Pending |
-| Enquiry Form           | Scroll to enquiry section with estimate widget active | Sticky estimate widget is hidden to avoid duplicate estimate information                     | Not tested yet | Pending |
-| Scroll Animation       | Scroll to animation section                           | Balloons animate into view                                                                   | Not tested yet | Pending |
-| Responsive Layout      | Test mobile screen                                    | Layout remains readable                                                                      | Not tested yet | Pending |
-| Responsive Layout      | Test tablet screen                                    | Layout remains readable                                                                      | Not tested yet | Pending |
-| Responsive Layout      | Test desktop screen                                   | Layout remains readable                                                                      | Not tested yet | Pending |
-| 404 Page               | Open non-existent URL                                 | Custom 404 page appears                                                                      | Not tested yet | Pending |
-| 404 Page               | Click return button                                   | User returns to main page                                                                    | Not tested yet | Pending |
-| Console                | Perform all user actions                              | No console errors                                                                            | Not tested yet | Pending |
-| Internal Links         | Check all internal links                              | No broken links                                                                              | Not tested yet | Pending |
-| External Links         | Click external links                                  | Opens in new tab                                                                             | Not tested yet | Pending |
-
-### Responsiveness Testing
-
-| Device / Width | Expected Result                        | Status  |
-| -------------- | -------------------------------------- | ------- |
-| 320px mobile   | Content fits without horizontal scroll | Pending |
-| 375px mobile   | Navigation and sections remain usable  | Pending |
-| 768px tablet   | Layout adapts correctly                | Pending |
-| 1024px laptop  | Content spacing is balanced            | Pending |
-| 1440px desktop | Full layout displays professionally    | Pending |
-
-### Accessibility Testing
-
-| Area     | Test                             | Expected Result               | Status  |
-| -------- | -------------------------------- | ----------------------------- | ------- |
-| Headings | Check heading order              | Logical structure             | Pending |
-| Images   | Check alt text                   | Meaningful alt text provided  | Pending |
-| Keyboard | Tab through page                 | Focus is visible              | Pending |
-| Forms    | Check labels                     | Inputs have associated labels | Pending |
-| Colour   | Check contrast                   | Text remains readable         | Pending |
-| Modal    | Close control available          | User can close modal easily   | Pending |
-| Motion   | Animation does not block content | Animation is decorative only  | Pending |
-
-### Validation
-
-#### HTML Validation
-
-HTML will be tested using the official W3C validator.
-
-![HTML validation screenshot](assets/testing/html-validation.webp)
-
-**Result:** Pending.
-
-#### CSS Validation
-
-CSS will be tested using the official Jigsaw CSS validator.
-
-![CSS validation screenshot](assets/testing/css-validation.webp)
-
-**Result:** Pending.
-
-#### JavaScript Linting
-
-JavaScript will be tested using a linter.
-
-![JavaScript linter screenshot](assets/testing/javascript-linter.webp)
-
-**Result:** Pending.
-
-#### Lighthouse Testing
-
-The deployed website will be tested using Lighthouse in Chrome DevTools.
-
-![Lighthouse report](assets/testing/lighthouse.webp)
-
-### Planned Lighthouse Targets
-
-| Category       | Target |
-| -------------- | -----: |
-| Performance    |    80+ |
-| Accessibility  |    90+ |
-| Best Practices |    90+ |
-| SEO            |    90+ |
-
-### Screenshots Aligned to User Stories
-
-#### US1 — Understand the Business
-
-![Hero section screenshot](assets/testing/us1-hero.webp)
-
-#### US3 — Browse Portfolio Examples
-
-![Portfolio section screenshot](assets/testing/us3-portfolio.webp)
-
-#### US4 — Filter Portfolio Examples
-
-![Portfolio filter and carousel screenshot](assets/testing/us4-portfolio-filter-carousel.webp)
-
-#### US5 — View Images Clearly
-
-![Image modal screenshot](assets/testing/us5-image-modal.webp)
-
-#### US6 — Build a Guide Estimate
-
-![Estimate builder screenshot](assets/testing/us6-estimate-builder.webp)
-
-#### US7 — Understand the Booking Process
-
-![How It Works screenshot](assets/testing/us7-how-it-works.webp)
-
-#### US8 — Send an Enquiry
-
-![Enquiry Form screenshot](assets/testing/us8-contact-form.webp)
-
-#### US9 — Recover from a Wrong Page
-
-![Custom 404 page screenshot](assets/testing/us9-404-page.webp)
-
----
-
-## Bugs
-
-### Known Bugs
-
-At this stage of development, portfolio images may show broken image icons if the image file paths in `portfolio-data.js` do not match files in `assets/images/portfolio/`. This is a data/assets issue rather than a rendering issue.
-
-Further bugs will be documented as features are implemented and tested.
+- WebP image format.
+- Local image conversion and optimisation workflow.
+- WebSiteMockupGenerator, used to create responsive mockup images from the finished site.
+- Techsini, used to create the opening README mockup from the finished site.
 
 ---
 
 ## Deployment
 
-The project was deployed to **GitHub Pages**.
+The project is deployed to GitHub Pages.
 
 ### Deployment Steps
 
@@ -928,85 +1313,115 @@ http://localhost:8000
 
 ### Custom 404 Page
 
-A `404.html` file is included in the project root. GitHub Pages automatically serves this page when a user opens a non-existent route.
+A `404.html` file is included in the project root. GitHub Pages automatically serves this file when a user opens a non-existent route.
 
-The 404 page includes a clear message and a button that returns the user to the main page.
+The page includes a short message and a Back to home button.
 
 ---
 
 ## Attribution, Credits and Acknowledgements
 
-### Attribution
+### Libraries and Tools
 
-- **Swiper.js:** Used for the responsive Services and Portfolio carousels to provide reliable mobile swipe behaviour, pagination, navigation controls, and responsive slide layouts. Swiper was loaded from CDN and configured with custom JavaScript for this project.
+- **Swiper.js:** Used for the responsive Services and Portfolio carousels.
 - **Google Fonts:** Used for typography.
-- **Font Awesome / Bootstrap Icons:** Used for decorative and interface icons.
-- **Unsplash / Pexels / Own Images:** Used for event decoration images.
-- **MDN Web Docs:** Used as a reference for JavaScript, DOM methods, forms, and Intersection Observer.
-- **W3C Validator:** Used for HTML validation.
+- **Jest:** Used for automated JavaScript testing.
+- **Jest jsdom:** Used to test DOM-based JavaScript behaviour.
+- **Chrome DevTools:** Used for layout testing, debugging, console checks, and Lighthouse.
+- **W3C HTML Validator:** Used for HTML validation.
 - **Jigsaw CSS Validator:** Used for CSS validation.
-- **Chrome DevTools Lighthouse:** Used for performance and accessibility checks.
-- **ChatGPT:** Used for planning support, wording assistance, README structure, and debugging explanations. All generated content was reviewed, edited, and implemented by me.
+- **Git and GitHub:** Used for version control.
+- **GitHub Pages:** Used for deployment.
+
+### Image Attribution
+
+The project uses locally stored images in:
+
+```text
+assets/images/hero/
+assets/images/logo/
+assets/images/gallery/
+```
+
+No external stock images are embedded in the final version. Gallery, hero, and logo images were stored locally and converted or optimised where needed for performance and consistency.
+
+### Image Optimisation
+
+Images were converted to WebP and resized into responsive variants where appropriate. This reduced file size, improved load performance, and made it possible to use responsive image loading patterns in the hero, services, and portfolio sections.
+
+### Icons
+
+Icons used in the How It Works section are decorative and are stored locally in `assets/icons/` as SVG files. They are treated as non-essential content for accessibility.
+
+### Testimonials
+
+The testimonial text was adapted from publicly visible customer comments. Real social media screenshots and profile images were not embedded in the site to improve accessibility, performance, and privacy.
 
 ### Code Attribution
 
-All custom HTML, CSS, and JavaScript code was written by me.
+All custom HTML, CSS, and JavaScript code was written and adapted by me, with AI assistance used only as support during development.
 
-Any external code, libraries, or tutorials used in the project are clearly attributed in comments above the relevant code and documented in this README.
+External library code is not copied manually into the project. Swiper is loaded from a CDN and configured through custom JavaScript.
+
+### Support and Learning Resources
+
+- **MDN Web Docs:** Used as a reference for HTML, CSS, JavaScript, DOM methods, events, accessibility, and forms.
+- **ChatGPT:** Used for planning support, debugging explanations, README structure, code review, and refactoring suggestions.
+- **GitHub Copilot:** Used for coding support and quick refinement suggestions.
+- **WebSiteMockupGenerator:** Used to create responsive mockup images from the finished site.
+- **Techsini:** Used to create the opening README mockup from the finished site.
 
 ---
 
 ## Assessment Checklist: Pass / Merit / Distinction
 
-This checklist tracks how the project addresses the Unit 2 requirements.
-
 ### Learning Outcome 1 — Design, Develop and Implement a Dynamic Front End Web Application
 
-- [x] **1.1** Designed a web application that meets accessibility guidelines, follows UX principles, uses structured layout and navigation, and meets its purpose.
+- [x] **1.1** Designed a web application that meets its purpose and uses structured layout and navigation.
 - [x] **1.2** Designed interactivity that lets the user initiate and control actions and receive feedback.
-- [ ] **1.3** Wrote custom JavaScript, HTML, and CSS to create a responsive front-end web application with significant interactive functionality.
-- [ ] **1.4** Wrote JavaScript code to produce relevant responses to user actions.
-- [ ] **1.5** Implemented images and graphics with usable resolution, legible text, consistent styling, and non-distracting foregrounds.
+- [x] **1.3** Wrote custom JavaScript, HTML, and CSS to create a responsive front-end web application with interactive functionality.
+- [x] **1.4** Wrote JavaScript code to produce relevant responses to user actions.
+- [x] **1.5** Implemented images with usable resolution, alt text, and consistent styling.
 - [x] **M(i)** Designed the web application using UX principles so information and resources are easy to find intuitively.
 
 ### Learning Outcome 2 — Front End Interactivity
 
-- [ ] **2.1** JavaScript passes through a linter with no major issues; HTML and CSS are validated.
-- [ ] **2.2** JavaScript functions use compound statements such as if statements and loops.
-- [ ] **2.3** Empty or invalid input data is handled intelligently.
-- [ ] **2.4** Working functionality is implemented for all project requirements.
-- [ ] **2.5** JavaScript is organised in external files linked at the bottom of the body; CSS is in external files linked in the head.
-- [ ] **2.6** Code meets readability standards with comments, indentation, and meaningful naming.
-- [ ] **2.7** Files are named consistently and descriptively without spaces or capitalisation.
-- [ ] **2.8** User actions do not generate internal errors or console errors.
-- [ ] **2.9** Code and assets are organised in directories by file type.
-- [ ] **M(iv)** A custom 404 page gives users a clear route back to the main page without needing browser navigation buttons.
+- [x] **2.1** JavaScript passes through a linter with no major issues; HTML and CSS are validated.
+- [x] **2.2** JavaScript functions use compound statements such as `if` statements and loops.
+- [x] **2.3** Empty or invalid data is handled with defensive checks and form validation.
+- [x] **2.4** Working functionality is implemented for the main interactive requirements.
+- [x] **2.5** JavaScript is organised in external files linked at the bottom of the body; CSS is in an external file linked in the head.
+- [x] **2.6** Code uses readable naming, indentation, and separation of concerns.
+- [x] **2.7** Files are named consistently and organised by type.
+- [x] **2.8** User actions are tested to avoid internal errors and console errors.
+- [x] **2.9** Code and assets are organised in directories by file type.
+- [x] **M(iv)** A custom 404 page gives users a clear route back to the main page.
 
 ### Learning Outcome 3 — Testing
 
 - [x] **3.1** Explained the principles of automated and manual testing.
-- [ ] **3.2** Designed and implemented testing procedures to assess functionality, usability, and responsiveness.
-- [ ] **3.3** Inserted screenshots of the finished project aligned to relevant user stories.
-- [ ] **3.4** Applied test procedures during development and after deployment.
-- [ ] **3.5** Fully documented testing results.
+- [x] **3.2** Designed and implemented testing procedures to assess functionality, usability, and responsiveness.
+- [x] **3.3** Inserted screenshots of the finished project aligned to relevant user stories.
+- [x] **3.4** Applied test procedures during development and after deployment.
+- [x] **3.5** Documented testing results.
 
 ### Learning Outcome 4 — Deployment
 
-- [ ] **4.1** Deployed the final version to GitHub Pages.
-- [ ] **4.2** Ensured the deployed application is free of commented-out code and broken internal links.
-- [ ] **4.3** Used Git and GitHub for version control.
+- [x] **4.1** Deployed the project to GitHub Pages.
+- [x] **4.2** Ensured the final deployed application is free of commented-out code and broken internal links.
+- [x] **4.3** Used Git and GitHub for version control.
 
 ### Learning Outcome 5 — Version Control and Documentation
 
-- [x] **5.1** Documented the full development cycle through commits and README.
+- [x] **5.1** Documented the development cycle through commits and README.
 - [x] **5.2** Wrote a README explaining the project purpose and value to users.
 - [x] **5.3** Clearly separated custom code from external sources and attributed external code.
-- [x] **5.4** Used consistent and effective markdown formatting.
-- [ ] **M(v)** Committed often, with small and well-defined commits.
+- [x] **5.4** Used consistent markdown formatting.
+- [x] **M(v)** Committed often, with small and well-defined commits.
 - [x] **M(vi)** Presented a clear rationale for the project and target audience.
-- [x] **M(vii)** Documented UX design work, wireframes, mockups, and reasoning.
-- [ ] **M(viii)** Documented testing fully, including bugs found and fixes.
-- [ ] **M(ix)** Fully documented the deployment procedure.
+- [x] **M(vii)** Documented UX design, features, wireframes, and reasoning.
+- [x] **M(viii)** Documented testing results, bugs found, and fixes.
+- [x] **M(ix)** Documented the deployment procedure.
 
 ---
 
@@ -1016,21 +1431,41 @@ This checklist tracks how the project addresses the Unit 2 requirements.
 assets/
   css/
     style.css
+  favicon/
+    icon-16.png
+    icon-32.png
+  icons/
+  images/
+    gallery/
+      responsive/
+    hero/
+      responsive/
+    logo/
+      responsive/
   js/
+    enquiry-form.js
+    estimate.js
+    navigation.js
     portfolio-carousel.js
     portfolio-data.js
+    portfolio-filters.js
+    portfolio-modal.js
     script.js
     services-carousel.js
-  images/
-    hero/
-    portfolio/
-    services/
-  icons/
-  mockups/
-  testing/
+    swiper-helpers.js
+  readme/
+    screenshots/
+    testing/
   wireframes/
+tests/
+  fixtures/
+    portfolio-items.js
+README-2.md
+README-3.md
 404.html
 index.html
+package-lock.json
+package.json
 README.md
 ```
 
@@ -1040,13 +1475,14 @@ README.md
 
 Possible future improvements include:
 
-- Real backend form submission.
-- Dedicated portfolio page for a larger archive of completed projects.
-- Admin panel for uploading new portfolio images.
-- Booking calendar integration.
-- Customer review submission.
-- Multi-language support.
-- Advanced animation controls.
-- Real product/package database.
+- Connect the enquiry form to a real backend or serverless form handler.
 - Save estimate choices between visits using local storage.
-- Payment or deposit functionality.
+- Add a larger dedicated portfolio page.
+- Add an admin-friendly way to update portfolio data.
+- Add real customer review submission.
+- Add booking calendar integration.
+- Add multi-language support.
+- Add reduced-motion preference support for decorative animations.
+- Improve image loading using responsive `srcset` where needed.
+- Add payment or deposit functionality.
+- Add more detailed service packages and pricing.
