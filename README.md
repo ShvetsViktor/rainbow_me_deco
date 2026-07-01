@@ -1024,6 +1024,9 @@ Manual testing was used to check real user interaction, visual layout, responsiv
 
 ### Screenshots Aligned to User Stories
 
+<details>
+<summary>View screenshots aligned to user stories</summary>
+
 #### US1 — Understand the Business
 
 ![Hero section screenshot](assets/readme/screenshots/hero-section.png)
@@ -1064,13 +1067,15 @@ Manual testing was used to check real user interaction, visual layout, responsiv
 
 ![Enquiry form success screenshot](assets/readme/screenshots/enquiry-success.png)
 
-### US11 — Use the Website on Mobile
+#### US11 — Use the Website on Mobile
 
 ![Mobile responsive screenshot](assets/readme/screenshots/mockup-mobile.png)
 
 #### US12 — Recover from a Wrong Page
 
 ![404 page screenshot](assets/readme/screenshots/custom-404-page.png)
+
+</details>
 
 ---
 
