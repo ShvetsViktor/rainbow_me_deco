@@ -1066,7 +1066,7 @@ Manual testing was used to check real user interaction, visual layout, responsiv
 
 ### US11 — Use the Website on Mobile
 
-![Mobile responsive screenshot](assets/readme/screenshots/mockup-mobile.png.png)
+![Mobile responsive screenshot](assets/readme/screenshots/mockup-mobile.png)
 
 #### US12 — Recover from a Wrong Page
 
