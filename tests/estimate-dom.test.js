@@ -117,7 +117,7 @@ function addServiceButtonToDom() {
           type="button"
           data-title="Balloon Arches"
           data-price="120"
-          data-image="assets/images/gallery/ballon-arch-backdrop.webp"
+          data-image="assets/images/gallery/responsive/ballon-arch-backdrop-1200.webp"
           data-alt="Balloon arch decoration for an event"
         >
           <span>Add to estimate</span>
@@ -374,7 +374,7 @@ describe('Estimate builder', () => {
     const estimateImage = document.querySelector('.estimate-list-item-image');
 
     expect(estimateImage).not.toBeNull();
-    expect(estimateImage.getAttribute('src')).toBe('assets/images/gallery/ballon-arch-backdrop.webp');
+    expect(estimateImage.getAttribute('src')).toBe('assets/images/gallery/responsive/ballon-arch-backdrop-1200.webp');
     expect(estimateImage.getAttribute('alt')).toBe('Pastel balloon arch decoration');
   });
 
@@ -390,7 +390,7 @@ describe('Estimate builder', () => {
     const estimateImage = document.querySelector('.estimate-list-item-image');
 
     expect(estimateImage).not.toBeNull();
-    expect(estimateImage.getAttribute('src')).toBe('assets/images/gallery/ballon-arch-backdrop.webp');
+    expect(estimateImage.getAttribute('src')).toBe('assets/images/gallery/responsive/ballon-arch-backdrop-1200.webp');
     expect(estimateImage.getAttribute('alt')).toBe('Balloon arch decoration for an event');
   });
 
@@ -409,7 +409,9 @@ describe('Estimate builder', () => {
     expect(enquiryEstimateItems[0].textContent).toContain('£120');
 
     expect(enquiryEstimateImage).not.toBeNull();
-    expect(enquiryEstimateImage.getAttribute('src')).toBe('assets/images/gallery/ballon-arch-backdrop.webp');
+    expect(enquiryEstimateImage.getAttribute('src')).toBe(
+      'assets/images/gallery/responsive/ballon-arch-backdrop-1200.webp'
+    );
     expect(enquiryEstimateImage.getAttribute('alt')).toBe('Pastel balloon arch decoration');
 
     expect(enquiryEstimateTotal.textContent).toBe('£120');
@@ -436,7 +438,9 @@ describe('Estimate builder', () => {
     expect(enquiryEstimateItems[0].textContent).toContain('£120');
 
     expect(enquiryEstimateImage).not.toBeNull();
-    expect(enquiryEstimateImage.getAttribute('src')).toBe('assets/images/gallery/ballon-arch-backdrop.webp');
+    expect(enquiryEstimateImage.getAttribute('src')).toBe(
+      'assets/images/gallery/responsive/ballon-arch-backdrop-1200.webp'
+    );
     expect(enquiryEstimateImage.getAttribute('alt')).toBe('Balloon arch decoration for an event');
 
     expect(enquiryEstimateTotal.textContent).toBe('£120');
