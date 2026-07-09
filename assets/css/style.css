@@ -1119,11 +1119,6 @@ header nav a:focus-visible {
   width: 100%;
 }
 
-.add-to-estimate.is-added {
-  opacity: 0.65;
-  cursor: not-allowed;
-}
-
 /* ============================================
    BALLOON ANIMATION
    ============================================ */
