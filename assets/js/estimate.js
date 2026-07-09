@@ -437,6 +437,10 @@ function initEstimateBuilder(items) {
     updateEstimateWidgetVisibility();
   });
 
+  document.addEventListener('portfolio:updated', () => {
+    updateAddToEstimateButtons(estimateItems);
+  });
+
   /**
    * Escape closes the estimate panel for keyboard users.
    */
