@@ -76,6 +76,37 @@ function showBalloonAnimation(addButton) {
 }
 
 /**
+ * Updates all Add to estimate buttons to match the current estimate state.
+ *
+ * Buttons with a matching data-title are disabled and marked as already added.
+ */
+
+function updateAddToEstimateButtons(estimateItems) {
+  const addButtons = document.querySelectorAll('.add-to-estimate');
+
+  for (let button of addButtons) {
+    const buttonTitle = button.getAttribute('data-title');
+    let isItemAdded = false;
+
+    for (let item of estimateItems) {
+      if (item.title === buttonTitle) {
+        isItemAdded = true;
+      }
+    }
+
+    if (isItemAdded) {
+      button.disabled = true;
+      button.classList.add('is-added');
+      button.textContent = 'Added ✓';
+    } else {
+      button.disabled = false;
+      button.classList.remove('is-added');
+      button.textContent = 'Add to estimate';
+    }
+  }
+}
+
+/**
  * Initialises the estimate builder.
  *
  * This connects:
@@ -514,6 +545,7 @@ if (typeof module !== 'undefined') {
     addItemToEstimate,
     calculateEstimateTotal,
     removeItemFromEstimate,
+    updateAddToEstimateButtons,
     initEstimateBuilder,
   };
 }
