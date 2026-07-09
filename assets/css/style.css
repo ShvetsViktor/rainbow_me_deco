@@ -858,6 +858,13 @@ header nav a:focus-visible {
   outline-offset: 4px;
 }
 
+/* Disabled Swiper arrows still need to catch clicks so they do not fall through to cards underneath. */
+.services-swiper .swiper-button-disabled,
+.portfolio-swiper .swiper-button-disabled {
+  cursor: default;
+  pointer-events: auto;
+}
+
 /* Navigation arrows are hidden on mobile because users can swipe. They are displayed again at the tablet breakpoint. */
 .services-swiper .swiper-button-prev,
 .services-swiper .swiper-button-next,
