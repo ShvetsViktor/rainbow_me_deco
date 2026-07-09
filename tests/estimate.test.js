@@ -73,4 +73,20 @@ describe('Estimate pure functions', () => {
     expect(buttons[2].textContent).toBe('Add to estimate');
     expect(buttons[2].classList.contains('is-added')).toBe(false);
   });
+
+  test('re-enables add to estimate button when item is removed', () => {
+    document.body.innerHTML = `
+    <button class="add-to-estimate is-added" data-title="Pastel Balloon Arch" disabled>Added ✓</button>
+  `;
+
+    const estimateItems = [];
+
+    updateAddToEstimateButtons(estimateItems);
+
+    const button = document.querySelector('.add-to-estimate');
+
+    expect(button.disabled).toBe(false);
+    expect(button.textContent).toBe('Add to estimate');
+    expect(button.classList.contains('is-added')).toBe(false);
+  });
 });

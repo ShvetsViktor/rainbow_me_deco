@@ -330,6 +330,7 @@ function initEstimateBuilder(items) {
     }
 
     renderEstimateList();
+    updateAddToEstimateButtons(estimateItems);
     updateEnquirySummaryPositionState();
   }
 
