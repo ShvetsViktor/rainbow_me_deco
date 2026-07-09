@@ -493,50 +493,6 @@ function initEstimateBuilder(items) {
       showBalloonAnimation(addButton);
     }
   });
-
-  /**
-   * Handles Add to estimate clicks from static service cards.
-   *
-   * Service cards are written in index.html, so their estimate data is read
-   * from data-title, data-price, data-image and data-alt attributes.
-   */
-  document.addEventListener('click', (event) => {
-    const serviceAddButton = event.target.closest('#services .add-to-estimate');
-
-    if (!serviceAddButton) {
-      return;
-    }
-
-    const selectedTitle = serviceAddButton.getAttribute('data-title');
-    const selectedPrice = Number(serviceAddButton.getAttribute('data-price'));
-    const selectedImage = serviceAddButton.getAttribute('data-image');
-    const selectedAlt = serviceAddButton.getAttribute('data-alt');
-
-    // Prevents incomplete service data from creating broken estimate items.
-    if (!selectedTitle || !selectedPrice || !selectedImage || !selectedAlt) {
-      return;
-    }
-
-    const selectedItem = {
-      title: selectedTitle,
-      price: selectedPrice,
-      image: selectedImage,
-      alt: selectedAlt,
-    };
-
-    resetEnquirySubmittedState();
-
-    const previousItemsCount = estimateItems.length;
-
-    estimateItems = addItemToEstimate(estimateItems, selectedItem);
-
-    updateEstimateWidget();
-
-    // Balloon animation only runs when a new item was actually added.
-    if (estimateItems.length > previousItemsCount) {
-      showBalloonAnimation(serviceAddButton);
-    }
-  });
 }
 
 // Export functions for Jest tests when this file is loaded in a Node environment.
