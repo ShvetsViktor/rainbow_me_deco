@@ -149,8 +149,8 @@ describe('Services section structure', () => {
     expect(viewExamplesButtons[5].getAttribute('data-category')).toBe('custom-setups');
   });
 
-  test('each service card contains an add to estimate button', () => {
-    expect(document.querySelectorAll('#services .service-card button.add-to-estimate').length).toBe(6);
+  test('service cards do not contain add to estimate buttons', () => {
+    expect(document.querySelectorAll('#services .service-card button.add-to-estimate').length).toBe(0);
   });
 });
 
