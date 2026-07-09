@@ -501,4 +501,14 @@ describe('Estimate builder', () => {
     expect(estimateTotal.textContent).toBe('£120');
     expect(estimateCountBadge.textContent).toBe('1');
   });
+
+  test('disables portfolio add button after item is added', () => {
+    const { addButton } = setupEstimateDom();
+
+    addButton.click();
+
+    expect(addButton.disabled).toBe(true);
+    expect(addButton.textContent).toBe('Added ✓');
+    expect(addButton.classList.contains('is-added')).toBe(true);
+  });
 });
