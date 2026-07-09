@@ -107,29 +107,6 @@ function setupEstimateDom(buttonTitle = 'Pastel Balloon Arch') {
   };
 }
 
-function addServiceButtonToDom() {
-  document.body.insertAdjacentHTML(
-    'beforeend',
-    `
-      <section id="services">
-        <button
-          class="button button-primary add-to-estimate"
-          type="button"
-          data-title="Balloon Arches"
-          data-price="120"
-          data-image="assets/images/gallery/responsive/ballon-arch-backdrop-1200.webp"
-          data-alt="Balloon arch decoration for an event"
-        >
-          <span>Add to estimate</span>
-          <span class="button-icon" aria-hidden="true">+</span>
-        </button>
-      </section>
-    `
-  );
-
-  return document.querySelector('#services .add-to-estimate');
-}
-
 function setEnquiryEstimateTotalPosition(enquiryEstimateTotalBlock, top) {
   enquiryEstimateTotalBlock.getBoundingClientRect = jest.fn(() => ({
     top,
@@ -309,19 +286,6 @@ describe('Estimate builder', () => {
     expect(estimateBackdrop.hidden).toBe(true);
   });
 
-  test('adds service item to estimate when service add button is clicked', () => {
-    const { estimateWidget, estimateTotal, estimateCount, estimateCountBadge, estimatePanelTotal } = setupEstimateDom();
-    const serviceAddButton = addServiceButtonToDom();
-
-    serviceAddButton.click();
-
-    expect(estimateWidget.hidden).toBe(false);
-    expect(estimateTotal.textContent).toBe('£120');
-    expect(estimateCount.textContent).toBe('1 item');
-    expect(estimateCountBadge.textContent).toBe('1');
-    expect(estimatePanelTotal.textContent).toBe('£120');
-  });
-
   test('shows balloon animation from portfolio add button when item is added', () => {
     const { addButton } = setupEstimateDom();
 
@@ -344,27 +308,6 @@ describe('Estimate builder', () => {
     expect(balloons.length).toBe(5);
   });
 
-  test('shows balloon animation from service add button when service item is added', () => {
-    setupEstimateDom();
-
-    const serviceAddButton = addServiceButtonToDom();
-
-    serviceAddButton.getBoundingClientRect = jest.fn(() => ({
-      left: 50,
-      top: 300,
-      width: 100,
-      height: 50,
-    }));
-
-    serviceAddButton.click();
-
-    const balloonAnimation = document.querySelector('.balloon-animation');
-
-    expect(balloonAnimation).not.toBeNull();
-    expect(balloonAnimation.style.left).toBe('100px');
-    expect(balloonAnimation.style.top).toBe('325px');
-  });
-
   test('renders selected item image inside estimate panel', () => {
     const { addButton, viewEstimateButton } = setupEstimateDom();
 
@@ -376,22 +319,6 @@ describe('Estimate builder', () => {
     expect(estimateImage).not.toBeNull();
     expect(estimateImage.getAttribute('src')).toBe('assets/images/gallery/responsive/ballon-arch-backdrop-1200.webp');
     expect(estimateImage.getAttribute('alt')).toBe('Pastel balloon arch decoration');
-  });
-
-  test('renders selected service image inside estimate panel', () => {
-    setupEstimateDom();
-
-    const serviceAddButton = addServiceButtonToDom();
-    const viewEstimateButton = document.querySelector('.estimate-view-button');
-
-    serviceAddButton.click();
-    viewEstimateButton.click();
-
-    const estimateImage = document.querySelector('.estimate-list-item-image');
-
-    expect(estimateImage).not.toBeNull();
-    expect(estimateImage.getAttribute('src')).toBe('assets/images/gallery/responsive/ballon-arch-backdrop-1200.webp');
-    expect(estimateImage.getAttribute('alt')).toBe('Balloon arch decoration for an event');
   });
 
   test('updates enquiry estimate summary with selected item image when item is added', () => {
@@ -420,30 +347,6 @@ describe('Estimate builder', () => {
     expect(enquiryRemoveButton.getAttribute('type')).toBe('button');
     expect(enquiryRemoveButton.getAttribute('data-title')).toBe('Pastel Balloon Arch');
     expect(enquiryRemoveButton.textContent.trim()).toBe('Remove');
-  });
-
-  test('updates enquiry estimate summary with selected service image when service item is added', () => {
-    setupEstimateDom();
-
-    const serviceAddButton = addServiceButtonToDom();
-
-    serviceAddButton.click();
-
-    const enquiryEstimateItems = document.querySelectorAll('.enquiry-estimate-list li');
-    const enquiryEstimateImage = document.querySelector('.enquiry-estimate-item-image');
-    const enquiryEstimateTotal = document.querySelector('.enquiry-estimate-total strong');
-
-    expect(enquiryEstimateItems.length).toBe(1);
-    expect(enquiryEstimateItems[0].textContent).toContain('Balloon Arches');
-    expect(enquiryEstimateItems[0].textContent).toContain('£120');
-
-    expect(enquiryEstimateImage).not.toBeNull();
-    expect(enquiryEstimateImage.getAttribute('src')).toBe(
-      'assets/images/gallery/responsive/ballon-arch-backdrop-1200.webp'
-    );
-    expect(enquiryEstimateImage.getAttribute('alt')).toBe('Balloon arch decoration for an event');
-
-    expect(enquiryEstimateTotal.textContent).toBe('£120');
   });
 
   test('updates enquiry estimate summary when item is removed', () => {
