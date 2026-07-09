@@ -1,4 +1,9 @@
-const { addItemToEstimate, calculateEstimateTotal, removeItemFromEstimate } = require('../assets/js/estimate');
+const {
+  addItemToEstimate,
+  calculateEstimateTotal,
+  removeItemFromEstimate,
+  updateAddToEstimateButtons,
+} = require('../assets/js/estimate');
 
 const testItem = {
   title: 'Pastel Balloon Arch',
@@ -41,5 +46,31 @@ describe('Estimate pure functions', () => {
     const updatedEstimateItems = removeItemFromEstimate(estimateItems, testItem.title);
 
     expect(updatedEstimateItems).toEqual([secondTestItem]);
+  });
+
+  test('updates all matching add to estimate buttons when item is added', () => {
+    document.body.innerHTML = `
+    <button class="add-to-estimate" data-title="Pastel Balloon Arch">Add to estimate</button>
+    <button class="add-to-estimate" data-title="Pastel Balloon Arch">Add to estimate</button>
+    <button class="add-to-estimate" data-title="Birthday Number Stack">Add to estimate</button>
+  `;
+
+    const estimateItems = [testItem];
+
+    updateAddToEstimateButtons(estimateItems);
+
+    const buttons = document.querySelectorAll('.add-to-estimate');
+
+    expect(buttons[0].disabled).toBe(true);
+    expect(buttons[0].textContent).toBe('Added ✓');
+    expect(buttons[0].classList.contains('is-added')).toBe(true);
+
+    expect(buttons[1].disabled).toBe(true);
+    expect(buttons[1].textContent).toBe('Added ✓');
+    expect(buttons[1].classList.contains('is-added')).toBe(true);
+
+    expect(buttons[2].disabled).toBe(false);
+    expect(buttons[2].textContent).toBe('Add to estimate');
+    expect(buttons[2].classList.contains('is-added')).toBe(false);
   });
 });
