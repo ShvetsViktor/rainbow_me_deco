@@ -232,13 +232,16 @@ section {
   right: 0;
   z-index: 1000;
 
+  min-height: 72px;
+  background-color: var(--color-scheme-3-background);
+}
+
+.nav-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   min-height: 72px;
-  padding-inline: var(--page-padding);
   gap: 24px;
-  background-color: var(--color-scheme-3-background);
 }
 
 .logo img {
