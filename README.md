@@ -1166,7 +1166,7 @@ The table below summarises the main fixed bugs. One detailed bug example is incl
 | Portfolio and services used separate image folders.                         | Placeholder images were organised separately from real gallery images.                  | Services and portfolio data were migrated to `assets/images/gallery/`.                          | Fixed  |
 | Portfolio card filtering did not support items with multiple visual roles.  | A single `category` string was too limited for real decoration examples.                | Items now use `categories` arrays, allowing one item to appear under multiple filters.          | Fixed  |
 | Swiper pagination bullets could receive keyboard focus unnecessarily.       | Swiper generated pagination bullets that could be reached with keyboard tabbing.        | A helper removes pagination bullets from the keyboard tab order.                                | Fixed  |
-| Disabled Swiper arrows opened a portfolio modal when clicked.              | Swiper disabled arrows allowed pointer clicks to pass through to the card underneath.   | Disabled carousel arrows now keep pointer events so the click is caught by the arrow.           | Fixed  |
+| Disabled Swiper arrows opened a portfolio modal when clicked.               | Swiper disabled arrows allowed pointer clicks to pass through to the card underneath.   | Disabled carousel arrows now keep pointer events so the click is caught by the arrow.           | Fixed  |
 | Form success message was not visually focused enough.                       | The success message appeared while other enquiry section elements were still visible.   | The enquiry section now hides form fields and other distracting content after valid submission. | Fixed  |
 | Estimate widget did not restart correctly after successful form submission. | The enquiry submitted state remained active after a new item was added.                 | Adding a new item after submission clears the submitted state and restarts the estimate flow.   | Fixed  |
 | 404 page test failed because Back to home text was not visible as expected. | The test expected visible link text, but the markup did not match.                      | The 404 page link text was corrected.                                                           | Fixed  |
@@ -1422,4 +1422,3 @@ Possible future improvements include:
 - Add payment or deposit functionality.
 - Add more detailed service packages and pricing.
 - Add social links
--
