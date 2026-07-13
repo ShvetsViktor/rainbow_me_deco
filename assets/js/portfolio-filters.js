@@ -114,6 +114,8 @@ function initPortfolioFilterRendering(items) {
       portfolioWrapper.innerHTML = '';
       renderPortfolioSlides(filteredItems);
 
+      document.dispatchEvent(new CustomEvent('portfolio:rendered'));
+
       // Swiper must be updated after changing its slide DOM.
       if (portfolioSwiperElement && portfolioSwiperElement.swiper) {
         portfolioSwiperElement.swiper.update();

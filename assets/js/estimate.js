@@ -174,6 +174,10 @@ function initEstimateBuilder(items) {
 
   let estimateItems = [];
 
+  document.addEventListener('portfolio:rendered', () => {
+    updateAddToEstimateButtons(estimateItems);
+  });
+
   // Tracks whether the enquiry estimate summary is visible.
   // If it is visible, the sticky widget is hidden to avoid duplicated information.
   let hasReachedEnquirySummary = false;
