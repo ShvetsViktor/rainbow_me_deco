@@ -70,7 +70,8 @@ describe('Estimate pure functions', () => {
     expect(buttons[1].classList.contains('is-added')).toBe(true);
 
     expect(buttons[2].disabled).toBe(false);
-    expect(buttons[2].textContent).toBe('Add to estimate');
+    expect(buttons[2].querySelector('.button-label').textContent).toBe('Add to estimate');
+    expect(buttons[2].querySelector('.button-icon').textContent).toBe('+');
     expect(buttons[2].classList.contains('is-added')).toBe(false);
   });
 });

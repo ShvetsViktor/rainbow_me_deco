@@ -71,7 +71,8 @@ function renderPortfolioSlides(items) {
     button.setAttribute('data-price', item.price);
     button.setAttribute('data-image', item.image);
     button.setAttribute('data-alt', item.alt);
-    button.innerHTML = '<span class="button-icon" aria-hidden="true">+</span><span>Add to estimate</span>';
+    button.innerHTML =
+      '<span class="button-label">Add to estimate</span><span class="button-icon" aria-hidden="true">+</span>';
 
     actions.appendChild(priceWrapper);
     actions.appendChild(button);

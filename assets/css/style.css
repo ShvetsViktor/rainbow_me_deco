@@ -788,7 +788,23 @@ header nav a:focus-visible {
 }
 
 .portfolio-card .add-to-estimate {
-  flex-shrink: 1;
+  flex: 0 0 auto;
+  min-width: 82px;
+  padding: 8px 10px;
+  gap: 6px;
+}
+
+.portfolio-card .add-to-estimate .button-label {
+  font-size: 0;
+}
+
+.portfolio-card .add-to-estimate .button-label::after {
+  content: 'Add';
+  font-size: 14px;
+}
+
+.portfolio-card .add-to-estimate.is-added .button-label::after {
+  content: 'Added';
 }
 
 /* ============================================
@@ -798,6 +814,15 @@ header nav a:focus-visible {
 /* Shared spacing for Add to estimate buttons used in Services and Portfolio. */
 .add-to-estimate {
   gap: 8px;
+}
+
+.add-to-estimate.is-added,
+.add-to-estimate:disabled {
+  background-color: var(--color-primary-dark);
+  border-bottom-color: #8f3046;
+  color: var(--color-surface);
+  opacity: 0.65;
+  cursor: not-allowed;
 }
 
 /* Creates the circular plus icon used inside Add to estimate buttons. */
@@ -1569,19 +1594,21 @@ header nav a:focus-visible {
    RESPONSIVE LAYOUT
    ============================================ */
 
-/* Extra small screens: shorten the portfolio Add to estimate button so card actions do not overflow. */
-@media (max-width: 350px) {
-  .portfolio-card .add-to-estimate span:last-child {
-    display: none;
-  }
-
+/* Extra small screens:  */
+@media (min-width: 351px) {
   .portfolio-card .add-to-estimate {
-    width: 80px;
-    padding: 8px;
+    padding: 8px clamp(12px, 4vw, 24px);
+    gap: 8px;
   }
 
-  .portfolio-card .add-to-estimate::after {
-    content: 'Add';
+  .portfolio-card .add-to-estimate .button-label,
+  .portfolio-card .add-to-estimate.is-added .button-label {
+    font-size: inherit;
+  }
+
+  .portfolio-card .add-to-estimate .button-label::after,
+  .portfolio-card .add-to-estimate.is-added .button-label::after {
+    content: none;
   }
 }
 

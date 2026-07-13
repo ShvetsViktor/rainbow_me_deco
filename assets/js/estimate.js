@@ -91,17 +91,19 @@ function updateAddToEstimateButtons(estimateItems) {
     for (let item of estimateItems) {
       if (item.title === buttonTitle) {
         isItemAdded = true;
+        break;
       }
     }
 
+    button.disabled = isItemAdded;
+    button.classList.toggle('is-added', isItemAdded);
+
     if (isItemAdded) {
-      button.disabled = true;
-      button.classList.add('is-added');
-      button.textContent = 'Added ✓';
+      button.innerHTML =
+        '<span class="button-label">Added</span> <span class="button-icon" aria-hidden="true">✓</span>';
     } else {
-      button.disabled = false;
-      button.classList.remove('is-added');
-      button.textContent = 'Add to estimate';
+      button.innerHTML =
+        '<span class="button-label">Add to estimate</span> <span class="button-icon" aria-hidden="true">+</span>';
     }
   }
 }
