@@ -10,7 +10,9 @@ Rainbow Me Decor Studio is an interactive front-end website for a small event de
 
 The project was created as a dynamic front-end web application for the Code Institute Unit 2 Interactive Front End Development assessment. It demonstrates responsive layout, user-centred design, JavaScript interactivity, DOM manipulation, external library integration, accessibility considerations, testing, deployment, and project documentation. The opening mockup image shows the finished site. The application is original and built for this specific audience rather than adapted from a walkthrough project.
 
-The website allows visitors to browse decoration services, understand the booking process, view selected decoration work, filter portfolio examples by category, open portfolio images in a larger modal view, add services or portfolio examples to a guide estimate, review selected estimate items, remove items, read testimonials, and submit a validated enquiry form. The enquiry form uses JavaScript validation and simulated submission, with the option to connect it to a server-side or serverless form handler in a future version.
+The website allows visitors to browse decoration services, understand the booking process, view selected decoration work, filter portfolio examples by category, open portfolio images in a larger modal view, add services or portfolio examples to a guide estimate, review selected estimate items, remove items, read testimonials, and submit a validated enquiry form.
+
+The enquiry form currently uses client-side JavaScript validation. A serverless backend integration is now being developed to securely validate submitted data on the server, generate an email from the enquiry details, and deliver it to the business email address. This backend functionality is being developed incrementally using test-driven development.
 
 The project was developed incrementally using a test-driven approach where possible. Key behaviours were first described in Jest tests, then implemented in HTML, CSS, and JavaScript. Testing evidence and validation notes are documented in the Testing section below.
 
@@ -73,6 +75,9 @@ The project was developed incrementally using a test-driven approach where possi
 - Use Git and GitHub throughout development.
 - Use testing to guide and verify functionality.
 - Document UX decisions, development process, testing, bugs, and deployment.
+- Extend the enquiry form with a secure serverless backend and email delivery workflow.
+- Apply server-side validation and defensive controls instead of relying only on browser validation.
+- Use test-driven development for backend modules, API handlers, email templates, and request processing.
 
 ### Why this project suits the brief
 
@@ -744,6 +749,37 @@ CSS was refined during development to improve:
 - Visual consistency.
 
 A pointer cursor was added for key clickable buttons so interactive elements feel clickable.
+
+### Stage 25 — Contact Form Backend and Email Delivery
+
+The original enquiry form used client-side validation and simulated a successful submission without sending the submitted information outside the browser.
+
+A new development stage was started to connect the form to a serverless backend. The planned backend workflow is:
+
+1. Receive the enquiry through a serverless API endpoint.
+2. Restrict the endpoint to supported HTTP requests.
+3. Validate and normalise submitted data on the server.
+4. Apply spam and abuse protection.
+5. Generate HTML and plain-text email content for the business.
+6. Send the enquiry details to the configured business email address.
+7. Generate and send an acknowledgement email to the customer.
+8. Return a structured success or error response.
+9. Update the frontend according to the backend response.
+
+The backend is being developed using small test-driven development cycles:
+
+**Red → Green → Refactor**
+
+Backend responsibilities are being separated into focused modules where appropriate:
+
+- API request handling.
+- Enquiry data validation.
+- Email template generation.
+- Email delivery.
+- Spam and request protection.
+- Environment configuration.
+
+This separation is intended to make the implementation easier to test, maintain, and explain.
 
 ---
 
