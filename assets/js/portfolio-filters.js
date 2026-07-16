@@ -71,24 +71,32 @@ function renderPortfolioFilterButtons(filters) {
 }
 
 /**
- * Adds active state behaviour to portfolio filter buttons.
- *
- * aria-pressed communicates the selected filter state to assistive technology.
+ * Adds active state behaviour to portfolio filter buttons. aria-pressed communicates the selected filter state to assistive technology.
  */
 function initPortfolioFilters() {
-  const filterButtons = document.querySelectorAll('.portfolio-filter-button');
+  const filterContainer = document.querySelector('.portfolio-filters');
 
-  for (let button of filterButtons) {
-    button.addEventListener('click', () => {
-      for (let filterButton of filterButtons) {
-        filterButton.classList.remove('is-active');
-        filterButton.setAttribute('aria-pressed', 'false');
-      }
-
-      button.classList.add('is-active');
-      button.setAttribute('aria-pressed', 'true');
-    });
+  if (!filterContainer) {
+    return;
   }
+
+  filterContainer.addEventListener('click', (event) => {
+    const button = event.target.closest('.portfolio-filter-button');
+
+    if (!button) {
+      return;
+    }
+
+    const filterButtons = filterContainer.querySelectorAll('.portfolio-filter-button');
+
+    for (const filterButton of filterButtons) {
+      filterButton.classList.remove('is-active');
+      filterButton.setAttribute('aria-pressed', 'false');
+    }
+
+    button.classList.add('is-active');
+    button.setAttribute('aria-pressed', 'true');
+  });
 }
 
 /**
@@ -98,33 +106,38 @@ function initPortfolioFilters() {
  * instance is updated and moved back to the first slide.
  */
 function initPortfolioFilterRendering(items) {
-  const filterButtons = document.querySelectorAll('.portfolio-filter-button');
+  const filterContainer = document.querySelector('.portfolio-filters');
 
-  for (let button of filterButtons) {
-    button.addEventListener('click', () => {
-      const selectedCategory = button.getAttribute('data-category');
-      const filteredItems = filterPortfolioItems(items, selectedCategory);
-      const portfolioSwiperElement = document.querySelector('.portfolio-swiper');
-      const portfolioWrapper = document.querySelector('.portfolio-swiper .swiper-wrapper');
-
-      if (!portfolioWrapper) {
-        return;
-      }
-
-      portfolioWrapper.innerHTML = '';
-      renderPortfolioSlides(filteredItems);
-
-      document.dispatchEvent(new CustomEvent('portfolio:rendered'));
-
-      // Swiper must be updated after changing its slide DOM.
-      if (portfolioSwiperElement && portfolioSwiperElement.swiper) {
-        portfolioSwiperElement.swiper.update();
-
-        // Resetting to the first slide avoids keeping an old slide index after filtering.
-        portfolioSwiperElement.swiper.slideTo(0, 0);
-      }
-    });
+  if (!filterContainer) {
+    return;
   }
+
+  filterContainer.addEventListener('click', (event) => {
+    const button = event.target.closest('.portfolio-filter-button');
+
+    if (!button) {
+      return;
+    }
+
+    const selectedCategory = button.getAttribute('data-category');
+    const filteredItems = filterPortfolioItems(items, selectedCategory);
+    const portfolioSwiperElement = document.querySelector('.portfolio-swiper');
+    const portfolioWrapper = document.querySelector('.portfolio-swiper .swiper-wrapper');
+
+    if (!portfolioWrapper) {
+      return;
+    }
+
+    portfolioWrapper.innerHTML = '';
+    renderPortfolioSlides(filteredItems);
+
+    document.dispatchEvent(new CustomEvent('portfolio:rendered'));
+
+    if (portfolioSwiperElement && portfolioSwiperElement.swiper) {
+      portfolioSwiperElement.swiper.update();
+      portfolioSwiperElement.swiper.slideTo(0, 0);
+    }
+  });
 }
 
 /**
@@ -134,25 +147,33 @@ function initPortfolioFilterRendering(items) {
  * filter is triggered and the page scrolls to the Portfolio section.
  */
 function initServicePortfolioLinks() {
-  const serviceButtons = document.querySelectorAll('.view-portfolio-category');
+  const servicesSection = document.querySelector('#services');
 
-  for (let serviceButton of serviceButtons) {
-    serviceButton.addEventListener('click', () => {
-      const selectedCategory = serviceButton.getAttribute('data-category');
-      const matchingFilterButton = document.querySelector(
-        `.portfolio-filter-button[data-category="${selectedCategory}"]`
-      );
-      const portfolioSection = document.querySelector('#portfolio');
-
-      if (matchingFilterButton) {
-        matchingFilterButton.click();
-      }
-
-      if (portfolioSection) {
-        portfolioSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
+  if (!servicesSection) {
+    return;
   }
+
+  servicesSection.addEventListener('click', (event) => {
+    const serviceButton = event.target.closest('.view-portfolio-category');
+
+    if (!serviceButton) {
+      return;
+    }
+
+    const selectedCategory = serviceButton.getAttribute('data-category');
+    const matchingFilterButton = document.querySelector(
+      `.portfolio-filter-button[data-category="${selectedCategory}"]`
+    );
+    const portfolioSection = document.querySelector('#portfolio');
+
+    if (matchingFilterButton) {
+      matchingFilterButton.click();
+    }
+
+    if (portfolioSection) {
+      portfolioSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
 }
 
 // Export functions and data for Jest tests when this file is loaded in a Node environment.
